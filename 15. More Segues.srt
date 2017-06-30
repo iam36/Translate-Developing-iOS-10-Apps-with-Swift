@@ -1,0 +1,9234 @@
+1
+00:00:00,401 --> 00:00:04,635
+[MUSIC]
+(音乐)
+
+2
+00:00:04,704 --> 00:00:07,739
+Stanford University,
+斯坦福大学,
+
+3
+00:00:07,807 --> 00:00:10,841
+>> Okay, well welcome to Stanford CS193P Developing
+> >好的,欢迎来到斯坦福CS193P发展
+
+4
+00:00:10,910 --> 00:00:13,410
+Applications for iOS winter of 2017,
+iOS应用程序2017年冬天,
+
+5
+00:00:13,479 --> 00:00:16,513
+This is Lecture number 15 and
+这是15和讲座
+
+6
+00:00:16,582 --> 00:00:19,182
+our only topic today is segues,
+今天是我们唯一的话题而已,
+
+7
+00:00:19,251 --> 00:00:22,185
+This is the segues lecture,
+这是segue讲座,
+
+8
+00:00:22,253 --> 00:00:27,522
+You've learned show segues and show detail segues, which
+你学到segue segue并展示细节,
+
+9
+00:00:27,591 --> 00:00:30,626
+work in navigation controllers and split view controllers and
+在导航控制器和视图控制器分裂和工作
+
+10
+00:00:30,695 --> 00:00:33,529
+now we're gonna learn all the rest of the kinds of segues
+现在我们要学习所有其他类型的segue
+
+11
+00:00:33,597 --> 00:00:36,131
+that you can use to build your application,
+,您可以使用它们来构建您的应用程序,
+
+12
+00:00:36,200 --> 00:00:39,066
+So let's start with mode segue,
+让我们开始segue模式,
+
+13
+00:00:39,135 --> 00:00:41,002
+So now a modal segue is interesting,
+现在模态segue很有趣,
+
+14
+00:00:41,070 --> 00:00:43,637
+One, you, when you segue modally,
+一个,你,当你segue语气地,
+
+15
+00:00:43,706 --> 00:00:45,972
+you take an MVC that you're segueing to,
+你把你segue MVC,
+
+16
+00:00:46,041 --> 00:00:48,941
+And it takes over the entire screen, okay?
+接管整个屏幕,好吗?
+
+17
+00:00:49,010 --> 00:00:50,076
+That's why it's called modal,
+这就是为什么它被称为模态,
+
+18
+00:00:50,144 --> 00:00:52,745
+because you're in a mode [LAUGH] where you can only
+因为你在一个你只能模式[笑]
+
+19
+00:00:52,814 --> 00:00:53,712
+interact with that MVC,
+与MVC,
+
+20
+00:00:53,781 --> 00:00:55,347
+There's no back button,
+没有后退按钮,
+
+21
+00:00:55,416 --> 00:00:56,882
+There's no tab bar to click on,
+没有标签栏点击,
+
+22
+00:00:56,950 --> 00:00:59,250
+There's no way to do anything else in the app except for
+没有办法做任何其他的应用程序除外
+
+23
+00:00:59,319 --> 00:01:01,986
+what that MVC is doing,
+MVC是做什么,
+
+24
+00:01:02,054 --> 00:01:04,688
+Why would you ever want to do this?
+为什么你会想要这样做吗?
+
+25
+00:01:04,757 --> 00:01:06,824
+Well, sometimes you get to a point in your application
+嗯,有时候你可以在您的应用程序
+
+26
+00:01:06,892 --> 00:01:08,892
+where you need some information from your user and
+你需要一些信息从你的用户和在哪里
+
+27
+00:01:08,960 --> 00:01:10,627
+you just can't proceed without it,
+你不能没有它,
+
+28
+00:01:10,695 --> 00:01:14,496
+So, my example here is, let's say I'm in a contacts app,
+所以,我的例子是,假设我在联系人应用程序,
+
+29
+00:01:14,565 --> 00:01:19,134
+like the contacts app on your phone and you get to a point
+联系人应用程序在你的手机和一个点
+
+30
+00:01:19,203 --> 00:01:20,669
+here where you're looking through contacts and
+在这里你是通过接触和
+
+31
+00:01:20,738 --> 00:01:23,171
+you say, "well I want to add a contact",
+你说,“我想要添加一个联系人”,
+
+32
+00:01:23,240 --> 00:01:26,207
+Alright, so you're going to press this little +
+好的,那么你要按这个小+
+
+33
+00:01:26,275 --> 00:01:27,475
+button in upper right hand corner,
+按钮在右上角,
+
+34
+00:01:27,543 --> 00:01:29,309
+When you do that, a whole new MVC,
+当你这样做,一个全新的MVC,
+
+35
+00:01:29,378 --> 00:01:33,714
+the add contact MVC slides up from the button and
+添加联系人MVC和幻灯片的按钮
+
+36
+00:01:33,782 --> 00:01:36,249
+you notice there's no back button there because I'm
+你注意到因为我没有后退按钮
+
+37
+00:01:36,318 --> 00:01:39,886
+not in the navigation pushed and instead of a back button,
+不是在导航和推后退按钮,
+
+38
+00:01:39,955 --> 00:01:43,222
+this one happens to have a cancel button right here,
+这一发生在有一个取消按钮,
+
+39
+00:01:43,291 --> 00:01:45,824
+But there's nothing I can do now with this application,
+但是现在没有什么我可以做与这个应用程序,
+
+40
+00:01:45,893 --> 00:01:47,459
+except for what's on this screen,
+除了在这个屏幕上,
+
+41
+00:01:47,528 --> 00:01:50,895
+So, I could fill out the field to add a contact,
+所以,我可以填写字段添加一个联系人,
+
+42
+00:01:50,964 --> 00:01:54,265
+I could hit cancel or done, that's all I can do,
+我可以取消或完成,这就是我能做的,
+
+43
+00:01:54,334 --> 00:01:57,434
+And it's perfectly fine to have a modal
+完美的模态
+
+44
+00:01:57,503 --> 00:01:59,770
+MVC that brings up another modal MVC,
+MVC,带来另一种模态MVC,
+
+45
+00:01:59,839 --> 00:02:01,204
+In fact, this one does,
+事实上,这一个,
+
+46
+00:02:01,273 --> 00:02:02,606
+I'm adding a new contact here and
+我在这里添加一个新的联系人
+
+47
+00:02:02,675 --> 00:02:05,708
+I'm going to add a photo for my contact,
+我要为我的联系人添加照片,
+
+48
+00:02:05,777 --> 00:02:08,010
+So I'm gonna click this add photo button, right here, and
+所以我要点击这个按钮添加照片,,
+
+49
+00:02:08,078 --> 00:02:12,181
+when I do, another MVC, presumably the camera, or
+当我做的,另一个MVC,想必相机,或
+
+50
+00:02:12,249 --> 00:02:13,248
+the photo library, or
+照片库,或
+
+51
+00:02:13,317 --> 00:02:16,484
+the photo choosing MVC, comes up on top,
+照片选择MVC,出现在上面,
+
+52
+00:02:16,553 --> 00:02:19,019
+And again, I can't do anything now until I've dealt with this
+再一次,我现在不能做任何事情直到我处理这个
+
+53
+00:02:19,088 --> 00:02:20,788
+and, presumably I could take a photo,
+大概我可以拍照,
+
+54
+00:02:20,857 --> 00:02:22,523
+that would be one way to get out of this,
+这将是一个办法,
+
+55
+00:02:22,591 --> 00:02:25,325
+Or I could hit cancel so let's go ahead and hit cancel in
+或者我可以点击取消我们点击取消
+
+56
+00:02:25,394 --> 00:02:28,794
+this one, when we do that we go back to the previous model
+这个,当我们做,我们回到前面的模型
+
+57
+00:02:28,863 --> 00:02:32,498
+one and here if we hit cancel on this one we are going to go
+这里如果我们取消这个我们要走了
+
+58
+00:02:32,567 --> 00:02:35,401
+back to the original one that we had right,
+回到最初的我们有,
+
+59
+00:02:35,469 --> 00:02:38,403
+So it is two order model viewer control is it kinda
+这是二阶模型查看器控制它
+
+60
+00:02:38,472 --> 00:02:42,107
+takes over your app for a little bit now,
+接管你的应用一点了,
+
+61
+00:02:42,176 --> 00:02:44,075
+you gotta think a little bit about modal view controllers,
+你要想一下模态视图控制器,
+
+62
+00:02:44,144 --> 00:02:46,344
+They're so easy to put up,
+他们太容易了,
+
+63
+00:02:46,413 --> 00:02:49,046
+that they can be abused a little bit,
+他们可以被滥用,
+
+64
+00:02:49,115 --> 00:02:53,083
+Users tend to be slightly disconcerted by modal MVCs,
+用户倾向于由模态mvc有点不安的,
+
+65
+00:02:53,152 --> 00:02:55,618
+Because they get comfortable with their app and
+因为他们熟悉他们的应用程序
+
+66
+00:02:55,687 --> 00:02:56,852
+they know where the tabs are,
+他们知道标签在哪里,
+
+67
+00:02:56,921 --> 00:02:58,221
+And they know how to go backwards and
+他们知道如何倒退和
+
+68
+00:02:58,289 --> 00:02:59,354
+forwards in navigation controllers,
+前锋在导航控制器,
+
+69
+00:02:59,423 --> 00:03:01,289
+And then, all of a sudden, all they can do is this one thing,
+然后,突然之间,这是所有他们能做的一件事,
+
+70
+00:03:01,358 --> 00:03:03,625
+Now, sometimes it makes perfect sense,
+现在,有时候很有道理,
+
+71
+00:03:03,694 --> 00:03:06,561
+Like add contacts of course that the user understands I'm
+当然像添加联系人,用户理解我
+
+72
+00:03:06,630 --> 00:03:08,362
+adding a contact that I can click over and
+我可以点击添加一个联系人
+
+73
+00:03:08,431 --> 00:03:09,063
+do something else,
+做其他的事情,
+
+74
+00:03:09,131 --> 00:03:11,065
+Well there are some users who might say why can I
+也有一些用户可能会说为什么我可以
+
+75
+00:03:11,133 --> 00:03:13,400
+click over do some of the things right now?
+点击现在在做的一些事情吗?
+
+76
+00:03:13,469 --> 00:03:16,869
+I need to do that to add these contacts or whatever,
+我需要添加这些联系人之类的,
+
+77
+00:03:16,938 --> 00:03:20,807
+So, I tried to stay away from modal view controllers as much
+所以,我试着远离模态视图控制器
+
+78
+00:03:20,876 --> 00:03:23,208
+as possible but things in navigation controllers and
+但是事情在导航控制器和
+
+79
+00:03:23,277 --> 00:03:25,210
+tab button controllers, and things like that but
+选项卡按钮控制器,等等
+
+80
+00:03:25,279 --> 00:03:29,180
+there are times, when it's absolutely, necessary,
+有时,当它绝对必要的,
+
+81
+00:03:29,249 --> 00:03:31,583
+So how do you set one of these modal segways up?
+那么如何设置这些模态赛格威?
+
+82
+00:03:31,652 --> 00:03:32,650
+Super easy,
+超级简单,
+
+83
+00:03:32,718 --> 00:03:34,485
+You just control-drag,
+你只是control - drag,
+
+84
+00:03:34,554 --> 00:03:36,387
+And when you control-drag, instead of saying show or
+当你control - drag,而不是说节目或
+
+85
+00:03:36,455 --> 00:03:38,922
+detail, you're going to say present modally,
+的细节,你会说现在的形式,
+
+86
+00:03:39,991 --> 00:03:42,592
+Now, normally, as with any segway,
+现在,正常情况下,对于任何赛格威,
+
+87
+00:03:42,661 --> 00:03:45,894
+you're going to be segwaying from like a bar button item or
+你要从栏按钮项目或赛格威
+
+88
+00:03:45,963 --> 00:03:49,698
+just a regular button, or a row in a tableview, but if for
+只是一个普通的按钮,或表视图中的一行,但是如果
+
+89
+00:03:49,767 --> 00:03:52,768
+some reason you want to put something up module
+某些原因你想提出一些模块
+
+90
+00:03:52,837 --> 00:03:54,902
+from something else basically from code,
+从别的基本代码,
+
+91
+00:03:54,971 --> 00:03:58,239
+You don't forget about this method that actually
+你不要忘记这个方法
+
+92
+00:03:58,307 --> 00:04:00,257
+in a previous lecture called perform segue with identify,
+在之前的讲座叫做执行segue与识别,
+
+93
+00:04:00,258 --> 00:04:02,208
+we're talk about,
+我们谈谈,
+
+94
+00:04:02,278 --> 00:04:06,112
+You can set up a segue in your story board by just control
+你可以设置一个segue故事板的控制
+
+95
+00:04:06,181 --> 00:04:08,748
+dragging from the little view controller icon at
+小视图控制器图标拖动
+
+96
+00:04:08,817 --> 00:04:10,950
+the top of your scene that little yellow thing,
+你的场景,黄色的东西,
+
+97
+00:04:11,019 --> 00:04:14,320
+it's at the very top part of any scene in your story board,
+它的顶端的一部分在你的故事板,
+
+98
+00:04:14,388 --> 00:04:17,089
+In control drag from that, to any other MVC,
+从,控制拖动到其他MVC,
+
+99
+00:04:17,157 --> 00:04:21,059
+set it to be present modal, and then inspect that segue,
+设置当前模态,然后继续检查,
+
+100
+00:04:21,128 --> 00:04:22,360
+Give it an identifier, and
+给它一个标识符
+
+101
+00:04:22,428 --> 00:04:23,827
+then call this method in your code,
+然后在代码中调用这个方法,
+
+102
+00:04:23,896 --> 00:04:26,029
+It will cause that segue to happen, and
+它会导致这种情况继续发生,
+
+103
+00:04:26,098 --> 00:04:28,632
+that MVC will appear modally,
+MVC将出现模态,
+
+104
+00:04:28,701 --> 00:04:31,334
+Also, if you happen to have a view controller in your
+还有,如果你碰巧有一个视图控制器
+
+105
+00:04:31,403 --> 00:04:33,269
+hand like you have a local variable or
+就像你有一个局部变量或
+
+106
+00:04:33,338 --> 00:04:35,538
+something that has a view controller in it,
+有一个视图控制器,
+
+107
+00:04:35,607 --> 00:04:37,306
+which by the way when would that ever happen?
+顺便说一下,会在什么时候发生?
+
+108
+00:04:37,375 --> 00:04:38,273
+Have we seen that happen?
+我们看到,发生吗?
+
+109
+00:04:38,342 --> 00:04:39,908
+I don't think we have yet,
+我不认为我们有,
+
+110
+00:04:39,977 --> 00:04:43,645
+But there are various iOS API that will give you back
+但是有各种iOS API将回给你
+
+111
+00:04:43,714 --> 00:04:44,812
+a view controller,
+一个视图控制器,
+
+112
+00:04:44,881 --> 00:04:46,947
+Like on Wednesday we're gonna talk about alerts and
+周三我们要谈论警报和
+
+113
+00:04:47,016 --> 00:04:47,714
+action sheets,
+动作表,
+
+114
+00:04:47,783 --> 00:04:50,350
+They will give you an MVC which is basically an alert
+他们会给你一个MVC基本上是一个警告
+
+115
+00:04:50,419 --> 00:04:52,085
+that you're gonna put up on the screen,
+你要贴在屏幕上,
+
+116
+00:04:52,153 --> 00:04:53,920
+Also if you want to take a picture with the camera,
+如果你想用相机拍照,
+
+117
+00:04:53,988 --> 00:04:56,355
+you're gonna get this UI image picker controller which is
+你会得到这个UI选择控制器的形象
+
+118
+00:04:56,423 --> 00:04:58,224
+an MVC and you're gonna put it up,
+MVC你会放上去的,
+
+119
+00:04:58,292 --> 00:05:00,024
+And the way you put that up, okay,
+你把,,好吧,
+
+120
+00:05:00,093 --> 00:05:02,693
+anytime you have an MVC in your hand, in a VAR,
+在你的手,当你有一个MVC VAR,
+
+121
+00:05:02,762 --> 00:05:05,663
+Not in the storyboard but in it might be something you
+不是在故事板中而是在它可能是你
+
+122
+00:05:05,731 --> 00:05:08,365
+created out of the storyboard but it's in your in a bar,
+创建故事板的但是它是在你的酒吧里,
+
+123
+00:05:08,434 --> 00:05:09,367
+You just do present,
+你只做礼物,
+
+124
+00:05:09,435 --> 00:05:11,301
+So these are both new controller methods up
+这些都是新的控制器方法
+
+125
+00:05:11,370 --> 00:05:12,568
+here these yellow things,
+这些黄色的东西,
+
+126
+00:05:12,637 --> 00:05:14,504
+And present just takes the view controller you want to
+和现在需要你想要的视图控制器
+
+127
+00:05:14,572 --> 00:05:15,905
+present, whether you wanna animate
+现在,你是否想要动画
+
+128
+00:05:15,973 --> 00:05:18,140
+it appearing on screen which you usually do,
+它出现在屏幕上,你通常做什么,
+
+129
+00:05:18,209 --> 00:05:19,641
+A and then a completion handler,
+然后完成处理器,
+
+130
+00:05:19,710 --> 00:05:22,543
+When animations done it'll call a completion handler,
+当动画完成它会打电话给一个完成处理程序,
+
+131
+00:05:22,612 --> 00:05:23,611
+Often we just ignore that,
+我们常常忽略,
+
+132
+00:05:23,680 --> 00:05:25,312
+That's why it defaults to nil there, okay,
+这就是为什么它默认为零,好吧,
+
+133
+00:05:25,381 --> 00:05:30,250
+Now, when you are causing this modal thing
+现在,当你让这个模态的东西
+
+134
+00:05:30,319 --> 00:05:33,687
+to appear, when it appears,
+出现,当它出现时,
+
+135
+00:05:33,756 --> 00:05:38,925
+it can actually appear in different forms,
+它可以出现在不同的形式,
+
+136
+00:05:38,994 --> 00:05:41,261
+One way is, it can cover the entire screen,
+一种方法是,它可以覆盖整个屏幕,
+
+137
+00:05:41,329 --> 00:05:44,063
+which you're going to always see in
+你会一直看到
+
+138
+00:05:44,131 --> 00:05:47,766
+train trade collections where it tours on like compact,
+火车贸易集合,参观像紧凑,
+
+139
+00:05:47,835 --> 00:05:49,400
+Okay, so that's like iPhone, all right,
+好了,这就像iPhone,好吧,
+
+140
+00:05:49,469 --> 00:05:52,537
+or master maybe of my pad,
+或者也许我垫的大师,
+
+141
+00:05:52,606 --> 00:05:55,105
+In a horizontally compact environment it's going
+水平在一个紧凑的环境的
+
+142
+00:05:55,174 --> 00:05:57,074
+to kind of cover drop the whole space,
+覆盖掉整个空间,
+
+143
+00:05:57,143 --> 00:05:58,842
+But in other places you might want it to appear
+但在其他地方你可能希望它出现
+
+144
+00:05:58,911 --> 00:06:00,510
+as a Popover, okay?
+作为一个弹出窗口,好吗?
+
+145
+00:06:00,579 --> 00:06:02,379
+Or you might even want it to appear as kind of a form
+或者你甚至可能想要作为一种形式出现
+
+146
+00:06:02,447 --> 00:06:06,048
+sheet, a smaller than the huge iPad screen,
+表,比巨大的iPad屏幕小,
+
+147
+00:06:06,117 --> 00:06:09,318
+So when you setup your segue, you can go and inspect it and
+所以当你设置你的继续,你可以去检查它
+
+148
+00:06:09,386 --> 00:06:11,854
+you can set how you want it to appear, okay?
+你可以设置你想要如何出现,好吗?
+
+149
+00:06:11,922 --> 00:06:15,790
+And you can just take a look of those prime out, page and
+你可以看看这些',和页面
+
+150
+00:06:15,859 --> 00:06:20,195
+form sheet and see what they look like, and see which one,
+格式表,看看他们是什么样子,看看哪一个,
+
+151
+00:06:20,263 --> 00:06:21,312
+that's what it's gonna look like when it, it gets there,
+这就是它会看起来像的时候,就在那里,
+
+152
+00:06:21,313 --> 00:06:22,362
+You like there, so
+你喜欢那里,所以
+
+153
+00:06:23,599 --> 00:06:26,833
+In horizontally compact environments, okay,
+在横向紧凑的环境中,好的,
+
+154
+00:06:26,902 --> 00:06:28,468
+they aren't really narrow environments,
+他们不是真的狭窄的环境中,
+
+155
+00:06:28,537 --> 00:06:31,771
+it's always by default going to adapt to full screen,
+它总是在默认情况下会适应全屏,
+
+156
+00:06:31,839 --> 00:06:34,439
+no matter what, you put in there, but I'm gonna show you,
+无论如何,你放在那里,但是我要告诉你,
+
+157
+00:06:34,508 --> 00:06:37,976
+hopefully, if we have time in the demo, how you can override
+希望,如果我们有时间在演示中,你如何可以覆盖
+
+158
+00:06:38,045 --> 00:06:41,313
+that adapting that behavior, that automatic adapting
+适应这一行为,自动调整
+
+159
+00:06:41,382 --> 00:06:46,350
+behavior preparing for a modal segue, it's
+行为准备模态segue,
+
+160
+00:06:46,419 --> 00:06:48,719
+exactly the same as any other segue you've ever seen, right?
+一模一样其它segue你见过,对吧?
+
+161
+00:06:48,788 --> 00:06:51,656
+You just check the identifier, see if the destination does
+你只是检查标识符,看看目的地
+
+162
+00:06:51,724 --> 00:06:54,591
+the thing you're looking for, and then prepare it,
+你要找的东西,然后准备它,
+
+163
+00:06:54,660 --> 00:06:58,228
+What about hearing back from a Modal MVC?
+听到从模态MVC呢?
+
+164
+00:06:58,296 --> 00:07:01,130
+So you put a Modal MVC up like that contacts thing and it
+所以你把模态MVC,这样接触的事情
+
+165
+00:07:01,199 --> 00:07:03,866
+collects all the information for the new contact,
+收集新联系人的所有信息,
+
+166
+00:07:03,935 --> 00:07:05,567
+How do you communicate back?
+你怎么沟通?
+
+167
+00:07:05,636 --> 00:07:07,970
+Here's the new contact, okay?
+这是新的联系,好吗?
+
+168
+00:07:08,039 --> 00:07:09,137
+So, there's a couple of things there,
+所以,这里有几件事情,
+
+169
+00:07:09,206 --> 00:07:12,173
+One, you know, that new contact thing might just be
+一个,你知道,这可能是新接触的事情
+
+170
+00:07:12,242 --> 00:07:14,241
+creating that contact in a database,
+在数据库中创建,接触,
+
+171
+00:07:14,310 --> 00:07:15,542
+And, and you don't need to do anything,
+,你不需要做任何事情,
+
+172
+00:07:15,611 --> 00:07:17,344
+You just dismiss the modal view controller,
+你只是把模态视图控制器,
+
+173
+00:07:17,413 --> 00:07:19,947
+When it comes back, the other view controller is looking in
+当它回来时,在其他视图控制器
+
+174
+00:07:20,016 --> 00:07:22,415
+the same database, and it sees it appear,
+相同的数据库,它看到它出现,
+
+175
+00:07:22,483 --> 00:07:24,250
+It's probably using a fetch results controller or
+它可能使用一个控制器或获取结果
+
+176
+00:07:24,319 --> 00:07:26,285
+something like that, and it sees it as it appears and
+这样,它看来似乎和
+
+177
+00:07:26,354 --> 00:07:28,386
+magically just works, but sometimes you might be
+神奇的作品,但有时你可能会
+
+178
+00:07:28,455 --> 00:07:29,554
+creating something where you do need to
+创造一些你需要的地方
+
+179
+00:07:29,623 --> 00:07:32,924
+communicate back and you're gonna use an unwind segway for
+交流回来,你要使用一个放松赛格威
+
+180
+00:07:32,993 --> 00:07:36,060
+that, and I'm gonna talk about unwind in a few slides here,
+,我要讲放松几张幻灯片,
+
+181
+00:07:36,129 --> 00:07:38,863
+But that's how you're going to communicate back from a modal
+但这是如何从模态进行通信
+
+182
+00:07:38,931 --> 00:07:40,431
+view controller,
+视图控制器,
+
+183
+00:07:40,500 --> 00:07:41,798
+How do you get the modal view controller
+你怎么得到模态视图控制器
+
+184
+00:07:41,867 --> 00:07:44,467
+to go way like when you hit the cancel button?
+去像当你点击取消按钮?
+
+185
+00:07:44,536 --> 00:07:47,336
+The answer is that the presenting view controller
+答案是呈现视图控制器
+
+186
+00:07:47,405 --> 00:07:51,040
+the view controller that puts it up okay the things you said
+所说的视图控制器好了你说的事情
+
+187
+00:07:51,109 --> 00:07:55,144
+way from that thing is responsible for dismissing it,
+从那件事负责解散,
+
+188
+00:07:55,213 --> 00:07:57,880
+And it does it with these methods dismiss animated,
+与这些方法把动画,它
+
+189
+00:07:57,948 --> 00:08:02,617
+okay and that when you say dismiss to NBC it means
+好吧,当你说把NBC它的意思
+
+190
+00:08:02,686 --> 00:08:06,420
+Dismiss any view controller I've put up,
+把我提出的任何视图控制器,
+
+191
+00:08:06,489 --> 00:08:07,421
+That's what this means, okay?
+这意味着什么,好吗?
+
+192
+00:08:07,490 --> 00:08:09,957
+Dismiss ones I've put up,
+驳回的我了,
+
+193
+00:08:10,026 --> 00:08:12,959
+And, the good news is, okay, a lot of times you'd wanna do
+好消息是,你想要做的好,很多时候
+
+194
+00:08:13,028 --> 00:08:16,462
+this in the cancel button of a thing that was presented, but
+这个取消按钮的东西了,但是
+
+195
+00:08:16,531 --> 00:08:18,298
+of course, you can't send this to yourself,
+当然,你不能把这自己,
+
+196
+00:08:18,367 --> 00:08:20,366
+But luckily, every view controller knows
+但幸运的是,每一个视图控制器都知道
+
+197
+00:08:20,435 --> 00:08:21,500
+who presented it,
+谁提出了它,
+
+198
+00:08:21,569 --> 00:08:23,569
+So, it can just get its presenting view controller,
+所以,它就能展示视图控制器,
+
+199
+00:08:23,637 --> 00:08:26,304
+There's a, bar called presenting view controller,
+有一个酒吧叫呈现视图控制器,
+
+200
+00:08:26,373 --> 00:08:29,874
+and it can send dismiss to its presenting view controller,
+它可以发送撤销其呈现视图控制器,
+
+201
+00:08:29,943 --> 00:08:32,143
+You'll see that in the demo as well,
+你会发现在演示中,
+
+202
+00:08:32,211 --> 00:08:34,878
+Online segues by the way, which again I'm going to talk
+在线segue顺便说一下,再次我要说话
+
+203
+00:08:34,947 --> 00:08:37,614
+about in a minute, they automatically dismiss,
+大约在一分钟内,他们自动解散,
+
+204
+00:08:37,682 --> 00:08:40,249
+So, you do not have to call dismiss if you unwind,
+所以,你没有打电话给解雇如果你放松,
+
+205
+00:08:40,318 --> 00:08:41,851
+To communicate information back,
+沟通信息,
+
+206
+00:08:44,422 --> 00:08:47,256
+Now, not only can you control what the modal view control
+现在,不仅可以控制模态视图控制
+
+207
+00:08:47,324 --> 00:08:48,690
+is going to look like when it's up,
+像上面的时候,
+
+208
+00:08:48,759 --> 00:08:50,191
+whether it's full screen or whatever, but
+无论是全屏之类的,但是
+
+209
+00:08:50,260 --> 00:08:53,861
+you can also control how it animates to come up,
+您还可以控制如何模拟来的,
+
+210
+00:08:53,930 --> 00:08:57,130
+And it's the same thing we saw with the other one, you can
+和它是一样的我们看到另一个,你可以
+
+211
+00:08:57,199 --> 00:09:00,301
+flip to have it appear, it can cross this all in there,
+翻转已经出现,它可以跨越这一切,
+
+212
+00:09:00,369 --> 00:09:03,603
+you can slide up from the bottom that's coverVertical is
+你可以从底部滑上来就是coverVertical
+
+213
+00:09:03,672 --> 00:09:06,206
+the default, and you can even partialCurl,
+默认的,你甚至可以partialCurl
+
+214
+00:09:06,275 --> 00:09:08,941
+it will kind of lift it up like a piece of paper and
+它将提升它像一张纸
+
+215
+00:09:09,010 --> 00:09:10,476
+see the new one in behind,
+看到新的一个在后面,
+
+216
+00:09:10,545 --> 00:09:13,378
+In all cases though, no matter how animates on,
+在所有情况下,无论多么的,
+
+217
+00:09:13,447 --> 00:09:16,915
+no matter how are chose, it's modal only that new MVC can be
+无论如何选择,新的MVC的模态
+
+218
+00:09:16,983 --> 00:09:20,252
+interactive with, okay, the other MVC is like the one I
+互动与其他MVC是喜欢我
+
+219
+00:09:20,320 --> 00:09:23,121
+presented it, are kind temporarily disable,
+提出,是暂时禁用,
+
+220
+00:09:23,190 --> 00:09:27,024
+All right, let's talk about that unwind segue,
+好吧,让我们来谈谈unwind,
+
+221
+00:09:27,092 --> 00:09:28,559
+This unwinding,
+这种解除,
+
+222
+00:09:28,627 --> 00:09:33,196
+is the only segue in iOS that does not create a new MVC,
+是唯一segue iOS中这并不创建一个新的MVC,
+
+223
+00:09:33,265 --> 00:09:36,732
+Okay?
+好吧?
+
+224
+00:09:36,801 --> 00:09:38,167
+Show segue, new MVC,
+显示segue,新的MVC,
+
+225
+00:09:38,236 --> 00:09:40,002
+Popover, new MVC,
+弹出窗口,新MVC,
+
+226
+00:09:40,071 --> 00:09:42,070
+But unwind, does not, because in unwind,
+但不放松,因为在放松,
+
+227
+00:09:42,139 --> 00:09:45,507
+you're segueing back to some MVC that already exist,
+你segue回一些已经存在的MVC,
+
+228
+00:09:45,576 --> 00:09:46,775
+That has presented you,
+介绍了你,
+
+229
+00:09:48,211 --> 00:09:49,276
+Okay?
+好吧?
+
+230
+00:09:49,345 --> 00:09:51,978
+Now, what's it good for this unwind, is it's good for
+现在,这有利于放松,是很好
+
+231
+00:09:52,047 --> 00:09:53,813
+communicating back from a modal,
+沟通从模态,
+
+232
+00:09:53,882 --> 00:09:56,549
+It's also good if you have a navigation controller with
+还好如果你有一个导航控制器
+
+233
+00:09:56,618 --> 00:09:58,150
+a whole bunch of things on the stack, and
+很多事情在堆栈上,
+
+234
+00:09:58,219 --> 00:09:59,986
+you want to jump back more than one,
+你想跳回不止一个,
+
+235
+00:10:00,054 --> 00:10:03,088
+You want to do more than one back button's worth, you can
+你想做一个以上的后退按钮,你可以
+
+236
+00:10:03,157 --> 00:10:06,325
+jump back three levels, you can unwind back up your stack,
+返回三个级别,您可以放松备份堆栈,
+
+237
+00:10:06,393 --> 00:10:09,628
+because, though, when you have a navigation controller,
+不过,因为当你有一个导航控制器,
+
+238
+00:10:09,696 --> 00:10:12,930
+all the MVCs, higher on the stack are considered to have
+mvc,在堆栈上被认为有较高
+
+239
+00:10:12,999 --> 00:10:15,699
+presented you by pushing you on the stack, okay?
+你推到栈上,好吗?
+
+240
+00:10:15,768 --> 00:10:19,603
+Which they did, they segued to you with a show, or whatever,
+他们做了,他们马上决定显示,等等,
+
+241
+00:10:19,672 --> 00:10:22,339
+So, that's what unwind is mostly good for,
+所以,放松是好的,
+
+242
+00:10:22,408 --> 00:10:23,372
+How does it work?
+它是如何工作的呢?
+
+243
+00:10:23,441 --> 00:10:26,509
+Well, you don't control drag from the button, or
+好吧,你不能控制拖动按钮,或
+
+244
+00:10:26,577 --> 00:10:30,112
+whatever you want to do the unwind, to the MVC you want,
+无论你想做什么放松,MVC你想要的,
+
+245
+00:10:30,181 --> 00:10:31,347
+Instead, you're gonna Ctrl+drag
+相反,你要按Ctrl +阻力
+
+246
+00:10:31,416 --> 00:10:33,415
+to this little orange button at the top,
+这个小橙色按钮在顶部,
+
+247
+00:10:33,484 --> 00:10:34,549
+You've probably seen this button and
+你可能看到过这个按钮
+
+248
+00:10:34,618 --> 00:10:36,751
+said, mm, what is that thing?
+说,嗯,那是什么东西?
+
+249
+00:10:36,820 --> 00:10:40,187
+It has a tooltip that says Exit, and, indeed,
+它有一个工具提示说出口,的确,
+
+250
+00:10:40,256 --> 00:10:40,887
+that's what you do,
+这是你做什么,
+
+251
+00:10:40,956 --> 00:10:42,188
+When you Ctrl+drag to this thing,
+当你Ctrl +拖动到这个东西,
+
+252
+00:10:42,257 --> 00:10:46,292
+you're creating a segue that is going to exit this MVC,
+你创建一个segue会退出这个MVC,
+
+253
+00:10:46,361 --> 00:10:47,293
+Okay,
+好吧,
+
+254
+00:10:47,362 --> 00:10:49,829
+Now, how do you decide where you are going to go when
+现在,你怎么决定你要去的地方
+
+255
+00:10:49,897 --> 00:10:50,662
+you exit,
+你退出,
+
+256
+00:10:50,731 --> 00:10:52,364
+Well, you are going to do that,
+好吧,你要做的,
+
+257
+00:10:52,432 --> 00:10:55,132
+because you create a special method in another MVC,
+因为你在另一个MVC创建一个特殊的方法,
+
+258
+00:10:55,201 --> 00:10:57,969
+And whenever you create this special method in any MVC
+当你创建这种特殊的方法在任何MVC
+
+259
+00:10:58,037 --> 00:11:00,470
+it gets added to a list inside of X code, and, so
+它被添加到列表的内部X代码,因此
+
+260
+00:11:00,539 --> 00:11:03,607
+when you control drag to exit that list is going to appear,
+当你控制拖退出列表会出现,
+
+261
+00:11:03,676 --> 00:11:04,607
+And you can see I only have
+你可以看到我只有
+
+262
+00:11:04,676 --> 00:11:06,609
+one of them here called go back,
+其中一个叫回去,
+
+263
+00:11:06,678 --> 00:11:10,213
+Now, I'm Ctrl+dragging from a table view raw, so I've got
+现在,我Ctrl +拖动从原始表视图,所以我有
+
+264
+00:11:10,281 --> 00:11:13,916
+the accessory one, and the main table view raw one there,
+配件,主要表视图生一个,
+
+265
+00:11:13,984 --> 00:11:15,150
+But go back, there's the only one,
+但回去,还有唯一的一个,
+
+266
+00:11:15,219 --> 00:11:17,752
+So, when I choose this go back, I'm basically saying,
+所以,当我选择回去,我基本上说,
+
+267
+00:11:17,821 --> 00:11:21,689
+that I wanna segue to some MVC that presented me,
+我想一些MVC segue送给我,
+
+268
+00:11:21,758 --> 00:11:25,926
+it implements the go back method, okay?
+它实现了回去的方法,好吗?
+
+269
+00:11:25,995 --> 00:11:27,294
+That's how unwind work,
+这是放松的工作,
+
+270
+00:11:27,363 --> 00:11:30,397
+Now, let's look at kinda how the code behind all
+现在,让我们来看看背后的代码有点多
+
+271
+00:11:30,466 --> 00:11:31,365
+this works,
+其工作原理,
+
+272
+00:11:32,867 --> 00:11:37,503
+So, in the presenter, the one you're gonna unwind to,
+所以,主持人,你要放松,
+
+273
+00:11:37,572 --> 00:11:38,470
+you have to create a method,
+你必须创建一个方法,
+
+274
+00:11:38,539 --> 00:11:40,505
+And this method has to have two important things,
+这个方法有两个重要的事情,
+
+275
+00:11:40,574 --> 00:11:43,675
+One, it has to be marked @IBAction,
+一,必须标明@IBAction,
+
+276
+00:11:43,744 --> 00:11:46,277
+And two it argument and it can only have one argument,
+和两个参数,它只能有一个参数,
+
+277
+00:11:46,346 --> 00:11:47,779
+it must have one argument, and
+它必须有一个参数,
+
+278
+00:11:47,847 --> 00:11:50,748
+that argument must be of type UI storyboard segue,
+这个论点必须类型的UI故事板segue,
+
+279
+00:11:50,816 --> 00:11:53,784
+because you're going to be segueing to this thing,
+因为你要segue这个东西,
+
+280
+00:11:53,853 --> 00:11:56,286
+Okay, so that's in the view controller you're going
+好了,这是在视图控制器你
+
+281
+00:11:56,355 --> 00:11:58,755
+to unwind to, that you're segueing to,
+放松,你segue
+
+282
+00:12:00,024 --> 00:12:02,658
+So, the code for this kinda looks like this, and
+所以,这个有点像这样的代码,
+
+283
+00:12:02,727 --> 00:12:04,092
+to prepare,
+准备,
+
+284
+00:12:04,161 --> 00:12:07,129
+Of the presenter, so the presented I mean,
+的主持人,所以我的意思是,
+
+285
+00:12:07,198 --> 00:12:08,363
+The prepare,
+的准备,
+
+286
+00:12:08,431 --> 00:12:10,631
+of the thing that's going to be doing the unwind,
+要做的事情的放松,
+
+287
+00:12:10,700 --> 00:12:13,301
+because it's going to be segueing, it gets to prepare,
+因为它是segue,准备,
+
+288
+00:12:13,369 --> 00:12:16,370
+So, it has normal prepare, you can check its identifier,
+所以,正常的准备,你可以检查它的标识符,
+
+289
+00:12:16,439 --> 00:12:17,971
+And when you're in prepare,
+当你在准备,
+
+290
+00:12:18,040 --> 00:12:21,541
+the segue's destination it's gonna be the presenter,
+segue的目的地会主持人,
+
+291
+00:12:21,609 --> 00:12:23,442
+the view controller you're gonna unwind to,
+视图控制器你要放松,
+
+292
+00:12:23,511 --> 00:12:26,879
+So, this code goes in the presented view controller,
+所以,这段代码在视图控制器,
+
+293
+00:12:26,948 --> 00:12:28,113
+the modal view controller, whatever,
+模态视图控制器,无论如何,
+
+294
+00:12:28,182 --> 00:12:29,915
+that you're gonna unwind from,
+你要放松,
+
+295
+00:12:29,983 --> 00:12:32,383
+Then back in the presenter you have code that looks like
+然后在主持人你代码的样子
+
+296
+00:12:32,452 --> 00:12:35,853
+this, the special method with the at sign app, action,
+这一点,在标志的特殊方法应用,行动,
+
+297
+00:12:35,922 --> 00:12:38,055
+ID action and the UI storyboard segue,
+故事板和UI segue ID行动,
+
+298
+00:12:38,124 --> 00:12:40,257
+And inside there, very interestingly,
+里面,非常有趣的是,
+
+299
+00:12:40,326 --> 00:12:43,493
+you're gonna look at the segue's source you know that
+你要看看你知道segue的来源
+
+300
+00:12:43,561 --> 00:12:46,062
+were used to looking a segue destination that's the view
+被用来寻找一个segue目的地的看法
+
+301
+00:12:46,131 --> 00:12:48,130
+controller we are segueing to,
+控制器我们segue,
+
+302
+00:12:48,199 --> 00:12:51,300
+Segue source is the source of the segue, so
+Segue源Segue的来源,所以
+
+303
+00:12:51,369 --> 00:12:54,002
+that's the MVC we're segueing from, so in
+MVC我们segue从,所以
+
+304
+00:12:54,071 --> 00:12:57,038
+an unwind situation for in the go back method, this go back
+的解除情况回去的方法,这回去
+
+305
+00:12:57,107 --> 00:12:59,774
+method, just go back method goes inside the presenter
+法,就回去方法走进主持人
+
+306
+00:12:59,843 --> 00:13:00,708
+right there,
+在这里,
+
+307
+00:13:00,777 --> 00:13:04,044
+The source of the segue is the modal one,
+segue的来源是模态的,
+
+308
+00:13:04,113 --> 00:13:05,445
+And when you do unwind,
+当你放松,
+
+309
+00:13:05,514 --> 00:13:07,881
+you will automatically get dismissed,
+你会自动得到了,
+
+310
+00:13:07,950 --> 00:13:09,116
+See how I disappeared there,
+看到我消失了,
+
+311
+00:13:10,218 --> 00:13:11,050
+I'll get dismissed, and
+我会抛弃,和
+
+312
+00:13:11,119 --> 00:13:16,221
+the presenter will have this go back special method called,
+主持人将这回去特殊方法调用时,
+
+313
+00:13:16,290 --> 00:13:17,572
+So, this, this is how unwind plays out,
+所以,这,这就是放松,
+
+314
+00:13:17,573 --> 00:13:18,855
+okay?
+好吧?
+
+315
+00:13:18,925 --> 00:13:21,960
+It's all about that special method and the presenter,
+这是关于特殊方法和主持人,
+
+316
+00:13:22,028 --> 00:13:22,827
+All right,
+好吧,
+
+317
+00:13:22,895 --> 00:13:24,961
+Another segue is the Popover segue,
+另一个segue是弹窗segue,
+
+318
+00:13:25,030 --> 00:13:26,096
+I'm sure you've all seen this,
+我相信你们都看过,
+
+319
+00:13:26,165 --> 00:13:29,366
+Here's a Popover, this Popover is presenting an MVC,
+这是一个弹出窗口,这个弹窗MVC,
+
+320
+00:13:29,434 --> 00:13:32,234
+which is some kind of search for appointment
+这是某种寻找约会吗
+
+321
+00:13:32,303 --> 00:13:35,738
+MVC there in some calendar app, or something like that,
+MVC在一些日历应用程序,或类似的东西,
+
+322
+00:13:35,807 --> 00:13:37,773
+And, so that's the MVC that's being presented,
+,这是MVC的介绍,
+
+323
+00:13:37,841 --> 00:13:40,775
+Now, when you notice when this is being presented,
+现在,当你注意到当这个被提出,
+
+324
+00:13:40,844 --> 00:13:43,411
+It's in this little white box and there's a little triangle,
+在这个小白盒,这里有一个小三角形,
+
+325
+00:13:43,480 --> 00:13:45,412
+See the little tiny little triangle there?
+看到小小三角吗?
+
+326
+00:13:45,481 --> 00:13:49,784
+It's pointing to the UI element that cause the popover
+指向UI元素,导致弹出窗口
+
+327
+00:13:49,853 --> 00:13:50,684
+to come up,
+来,
+
+328
+00:13:50,753 --> 00:13:53,153
+So, that's usually a bar button item, or button, but
+所以,这通常是一个工具栏按钮项,或按钮,但是
+
+329
+00:13:53,222 --> 00:13:57,357
+you can actually point to any rectangle in any view, okay,
+你可以指向任何视图中的任意一个矩形,好吧,
+
+330
+00:13:57,425 --> 00:14:00,126
+So, for example, if you had an iBooks like app and
+所以,例如,如果你有一个iBooks应用等
+
+331
+00:14:00,194 --> 00:14:02,094
+you have text, and you double click on a word, and
+你有文本,你双击一个单词,
+
+332
+00:14:02,163 --> 00:14:05,030
+you hit define it could bring up a popover with
+你可以定义它弹出弹窗
+
+333
+00:14:05,098 --> 00:14:07,031
+a little arrow is pointing at the word you are defining,
+一个小箭头是指向你定义的词,
+
+334
+00:14:07,100 --> 00:14:11,369
+you see?, so it can point to anything you want there,
+你看到了什么?
+
+335
+00:14:11,438 --> 00:14:15,940
+And notice also that the rest of the UI is kinda grayed out
+注意,其余的UI是灰色的
+
+336
+00:14:16,008 --> 00:14:19,910
+a little bit right the stuff that is not the MVC that is
+一些正确的东西不是的MVC
+
+337
+00:14:19,979 --> 00:14:21,979
+being presented in the popovers kinda grayed out,
+被呈现在弹窗有点灰色的,
+
+338
+00:14:22,048 --> 00:14:26,182
+in fact if you click there you will dismiss the popover, so
+事实上如果你点击你会把弹窗,所以
+
+339
+00:14:26,251 --> 00:14:29,619
+this is also a modal, a popover is also a modal,
+这也是一个模态,弹窗也是一个模态,
+
+340
+00:14:29,688 --> 00:14:32,255
+It only, you can only interact with what's in that popover,
+只是,你只能与弹窗,
+
+341
+00:14:32,324 --> 00:14:35,023
+If you try to click on anything else, it's gonna just
+如果你想点击,它会
+
+342
+00:14:35,092 --> 00:14:37,960
+miss the popover, and end exit the modal state, okay?
+小姐弹窗和最终退出模态状态,好吗?
+
+343
+00:14:38,029 --> 00:14:41,396
+You've probably noticed this from using various iPad apps,
+你可能已经注意到从使用各种iPad应用程序,
+
+344
+00:14:41,464 --> 00:14:44,065
+and by the way, the popover, mostly iPad only, but
+顺便说一句,弹出窗口,主要是iPad,但是
+
+345
+00:14:44,134 --> 00:14:47,001
+not always, you can actually do popovers on the iPhone,
+不一定,你可以在iPhone上使用弹窗,
+
+346
+00:14:47,070 --> 00:14:50,571
+I'll talk a little bit about that as well,
+我将谈一谈,
+
+347
+00:14:50,640 --> 00:14:53,574
+So yeah, popover, just like modal, you control drag,
+所以,弹窗,就像模态控制阻力,
+
+348
+00:14:53,642 --> 00:14:56,576
+you're just gonna set its type to be popover instead of,
+你只是要将其类型设置为弹出窗口来代替,
+
+349
+00:14:56,645 --> 00:14:57,477
+present modal,
+现在的模态,
+
+350
+00:14:59,080 --> 00:15:01,481
+When you're preparing for a popover,
+当你准备弹窗,
+
+351
+00:15:01,549 --> 00:15:04,249
+there's a few extra things you can do, okay,
+你可以做一些额外的事情,好吧,
+
+352
+00:15:04,318 --> 00:15:06,585
+So, all of these presentations,
+所以,所有的这些报告,
+
+353
+00:15:06,654 --> 00:15:09,086
+anytime you go modal, or you
+只要你去模态,或者你
+
+354
+00:15:09,155 --> 00:15:12,023
+even push in the navigation controller, these are all
+甚至推动导航控制器,这些都是
+
+355
+00:15:12,091 --> 00:15:14,892
+managed by a class called a UI Presentation Controller,
+由一个类称为UI表示控制器,
+
+356
+00:15:14,961 --> 00:15:17,327
+it controls the presentation of an MVC,
+它控制MVC的演示,
+
+357
+00:15:17,396 --> 00:15:20,063
+Now, we're not gonna have time to talk about that, you can
+现在,我们不会有时间去谈论,你可以
+
+358
+00:15:20,132 --> 00:15:22,699
+actually build your own presentation in folders that
+实际上建立自己的文件夹中
+
+359
+00:15:22,767 --> 00:15:25,001
+present MVCs, and other ways that you want,
+mvc,和其他方式,你想要的,
+
+360
+00:15:25,070 --> 00:15:27,169
+Pretty rare to do it, but you see it sometimes in apps, or
+非常罕见的,但有时你看到它在应用程序,或
+
+361
+00:15:27,238 --> 00:15:30,171
+things slide out in a certain way, or whatever,
+事情以某种方式滑出,等等,
+
+362
+00:15:30,240 --> 00:15:33,641
+But, in the popover case,
+但是,在弹出窗口的情况下,
+
+363
+00:15:33,710 --> 00:15:35,010
+we're just gonna talk about the,
+我们要谈论的,
+
+364
+00:15:35,078 --> 00:15:37,411
+this, presentation control a little bit, because there's
+表示控制一点,因为有
+
+365
+00:15:37,480 --> 00:15:40,748
+a sub class of it called UI PopoverPresentationController,
+它叫UI PopoverPresentationController的子类,
+
+366
+00:15:40,817 --> 00:15:44,418
+And it has a few interesting bars in it, like, what arrow,
+有一些有趣的酒吧,喜欢,箭头,
+
+367
+00:15:44,486 --> 00:15:47,788
+what direction is the arrow from the popover allowed to
+是什么方向的箭头从允许弹窗
+
+368
+00:15:47,857 --> 00:15:48,789
+point, okay?
+点,好吗?
+
+369
+00:15:48,857 --> 00:15:51,257
+The system automatically figures out where to bring
+系统会自动计算出在哪里
+
+370
+00:15:51,326 --> 00:15:53,925
+the popover up, but it will try to make the arrow point in
+弹出窗口,但它会试图让箭头点
+
+371
+00:15:53,994 --> 00:15:56,828
+one of the directions that you allow, also this is where this
+你允许的一个方向,也在这里
+
+372
+00:15:56,897 --> 00:15:59,231
+popover presentation controller is a thing where
+弹出窗口显示控制器是一个事情的地方
+
+373
+00:15:59,299 --> 00:16:01,833
+you specify the rectangle and view that they are should
+你指定矩形和认为,他们应该
+
+374
+00:16:01,902 --> 00:16:04,502
+point at, if it's not pointing in a bar button icon, or
+点,如果它不是指向一个工具栏按钮图标,或
+
+375
+00:16:04,571 --> 00:16:07,038
+a button, or something like that,
+一个按钮,或类似的东西,
+
+376
+00:16:07,106 --> 00:16:09,540
+And where do you configure all this
+和你在哪里配置
+
+377
+00:16:09,609 --> 00:16:11,675
+UIPopoverPresentationContro- ller stuff?
+UIPopoverPresentationContro——我东西?
+
+378
+00:16:11,744 --> 00:16:14,377
+You do it in your prepare, when you prepare for
+你做准备,当你准备
+
+379
+00:16:14,446 --> 00:16:16,946
+a popover segue, you're going to do that,
+弹窗segue,你要做的,
+
+380
+00:16:17,015 --> 00:16:18,314
+so, the code looks kind of like this,
+所以,代码看起来有点像这样,
+
+381
+00:16:18,382 --> 00:16:21,417
+Here's a typical prepare for segue that is preparing for
+这是一个典型的准备segue准备
+
+382
+00:16:21,485 --> 00:16:23,318
+a popover segue, it looks the same,
+弹窗segue,看起来一样的,
+
+383
+00:16:23,387 --> 00:16:25,187
+all the green is the same as any other segue,
+所有的绿色其它segue是一样的,
+
+384
+00:16:25,255 --> 00:16:27,522
+But then there's the yellow that's different
+但还有黄色的区别
+
+385
+00:16:27,590 --> 00:16:29,022
+I'm creating this local variable,
+我创建这个局部变量,
+
+386
+00:16:29,091 --> 00:16:31,124
+I'm calling it PPC, so that it fits on my slide,
+我称之为PPC,所以它适合我的幻灯片上,
+
+387
+00:16:31,193 --> 00:16:33,060
+but that's not a good variable name,
+但这并不是一个好的变量名,
+
+388
+00:16:33,128 --> 00:16:36,997
+PPC equals VC which is the View Controller that I'm
+PPC = VC是我的视图控制器
+
+389
+00:16:37,065 --> 00:16:40,633
+segueing to give me it's popover presentation
+segue给我弹窗表示
+
+390
+00:16:40,702 --> 00:16:41,734
+controller,
+控制器,
+
+391
+00:16:41,803 --> 00:16:44,336
+When I get that popover presentation controller, and
+当我得到这个弹窗显示控制器
+
+392
+00:16:44,405 --> 00:16:46,571
+you can go look at the documentation for it, but
+你可以看看它的文档,但是
+
+393
+00:16:46,640 --> 00:16:49,674
+one of the things it can do is permitted arrow directions is,
+它可以做的一件事是允许的箭头方向,
+
+394
+00:16:49,743 --> 00:16:52,176
+Will let you set the arrow directions to right, left,
+会让你设置箭头方向向右,左,
+
+395
+00:16:52,245 --> 00:16:54,778
+right, up, down or here I've set it to any, which means
+右,上,下或在这里我将它设置为任何,这意味着
+
+396
+00:16:54,847 --> 00:16:58,849
+any, I'll let the arrow point in any direction, all right?
+任何,我会让箭头指向任何方向,对吧?
+
+397
+00:16:58,917 --> 00:17:01,651
+In addition to doing things like arrow directions,
+除了做事情像箭头的方向,
+
+398
+00:17:01,720 --> 00:17:03,887
+this popover presentation controller also has
+这个弹窗表示控制器也有
+
+399
+00:17:03,956 --> 00:17:05,054
+a delegate,
+一个委托,
+
+400
+00:17:05,123 --> 00:17:06,989
+Now why does it need a delegate?
+现在为什么需要委托吗?
+
+401
+00:17:07,058 --> 00:17:09,925
+Well the delegate is used to control this adaptation
+委托是用于控制这种适应
+
+402
+00:17:09,993 --> 00:17:11,092
+behavior,
+的行为,
+
+403
+00:17:11,161 --> 00:17:14,428
+Now the popover, when you have a popover, you'd like to have
+现在弹出窗口,当你有一个弹出窗口,你想要
+
+404
+00:17:14,497 --> 00:17:16,264
+your storyboard just have a popover so
+你的故事板只有一个弹出窗口
+
+405
+00:17:16,333 --> 00:17:18,466
+that when it works on an iPad it's nice,
+在iPad上,当它工作很高兴,
+
+406
+00:17:18,534 --> 00:17:21,001
+It's in a popover but when you're on iPhone,
+它在弹窗在iPhone,但当你
+
+407
+00:17:21,070 --> 00:17:23,871
+especially when you're in a horizontally compact
+特别是当你在一个水平紧凑
+
+408
+00:17:23,939 --> 00:17:25,805
+environment you don't want to use a popover,
+环境你不想使用弹出窗口,
+
+409
+00:17:25,874 --> 00:17:27,173
+There's usually not enough room,
+没有足够的空间,通常是
+
+410
+00:17:27,241 --> 00:17:29,475
+it's just too crowded to put a popover in there, instead,
+太拥挤的一个弹窗,相反,
+
+411
+00:17:29,544 --> 00:17:31,310
+you wanna do this full screen,
+你想做这个全屏,
+
+412
+00:17:31,378 --> 00:17:32,076
+And as I said before,
+正如我之前所说的,
+
+413
+00:17:32,145 --> 00:17:34,679
+the system will automatically adapt to the fact that you're
+系统将自动适应你的事实
+
+414
+00:17:34,748 --> 00:17:36,614
+in a horizontally compact environment, and
+水平在一个紧凑的环境,
+
+415
+00:17:36,683 --> 00:17:38,983
+it will make it full screen instead,
+它将使全屏相反,
+
+416
+00:17:39,052 --> 00:17:41,719
+But via this delegate, this pop over presentation for
+但是通过这个委托,这个流行在演讲
+
+417
+00:17:41,787 --> 00:17:44,021
+a delegate, you can control that adaptation,
+适应一个委托,您可以控制,
+
+418
+00:17:44,089 --> 00:17:46,322
+Behavior you can prevent it, you can modify it, so
+行为你可以阻止它,您可以修改它,所以
+
+419
+00:17:46,391 --> 00:17:49,158
+let's talk a little bit about how that works,
+让我们谈谈这是如何工作的,
+
+420
+00:17:49,226 --> 00:17:52,328
+So this adaptation to the size classes let's just look at
+这适应大小类让我们看看
+
+421
+00:17:52,397 --> 00:17:53,929
+the code right off the bat,
+马上的代码,
+
+422
+00:17:53,997 --> 00:17:55,931
+This delegate method of the pop over presentation
+这个流行的委托方法演示
+
+423
+00:17:56,000 --> 00:17:58,400
+controller is called adaptive presentation style for
+控制器被称为自适应表示风格
+
+424
+00:17:58,469 --> 00:18:00,734
+controller trait collection,
+控制器的特征集合,
+
+425
+00:18:00,803 --> 00:18:02,703
+And, what this is basically asking is,
+这基本上是问,
+
+426
+00:18:02,771 --> 00:18:05,405
+I'm about to present this controller, the argument
+我要现在这个控制器,论点
+
+427
+00:18:05,474 --> 00:18:08,241
+there, in an environment with this trait collection,
+在一个环境特征集合,
+
+428
+00:18:08,310 --> 00:18:10,676
+Remember trait collections are like horizontal size class,
+记得特征集合就像水平大小类,
+
+429
+00:18:10,745 --> 00:18:12,244
+vertical size class,
+垂直尺寸类,
+
+430
+00:18:12,313 --> 00:18:15,448
+And, it's asking you to return what kind of adaptation
+,它要求你返回什么样的适应
+
+431
+00:18:15,516 --> 00:18:16,648
+you want to do?
+你想做什么?
+
+432
+00:18:16,717 --> 00:18:19,717
+So, you can return none, and it will not adapt,
+所以,你可以返回,也不会适应,
+
+433
+00:18:19,786 --> 00:18:21,319
+it'll just do it like a popover,
+它会像一个弹出窗口,
+
+434
+00:18:21,388 --> 00:18:24,422
+This how you can get a popover on your iPhone just implement
+这样你可以得到一个弹出窗口你的iPhone上实现
+
+435
+00:18:24,491 --> 00:18:27,258
+this delegate method and return none, okay?
+这个委托方法并返回没有?
+
+436
+00:18:27,327 --> 00:18:30,327
+,None, if you do that it won't adapt,
+,没有,如果你不适应,
+
+437
+00:18:30,396 --> 00:18:32,229
+Now you could return other things in here like
+现在您可以返回其他的事情在这里
+
+438
+00:18:32,298 --> 00:18:36,666
+,fullScreen or ,overfullScreen and by doing so
+,全屏或者overfullScreen和通过这样做
+
+439
+00:18:36,735 --> 00:18:39,035
+you control how the popover's going to look and
+你控制如何弹出窗口的外观和
+
+440
+00:18:39,104 --> 00:18:41,036
+adapt to different trade collections,
+适应不同贸易集合,
+
+441
+00:18:41,105 --> 00:18:43,672
+Okay, hopefully, we'll have time for
+好的,希望我们有时间
+
+442
+00:18:43,741 --> 00:18:46,541
+that in the demo maybe not, but we'll see,
+在演示也许不是,但我们将会看到,
+
+443
+00:18:46,610 --> 00:18:49,711
+The other thing you can do, which is kinda cool when
+另一件你能做的,就是有点酷的时候
+
+444
+00:18:49,780 --> 00:18:52,246
+it adapts, is I might have a popover, and
+我可能会有一个弹出窗口,它适应和
+
+445
+00:18:52,315 --> 00:18:55,048
+since popovers don't have cancel buttons,
+因为弹窗没有取消按钮,
+
+446
+00:18:55,117 --> 00:18:56,616
+They don't need cancel buttons,
+他们不需要取消按钮,
+
+447
+00:18:56,685 --> 00:18:58,852
+cuz I can touch anywhere outside the popover, and
+因为我可以在任何地方联系外窗,
+
+448
+00:18:58,921 --> 00:18:59,585
+it cancels it,
+取消它,
+
+449
+00:18:59,654 --> 00:19:02,822
+Okay, so I don't need a cancel button, but on a,
+好的,我不需要一个取消按钮,但是在一个,
+
+450
+00:19:02,891 --> 00:19:07,359
+when it adapts to full screen modal on an iPhone,
+当它适应全屏模式在iPhone上,
+
+451
+00:19:07,428 --> 00:19:09,728
+I do need a cancel button cuz I can't click anywhere else,
+我需要一个取消按钮因为我不能点击其他地方,
+
+452
+00:19:09,797 --> 00:19:11,663
+It's taken over my entire screen, so
+占据了我的整个屏幕
+
+453
+00:19:11,732 --> 00:19:12,664
+I want to put a cancel button,
+我想把一个取消按钮,
+
+454
+00:19:12,733 --> 00:19:15,332
+So to put a cancel button up there, maybe I want to put it
+所以,给一个取消按钮,也许我想把它
+
+455
+00:19:15,401 --> 00:19:18,502
+in a navigation controller so that I can fit a cancel button
+在导航控制器,这样我就可以适应一个取消按钮
+
+456
+00:19:18,571 --> 00:19:20,938
+at the top, a bar button item, right?
+在顶部,一个工具栏按钮项,对吧?
+
+457
+00:19:21,006 --> 00:19:23,906
+I mean, I could put the cancel button somewhere inside my
+我的意思是,我可以把取消按钮在我的地方
+
+458
+00:19:23,975 --> 00:19:26,943
+view controller and then just take it out when I'm on iPad,
+视图控制器,然后把它当我在iPad上,
+
+459
+00:19:27,012 --> 00:19:28,578
+iPhone, or whatever,
+iPhone,等等,
+
+460
+00:19:28,646 --> 00:19:31,847
+But maybe what I wanna do is have it be in the navigation
+但也许我要做的是在导航
+
+461
+00:19:31,916 --> 00:19:34,082
+bar of a navigation controller,
+栏导航控制器,
+
+462
+00:19:34,151 --> 00:19:36,150
+But again, only when I'm adapting and
+但是,只有当我适应
+
+463
+00:19:36,219 --> 00:19:37,953
+so this will let you that,
+这将让你,
+
+464
+00:19:38,022 --> 00:19:40,221
+This one called Presentation Controller,
+这个叫做表示控制器,
+
+465
+00:19:40,290 --> 00:19:42,790
+View Controller for adaptive presentation style,
+视图控制器的自适应表示风格,
+
+466
+00:19:42,858 --> 00:19:45,893
+is saying, what view controller should I use
+是说,我应该使用视图控制器
+
+467
+00:19:45,962 --> 00:19:49,529
+when I adapt to this presentation style?
+当我适应这个演讲风格吗?
+
+468
+00:19:49,598 --> 00:19:53,800
+Okay, and that presentation style over full screen or
+好吧,表示在全屏或风格
+
+469
+00:19:53,869 --> 00:19:57,069
+pop over or full screen,
+流行或全屏幕,
+
+470
+00:19:57,138 --> 00:20:00,072
+And so here is where you might want to say I'm gonna
+所以在这里,你可能想说我要
+
+471
+00:20:00,141 --> 00:20:03,843
+return a navigation controller with the controller that
+返回一个导航控制器的控制器
+
+472
+00:20:03,911 --> 00:20:06,411
+would normally disappear in a pop over inside of it
+通常会消失在一个流行的吗
+
+473
+00:20:06,480 --> 00:20:08,279
+as it's root view controller,
+根视图控制器,
+
+474
+00:20:08,348 --> 00:20:10,548
+Okay, so this is kind of a cool way to do substitute,
+好了,这是一种很酷的方式替代,
+
+475
+00:20:10,617 --> 00:20:13,284
+another, like, usually a navigation controller,
+另一个,比如,通常导航控制器,
+
+476
+00:20:13,352 --> 00:20:16,220
+another MVC that you'll wrap around the MVC you're
+另一个MVC,你会环绕MVC
+
+477
+00:20:16,289 --> 00:20:17,688
+trying to present,
+努力现在,
+
+478
+00:20:17,757 --> 00:20:19,355
+So the return values of this is actually
+所以这实际上的返回值
+
+479
+00:20:19,424 --> 00:20:20,357
+another ViewController,
+另一个ViewController,
+
+480
+00:20:22,059 --> 00:20:24,526
+Okay, so it's kinda fun controlling that adaption
+好的,所以它有点有趣的控制,适应
+
+481
+00:20:24,595 --> 00:20:27,195
+stuff, there's another important issue about popovers
+的东西,还有一个重要的问题关于弹窗
+
+482
+00:20:27,264 --> 00:20:29,498
+by the way, which is size,
+顺便说一下,这是大小,
+
+483
+00:20:29,566 --> 00:20:30,699
+Now, by default,
+现在,在默认情况下,
+
+484
+00:20:30,767 --> 00:20:34,902
+a Popover comes in size that kind of is like
+弹窗的大小的
+
+485
+00:20:34,970 --> 00:20:38,872
+an iPhone in portrait, that's kind of it's default size,
+iPhone在肖像,这是它的默认大小,
+
+486
+00:20:38,941 --> 00:20:42,141
+And if it doesn't really know what size the stuff is inside,
+如果它不知道里面的东西是什么尺寸,
+
+487
+00:20:42,210 --> 00:20:43,543
+that's the best it can do,
+这是最好的,
+
+488
+00:20:43,612 --> 00:20:46,145
+But you can control their size, make it a lot better,
+但你可以控制自己的大小,使它更好,
+
+489
+00:20:46,214 --> 00:20:49,449
+by having the MVC that's being presented, implement, or
+通过MVC的呈现,实现,或
+
+490
+00:20:49,517 --> 00:20:52,418
+set, this var called preferred content size,
+集,这种变量称为首选内容大小,
+
+491
+00:20:52,486 --> 00:20:55,119
+And that just says, this is the size I want to be
+只是说,这是我想要的大小
+
+492
+00:20:55,188 --> 00:20:57,588
+in a popover, basically or in any environment, really,
+基本上在一个弹出窗口,或在任何环境中,真的,
+
+493
+00:20:57,657 --> 00:21:01,125
+But this is my preferred size to be and
+但这是我的首选大小
+
+494
+00:21:01,194 --> 00:21:05,062
+so, again if we have time can do this in our demo as well,
+所以,如果我们有时间可以在我们的演示,
+
+495
+00:21:05,131 --> 00:21:07,097
+You want to return here the smallest size
+你想在这里返回最小的大小
+
+496
+00:21:07,166 --> 00:21:09,899
+that you look good in and then when your popover comes up,
+你看起来很好,然后当你的弹出窗口出现,
+
+497
+00:21:09,968 --> 00:21:10,800
+it'll use this size,
+它将使用这个尺寸,
+
+498
+00:21:10,869 --> 00:21:11,734
+If you don't set this size,
+如果你不设置这个尺寸,
+
+499
+00:21:11,803 --> 00:21:13,603
+you're gonna kind of get this default size,
+你会得到这个默认大小,
+
+500
+00:21:13,671 --> 00:21:15,103
+it depends on whether in portrait,
+这取决于在肖像,
+
+501
+00:21:15,172 --> 00:21:17,673
+landscape, iPad, whatever,
+景观,iPad,无论如何,
+
+502
+00:21:17,741 --> 00:21:20,609
+It's gonna give you a somewhat standardized size,
+它会给你一个标准化的尺寸,
+
+503
+00:21:22,579 --> 00:21:25,112
+Okay the last segue we're going to talk about here is
+好了最后segue我们这里要讲的是
+
+504
+00:21:25,181 --> 00:21:29,616
+embed segues, these are really cool, really powerful,
+嵌入而已,这些都是很酷的,真正的强大,
+
+505
+00:21:29,685 --> 00:21:33,353
+Segues is basically a segue where you put another aVCs
+segue基本上是一个segue你把另一个车型
+
+506
+00:21:33,422 --> 00:21:37,723
+self,view it's top of a view inside another view hierarchy,
+的自我,把它的一个视图在另一个视图层次结构,
+
+507
+00:21:37,792 --> 00:21:41,294
+so this embedding view controllers inside another
+这里面嵌入视图控制器
+
+508
+00:21:41,363 --> 00:21:42,728
+view controllers,
+视图控制器,
+
+509
+00:21:42,797 --> 00:21:44,830
+Okay really cool thing to be able to do and
+好的可以做和很酷的事情
+
+510
+00:21:44,899 --> 00:21:46,397
+Xcode makes this super easy,
+Xcode让这个超级简单,
+
+511
+00:21:46,466 --> 00:21:49,033
+you're just gonna go down to your object palate,
+你要去你对象口感,
+
+512
+00:21:49,102 --> 00:21:50,535
+And look for container view and
+并寻找容器视图和
+
+513
+00:21:50,603 --> 00:21:53,337
+drag that container view out, it looks just like a view,
+把容器视图拖出来,看起来就像一个视图,
+
+514
+00:21:53,405 --> 00:21:56,473
+You're gonna put auto layout on it, wherever you want and
+你要把自动布局,无论你想要的
+
+515
+00:21:56,542 --> 00:21:59,476
+itself,view is gonna appear embedded in the view hierarchy
+本身,视图会出现嵌在视图层次结构
+
+516
+00:21:59,545 --> 00:22:01,144
+of the thing you dragged it into,
+你把它拖进,
+
+517
+00:22:01,212 --> 00:22:03,313
+It's really quite a normal segue,
+很正常的继续,
+
+518
+00:22:03,381 --> 00:22:05,915
+it seems weird cuz it's like you're embedding this thing
+似乎奇怪的因为它就像你嵌入这个东西
+
+519
+00:22:05,984 --> 00:22:07,816
+but, it's a fairly normal seque in there,
+但是,这是一个相当正常的seque,
+
+520
+00:22:07,885 --> 00:22:11,052
+You can name it, you get to prepare for
+你可以命名它,你要做好准备
+
+521
+00:22:11,121 --> 00:22:13,321
+seque and all that stuff,
+seque和所有的东西,
+
+522
+00:22:13,390 --> 00:22:14,322
+You can see here,
+你可以看到,
+
+523
+00:22:14,391 --> 00:22:16,557
+the little gray thing next to this container,
+小灰的这个容器,
+
+524
+00:22:16,626 --> 00:22:20,527
+that's the view appearing inside the big
+这就是观点出现在大
+
+525
+00:22:20,596 --> 00:22:23,196
+light blue view hierarchy on the left,
+浅蓝色的视图层次在左边,
+
+526
+00:22:23,265 --> 00:22:26,632
+And on the right is just an entire NVC that you get to
+右边是你得到整个签证中心
+
+527
+00:22:26,701 --> 00:22:30,970
+configure any class you want, any UI you wanna put in there,
+配置你想要的任何类,任何UI你想放在那里,
+
+528
+00:22:31,039 --> 00:22:34,740
+And that's all just gonna appear inside that box on
+这就是要出现在那个盒子
+
+529
+00:22:34,809 --> 00:22:36,709
+the blue side, okay?
+蓝色的一面,好吗?
+
+530
+00:22:36,777 --> 00:22:39,544
+One thing to be really careful about embed segues,
+有一件事非常小心嵌入而已,
+
+531
+00:22:39,613 --> 00:22:41,879
+it's no different than any other segue,
+它比其他任何segue没有不同,
+
+532
+00:22:41,948 --> 00:22:43,414
+in that when it happens,,
+当它发生的时候,,
+
+533
+00:22:43,483 --> 00:22:47,017
+When the prepare happens, none of the outlets are set In that
+准备时,没有一个机构设置
+
+534
+00:22:47,086 --> 00:22:49,019
+MBC that you're embedded okay?
+MBC嵌入你明白吗?
+
+535
+00:22:49,088 --> 00:22:50,987
+So a lot of times people they're embedding this other
+所以很多时候他们嵌入另一个人
+
+536
+00:22:51,056 --> 00:22:52,789
+MBC and they want to be setting all kinds of outlet
+MBC,他们想要设置各种各样的插座
+
+537
+00:22:52,858 --> 00:22:54,056
+in the thing they're embedding,
+在当他们嵌入,
+
+538
+00:22:54,125 --> 00:22:56,491
+But you can't because none of those outlets have been set,
+但是你不能因为这些网点设置,
+
+539
+00:22:56,560 --> 00:22:58,360
+you're in prepare, you're really early,
+你在准备,你真早,
+
+540
+00:22:58,429 --> 00:23:01,930
+So almost always what we do here is we grab the entire MBC
+这里几乎总是我们所做的是我们整个MBC抓住
+
+541
+00:23:01,999 --> 00:23:03,864
+and prepare and hold on to it,
+和准备,抓住它,
+
+542
+00:23:03,933 --> 00:23:07,401
+And then later in our view did load when all valve is loaded
+然后在我们看来并加载所有阀加载时
+
+543
+00:23:07,470 --> 00:23:09,303
+then do we start talking MBC and
+然后我们开始MBC和说话
+
+544
+00:23:09,372 --> 00:23:12,272
+tell it to you know set its outlets or whatever,
+告诉它你知道设置它的网点,
+
+545
+00:23:12,341 --> 00:23:15,008
+So 90% of the time in the prepare for
+所以90%的时间准备
+
+546
+00:23:15,076 --> 00:23:18,611
+an embed segue we grab on to the MVC that we're embedding
+一个嵌入segue我们抓住MVC,嵌入
+
+547
+00:23:18,680 --> 00:23:21,414
+okay which is just going to be the segue's destination right?
+好了这就是segue的目的地?
+
+548
+00:23:21,483 --> 00:23:24,616
+That's the seg that's the MBC we're segueing to,
+这是赛格MBC我们segue,
+
+549
+00:23:24,685 --> 00:23:27,787
+Now I'm gonna do all demo the rest of the way here, so
+现在我要做的所有演示剩下的路,
+
+550
+00:23:27,855 --> 00:23:29,787
+I'm gonna give you a little what's coming up here,
+我要给你一点什么来这里,
+
+551
+00:23:29,856 --> 00:23:31,756
+So on Wednesday i'm gonna be talking about alerts and
+我周三会谈论警报和
+
+552
+00:23:31,825 --> 00:23:35,159
+action seats sheets and also notifications and
+表并通知和行动席位
+
+553
+00:23:35,228 --> 00:23:36,426
+the application life cycle,
+应用程序生命周期,
+
+554
+00:23:36,495 --> 00:23:40,531
+So the application life cycle's all those methods in,
+所以应用程序生命周期的所有这些方法,
+
+555
+00:23:40,599 --> 00:23:44,100
+Next week, on Monday is the Accessibility lecture,
+下周,周一是可访问性讲座,
+
+556
+00:23:44,169 --> 00:23:46,770
+Also Monday, slides are due if you want to
+周一,幻灯片是由于如果你想
+
+557
+00:23:46,838 --> 00:23:48,304
+participate in the alternate final,
+参与备用决赛,
+
+558
+00:23:48,372 --> 00:23:49,505
+You have to submit them by Monday,
+你必须将它们提交到周一,
+
+559
+00:23:49,574 --> 00:23:51,406
+if you don't submit them by Monday, sorry,
+如果你不将它们提交到周一,对不起,
+
+560
+00:23:51,475 --> 00:23:52,607
+you can't do the alternate final,
+你不能做备用,
+
+561
+00:23:52,676 --> 00:23:53,774
+But then that's the only thing you do,
+但是你做的唯一的事,
+
+562
+00:23:53,843 --> 00:23:55,209
+you don't have to sign up or anything,
+你不需要注册或任何东西,
+
+563
+00:23:55,278 --> 00:23:57,845
+Just submit your slides by Monday and
+只是被周一提交你的幻灯片
+
+564
+00:23:57,914 --> 00:24:02,182
+then Wednesday will be the alternate final,
+然后周三将备用的决赛,
+
+565
+00:24:02,250 --> 00:24:06,086
+So, the demo I'm gonna do right now is we're gonna take
+演示,我现在要做的是我们需要的
+
+566
+00:24:06,154 --> 00:24:07,086
+FaceIt and
+FaceIt和
+
+567
+00:24:07,155 --> 00:24:09,923
+we're going to add all four of those segue Ways to it,
+我们要添加的所有四个segue方式,
+
+568
+00:24:09,991 --> 00:24:11,457
+Okay, all the I just talked about we're gonna
+好吧,我只是讲我们要
+
+569
+00:24:11,526 --> 00:24:14,660
+put them all in there in one little app here,
+把他们都在这里的一个小程序,
+
+570
+00:24:14,729 --> 00:24:18,630
+So, let's go over to faces, there's faces,
+所以,让我们去的脸,脸,
+
+571
+00:24:20,400 --> 00:24:21,799
+All right, so you guys remember faces,
+好了,所以你们记住的脸,
+
+572
+00:24:21,868 --> 00:24:23,233
+very simple little app,
+很简单的小程序,
+
+573
+00:24:23,302 --> 00:24:25,069
+It had this little emotions view controller and
+这个小情绪视图控制器和
+
+574
+00:24:25,138 --> 00:24:27,236
+we had three emotions, sad, happy, and worried,
+我们有三个情绪,悲伤,快乐,和担心,
+
+575
+00:24:27,305 --> 00:24:28,138
+And when we clicked on it,
+当我们点击它,
+
+576
+00:24:28,207 --> 00:24:31,174
+it would show a face that showed that emotion,
+它会显示一张脸表明情感,
+
+577
+00:24:31,242 --> 00:24:36,545
+So, I'm gonna actually before I dive into these segues,
+所以,我要在我深入这些而已,
+
+578
+00:24:36,614 --> 00:24:41,383
+kind of enhance this whole app slightly,
+提高整个应用略,
+
+579
+00:24:41,452 --> 00:24:44,052
+remember when we did our face view controller way back when?
+还记得我们我们面对视图控制器的时候吗?
+
+580
+00:24:44,053 --> 00:24:46,653
+One thing is,
+有一件事是,
+
+581
+00:24:46,723 --> 00:24:51,725
+And we wanted to do squinting, but we couldn't do squinting,
+我们想做斜视,但我们做不到眯着眼,
+
+582
+00:24:51,794 --> 00:24:52,459
+Remember why?
+还记得为什么吗?
+
+583
+00:24:52,528 --> 00:24:54,828
+Because our face view only could do eyes open or
+因为我们只能睁着眼睛或脸视图
+
+584
+00:24:54,897 --> 00:24:55,796
+eyes closed,
+闭上眼睛,
+
+585
+00:24:55,864 --> 00:24:58,664
+So we didn't really have an option to do squinting,
+所以我们没有一个选项眯着眼,
+
+586
+00:24:58,733 --> 00:25:00,767
+so we just kinda had this, okay,
+所以我们就有点这个,好吧,
+
+587
+00:25:00,835 --> 00:25:02,568
+well, we'll just say that is your,
+好吧,我们就说,是你的,
+
+588
+00:25:02,636 --> 00:25:04,903
+Okay, we had the punt, essentially,
+好的,我们有,从本质上讲,
+
+589
+00:25:04,972 --> 00:25:06,838
+So, I'm gonna make it, so we don't have to punt,
+所以,我要让它,所以我们不需要,
+
+590
+00:25:06,906 --> 00:25:07,572
+What I'm gonna do is,
+我要做的是什么,
+
+591
+00:25:07,641 --> 00:25:10,675
+remember we did that blinking face view controller?
+记得我们眨眼面临视图控制器吗?
+
+592
+00:25:10,744 --> 00:25:12,910
+I'm gonna make squinting be blinking, okay?
+我要让眯着眼闪烁,好吗?
+
+593
+00:25:12,978 --> 00:25:15,245
+Squinting and blinking aren't the same thing,
+斜视和闪烁的不是一样的,
+
+594
+00:25:15,314 --> 00:25:17,981
+but kind of like repeatedly squinting,
+但就像反复眯着眼,
+
+595
+00:25:18,050 --> 00:25:19,316
+So, we're gonna make it so
+所以,我们要让它如此
+
+596
+00:25:19,385 --> 00:25:20,884
+that works, so how are we gonna do that?
+工作,所以我们要怎么做呢?
+
+597
+00:25:20,952 --> 00:25:23,385
+We no longer have to punt here, so
+我们不再需要平底船,所以
+
+598
+00:25:23,454 --> 00:25:27,890
+we'll just not do anything if someone says squinting, and
+我们就不做任何事情如果有人说眯着眼,和
+
+599
+00:25:27,959 --> 00:25:31,760
+you remember that all of our blinking code is in this
+你还记得我们所有的闪烁的代码
+
+600
+00:25:31,829 --> 00:25:35,463
+subclass here blinking a face view controller,
+子类在这里闪烁一脸视图控制器,
+
+601
+00:25:35,532 --> 00:25:39,033
+So, we'll go ahead and make our update UI overridable and
+所以,我们要让我们的更新UI重写的和
+
+602
+00:25:39,102 --> 00:25:42,403
+we'll go to our blinking face view controller here and
+我们将去我们这里的闪烁的脸视图控制器
+
+603
+00:25:42,471 --> 00:25:46,339
+override it, so I'm just gonna override update UI,
+覆盖它,所以我要覆盖更新UI,
+
+604
+00:25:46,408 --> 00:25:51,244
+Of course I wanna call funk or a funk update UI,
+当然我想叫恐慌或恐慌更新UI,
+
+605
+00:25:51,313 --> 00:25:54,614
+and of course I wanna call my supers update UI, so that
+当然我想打电话给我的管理员更新UI,因此
+
+606
+00:25:54,683 --> 00:25:58,884
+the mouth and other stuff and the eyes themselves can all,
+嘴巴和其他东西,眼睛本身都可以,
+
+607
+00:25:58,953 --> 00:26:00,286
+then I'm gonna say that my blinking, whether or
+然后我会说我眨眼,不管
+
+608
+00:26:00,287 --> 00:26:01,620
+Be set, But
+组,但
+
+609
+00:26:01,689 --> 00:26:05,790
+not I'm blinking, is equal to our model,
+不是我眨眼,等于我们的模型,
+
+610
+00:26:05,859 --> 00:26:07,325
+which is our expressions,
+这是我们的表情,
+
+611
+00:26:07,394 --> 00:26:08,492
+Eyes,
+的眼睛,
+
+612
+00:26:08,561 --> 00:26:11,395
+If those are equal to squinting,
+如果这些都等于眯着眼,
+
+613
+00:26:11,464 --> 00:26:13,831
+So, if we're squinting, then I'm gonna be blinking,
+如果我们眯着眼,然后我要闪烁,
+
+614
+00:26:15,400 --> 00:26:16,566
+Everybody see what I did there?
+每个人都明白我在做什么吗?
+
+615
+00:26:16,635 --> 00:26:19,702
+So that's it, I just [LAUGH] upgraded blanking face for
+就是这样,我只是[笑]升级消隐的脸
+
+616
+00:26:19,771 --> 00:26:21,153
+now if you set your model to have squinting, as your,
+如果你设置你的模型有斜视,像你,
+
+617
+00:26:21,154 --> 00:26:22,536
+your controller,
+你的控制器,
+
+618
+00:26:22,606 --> 00:26:24,406
+as part of your model,then it will blink,
+作为模型的一部分,那么它会眨眼,
+
+619
+00:26:24,475 --> 00:26:26,875
+Now, we made this
+现在,我们做了这个
+
+620
+00:26:26,943 --> 00:26:28,810
+blink view controller kind of a demo thing,
+眨眼视图控制器的演示,
+
+621
+00:26:28,879 --> 00:26:31,111
+I made it every time it appears it starts blinking,
+我每次都让它看起来它开始闪烁,
+
+622
+00:26:31,180 --> 00:26:33,146
+Every time it disappears it stops blinking,
+每次它消失停止闪烁,
+
+623
+00:26:33,215 --> 00:26:34,147
+I don't really want that now,
+我不想,现在,
+
+624
+00:26:34,216 --> 00:26:36,883
+Now, I want it to blink when it's squinting and
+现在,我想要眨眼的时候眯着眼
+
+625
+00:26:36,952 --> 00:26:38,050
+not otherwise but
+不但是
+
+626
+00:26:38,119 --> 00:26:41,988
+I also still only want it to blink when I'm on screen,
+我也仍然只希望它眨眼当我在屏幕上,
+
+627
+00:26:42,056 --> 00:26:45,290
+I don't want my timer blinking when I'm not even up here,
+我不想让我的计时器闪烁时我甚至不,
+
+628
+00:26:45,359 --> 00:26:49,361
+So, I'm gonna change this blinking thing here to can
+所以,我要改变这种闪烁的东西来
+
+629
+00:26:49,430 --> 00:26:51,313
+So, let's add a new private var up here,
+所以,让我们添加一个新的私人var,
+
+630
+00:26:51,314 --> 00:26:53,197
+blink,
+眨眼,
+
+631
+00:26:53,266 --> 00:26:56,800
+can blink start out as false,
+眨眼可以是假的,
+
+632
+00:26:56,869 --> 00:26:59,336
+And so here if I appear, I'll say I can blink and
+这里如果我出现,我就说我可以眨眼
+
+633
+00:26:59,405 --> 00:27:02,038
+even say blink if needed at this point because maybe
+甚至说如果需要在这一点上,因为也许眨眼
+
+634
+00:27:02,107 --> 00:27:04,874
+someone set us to blinking while we weren't there and
+有人让我们闪烁,而我们没有
+
+635
+00:27:04,943 --> 00:27:07,710
+when we disappear I'm gonna say can blink was false so
+当我们点击可以眨眼间就会消失是假的
+
+636
+00:27:07,779 --> 00:27:09,178
+I'm not allowed to blink,
+我不能眨眼,
+
+637
+00:27:09,247 --> 00:27:14,916
+And then, in blink if needed I'll just say If I'm blinking,
+然后在眨眼,如果需要我就说如果我眨眼,
+
+638
+00:27:14,985 --> 00:27:20,289
+and I can blink, then I'll go ahead and do my blinking,
+我可以眨眼,然后我会继续做我的闪烁,
+
+639
+00:27:20,357 --> 00:27:24,893
+One other little thing that I want to do here is to not,
+另一个小的事情我想做的是,
+
+640
+00:27:24,961 --> 00:27:27,662
+if I'm in the middle of a blink, okay, this timer,
+如果我在一个眨眼,好吧,这个计时器,
+
+641
+00:27:27,731 --> 00:27:29,630
+and I get another request to blink,
+我让另一个请求眨眼,
+
+642
+00:27:29,699 --> 00:27:31,431
+I don't want to start another timer,
+我不想开始另一个定时器,
+
+643
+00:27:31,500 --> 00:27:34,634
+Okay, so I'm gonna have another private var var here
+好的,所以我要有另一个私有变量var
+
+644
+00:27:34,703 --> 00:27:37,537
+which I'm gonna call in a blink which is whether I'm
+我将称之为眨眼这是我
+
+645
+00:27:37,606 --> 00:27:40,607
+in the middle of a blink, let's start that as false,
+在一个眨眼,让我们开始是错误的,
+
+646
+00:27:42,042 --> 00:27:47,713
+And, so I'll also check it here and we're not in a blink,
+,所以我也会检查在这里,我们不是在一个眨眼,
+
+647
+00:27:47,782 --> 00:27:51,550
+So, then I'll just set a blank here to true and
+然后我就设置一个空白来真实
+
+648
+00:27:51,618 --> 00:27:55,086
+then when we get out the other side down here I'll set in
+当我们离开这里我会在另一面
+
+649
+00:27:55,155 --> 00:27:57,321
+a blank to false,
+一个空白为false,
+
+650
+00:27:57,390 --> 00:28:00,490
+So, all I did was upgrade my blank view controller,
+所以,我所做的是升级我的空白视图控制器,
+
+651
+00:28:00,559 --> 00:28:03,093
+so be able to be controlled by it's model rather then
+所以可以由它的模型而不是控制
+
+652
+00:28:03,162 --> 00:28:04,527
+being a demo thing,
+做一个演示,
+
+653
+00:28:04,596 --> 00:28:06,863
+Everybody cool with what I did there?
+每个人都明白我所做的吗?
+
+654
+00:28:06,931 --> 00:28:08,197
+Minor little upgrade,
+轻微的小升级,
+
+655
+00:28:08,266 --> 00:28:10,499
+Now the next thing I wanna do is,
+接下来我要做的是,
+
+656
+00:28:10,568 --> 00:28:11,567
+What we're gonna do for
+我们要做的
+
+657
+00:28:11,635 --> 00:28:15,204
+our demo segues is, we're gonna, if you remember in the,
+我们会,我们的演示segue如果你记得的,
+
+658
+00:28:16,306 --> 00:28:17,605
+Self question mark here,
+自我问号,
+
+659
+00:28:20,109 --> 00:28:24,144
+If you remember in our storyboard here,
+如果你还记得我们的故事板,
+
+660
+00:28:24,213 --> 00:28:27,413
+We're kind of fixed to these three different emotions,
+我们固定的这三种不同的情感,
+
+661
+00:28:27,482 --> 00:28:28,514
+that's all we have,
+这就是我们,
+
+662
+00:28:28,583 --> 00:28:29,481
+Well, I'm gonna make it so
+好吧,我要让它如此
+
+663
+00:28:29,550 --> 00:28:33,452
+that we can hit an add button, and add another emotion,
+我们可以打一个add按钮,并添加另一个情感,
+
+664
+00:28:33,520 --> 00:28:35,387
+Okay, as many emotions as we want,
+好的,我们想要尽可能多的情绪,
+
+665
+00:28:35,456 --> 00:28:36,154
+that's what we're gonna do,
+这就是我们要做的,
+
+666
+00:28:36,223 --> 00:28:37,989
+So, we're gonna have a modal segue to that theme,
+所以,我们要有一个模态segue主题,
+
+667
+00:28:38,058 --> 00:28:39,323
+we'll unwind to bring it back,
+我们将会放松,
+
+668
+00:28:39,392 --> 00:28:40,858
+We'll make it work on pop over,
+我们会让它工作在流行,
+
+669
+00:28:40,927 --> 00:28:42,893
+we'll embed the little blinking face view,
+我们将嵌入小闪烁的脸看来,
+
+670
+00:28:42,961 --> 00:28:44,761
+We're gonna do all kinds of segue stuff here,
+我们会做各种各样的segue东西,
+
+671
+00:28:44,830 --> 00:28:47,764
+But first we have to convert this to something that we can
+但首先我们必须把这个东西
+
+672
+00:28:47,833 --> 00:28:48,631
+add more to,
+添加更多的,
+
+673
+00:28:48,700 --> 00:28:51,233
+So, we can't have this three buttons like this,
+所以,我们不能有这样的这三个按钮,
+
+674
+00:28:51,302 --> 00:28:52,701
+basically not going to work,
+基本上不会工作,
+
+675
+00:28:52,770 --> 00:28:53,936
+So, we need a different kind,
+所以,我们需要一种不同,
+
+676
+00:28:54,004 --> 00:28:57,071
+And what I'm gonna do is I'm gonna use, there's not much
+我要做的是我要用,没什么
+
+677
+00:28:57,140 --> 00:29:00,107
+code in this emotions view controller as it is,
+代码在这个情感视图控制器,
+
+678
+00:29:00,176 --> 00:29:01,108
+It just got this,
+它只是有这个,
+
+679
+00:29:01,177 --> 00:29:03,177
+Little dictionary of the three things, and
+小字典的三件事,
+
+680
+00:29:03,245 --> 00:29:04,311
+then it does prepare,
+然后做准备,
+
+681
+00:29:04,380 --> 00:29:06,813
+So, I'll keep as much code as I can here,
+所以,我会保持尽可能多的代码,
+
+682
+00:29:06,881 --> 00:29:08,381
+So, but what I'm gonna do is make it a table
+所以,但是我要做的是一个表
+
+683
+00:29:08,449 --> 00:29:09,648
+ViewController,
+ViewController,
+
+684
+00:29:09,717 --> 00:29:11,416
+Okay, so I'm just gonna turn this emotions thing into a
+好的,所以我要把这感情的事情变成一个
+
+685
+00:29:11,485 --> 00:29:13,685
+table ViewController, cuz it's real easy to add more rows,
+ViewController表,因为它是真正容易添加更多的行,
+
+686
+00:29:13,754 --> 00:29:16,754
+So, I'm just gonna say, this is a UITableViewController
+所以,我只是想说,这是一个UITableViewController
+
+687
+00:29:16,823 --> 00:29:20,024
+instead and I'm gonna have to change
+相反,我要改变
+
+688
+00:29:20,093 --> 00:29:23,794
+my model a little bit here, from being a dictionary,
+我的模型一点在这里,从一个字典,
+
+689
+00:29:23,862 --> 00:29:27,330
+I'm just gonna have it be an array of tuples, where this
+我想它是一个数组的元组,这地方
+
+690
+00:29:27,399 --> 00:29:31,067
+name of the emotion, and then the expression are in a tuple,
+情感的名称,然后表达在一个元组,
+
+691
+00:29:31,136 --> 00:29:32,335
+And we'll have it in an array like that, so
+我们会有一个数组,所以
+
+692
+00:29:32,404 --> 00:29:34,904
+I'm just gonna replace this whole thing with an array,
+我要把这整个换成一个数组,
+
+693
+00:29:34,972 --> 00:29:38,307
+Of tuples but otherwise it's the same exact data,
+的元组,但否则是一样的数据,
+
+694
+00:29:38,376 --> 00:29:41,109
+It's just this it's an array of tuples or
+它就在一个元组或数组
+
+695
+00:29:41,178 --> 00:29:43,512
+one thing is the name like sad, happy and
+有一件事是这个名字像悲伤,快乐,
+
+696
+00:29:43,580 --> 00:29:46,681
+the other is the expression, the eyes and mouth whatever,
+另一个是表情,眼睛和嘴,
+
+697
+00:29:46,750 --> 00:29:49,050
+Since I've also made this a var, so
+因为我也做了这个一个var,所以
+
+698
+00:29:49,119 --> 00:29:52,053
+that we can add more of them to it over time,
+我们可以添加更多的人随着时间的推移,
+
+699
+00:29:53,356 --> 00:29:56,390
+Okay, now, we of course, this broke our prepare, but
+好的,现在,我们当然,这打破了我们的准备,但是
+
+700
+00:29:56,459 --> 00:29:57,224
+we'll fix that in a second,
+我们将解决这个问题,
+
+701
+00:29:57,292 --> 00:29:59,993
+Let's go back to our storyboard and add this thing,
+让我们回到故事板和添加这个东西,
+
+702
+00:30:01,128 --> 00:30:02,628
+So, I'm gonna make a table view, so
+所以,我要做一个表格视图
+
+703
+00:30:02,696 --> 00:30:04,562
+let's go over here to utilities windows, and
+我们去这里工具窗口,
+
+704
+00:30:04,631 --> 00:30:06,364
+grab ourselves a table view controller, and
+抓住自己一个表格视图控制器,
+
+705
+00:30:06,432 --> 00:30:07,465
+put it out here,
+在这里,
+
+706
+00:30:07,533 --> 00:30:08,699
+Here's our table view,
+这是我们的表视图,
+
+707
+00:30:08,768 --> 00:30:11,802
+Of course I wanna set this identity to be this emotions
+当然我想设置这个身份是这个情绪
+
+708
+00:30:11,871 --> 00:30:15,072
+view controller which I can do because I changed it to be
+视图控制器,我能做的,因为我改变了
+
+709
+00:30:15,140 --> 00:30:17,040
+And then, raise it to make it back to being th root
+然后,提高它,让它回到根
+
+710
+00:30:17,041 --> 00:30:18,941
+a table view,
+一个表格视图,
+
+711
+00:30:19,010 --> 00:30:21,577
+view controller of this navigation controller,
+视图控制器导航控制器,
+
+712
+00:30:21,646 --> 00:30:24,613
+Look that up, and remember we had these three segues that
+看了,记得我们有这三个segue
+
+713
+00:30:24,681 --> 00:30:26,981
+would segue from those three separate buttons over here,
+将从这三个独立的按钮,继续
+
+714
+00:30:27,050 --> 00:30:28,483
+Well, I still am gonna need the segue,
+好吧,我还是需要继续,
+
+715
+00:30:28,552 --> 00:30:30,685
+cuz I gotta show the emotion,
+因为我要显示的情感,
+
+716
+00:30:30,754 --> 00:30:33,554
+So, I'm just gonna Ctrl drag over to here, and
+所以,我要Ctrl拖到这里,和
+
+717
+00:30:33,623 --> 00:30:34,554
+create a new segue,
+创建一个新的segue,
+
+718
+00:30:34,623 --> 00:30:37,757
+I'm gonna split through here, so it's gonna be show detail,
+我要通过分裂,所以它会显示细节,
+
+719
+00:30:37,826 --> 00:30:41,160
+And we'll call this one right here, this segue,
+我们叫这个,这segue,
+
+720
+00:30:41,229 --> 00:30:43,096
+How about show emotion?
+显示情绪怎么样?
+
+721
+00:30:43,165 --> 00:30:43,996
+That's what it does, right?
+这就是它的作用,对吧?
+
+722
+00:30:44,065 --> 00:30:47,599
+It shows an emotion when you click on it,
+它显示了一种情感,当你点击它,
+
+723
+00:30:47,668 --> 00:30:50,301
+And, we'll wanna configure this table view,
+我们想要配置这个表格视图,
+
+724
+00:30:50,370 --> 00:30:51,503
+as well right here,
+也在这里,
+
+725
+00:30:51,571 --> 00:30:54,238
+We'll have the cells be just basic,
+我们会有细胞只是基本,
+
+726
+00:30:54,307 --> 00:30:56,307
+One piece of text in there, that's be like happy or
+一段文字,这是快乐或
+
+727
+00:30:56,376 --> 00:30:58,342
+sad, or whatever,
+难过的时候,等等,
+
+728
+00:30:58,411 --> 00:31:00,510
+And we'll have reused identifier would be like
+就像我们要重用标识符
+
+729
+00:31:00,579 --> 00:31:01,845
+emotion cell,
+感情细胞,
+
+730
+00:31:01,913 --> 00:31:03,346
+Let's say,
+比方说,
+
+731
+00:31:03,415 --> 00:31:06,449
+Okay, everybody cool with all that?
+好吧,每个人都很酷吗?
+
+732
+00:31:06,517 --> 00:31:09,117
+Maybe we'll even put the title we have this title if you
+也许我们甚至可以把标题我们有这个标题如果你
+
+733
+00:31:09,186 --> 00:31:13,855
+remember in motions the name of that table right there,
+记得在运动,表的名称,
+
+734
+00:31:13,924 --> 00:31:17,425
+So that's all that we need to do to fix our UI,
+这是我们需要做的一切来修复我们的UI,
+
+735
+00:31:17,494 --> 00:31:20,228
+So, we just need to fix our motions view controller to be
+所以,我们只需要修复我们的动作视图控制器
+
+736
+00:31:20,297 --> 00:31:21,495
+a table view controller now and
+现在一个表格视图控制器
+
+737
+00:31:21,564 --> 00:31:24,364
+set this old, kind of thing that it was before,
+设置这个旧的,之前的事情,
+
+738
+00:31:24,433 --> 00:31:27,134
+So, let's go ahead and fix this navigation first,
+所以,我们先去解决这个导航,
+
+739
+00:31:27,203 --> 00:31:29,970
+Remember in that case we were using the identifier of
+记得在这种情况下我们使用的标识符
+
+740
+00:31:30,038 --> 00:31:32,004
+the segue to figure out whether we were sad,
+segue找出我们是否悲伤,
+
+741
+00:31:32,073 --> 00:31:33,139
+happy or whatever,
+快乐的,
+
+742
+00:31:33,207 --> 00:31:35,440
+In this case we're just gonna look at the row and
+在这种情况下我们要看看行和
+
+743
+00:31:35,509 --> 00:31:39,911
+index it into our nice, new model up here,
+指数为我们好,新模型,
+
+744
+00:31:39,980 --> 00:31:43,048
+So, we can get rid of this let identifier equals identifier,
+所以,我们可以摆脱这个标识符=标识符,
+
+745
+00:31:43,116 --> 00:31:45,849
+And clearly, we're not getting the expression using that
+显然,我们不能使用该表达式
+
+746
+00:31:45,918 --> 00:31:47,118
+dictionary anymore,
+字典了,
+
+747
+00:31:47,186 --> 00:31:49,352
+So, everyone remembers table view?
+所以,每个人都记得表视图?
+
+748
+00:31:49,421 --> 00:31:52,055
+We just wanna get the cell, so we're gonna let the cell equal
+我们只想得到细胞,所以我们要让细胞相等
+
+749
+00:31:52,123 --> 00:31:55,192
+the sender as a UI table view cell,
+发送方UI表视图单元格,
+
+750
+00:31:56,928 --> 00:32:00,329
+And then, we wanna get the index path of that cell so
+然后,我们想要的索引路径细胞
+
+751
+00:32:00,398 --> 00:32:01,163
+we know which row it is,
+我们知道它是哪一行,
+
+752
+00:32:01,232 --> 00:32:03,131
+So, we're gonna say let index path,
+所以,我们会说让索引路径,
+
+753
+00:32:03,199 --> 00:32:05,666
+Equal the table view,
+等于表格视图,
+
+754
+00:32:05,735 --> 00:32:10,138
+Index, path for the cell,
+细胞指数、路径,
+
+755
+00:32:10,206 --> 00:32:13,407
+Okay, so long as we're able to get that indexPath out of
+好吧,只要我们能够得到indexPath走出
+
+756
+00:32:13,475 --> 00:32:15,942
+there, then setting the expression
+在那里,然后设置表达式
+
+757
+00:32:16,011 --> 00:32:18,078
+in our faceViewController is really easy,
+在我们faceViewController真的很容易,
+
+758
+00:32:18,147 --> 00:32:21,247
+It's just going to be our model, emotionalFaces
+这只是我们的模型,emotionalFaces
+
+759
+00:32:21,316 --> 00:32:25,818
+indexPath,row and here, we want the expression, right?
+indexPath,行,在这里,我们想要表达,对吧?
+
+760
+00:32:25,887 --> 00:32:28,820
+We want this part of the tuple,
+我们希望这个元组的一部分,
+
+761
+00:32:28,889 --> 00:32:31,557
+Okay, similarly for saving the title, we're not coming
+好的,同样保存标题,我们不是来了
+
+762
+00:32:31,625 --> 00:32:34,392
+from a button anymore, we're coming from table view row,
+从一个按钮了,我们来自表格视图行,
+
+763
+00:32:34,461 --> 00:32:37,829
+So we want to do the same thing but we want the name,
+所以我们想做同样的事情,但我们希望这个名字,
+
+764
+00:32:37,898 --> 00:32:39,264
+cut to this topol,
+减少这个托
+
+765
+00:32:40,766 --> 00:32:42,165
+Okay, that's all we have to do there,
+好了,这就是我们要做的,
+
+766
+00:32:42,234 --> 00:32:44,034
+that was easy to convert, everybody cool?
+这很容易转换,每个人都很酷?
+
+767
+00:32:45,370 --> 00:32:47,303
+So, now we've got navigation working,
+所以,现在我们有导航工作,
+
+768
+00:32:47,371 --> 00:32:50,205
+What's the most important thing we need to do in a table
+什么是最重要的事情我们需要做一个表
+
+769
+00:32:50,274 --> 00:32:51,339
+view to get it working?
+为了让它工作吗?
+
+770
+00:32:51,408 --> 00:32:56,912
+We need to implement its UITableViewDataSource, right?
+我们需要实现它的需要,对吗?
+
+771
+00:32:58,581 --> 00:33:00,581
+Get the data in the table,
+表中的数据,
+
+772
+00:33:00,650 --> 00:33:03,784
+Super simple on this ca, case we haven't seen numberofrows
+超级简单的ca,我们还没有看到numberofrows
+
+773
+00:33:03,853 --> 00:33:06,987
+and section, that's just going to return
+节,就会返回
+
+774
+00:33:07,056 --> 00:33:10,057
+our emotional faces of their account,
+我们的情感面临他们的账户,
+
+775
+00:33:10,125 --> 00:33:11,958
+However many of these emotional faces that we have
+然而这些情绪面孔
+
+776
+00:33:12,027 --> 00:33:15,328
+up here and then we need cell for row and index path,
+然后我们需要细胞行和索引路径,
+
+777
+00:33:15,396 --> 00:33:19,531
+That's also easy, we'll get the cell by dequeing,
+也很简单,我们会得到双端队列的细胞,
+
+778
+00:33:19,600 --> 00:33:23,001
+dequeueReusableCell(with identifyer,
+dequeueReusableCell(与识别,
+
+779
+00:33:23,070 --> 00:33:27,973
+We called it emotion cell, I think, there's the index class
+我认为我们称之为感情细胞,指数类
+
+780
+00:33:28,041 --> 00:33:31,777
+and we would have the cells text label text equal
+我们会有细胞文本标签文本相等
+
+781
+00:33:31,845 --> 00:33:35,947
+the emotion faces name right index path row,
+情绪面孔的名字正确索引路径行,
+
+782
+00:33:36,016 --> 00:33:39,016
+The name that's the name and puppies are whatever and
+名称和小狗的名字是什么
+
+783
+00:33:39,085 --> 00:33:42,285
+when we return this, so better if we just converge this to
+当我们返回,所以如果我们只是收敛这个更好
+
+784
+00:33:42,354 --> 00:33:45,622
+your table view was easy hope all of you your super familiar
+你的表视图很容易希望你们非常熟悉
+
+785
+00:33:45,690 --> 00:33:46,957
+with table view,
+表视图,
+
+786
+00:33:47,025 --> 00:33:49,625
+After all this so let's go ahead and run and
+毕竟这所以让我们继续和运行
+
+787
+00:33:49,694 --> 00:33:53,062
+make sure that we've got our new upgraded version of
+确保我们有我们的新版本的升级
+
+788
+00:33:53,130 --> 00:33:56,398
+this emotions thing working well, we didn't forget
+这感情的事情工作,我们没有忘记
+
+789
+00:33:56,467 --> 00:33:59,835
+some identifier somewhere or something like that,
+一些标识符之类的地方,
+
+790
+00:34:02,372 --> 00:34:05,339
+Okay, here we go here's our app, here's our three
+好的,我们这里是我们的应用程序,这是我们三人
+
+791
+00:34:05,408 --> 00:34:07,408
+things in our table view, that's looking good so far,
+事情在我们的表视图,看上去不错,
+
+792
+00:34:07,477 --> 00:34:11,311
+Let's click on one that looks sad that looks happy,
+让我们点击一个看起来伤心,看上去很幸福,
+
+793
+00:34:11,380 --> 00:34:14,380
+okay, we've converted our thing nicely, so
+好的,我们转换我们的东西好,所以
+
+794
+00:34:14,449 --> 00:34:16,282
+now we're gonna dive into these segues,
+现在我们要深入这些而已,
+
+795
+00:34:16,351 --> 00:34:19,319
+The first we're gonna do is add a button up here
+首先我们要做的就是添加一个按钮
+
+796
+00:34:19,387 --> 00:34:22,321
+which is gonna do a modal segue to bring up
+要做一个模态segue抚养吗
+
+797
+00:34:22,389 --> 00:34:25,657
+an emotion editing gear controller, something that
+一种情感编辑装置控制器,东西
+
+798
+00:34:25,726 --> 00:34:29,194
+lets us create a new one of these emotions, okay?
+让我们创建一个新的这些情绪,好吗?
+
+799
+00:34:29,263 --> 00:34:31,662
+So it's gonna have to let us specify the name like sad,
+所以要让我们指定名称像悲伤,
+
+800
+00:34:31,731 --> 00:34:32,663
+happy or worried and
+开心还是担心,
+
+801
+00:34:32,732 --> 00:34:34,632
+this is gonna have to list best by the mouth and
+这是要最好的嘴和列表
+
+802
+00:34:34,700 --> 00:34:36,333
+the eyes, okay?
+眼睛,好吗?
+
+803
+00:34:36,402 --> 00:34:38,569
+And that's all it's gonna do, all right,
+它会做的,好吧,
+
+804
+00:34:38,637 --> 00:34:40,537
+so, how do we do that?
+那么,我们如何做呢?
+
+805
+00:34:40,606 --> 00:34:45,808
+Let's go back to our story board and
+让我们回到我们的故事板
+
+806
+00:34:45,876 --> 00:34:48,911
+we need to drag out the story board that is going to be
+我们需要拖出的故事板
+
+807
+00:34:48,980 --> 00:34:52,547
+this mo- modal view controller,
+这莫-模态视图控制器,
+
+808
+00:34:52,616 --> 00:34:53,548
+didn't get a chance to do this earlier in the quarter,
+没有得到一个机会来做这个季度早些时候,
+
+809
+00:34:53,549 --> 00:34:54,481
+Just because I
+只是因为我
+
+810
+00:34:54,551 --> 00:34:58,352
+I'm gonna make the UI for this thing be a static table view,
+我要让这个UI是一个静态的表视图,
+
+811
+00:34:58,421 --> 00:35:00,120
+Right, we've done dynamic table views, but
+对的,我们所做的动态表视图,但是
+
+812
+00:35:00,189 --> 00:35:01,121
+we haven't done a static one,
+我们没有做一个静态的,
+
+813
+00:35:01,190 --> 00:35:02,222
+So, let's go ahead and do a static one, so
+让我们来做一个静态的,所以
+
+814
+00:35:02,291 --> 00:35:03,757
+I'm gonna drag out a table view,
+我要拖出一个表格视图,
+
+815
+00:35:03,825 --> 00:35:07,994
+Here it is, right here and, I'm going to make it static,
+在这里,在这里,我要让它静止,
+
+816
+00:35:08,062 --> 00:35:10,495
+so I'm gonna click on the table view in here, and
+所以我要在这里点击表格视图,和
+
+817
+00:35:10,564 --> 00:35:15,000
+change it from being content dynamic to content static,
+改变它的内容动态内容静态,
+
+818
+00:35:15,069 --> 00:35:17,603
+By the way, didn't I really talk about this, I should of,
+顺便说一下,我真的没有谈这个,我应该的,
+
+819
+00:35:17,671 --> 00:35:18,603
+I suppose,
+我想,
+
+820
+00:35:18,672 --> 00:35:22,373
+But, how do you define how many rows there are in
+但是,你如何定义中有多少行
+
+821
+00:35:22,441 --> 00:35:24,075
+a static table, okay?
+一个静态表,好吗?
+
+822
+00:35:24,143 --> 00:35:27,478
+You're gonna hold control shift and click on the table,
+你要保持控制转变,点击表,
+
+823
+00:35:27,546 --> 00:35:30,814
+so that you can drill down to what you want,
+这样你就可以钻到你想要的,
+
+824
+00:35:30,883 --> 00:35:31,982
+You don't want the controller,
+你不想要的控制器,
+
+825
+00:35:32,050 --> 00:35:34,984
+you don't want the table view, you want the section okay,
+你不想要的表视图,你想要的部分好了,
+
+826
+00:35:35,053 --> 00:35:38,221
+because, in a static table you could have multiple sections,
+因为,在静态表可以有多个部分,
+
+827
+00:35:38,289 --> 00:35:40,355
+You wanna be able to edit a certain section,
+你想编辑一个特定的部分,
+
+828
+00:35:40,424 --> 00:35:42,558
+you click on that, now it's selected,
+你点击,现在是选择,
+
+829
+00:35:42,626 --> 00:35:44,459
+And so in the Inspector Table View section,
+所以在检查员表视图部分,
+
+830
+00:35:44,527 --> 00:35:47,895
+you see rows, and I can change this to be 4 rows,
+你看行,和我可以改变这是4行,
+
+831
+00:35:47,964 --> 00:35:49,563
+Now, why do I need 4 rows?
+为什么我需要4行吗?
+
+832
+00:35:49,632 --> 00:35:53,000
+Well, I need the name, I need the eyes, I need the mouth and
+好了,我需要这个名字,我需要眼睛,嘴,我需要
+
+833
+00:35:53,068 --> 00:35:55,569
+also I'm gonna have one row which is a a preview of what
+我要还一行的预览
+
+834
+00:35:55,637 --> 00:35:57,704
+the face is gonna look like, okay?
+面对会看起来像,好吗?
+
+835
+00:35:57,773 --> 00:36:00,239
+So as you can see, as you're choosing your eyes and mouth,
+所以你可以看到,当你选择你的眼睛和嘴巴,
+
+836
+00:36:00,308 --> 00:36:01,640
+what you are actually doing, so
+你是做什么,所以
+
+837
+00:36:01,709 --> 00:36:03,008
+that's why you need four rows,
+这就是为什么你需要四行,
+
+838
+00:36:03,077 --> 00:36:04,542
+You can also put headers and footers in here, but
+你也可以把页眉和页脚,但是
+
+839
+00:36:04,611 --> 00:36:06,077
+I actually am going to leave this in plain style,
+我要离开这个朴素的风格,
+
+840
+00:36:06,146 --> 00:36:08,546
+And not have any headers and footers cuz they kind of,
+并没有因为他们的设置页眉和页脚时,
+
+841
+00:36:08,615 --> 00:36:10,414
+doesn't need any headers and footers,
+不需要任何页眉和页脚,
+
+842
+00:36:10,483 --> 00:36:13,517
+All these four rows go together,
+所有这四个行混合在一起,
+
+843
+00:36:13,585 --> 00:36:17,888
+Okay, so we don't need to do that, we of course are going
+好的,我们不需要这样做,我们当然会
+
+844
+00:36:17,957 --> 00:36:22,726
+to need a subclass of UI table view controller
+需要一个子类的UI表格视图控制器
+
+845
+00:36:22,794 --> 00:36:25,595
+to control this MVC, so let's go ahead and create that,
+控制这个MVC,所以让我们继续和创造,
+
+846
+00:36:29,834 --> 00:36:32,134
+The subclass of UI Tableview controller,
+的子类uitableview控制器,
+
+847
+00:36:32,203 --> 00:36:34,136
+Now this is an interesting naming thing,
+现在这是一个有趣的命名,
+
+848
+00:36:34,204 --> 00:36:36,237
+right here, I'm gonna call this my
+在这里,我要打电话给我
+
+849
+00:36:36,306 --> 00:36:38,773
+ExpressionEditorViewControl- ler,
+ExpressionEditorViewControl - l,
+
+850
+00:36:39,743 --> 00:36:42,042
+Notice I'm not calling it my
+注意到我不叫它
+
+851
+00:36:42,111 --> 00:36:44,310
+ExpressionEditorTableViewCont- roller,
+ExpressionEditorTableViewCont辊,
+
+852
+00:36:44,379 --> 00:36:47,513
+This is purely and art of programming thing I tend to
+这是我倾向于纯粹的编程和艺术的事情
+
+853
+00:36:47,582 --> 00:36:53,018
+not name my static table views with the word table in there,
+不是名字我的静态表视图与词表,
+
+854
+00:36:53,087 --> 00:36:55,687
+And the reason for that is I'm mostly using static table here
+原因是我主要使用静态表
+
+855
+00:36:55,756 --> 00:36:57,923
+just to help me layout the UI,
+只是为了帮助我UI布局,
+
+856
+00:36:57,991 --> 00:37:00,826
+I'm not using it's table viewness very much,
+我不使用它的表viewness很多,
+
+857
+00:37:00,895 --> 00:37:03,861
+Okay, like I would to be with dynamic rose so,
+好的,我将与动态增长,
+
+858
+00:37:03,930 --> 00:37:05,696
+I tend to not but the word table it's up to you,
+我倾向于不但是一词表由你决定,
+
+859
+00:37:05,765 --> 00:37:07,931
+You can certainly called a expression editor table view
+你当然可以称为表达式编辑器表视图
+
+860
+00:37:08,000 --> 00:37:09,099
+if you wanted
+如果你想要
+
+861
+00:37:09,168 --> 00:37:11,535
+I like my expression editor view controller but do you
+我喜欢我的表达式编辑器视图控制器但你
+
+862
+00:37:11,604 --> 00:37:13,469
+understand why I'm calling expression editor, right?
+明白为什么我打电话表达式编辑器,对吗?
+
+863
+00:37:13,538 --> 00:37:15,437
+Because it's going to edit an expression,
+因为它会编辑一个表达式,
+
+864
+00:37:15,506 --> 00:37:16,839
+a facial expression here,
+一个表情,
+
+865
+00:37:16,908 --> 00:37:18,206
+We'll put it in the same place,
+我们会把它放在同一个地方,
+
+866
+00:37:18,275 --> 00:37:21,343
+we'd put everything else, here it is,
+在这里,我们要把一切
+
+867
+00:37:21,412 --> 00:37:25,113
+I'm gonna clean out all this stuff right here,
+我要清理这些东西在这里,
+
+868
+00:37:25,181 --> 00:37:28,449
+I don't need any of this, table view data source stuff,
+我不需要任何的表视图数据源的东西,
+
+869
+00:37:28,518 --> 00:37:30,117
+because this is a static cell,
+因为这是一个静态的细胞,
+
+870
+00:37:30,186 --> 00:37:33,220
+I'm not gonna allow deletion, or anything like that,
+我不会允许删除,或类似的东西,
+
+871
+00:37:33,289 --> 00:37:35,989
+we're not gonna be Doing navigation out of it, so
+我们不会做导航,
+
+872
+00:37:36,058 --> 00:37:38,458
+we have this nice empty expression editor,
+我们有一个好的空表达式编辑器,
+
+873
+00:37:38,527 --> 00:37:42,094
+And let's make sure that in our story board that we go and
+我们确保我们的故事板,我们去
+
+874
+00:37:42,163 --> 00:37:45,531
+change the identity of this guy to be this expression
+改变这个人的身份是这个表达式
+
+875
+00:37:45,599 --> 00:37:49,168
+editor otherwise won't be able to wire up any outlets or
+否则无法编辑任何媒体或线
+
+876
+00:37:49,236 --> 00:37:50,803
+any things like that,
+任何类似的东西,
+
+877
+00:37:52,372 --> 00:37:55,673
+Okay, let's start, before we build our UI for
+好的,让我们开始,在我们构建UI
+
+878
+00:37:55,742 --> 00:37:58,309
+this, let's just put a cancel button in here and
+这一点,我们就把这里和取消按钮
+
+879
+00:37:58,377 --> 00:38:01,278
+get this modal segue going, so let's do the modal segue,
+得到这个模态segue,让我们来做模态segue,
+
+880
+00:38:01,346 --> 00:38:04,414
+We're gonna modal segue from this emotions,
+我们将模态segue从这个情绪,
+
+881
+00:38:04,483 --> 00:38:06,283
+this is where all our emotions are, sad, happy, etc,
+这就是我们所有的情感,悲伤,快乐,等等,
+
+882
+00:38:06,351 --> 00:38:08,818
+I'm gonna put a little bar button item in there, so
+我要写一个小栏按钮项目,
+
+883
+00:38:08,887 --> 00:38:11,486
+I'm gonna search for bar button item there it is,
+我要搜索栏按钮项目就是这样,
+
+884
+00:38:11,555 --> 00:38:13,388
+I'm gonna drag it up here,
+我要拖在这里,
+
+885
+00:38:13,457 --> 00:38:17,091
+When I inspect it, there's actually some pre-canned bar
+当我检查它,实际上有一些预定义的酒吧
+
+886
+00:38:17,160 --> 00:38:20,027
+button items for common things you want to do like add,
+按钮项目等常见的事情你想做添加,
+
+887
+00:38:20,096 --> 00:38:21,328
+which is what we're gonna do,
+这是我们要做的,
+
+888
+00:38:21,397 --> 00:38:24,432
+cancel, redo, all these things,
+取消,重做,所有这些东西,
+
+889
+00:38:24,500 --> 00:38:26,967
+You can pick these and they'll have standard icon,
+你可以选择这些,他们会有标准图标,
+
+890
+00:38:27,036 --> 00:38:30,104
+standard words and So in here we are adding an emotion so
+标准字在我们添加一个情感
+
+891
+00:38:30,172 --> 00:38:32,239
+I'm gonna hit add, happens to be a plus sign,
+点击添加,恰好是一个加号,
+
+892
+00:38:32,307 --> 00:38:35,842
+And I'm just going to ctrl drag from that to my new
+和我要ctrl拖到我的新
+
+893
+00:38:35,911 --> 00:38:38,544
+editing view controller and I'm not gonna do show or
+编辑视图控制器和显示或我不会做
+
+894
+00:38:38,613 --> 00:38:42,080
+show detail, I'm gonna do present modally,
+模式地展示细节,现在我要做的,
+
+895
+00:38:42,149 --> 00:38:44,649
+Okay that's going to take over the whole screen and
+好,这是要接管整个屏幕
+
+896
+00:38:44,718 --> 00:38:46,184
+put this MBC up and
+把这个MBC起来
+
+897
+00:38:46,252 --> 00:38:50,655
+allow me to add a new emotion or whatever in here,
+请允许我在这里添加一个新的情感之类的,
+
+898
+00:38:51,991 --> 00:38:54,257
+Now, how do we get out of this?
+现在,我们怎么出去呢?
+
+899
+00:38:54,326 --> 00:38:58,027
+If either run this right now, we'll see that it
+如果现在运行这个,我们会看到它
+
+900
+00:38:58,096 --> 00:39:01,964
+works in a manner of speaking but it really kind of kills my
+在说话的口气,但真的杀了我的
+
+901
+00:39:02,033 --> 00:39:04,734
+whole app, my app would be dead it seems like do that,
+整个应用程序,应用程序就死了似乎这样做,
+
+902
+00:39:04,802 --> 00:39:07,036
+let's go here this is working fine,
+我们去这里工作正常,
+
+903
+00:39:07,104 --> 00:39:12,074
+I click on this plus, this thing comes up, I'm dead now,
+我点击这个加上,这个东西,我现在死了,
+
+904
+00:39:12,142 --> 00:39:14,209
+There's nothing I can do, I can't get out of here,
+没有什么我能做的,我不能离开这里,
+
+905
+00:39:14,278 --> 00:39:15,410
+This has taken over my app and
+这占据了我的应用程序
+
+906
+00:39:15,478 --> 00:39:18,245
+I haven't provided any way to get out of it, okay?
+我没有提供任何方法,好吗?
+
+907
+00:39:18,314 --> 00:39:20,147
+So let's start by adding a cancel button,
+通过添加一个取消按钮,开始
+
+908
+00:39:20,216 --> 00:39:22,482
+we're just gonna make it so we can cancel out of this,
+我们要让它我们可以消掉了,
+
+909
+00:39:22,551 --> 00:39:25,085
+I'm gonna put it as a bar button item in a navigation
+我要把它作为一个导航栏按钮项目
+
+910
+00:39:25,153 --> 00:39:26,753
+controller so I'm gonna pick this thing and
+所以我要拿这事和控制器
+
+911
+00:39:26,821 --> 00:39:29,823
+say embed in navigation controller,
+说嵌入在导航控制器,
+
+912
+00:39:32,894 --> 00:39:34,960
+Okay, so I put this in the navigation controller, so
+好的,我把这个导航控制器,所以
+
+913
+00:39:35,029 --> 00:39:37,428
+now I can put up on top of here a cancel button,
+现在我可以把这一个取消按钮,
+
+914
+00:39:37,497 --> 00:39:38,529
+I'm going to put it on the left,
+我打算把它放在左边,
+
+915
+00:39:38,598 --> 00:39:40,631
+it's another bar button item,
+这是另一个工具栏按钮,
+
+916
+00:39:40,700 --> 00:39:45,235
+There happens to be a standard one for that as well; cancel
+碰巧有一个标准的,取消
+
+917
+00:39:45,304 --> 00:39:47,671
+and how do I make this cancel button work?
+我怎么把这个取消按钮的工作吗?
+
+918
+00:39:47,740 --> 00:39:49,339
+How do I make it actually cancel?
+我怎么让它真的取消吗?
+
+919
+00:39:49,408 --> 00:39:52,275
+Well, this is where I do the dismiss, so, let's wire
+嗯,这就是我认为,所以,让我们电线
+
+920
+00:39:52,344 --> 00:39:56,813
+this up, target action to a method that does the dismiss,
+这个,目标操作方法,驳回,
+
+921
+00:39:56,882 --> 00:39:58,280
+So, let's go into automatic mode, here,
+所以,让我们进入自动模式,在这里,
+
+922
+00:39:58,349 --> 00:40:00,649
+we've got our new expression editor view controller,
+我们有我们的新表达式编辑器视图控制器,
+
+923
+00:40:00,717 --> 00:40:04,519
+I'm gonna control drag from the cancel button over here,
+我要控制拖的取消按钮,
+
+924
+00:40:04,588 --> 00:40:06,488
+Do an action okay, borrow but
+做一个行动好了,借但吗
+
+925
+00:40:06,556 --> 00:40:10,391
+an items in the argument and I'm gonna call this cancel,
+一个项目的参数,我将称之为取消,
+
+926
+00:40:10,460 --> 00:40:12,460
+Of course, and it's going to cancel,
+当然,它将取消,
+
+927
+00:40:12,529 --> 00:40:14,261
+And in here, I need to dismiss,
+在这里,我需要解散,
+
+928
+00:40:14,329 --> 00:40:17,230
+But remember, I can't send dismiss to myself, dismiss is
+但请记住,我不能发送解雇自己,解散
+
+929
+00:40:17,299 --> 00:40:19,666
+a view controller thing but I can't dismiss myself,
+一个视图控制器的事但是我不能把我自己,
+
+930
+00:40:19,735 --> 00:40:23,436
+I have to send it to my presenting view controller,
+我必须寄给我展示视图控制器,
+
+931
+00:40:23,504 --> 00:40:25,938
+So all view controllers know who presented them, if any,
+所以所有视图控制器知道谁提出,如果有的话,
+
+932
+00:40:26,006 --> 00:40:27,206
+It could be nil, okay,
+它可以是零,
+
+933
+00:40:27,274 --> 00:40:30,075
+you might not have been presented by another one,
+你可能没有被另一个了,
+
+934
+00:40:30,143 --> 00:40:31,809
+I'm just gonna ask my presenting view controller,
+我要问一下我的展示视图控制器,
+
+935
+00:40:31,878 --> 00:40:36,481
+please dismiss whoever you've presented, which is me,
+请把谁你了,这就是我,
+
+936
+00:40:36,550 --> 00:40:38,649
+And yes, please do it animated,
+是的,请做动画,
+
+937
+00:40:38,718 --> 00:40:42,019
+And I don't need to find out when it's finished dismissing,
+我不需要找到解雇,当它完成的时候,
+
+938
+00:40:42,088 --> 00:40:43,153
+so I'll just leave that off,
+所以我就离开了,
+
+939
+00:40:45,290 --> 00:40:46,773
+So now, if we run and we go here and hit the plus,
+现在,如果我们运行我们去这里,点击+,
+
+940
+00:40:46,774 --> 00:40:48,257
+Okay?
+好吧?
+
+941
+00:40:48,326 --> 00:40:50,292
+comes up here is our table view,
+这是我们的表视图,
+
+942
+00:40:50,361 --> 00:40:51,960
+We haven't done a UI yet but
+我们没有做一个UI,但
+
+943
+00:40:52,028 --> 00:40:55,063
+if we cancel we goes back into dismisses us, okay?
+如果我们取消回到驳斥了我们,好吗?
+
+944
+00:40:55,132 --> 00:40:56,564
+So we're in good shape,
+所以我们的身体状况很好,
+
+945
+00:40:56,632 --> 00:40:58,866
+So now let's go ahead and do RUY,
+现在让我们继续做标本馆,
+
+946
+00:40:58,935 --> 00:41:02,303
+let's go back to our storyboard here,
+让我们回到故事板,
+
+947
+00:41:02,371 --> 00:41:05,872
+And add RUI for these four things, again we want the name
+又为这四个东西添加鲁伊,我们希望这个名字
+
+948
+00:41:05,941 --> 00:41:09,209
+like sad happy whatever, we want a little preview face,
+像悲伤快乐,我们想要一个小的预览的脸,
+
+949
+00:41:09,278 --> 00:41:11,077
+and then we want the eyes and the mouth,
+然后我们希望眼睛和嘴巴,
+
+950
+00:41:11,146 --> 00:41:13,378
+So I'm just gonna start dragging this stuff out and
+所以我要开始拖动这个东西出去
+
+951
+00:41:13,447 --> 00:41:16,215
+we'll start working on making it look good over time,
+我们会努力让它随着时间的推移,看起来很不错
+
+952
+00:41:16,284 --> 00:41:19,184
+So for the name obviously I'll need a text field so
+所以对于这个名字显然我需要一个文本字段
+
+953
+00:41:19,253 --> 00:41:21,986
+I'm just gonna drag that out and notice all these cells
+我要拖出去,注意到所有这些细胞
+
+954
+00:41:22,055 --> 00:41:24,488
+are of type if you look at the cell types here,
+如果你看一下类型的细胞类型,
+
+955
+00:41:24,557 --> 00:41:25,522
+they're all custom cells,
+他们都是定制的细胞,
+
+956
+00:41:25,591 --> 00:41:28,392
+Because I'm gonna be putting custom UI in each of them,
+因为我要把定制的UI,
+
+957
+00:41:28,461 --> 00:41:29,927
+We're gonna configure that in a second,
+我们会在第二个配置,
+
+958
+00:41:31,230 --> 00:41:37,633
+What about here in our little face view thing,
+在我们的小脸视图的事情呢,
+
+959
+00:41:37,702 --> 00:41:39,235
+What are we gonna do to show our face?
+我们要做些什么来展示我们的脸?
+
+960
+00:41:39,303 --> 00:41:44,906
+Well, I'm gonna start by doing a face view ui view,
+好吧,我要先做一个视图界面视图,
+
+961
+00:41:44,975 --> 00:41:46,875
+Yeah, let's put a generic UI view in here,
+是的,我们把一个通用的用户界面视图,
+
+962
+00:41:46,943 --> 00:41:51,279
+I'll even put some nice auto layout in here on this one,
+我甚至会把一些不错的自动布局在这里,
+
+963
+00:41:53,183 --> 00:41:53,915
+is that it, yeah,
+是,是的,
+
+964
+00:41:53,983 --> 00:41:57,017
+and we'll do reset to suggested constraints,
+我们会做重置建议限制,
+
+965
+00:41:57,086 --> 00:41:59,052
+check out constraints to make sure it looks good,
+检查约束以确保它看起来不错,
+
+966
+00:41:59,121 --> 00:42:00,320
+Yeah, that looks good to me,
+是的,看起来不错,
+
+967
+00:42:00,388 --> 00:42:03,389
+We'll inspect the identify and make it be a face view so
+我们将检查识别并使它成为一个脸视图
+
+968
+00:42:03,458 --> 00:42:04,924
+we get a nice face in there,
+我们得到一个漂亮的脸,
+
+969
+00:42:04,992 --> 00:42:06,191
+So that's a good face,
+所以这是一个很好的脸,
+
+970
+00:42:06,260 --> 00:42:07,325
+So we have text field face,
+所以我们有文本字段的脸,
+
+971
+00:42:07,394 --> 00:42:09,294
+What about for eyes and mouth?
+对眼睛和嘴呢?
+
+972
+00:42:09,363 --> 00:42:11,463
+How are we gonna set our eyes and mouth?
+我们要如何设置我们的眼睛和嘴吗?
+
+973
+00:42:11,531 --> 00:42:13,263
+I'm gonna use something that something that
+我要用的东西
+
+974
+00:42:13,332 --> 00:42:16,733
+I haven't shown you yet, which is a segmented control,
+我还没有向你展示,这是一个分段控制,
+
+975
+00:42:16,802 --> 00:42:19,269
+So segmented control looks like this,
+所以分段控制是这样的,
+
+976
+00:42:19,337 --> 00:42:22,572
+Okay, we'll drag one in here, drag one in here as well,
+好的,我们将在这里,拖着拖着在这里,
+
+977
+00:42:22,640 --> 00:42:25,240
+And a segmented control lets you choose from a number of
+和分段控制允许您选择的
+
+978
+00:42:25,309 --> 00:42:28,044
+items up to maybe four or five like a fixed number of items,
+物品,也许四个或五个像固定数量的项目,
+
+979
+00:42:28,112 --> 00:42:29,311
+So that's perfect for our eyes and
+这是对我们的眼睛和完美
+
+980
+00:42:29,380 --> 00:42:31,746
+mouth cuz we have three kinds of eyes positions and
+口因为我们有三种位置和眼睛
+
+981
+00:42:31,815 --> 00:42:33,315
+five kinds of, of mouth,
+五种,嘴,
+
+982
+00:42:33,383 --> 00:42:34,915
+And when you inspect it right here,
+当你检查在这里,
+
+983
+00:42:34,984 --> 00:42:36,984
+you can say how many different choices you want,
+你可以说多少种不同的选择你想要的,
+
+984
+00:42:37,053 --> 00:42:40,854
+So for eyes we want three segments, and here for
+所以对于眼睛我们要三个部分,并在这里
+
+985
+00:42:40,923 --> 00:42:42,156
+the mouth we're gonna need five,
+口我们需要5个,
+
+986
+00:42:43,391 --> 00:42:44,590
+Okay, right frown, smile,
+好的,正确的皱眉,微笑,
+
+987
+00:42:44,659 --> 00:42:46,292
+smirk, grin, neutral, whatever,
+假笑,笑容,中性的,无论如何,
+
+988
+00:42:47,995 --> 00:42:48,993
+And then you can just edit these,
+然后你可以编辑这些,
+
+989
+00:42:49,062 --> 00:42:49,994
+you just double-click on them,
+你只要双击,
+
+990
+00:42:50,063 --> 00:42:55,299
+So here let's say eyes open here we'll say eyes closed
+我们这里假设眼睛睁开闭上眼睛
+
+991
+00:42:55,368 --> 00:43:00,337
+and, of course, our favorite one which is squinting,
+当然,我们最喜欢的一个是眯着眼,
+
+992
+00:43:00,406 --> 00:43:07,511
+And then down here we'll have frown and
+然后下面我们会皱眉
+
+993
+00:43:07,580 --> 00:43:13,616
+smirk and oops sorry, neutral,
+假笑,哦对不起,中性,
+
+994
+00:43:13,685 --> 00:43:18,021
+And what to grin I think,
+笑我想什么,
+
+995
+00:43:18,090 --> 00:43:21,424
+then we add smile,
+然后加入微笑,
+
+996
+00:43:21,493 --> 00:43:22,791
+Okay, so there's our UI,
+好,这是我们的UI,
+
+997
+00:43:22,860 --> 00:43:25,093
+So we want to make some of these things look a little
+所以我们要做一些这些东西看起来有点
+
+998
+00:43:25,162 --> 00:43:27,529
+better like this text field right here there's quite a few
+好喜欢这里的文本字段有不少
+
+999
+00:43:27,597 --> 00:43:29,131
+things we want to set about this text field,
+我们要设置文本框,
+
+1000
+00:43:29,199 --> 00:43:31,666
+One thing is we really don't need a little border,
+有一件事是我们真的不需要一个小的边界,
+
+1001
+00:43:31,734 --> 00:43:34,001
+I zoom way in so you can see here,
+我在这里你可以看到放大的方式,
+
+1002
+00:43:34,070 --> 00:43:36,236
+We don't really need this border around,
+我们真的不需要这个边界,
+
+1003
+00:43:36,305 --> 00:43:37,871
+It's in a text field row, so
+在一个文本字段行,所以
+
+1004
+00:43:37,940 --> 00:43:39,505
+that's kind of it's own border,
+这是它自己的边界,
+
+1005
+00:43:39,574 --> 00:43:42,008
+So we're gonna go down here and say border off so
+所以我们要在这里说边境了
+
+1006
+00:43:42,077 --> 00:43:43,342
+it's not gonna have any border,
+它不会有任何边界,
+
+1007
+00:43:43,411 --> 00:43:45,210
+Also I want the font to be quite a bit larger,
+我也想要的字体有点大,
+
+1008
+00:43:45,279 --> 00:43:47,712
+let's say 24 point would be good,
+假设24点就好了,
+
+1009
+00:43:47,781 --> 00:43:49,881
+We'll have it be centered, the text will be centered,
+我们会为中心,文本为中心,
+
+1010
+00:43:49,950 --> 00:43:53,617
+There's no reason to have it left or right aligned,
+没有理由让它向左或向右对齐,
+
+1011
+00:43:53,686 --> 00:43:55,620
+Let's use place holder text, that's really cool,
+让我们使用占位符文本,这是很酷的,
+
+1012
+00:43:55,688 --> 00:43:58,789
+I'm gonna put name in here as the Placeholder text,
+我要把名字在这里作为占位符文本,
+
+1013
+00:43:58,858 --> 00:44:01,791
+That way I don't need to label on the left that says name,
+这样我不需要标签左边说名字,
+
+1014
+00:44:01,860 --> 00:44:02,926
+this is the name of this emotion,
+这是这种情绪的名字,
+
+1015
+00:44:02,995 --> 00:44:04,226
+I'll just put this placeholder there,
+我就把这个占位符,
+
+1016
+00:44:04,295 --> 00:44:05,495
+it'll be obvious to users,
+这将是明显的用户,
+
+1017
+00:44:05,563 --> 00:44:06,462
+That's the name,
+的名字,
+
+1018
+00:44:06,530 --> 00:44:09,865
+And so they'll just click there, and start typing,
+所以他们会点击,开始打字,
+
+1019
+00:44:09,934 --> 00:44:12,267
+And, also, for the keyboard,
+同时,键盘,
+
+1020
+00:44:12,335 --> 00:44:15,403
+I'm gonna have it autocapitalize every word,
+我要把它autocapitalize每一个字,
+
+1021
+00:44:15,472 --> 00:44:19,273
+So that if you say sad it will be capital S-A-D,
+所以,如果你说伤心资本S-A-D,
+
+1022
+00:44:19,341 --> 00:44:21,909
+It will just look nicer in my other table I think,
+它将看起来更好的在我的其他表我认为,
+
+1023
+00:44:21,977 --> 00:44:24,611
+And then finally, what about the auto layout here?
+最后,这里的自动布局呢?
+
+1024
+00:44:24,680 --> 00:44:25,845
+Where do we want this to appear?
+我们希望这个出现在哪里?
+
+1025
+00:44:25,914 --> 00:44:29,215
+Well I think we just want this thing to be centered in
+我认为我们只是想要集中在这件事
+
+1026
+00:44:29,284 --> 00:44:32,651
+there so I am going to pick centered horizontally and
+所以我要选择集中水平和
+
+1027
+00:44:32,720 --> 00:44:36,388
+centered vertically I just control dragged to this row,
+我只是控制拖这一行,居中
+
+1028
+00:44:36,457 --> 00:44:37,923
+And so, that's good enough,
+所以,这是足够好,
+
+1029
+00:44:37,991 --> 00:44:39,791
+You notice that it's yellow, right?
+你注意到它是黄色的,对吗?
+
+1030
+00:44:39,860 --> 00:44:40,491
+Why is it yellow?
+为什么是黄色的吗?
+
+1031
+00:44:40,560 --> 00:44:43,527
+Because my constraints don't match what's on screen,
+因为我的约束不匹配在屏幕上,
+
+1032
+00:44:43,596 --> 00:44:45,996
+So, I can fix that in my document outline,
+所以,我可以解决,在我的文档大纲,
+
+1033
+00:44:46,065 --> 00:44:47,563
+Indeed, here's that yellow,
+事实上,这是黄色的,
+
+1034
+00:44:47,632 --> 00:44:50,833
+I go up here, I click on this, I'll use update frames here to
+我去这里,我点击这个,我将使用更新帧来
+
+1035
+00:44:50,902 --> 00:44:53,536
+misplace it and moves name into the right spot,
+放错地方的名字移到正确的位置,
+
+1036
+00:44:54,939 --> 00:44:57,239
+Okay, we already have our auto layout and everything for
+好的,我们已经有我们的自动布局和一切
+
+1037
+00:44:57,308 --> 00:44:57,872
+the face view,
+面对视图,
+
+1038
+00:44:57,941 --> 00:44:59,507
+How about this guy down here?
+下面这个人怎么样?
+
+1039
+00:44:59,576 --> 00:45:02,409
+Let's us zoom in again and look,
+让我们再次放大,看,
+
+1040
+00:45:02,478 --> 00:45:06,513
+What I'm actually going to put another constraint on here to
+我要把另一个约束在这里
+
+1041
+00:45:06,582 --> 00:45:10,050
+show you a little more sophisticated constraints,
+给你一个更复杂的约束,
+
+1042
+00:45:10,118 --> 00:45:13,087
+which is do I ever want to allow this to spill of
+这是我想要让这个泄漏的
+
+1043
+00:45:13,155 --> 00:45:16,890
+the edges?
+边吗?
+
+1044
+00:45:16,958 --> 00:45:20,260
+ta-table view so narrow that it wouldn't even fit these?
+表格中视图非常狭窄,甚至不适合这些吗?
+
+1045
+00:45:21,495 --> 00:45:22,394
+And the answer is no way,
+答案是否定的,
+
+1046
+00:45:22,463 --> 00:45:25,631
+I would never want the table view to be that narrow,
+我永远不会想要表视图,狭窄,
+
+1047
+00:45:25,699 --> 00:45:27,699
+I always want it to be wide enough to at least fit
+我总是想要宽至少足够健康
+
+1048
+00:45:27,768 --> 00:45:28,900
+all these buttons,
+所有这些按钮,
+
+1049
+00:45:28,968 --> 00:45:32,502
+So I'm gonna CTRL + drag from this right edge
+所以我要从这右边缘CTRL +拖
+
+1050
+00:45:32,571 --> 00:45:35,138
+over to this to do the trailing space,
+在这个落后于空间,
+
+1051
+00:45:35,207 --> 00:45:37,541
+Okay, So great to this eye beam
+好的,所以这只眼睛光束
+
+1052
+00:45:37,610 --> 00:45:40,009
+right here that you're very similar with,
+在这里,与你很相似,
+
+1053
+00:45:40,078 --> 00:45:41,944
+We can click on it,
+我们可以点击它,
+
+1054
+00:45:42,013 --> 00:45:42,978
+Where is it? There it is,
+在哪里?
+
+1055
+00:45:43,047 --> 00:45:46,448
+But I don't actually want it to be 75,
+但我不希望它是75年,
+
+1056
+00:45:46,517 --> 00:45:49,817
+I want it to be zero, all the way over the edge,
+我希望它是零,边缘,
+
+1057
+00:45:49,886 --> 00:45:53,021
+But I don't actually don't want it to be equal to zero,
+但实际上我不不想让它等于零,
+
+1058
+00:45:53,090 --> 00:45:55,256
+Because then that means that edge is always gonna be pinned
+因为那意味着边缘总是会固定
+
+1059
+00:45:55,325 --> 00:46:00,094
+over there and that's gonna stretch my control out and
+那边要伸展我的控制
+
+1060
+00:46:00,163 --> 00:46:03,097
+I do want the secondary control to be, you know,
+我想要二次控制,你知道,
+
+1061
+00:46:03,165 --> 00:46:06,166
+fit into its text, but I don't wanna be stuck over here,
+适合它的文本,但我不想被困在这里,
+
+1062
+00:46:06,235 --> 00:46:09,168
+So what I'm gonna do is make it to be greater than or
+所以我要做的是让它大于或
+
+1063
+00:46:09,237 --> 00:46:10,637
+equal to zero,
+等于零,
+
+1064
+00:46:10,705 --> 00:46:12,772
+So we have not seen this kind of constraint,
+所以我们没有见过这样的约束,
+
+1065
+00:46:12,841 --> 00:46:14,973
+where you're not setting it equal to something,
+你没有设置它等于,
+
+1066
+00:46:15,042 --> 00:46:17,008
+you're setting it greater than equal,
+你设置大于等于,
+
+1067
+00:46:17,077 --> 00:46:18,576
+what I'm saying is, the distance between this edge and
+我想说的是,这条边之间的距离和
+
+1068
+00:46:18,577 --> 00:46:20,076
+And that's what,
+这就是,
+
+1069
+00:46:20,146 --> 00:46:22,914
+right here must be at least zero, so
+这里必须至少为零,所以
+
+1070
+00:46:22,982 --> 00:46:25,115
+it can't be negative, it can't have pushed off the edge,
+它不能是负数,它不能使边缘,
+
+1071
+00:46:25,184 --> 00:46:26,015
+You see that?
+你看到了吗?
+
+1072
+00:46:26,084 --> 00:46:29,018
+That's gonna keep my table view big enough, to do this,
+会让我的表视图足够大,要做到这一点,
+
+1073
+00:46:29,087 --> 00:46:30,186
+And now, of course,
+现在,当然,
+
+1074
+00:46:30,255 --> 00:46:32,989
+I need to do the same thing on the other side of this,
+我需要做同样的事情的另一面,
+
+1075
+00:46:33,058 --> 00:46:35,457
+I'll Ctrl+drag over here, leading space,
+我会按Ctrl +拖在这里,空间,
+
+1076
+00:46:35,525 --> 00:46:39,795
+And we'll click on this one and we'll say 0 as well, and
+我们点击这个,我们说0,
+
+1077
+00:46:39,864 --> 00:46:41,462
+we want this to be greater than or equal,
+我们希望这是大于或等于,
+
+1078
+00:46:41,531 --> 00:46:45,132
+So I'm just guaranteeing that that thing is gonna be,
+我就是要保证,
+
+1079
+00:46:45,201 --> 00:46:47,501
+greater than or equal to,
+大于或等于,
+
+1080
+00:46:47,570 --> 00:46:52,840
+Okay, now it's let's double check all of our things here,
+好的,现在让我们仔细检查我们所有的东西,
+
+1081
+00:46:52,908 --> 00:46:55,375
+So we've got the trailing space and leading space,
+所以我们有领先落后于空间和空间,
+
+1082
+00:46:55,443 --> 00:46:58,144
+So this one also I probably want in the middle, so
+这个我也可能想要在中间,所以
+
+1083
+00:46:58,213 --> 00:46:59,712
+I'm gonna Ctrl+drag,
+我要Ctrl +拖,
+
+1084
+00:46:59,781 --> 00:47:02,215
+Okay, and say I want horizontally and vertically,
+好,说我想水平方向和垂直方向上,
+
+1085
+00:47:03,785 --> 00:47:05,917
+Okay, so it's not where it's supposed to be so
+好吧,这不是它应该是这样的
+
+1086
+00:47:05,986 --> 00:47:08,753
+I can update its frame right here and it looks good,
+我可以更新它的框架,它看起来很好,
+
+1087
+00:47:08,822 --> 00:47:10,054
+It's where it's supposed to be,
+它应该是,
+
+1088
+00:47:10,123 --> 00:47:12,055
+I'm guaranteed that it's never going to spill out over
+我保证永远不会溢出
+
+1089
+00:47:12,124 --> 00:47:14,391
+the edges because I put that side constraint in,
+因为我把那边约束边缘,
+
+1090
+00:47:14,460 --> 00:47:16,927
+Let's do the exam same thing with this one right here,
+让我们做这个考试一样,
+
+1091
+00:47:16,996 --> 00:47:17,894
+CTRL + drag,
+CTRL +拖,
+
+1092
+00:47:19,096 --> 00:47:20,896
+Center it vertically,
+中心垂直,
+
+1093
+00:47:20,965 --> 00:47:21,697
+CTRL + drag,
+CTRL +拖,
+
+1094
+00:47:21,766 --> 00:47:23,732
+Center it horizontally,
+其水平居中,
+
+1095
+00:47:23,801 --> 00:47:25,801
+CTRL + drag to the edge,
+CTRL +拖动边缘,
+
+1096
+00:47:28,872 --> 00:47:31,505
+This the trailing space,
+这个空间之后,
+
+1097
+00:47:31,574 --> 00:47:32,372
+We're going here,
+我们会在这里,
+
+1098
+00:47:32,441 --> 00:47:33,907
+We want it to be greater than or
+我们希望它是大于或
+
+1099
+00:47:33,975 --> 00:47:38,712
+equal to zero, and the same thing over here,
+等于零,同样的事情在这里,
+
+1100
+00:47:40,548 --> 00:47:42,314
+This the leading edge will come out,
+这个前沿,
+
+1101
+00:47:42,383 --> 00:47:44,784
+we want that to be greater than or equal to zero,
+我们希望这是大于或等于零,
+
+1102
+00:47:47,887 --> 00:47:48,886
+Okay, get that right,
+好的,得到正确的,
+
+1103
+00:47:48,955 --> 00:47:50,655
+did I say greater than equal to there?
+我说大于等于?
+
+1104
+00:47:50,723 --> 00:47:51,489
+Yes I did,
+是的,我做的,
+
+1105
+00:47:51,557 --> 00:47:53,991
+Okay, this one also, not positioned properly,
+好吧,这个也不能正确定位,
+
+1106
+00:47:54,060 --> 00:47:55,492
+no problem, we go over here,
+没问题,我们去这里,
+
+1107
+00:47:55,561 --> 00:47:57,727
+Update frames, looking good,
+更新帧,看上去不错,
+
+1108
+00:47:57,796 --> 00:48:01,030
+Okay, a lot of layout issues,
+好吧,很多布局问题,
+
+1109
+00:48:01,098 --> 00:48:06,769
+All right, here's our UI here, looking pretty good,
+好的,这里是我们的UI,看起来不错,
+
+1110
+00:48:06,838 --> 00:48:08,503
+Let's go ahead and run this and
+让我们继续,这个和运行
+
+1111
+00:48:08,572 --> 00:48:10,906
+just see what our UI looks like, see if we,
+看看我们的UI是什么样子,看看我们,
+
+1112
+00:48:10,975 --> 00:48:13,175
+Got everything where we wanted, things are centered,
+得到了我们想要的一切,都是为中心,
+
+1113
+00:48:13,243 --> 00:48:15,843
+things are the right size, all that business,
+事情是正确的大小,所有的业务,
+
+1114
+00:48:15,912 --> 00:48:17,177
+Okay so we'll go over here,
+好,我们就去这里,
+
+1115
+00:48:17,246 --> 00:48:18,945
+bring it up, looking pretty good,
+把它,看起来很好,
+
+1116
+00:48:19,014 --> 00:48:22,216
+The only thing is, that face,
+唯一的问题是,脸,
+
+1117
+00:48:22,284 --> 00:48:23,850
+I'd like that face to be as big as possible,
+我想这张脸要尽可能的大,
+
+1118
+00:48:23,919 --> 00:48:24,783
+Look how the eyes are so
+看眼睛是如此
+
+1119
+00:48:24,852 --> 00:48:27,152
+little they're almost like solid eyes,
+小他们几乎像固体的眼睛,
+
+1120
+00:48:27,221 --> 00:48:29,888
+Really I'd like that row in the table
+真的我想表中的行
+
+1121
+00:48:29,957 --> 00:48:32,357
+to be a square since my face is a circle,
+广场因为我的脸是一个圆,
+
+1122
+00:48:32,426 --> 00:48:33,457
+I'd like it to be a square,
+我想这是一个广场,
+
+1123
+00:48:33,526 --> 00:48:36,093
+So how can I make that a square?
+所以我怎么能让一个正方形吗?
+
+1124
+00:48:36,162 --> 00:48:38,962
+Hopefully all of you know this from your homework assignment,
+希望你们所有的人知道这从你的家庭作业,
+
+1125
+00:48:39,031 --> 00:48:40,898
+How to control the height of something,
+如何控制的高度,
+
+1126
+00:48:40,966 --> 00:48:45,168
+I'm just gonna go into my code right here for
+我要进入我的代码在这里
+
+1127
+00:48:45,236 --> 00:48:47,270
+my expression editor,
+我的表达式编辑器,
+
+1128
+00:48:47,338 --> 00:48:49,205
+that row I'm gonna have the table view's height for row,
+这一行我要对行表视图的高度,
+
+1129
+00:48:49,206 --> 00:48:51,073
+And for
+和
+
+1130
+00:48:52,276 --> 00:48:54,842
+Okay? I'm gonna say if the index
+好吧?
+
+1131
+00:48:54,911 --> 00:48:56,411
+path we're talking about,
+我们谈论的道路,
+
+1132
+00:48:56,479 --> 00:48:59,513
+row equals 1 cuz that's the second one down,
+行= 1因为这是第二个,
+
+1133
+00:48:59,582 --> 00:49:01,548
+that's where my face is, I'm kind of hard wiring this,
+这就是我的脸,我有点硬布线,
+
+1134
+00:49:01,617 --> 00:49:02,649
+we could probably use constants,
+我们可以使用常量,
+
+1135
+00:49:02,718 --> 00:49:03,984
+all that stuff in here,
+所有的东西在这里,
+
+1136
+00:49:04,052 --> 00:49:10,389
+Then, I'm gonna return the table views bounds,size,width,
+然后,我要返回表视图边界,大小,宽度,
+
+1137
+00:49:10,458 --> 00:49:12,225
+So I'm going make the height equal to the width,
+所以我要使高度等于宽度,
+
+1138
+00:49:12,294 --> 00:49:14,027
+That way it'll be a square,
+这将是一个广场,
+
+1139
+00:49:14,095 --> 00:49:16,862
+otherwise I'm gonna return our superclasses,
+否则我要返回我们的超类,
+
+1140
+00:49:16,931 --> 00:49:18,897
+cuz we're overriding this function, right?
+因为我们重写这个函数,对吧?
+
+1141
+00:49:18,965 --> 00:49:22,167
+So TableView, heightForRowAt, and
+所以TableView heightForRowAt和
+
+1142
+00:49:22,235 --> 00:49:26,437
+the TableView is our TableView and the height is at
+TableView是我们TableView和高度
+
+1143
+00:49:26,506 --> 00:49:31,042
+this index path that it's asking us for right here,
+这个索引路径,它要求我们在这里,
+
+1144
+00:49:32,612 --> 00:49:33,177
+Okay?
+好吧?
+
+1145
+00:49:35,414 --> 00:49:36,345
+So, everybody got that?
+所以,大家都明白了吗?
+
+1146
+00:49:36,414 --> 00:49:40,849
+So let's run, and see if it makes that thing square,
+所以让我们运行,看它是否使这个广场,
+
+1147
+00:49:40,918 --> 00:49:42,118
+Should make that face square,
+应该让那张脸广场,
+
+1148
+00:49:46,557 --> 00:49:48,757
+All right, let's go back here,
+好吧,让我们回到这里,
+
+1149
+00:49:48,825 --> 00:49:50,508
+sure enough we've got a nice big square face here,
+当然我们有一个大的方脸,
+
+1150
+00:49:50,509 --> 00:49:52,192
+Click, and
+点击,
+
+1151
+00:49:52,262 --> 00:49:53,093
+Okay, so this is excellent,
+好吧,这是优秀的,
+
+1152
+00:49:53,162 --> 00:49:54,895
+We got our UI exactly the way we want it,
+我们有我们的UI正是我们想要的方式,
+
+1153
+00:49:54,963 --> 00:49:56,596
+Now we just need to hook up our outlets and
+现在我们只需要把我们的网点和
+
+1154
+00:49:56,664 --> 00:49:58,031
+actions to this thing,
+行动,
+
+1155
+00:49:58,099 --> 00:50:01,700
+We're gonna need outlets to these two segmented controls
+我们需要这两个分段控制
+
+1156
+00:50:01,769 --> 00:50:02,751
+And an outlet to this name, so we can get the name,
+和一个出口这个名字,所以我们可以得到这个名字,
+
+1157
+00:50:02,752 --> 00:50:03,734
+right here,
+在这里,
+
+1158
+00:50:03,804 --> 00:50:07,405
+And build an expression out of the settings of this switch,
+并构建一个表达式的这个开关的设置,
+
+1159
+00:50:07,474 --> 00:50:08,205
+And then obviously,
+然后很明显,
+
+1160
+00:50:08,274 --> 00:50:11,074
+we're gonna need to be able to set our face view to reflect
+我们需要能够设置视图来反映
+
+1161
+00:50:11,143 --> 00:50:11,775
+that as well,
+,,
+
+1162
+00:50:11,844 --> 00:50:13,276
+So let's go do that,
+让我们去做,
+
+1163
+00:50:13,345 --> 00:50:17,180
+Go back to our storyboard here,
+回到我们的故事板,
+
+1164
+00:50:17,249 --> 00:50:21,418
+That, this up, let's close that, all right,
+这个,让我们接近,好吧,
+
+1165
+00:50:22,686 --> 00:50:24,120
+Zoom in a little bit here,
+放大一点,
+
+1166
+00:50:27,257 --> 00:50:30,792
+Okay, so let's create outlets for these two things and for
+好的,让我们为这两个东西和创建媒体
+
+1167
+00:50:30,860 --> 00:50:31,792
+this name,
+这个名字,
+
+1168
+00:50:31,861 --> 00:50:34,395
+So Ctrl-drag over here,
+所以Ctrl-drag这里,
+
+1169
+00:50:34,464 --> 00:50:40,400
+Call that our nameTextField, we'll control drag from
+我们称之为nameTextField,我们会控制阻力
+
+1170
+00:50:40,469 --> 00:50:45,105
+this guy down here, we'll call this our eyeControl, and we'll
+这家伙在这里,我们称之为eyeControl,我们会
+
+1171
+00:50:47,542 --> 00:50:53,847
+drag from this one, call that our mouthControl,
+从这一个阻力,我们称之为mouthControl,
+
+1172
+00:50:55,483 --> 00:50:59,518
+Okay, so we got our nice, outlets there,
+好的,我们有我们的好,网点,
+
+1173
+00:50:59,586 --> 00:51:02,354
+Let's go ahead and think about the model of this control,
+让我们继续,考虑到模型的控制,
+
+1174
+00:51:02,422 --> 00:51:02,921
+what does it do?
+它做什么?
+
+1175
+00:51:02,989 --> 00:51:03,721
+It's an editor,
+这是一个编辑器,
+
+1176
+00:51:03,790 --> 00:51:07,057
+It edits an expression, a named expression actually,
+编辑一个表达式,指定表达式实际上,
+
+1177
+00:51:07,126 --> 00:51:10,727
+So it clearly has something which is the name, okay?
+所以它显然有这个名字,好吗?
+
+1178
+00:51:10,796 --> 00:51:11,795
+So we'll make the name,
+我们会让这个名字,
+
+1179
+00:51:11,864 --> 00:51:15,198
+we'll have that be our nameTextField,
+我们会是我们nameTextField,
+
+1180
+00:51:15,267 --> 00:51:18,201
+Text, and if we don't have a nameTextField yet,
+文本,如果我们没有nameTextField然而,
+
+1181
+00:51:18,269 --> 00:51:21,971
+like we're preloaded, we'll just return a empty string,
+像我们预紧,我们就返回一个空字符串,
+
+1182
+00:51:23,174 --> 00:51:24,940
+Okay, so that's the name part,
+好了,这是一部分的名字,
+
+1183
+00:51:25,008 --> 00:51:27,075
+And of course, we have an expression as well,
+当然,我们也有一个表达式,
+
+1184
+00:51:27,143 --> 00:51:30,011
+that's gonna be FacialExpression,
+这是要FacialExpression,
+
+1185
+00:51:30,080 --> 00:51:33,413
+And we'll return by creating a FacialExpression, and
+我们将通过创建一个返回FacialExpression,
+
+1186
+00:51:33,482 --> 00:51:37,150
+here is its constructor, we'll make it a little easier to see
+这是它的构造函数,我们将使它更容易看到
+
+1187
+00:51:37,219 --> 00:51:39,553
+when we're an arrow here like this,
+当我们在这儿一个箭头,
+
+1188
+00:51:42,057 --> 00:51:44,724
+Okay, so how are we gonna set the eyes?
+好的,那么我们要如何设置眼睛吗?
+
+1189
+00:51:44,793 --> 00:51:46,859
+We're gonna look at our eye control and
+我们要看看我们的眼睛控制
+
+1190
+00:51:46,927 --> 00:51:47,893
+see what the eyes are,
+看到眼睛是什么,
+
+1191
+00:51:47,962 --> 00:51:48,559
+How do we set the mouth?
+我们如何设置嘴吗?
+
+1192
+00:51:48,628 --> 00:51:50,462
+We're gonna look at our mouth control,
+我们要看看我们的口控制,
+
+1193
+00:51:50,530 --> 00:51:51,162
+So to make this easy,
+因此为了简化,
+
+1194
+00:51:51,231 --> 00:51:53,798
+I'm gonna make a little private var here,
+我要做一个小的私人var,
+
+1195
+00:51:53,866 --> 00:51:55,432
+Actually a let,
+让,
+
+1196
+00:51:55,501 --> 00:51:58,835
+I'm gonna call this my eyeChoices, okay, these
+我要叫它eyeChoices,这些
+
+1197
+00:51:58,903 --> 00:52:01,571
+are the three choices in my set menu control view there,
+是我的设置菜单控制视图的三个选择,
+
+1198
+00:52:01,640 --> 00:52:05,842
+it's just going to be a little array that has facial, oops,
+它就是一个数组的面部,哎呀,
+
+1199
+00:52:05,911 --> 00:52:11,980
+Z, equals an array with FacialExpression,Eyes,
+与FacialExpression Z,等于一个数组,眼睛,
+
+1200
+00:52:12,049 --> 00:52:15,317
+and we've got open, closed, and squinting, those
+我们有打开,关闭,眯着眼,
+
+1201
+00:52:15,385 --> 00:52:19,254
+are the Three different things in our segmented control,
+是三个不同的东西在我们的分段控制,
+
+1202
+00:52:19,323 --> 00:52:22,623
+So now to make this I's thing I can just return here
+现在让我的事情我可以返回这里
+
+1203
+00:52:22,692 --> 00:52:24,325
+my i choices,
+我的选择,
+
+1204
+00:52:24,394 --> 00:52:27,595
+And the index I'm gonna use is my eye control,
+和索引我要用我的眼睛控制,
+
+1205
+00:52:27,664 --> 00:52:31,331
+And the way you get which of the segments is controlled is
+你得到这段控制的
+
+1206
+00:52:31,400 --> 00:52:33,933
+picked in a segmented control is with the method in
+选择在一个分段控制的方法
+
+1207
+00:52:34,002 --> 00:52:38,838
+segmented control called selected segment index,
+分段控制称为选择段指数,
+
+1208
+00:52:38,907 --> 00:52:42,909
+Selected segment index,
+选择部分指数,
+
+1209
+00:52:42,978 --> 00:52:45,344
+And of course our eye control might not be set yet,
+当然我们的眼睛控制可能没有被设置,
+
+1210
+00:52:45,413 --> 00:52:47,913
+in which case we'll default to just doing segment 0,
+在这种情况下,我们将默认为只做段0,
+
+1211
+00:52:47,982 --> 00:52:52,417
+Okay? Does everybody see what we're,
+好吧?
+
+1212
+00:52:52,486 --> 00:52:53,151
+what we're doing there?
+我们在做什么?
+
+1213
+00:52:53,220 --> 00:52:55,619
+To do that?
+这样做吗?
+
+1214
+00:52:55,688 --> 00:52:57,054
+And same thing with the mouth,
+和一样的嘴,
+
+1215
+00:52:57,123 --> 00:53:01,158
+We'll have some mouth choices here,
+我们这里有一些口的选择,
+
+1216
+00:53:01,226 --> 00:53:06,029
+These are facialExpression,mouth,
+这些都是facialExpression,嘴,
+
+1217
+00:53:06,098 --> 00:53:07,430
+What have we got here, frown,
+在这里我们得到了什么,皱眉,
+
+1218
+00:53:07,498 --> 00:53:10,967
+We've got smirk, we've got neutral,
+我们有笑容,有中性的,
+
+1219
+00:53:11,035 --> 00:53:14,070
+we've got grin and we've got smile,
+我们有笑容和我们有微笑,
+
+1220
+00:53:16,140 --> 00:53:17,456
+Do the same thing here, we'll say mouthChoices,
+做同样的事,我们会说mouthChoices,
+
+1221
+00:53:17,457 --> 00:53:18,773
+Okay?
+好吧?
+
+1222
+00:53:18,842 --> 00:53:25,012
+So mouthControl this time, selectedSegment Index,
+所以这次mouthControl,selectedSegment指数,
+
+1223
+00:53:25,081 --> 00:53:28,116
+And again we'll default to 0,
+我们将默认为0,
+
+1224
+00:53:29,618 --> 00:53:31,752
+So everyone see how we've created our facial expression
+所以每个人都看到我们创造了我们的面部表情
+
+1225
+00:53:31,821 --> 00:53:32,718
+from our UI?
+从我们的UI ?
+
+1226
+00:53:32,787 --> 00:53:35,120
+This is essentially our model, it's a read only model,
+这就是我们的模型,这是一个只读模式,
+
+1227
+00:53:35,189 --> 00:53:38,057
+You could imagine designing this to not be read only,
+你可以想象设计这不是只读,
+
+1228
+00:53:38,125 --> 00:53:40,759
+where you might want to have this editor start with some
+你可能想有这个编辑器开始与一些吗
+
+1229
+00:53:40,828 --> 00:53:41,860
+expression you set,
+表达式设置,
+
+1230
+00:53:41,929 --> 00:53:45,764
+But we're just gonna do this to make it easy,
+但是我们要这样做使它容易,
+
+1231
+00:53:45,832 --> 00:53:46,964
+Read only,
+只读,
+
+1232
+00:53:47,033 --> 00:53:48,899
+And one other thing we want to do is whenever these
+另一件事,我们要做的是当这些
+
+1233
+00:53:48,968 --> 00:53:50,501
+are changed over here, well, for
+是改变了,
+
+1234
+00:53:50,569 --> 00:53:52,903
+now every time someone clicks on one of these we're just
+现在每次有人点击其中一个我们
+
+1235
+00:53:52,971 --> 00:53:55,405
+gonna print on the console what our expression is,
+要打印在控制台上我们表达的是什么,
+
+1236
+00:53:55,474 --> 00:53:58,307
+So let's create a little target action from this guy,
+所以让我们创建一个小目标动作从这个家伙,
+
+1237
+00:53:58,376 --> 00:53:59,642
+control drag,
+控制阻力,
+
+1238
+00:53:59,711 --> 00:54:03,612
+We'll call it updateface cuz that's
+我们叫它updateface因为这是
+
+1239
+00:54:03,680 --> 00:54:06,181
+what we're gonna need to do is update this face up here,
+我们要做的就是更新这张脸,
+
+1240
+00:54:06,249 --> 00:54:07,616
+We don't need any arguments to it,
+我们不需要任何参数,
+
+1241
+00:54:09,119 --> 00:54:12,486
+Okay so this update face is gonna have to change this face
+这更新的脸是要改变这张脸
+
+1242
+00:54:12,555 --> 00:54:15,422
+to reflect the eyes and stuff, but for now I'm just gonna say
+反映了眼睛和东西,但现在我只是想说
+
+1243
+00:54:15,491 --> 00:54:20,727
+print our name equals our expression,
+打印我们的名字=我们的表达式,
+
+1244
+00:54:20,796 --> 00:54:23,196
+So like sad equals,
+就像悲伤的=。
+
+1245
+00:54:23,264 --> 00:54:25,564
+you know frown plus closed eyes or whatever,
+你知道皱眉+闭上眼睛,
+
+1246
+00:54:25,633 --> 00:54:29,902
+Okay, and we'll have this one do the exact same thing,
+好的,我们会做相同的事,
+
+1247
+00:54:29,971 --> 00:54:34,807
+To the same action, everybody cool?
+相同的动作,每个人都很酷吗?
+
+1248
+00:54:34,876 --> 00:54:37,676
+So we just actions to make our, our thing work here,
+我们只是让我们的行动,在这里工作,
+
+1249
+00:54:37,745 --> 00:54:42,513
+So let's go run, see if our UI is basically working,
+所以我们去跑,看看我们的UI基本上是工作,
+
+1250
+00:54:42,582 --> 00:54:45,183
+It's, it needs to be hooked up to the rest of our app but
+,它需要连接到我们的应用程序,但其余部分
+
+1251
+00:54:45,251 --> 00:54:47,719
+still we wanna make sure it's it's functioning property,
+我们仍然想要确保它的功能属性,
+
+1252
+00:54:47,787 --> 00:54:48,752
+properly,
+得当,
+
+1253
+00:54:48,820 --> 00:54:50,937
+Let's add, we'll call this, here's a interesting thing,
+让我们添加,我们叫这个,这是一个有趣的事情,
+
+1254
+00:54:50,938 --> 00:54:53,055
+So, let's go here,
+所以,我们去这里,
+
+1255
+00:54:53,124 --> 00:54:55,692
+See when I click on these it selected this row,
+当我点击这些选择的这一行,
+
+1256
+00:54:56,627 --> 00:54:57,426
+I didn't want this row
+我不想让这一行
+
+1257
+00:54:57,495 --> 00:54:59,394
+to be selected like in a table view sense,
+选择如表视图来说,
+
+1258
+00:54:59,463 --> 00:55:03,398
+I just wanted it to edit this name right here so
+我想这样编辑这个名字
+
+1259
+00:55:03,466 --> 00:55:05,399
+that's not good, so we'll have to fix that,
+那不是很好,所以我们必须解决这个问题,
+
+1260
+00:55:05,468 --> 00:55:07,635
+But let's go ahead and put in a test name,
+但我们在测试名称,
+
+1261
+00:55:07,704 --> 00:55:10,470
+We'll say test, return,
+我们会说测试,返回,
+
+1262
+00:55:10,539 --> 00:55:12,773
+Return doesn't get rid of the keyboard,
+返回不摆脱键盘的,
+
+1263
+00:55:12,841 --> 00:55:13,840
+So that's bad, bad UI,
+这是坏的,坏的UI,
+
+1264
+00:55:13,908 --> 00:55:15,007
+Because now it's
+因为现在是
+
+1265
+00:55:15,076 --> 00:55:16,675
+really hard to get to these things down here,
+很难得到这些东西,
+
+1266
+00:55:16,744 --> 00:55:18,977
+I can get to them, because this is a scroll view,
+我可以,因为这是一个滚动视图,
+
+1267
+00:55:19,046 --> 00:55:20,545
+Table view is a scroll view,
+表视图是一个滚动视图,
+
+1268
+00:55:20,614 --> 00:55:22,080
+But it's still kinda bad UI,
+但还是有点糟糕的UI,
+
+1269
+00:55:22,149 --> 00:55:24,181
+So we gotta fix that as well,
+所以我们要解决这个问题,
+
+1270
+00:55:24,250 --> 00:55:26,250
+So let's pick eyes closed and
+所以我们选择闭上眼睛
+
+1271
+00:55:26,319 --> 00:55:27,985
+see if our console is saying anything and
+说什么,看看我们的控制台
+
+1272
+00:55:28,054 --> 00:55:32,222
+sure it's saying test equals eyes closed mouth frown,
+肯定是说测试=闭上眼睛嘴巴皱眉,
+
+1273
+00:55:32,291 --> 00:55:35,691
+That looks right eyes closed mouth frown,
+看起来正确的闭上眼睛嘴巴皱眉,
+
+1274
+00:55:35,760 --> 00:55:37,627
+Let's say squinting grin,
+假设眯着眼笑,
+
+1275
+00:55:39,163 --> 00:55:40,796
+Squinting grin,
+眯着眼笑,
+
+1276
+00:55:40,864 --> 00:55:43,098
+Okay so it looks like our UI is working but
+所以它看起来像我们的UI但工作
+
+1277
+00:55:43,167 --> 00:55:44,266
+it's got these two problems,
+它有这两个问题,
+
+1278
+00:55:44,334 --> 00:55:46,700
+So let's fix the problem where it's selecting this row in
+让我们解决这个问题的选择这一行
+
+1279
+00:55:46,769 --> 00:55:48,736
+the table view sense when we click in there and
+表视图意义上,当我们点击,
+
+1280
+00:55:48,805 --> 00:55:51,838
+let's fix the problem where a return key is not
+让我们解决这个问题,一个返回键不是
+
+1281
+00:55:51,907 --> 00:55:53,139
+resigning first responder and,
+首先回应的辞职,
+
+1282
+00:55:53,208 --> 00:55:54,307
+And making the keyboard go away,
+并使键盘消失,
+
+1283
+00:55:54,376 --> 00:55:57,243
+So both of those are easy to do,
+所以这些都是容易做的,
+
+1284
+00:55:57,311 --> 00:55:59,678
+We can do that most of this in a story board,
+我们能做的,大多数的故事板,
+
+1285
+00:55:59,747 --> 00:56:02,314
+So let's go back to our story board full screen here,
+让我们回到故事板全屏,
+
+1286
+00:56:02,382 --> 00:56:05,884
+So the way to make it, so it doesn't select rows in here,
+让它,所以它不选择行,
+
+1287
+00:56:05,953 --> 00:56:09,287
+is just- Select our table view and if you,
+只是,如果你选择我们的表视图,
+
+1288
+00:56:09,356 --> 00:56:11,055
+when you do your inspector on a table view, you'll see
+当你做你的检查员表视图,您将看到
+
+1289
+00:56:11,123 --> 00:56:13,891
+there's selection down here in the table view selector,
+选择下面的表格视图选择器,
+
+1290
+00:56:13,959 --> 00:56:16,427
+We want to change that to no selection that means
+我们想要改变,这意味着没有选择
+
+1291
+00:56:16,496 --> 00:56:18,528
+rows are not selected in our table view,
+行不选择在我们的表视图,
+
+1292
+00:56:18,597 --> 00:56:21,131
+You almost always want this in a static table view,
+你总是希望在静态表视图,
+
+1293
+00:56:21,199 --> 00:56:24,300
+Rarely are you selecting the rows in a table It it stack
+很少,你选择一个表中的行它堆栈
+
+1294
+00:56:24,369 --> 00:56:28,270
+table, sometimes you might be but rarely are you doing that,
+表,有时你可能会,但很少你这样做,
+
+1295
+00:56:28,339 --> 00:56:31,807
+And the other problem was our text field right here,
+和另一个问题是我们这里的文本字段,
+
+1296
+00:56:31,876 --> 00:56:34,876
+we wanted it to do resign first responder,
+我们想做第一响应者辞职,
+
+1297
+00:56:34,945 --> 00:56:37,645
+So I'm gonna show you a little trick here which is how we can
+所以我要告诉你一个小技巧是如何
+
+1298
+00:56:37,714 --> 00:56:41,916
+wire this text field up to our view controller as a delegate
+这个文本字段连接到我们作为一个委托的视图控制器
+
+1299
+00:56:41,985 --> 00:56:43,383
+without any code,
+没有任何代码,
+
+1300
+00:56:43,452 --> 00:56:47,154
+Okay, so do the wiring up, I'm just gonna control drag
+做连接,我要控制阻力
+
+1301
+00:56:47,222 --> 00:56:49,656
+from my text field up to my view controller,
+从我的文本字段我视图控制器,
+
+1302
+00:56:49,724 --> 00:56:52,191
+Remember this little yellow thing at the top represents
+记住这个小黄色的代表
+
+1303
+00:56:52,260 --> 00:56:52,825
+my view controller,
+我的视图控制器,
+
+1304
+00:56:52,894 --> 00:56:54,726
+So I'm gonna control drag right there and
+拖在这里,所以我要控制
+
+1305
+00:56:54,795 --> 00:56:57,963
+when I do, look, I can hook up outlets,
+当我做,你看,我可以把插座,
+
+1306
+00:56:58,032 --> 00:57:00,598
+I'm gonna hook up this text field's delegate right there,
+我要把这个文本框的委托,
+
+1307
+00:57:00,667 --> 00:57:03,501
+so now this view controller is the delegate
+现在这个视图控制器是委派
+
+1308
+00:57:03,570 --> 00:57:04,936
+of this text field,
+这个文本框,
+
+1309
+00:57:05,005 --> 00:57:10,041
+Now we still have to go back here and make it be a UI
+现在我们还是要回到这里,让它成为一个UI
+
+1310
+00:57:10,109 --> 00:57:14,111
+text field delegate and of course
+文本字段代表,当然
+
+1311
+00:57:14,179 --> 00:57:18,315
+we still want to implement our text field should return,
+我们仍然希望实现我们的文本字段应该返回,
+
+1312
+00:57:18,384 --> 00:57:24,454
+Not should clear, text field should return And
+不应该清楚,文本字段应该返回和
+
+1313
+00:57:24,523 --> 00:57:27,557
+we're just gonna have the text field resignFirstResponder,
+我们要有文本字段resignFirstResponder,
+
+1314
+00:57:27,625 --> 00:57:32,561
+Responds to [LAUGH] resignFirstResponder and
+[笑]resignFirstResponder和响应
+
+1315
+00:57:32,630 --> 00:57:34,596
+return true,
+返回true,
+
+1316
+00:57:34,665 --> 00:57:35,714
+I just want to just use that as a trick to show you you can
+我只是想用这个技巧告诉你你可以
+
+1317
+00:57:35,715 --> 00:57:36,764
+Okay, so
+好的,所以
+
+1318
+00:57:36,833 --> 00:57:41,435
+control drag to set outwards of things as well if you want,
+控制拖向外设置的事情如果你想要,
+
+1319
+00:57:41,504 --> 00:57:43,604
+So we fixed our two problems right there,
+我们固定的两个问题,
+
+1320
+00:57:46,575 --> 00:57:49,276
+So our UI should be looking good now,
+所以我们的UI现在应该看上去不错,
+
+1321
+00:57:52,146 --> 00:57:54,180
+There it is, go here,
+在这里,走在这里,
+
+1322
+00:57:54,248 --> 00:57:57,950
+Okay, let's try the text again, let's say Test, and
+好的,让我们试着文本,假设测试
+
+1323
+00:57:58,019 --> 00:57:59,084
+Return,
+回报,
+
+1324
+00:57:59,153 --> 00:58:00,586
+Design's first responder and
+设计的第一反应
+
+1325
+00:58:00,654 --> 00:58:02,821
+notice when I clicked on test it didn't click this row,
+注意到当我点击测试没有点击这一行,
+
+1326
+00:58:02,890 --> 00:58:04,722
+when I click down here, it's not clicking this row,
+当我点击下面,点击这一行,
+
+1327
+00:58:04,790 --> 00:58:06,523
+Even if I click on the edges of it
+即使我点击它的边缘
+
+1328
+00:58:06,592 --> 00:58:09,559
+Is still not selecting it,
+还没有选择它,
+
+1329
+00:58:09,628 --> 00:58:12,061
+Okay, what about the face?
+好吧,面对呢?
+
+1330
+00:58:12,130 --> 00:58:13,764
+We gotta get that face, so
+我们要把那脸,所以
+
+1331
+00:58:13,832 --> 00:58:16,232
+it's updating, based on what's going on here,
+这是更新,基于这是怎么回事,
+
+1332
+00:58:16,301 --> 00:58:19,768
+Now, we've offered the option of squinting right here, so
+现在,我们已经提供的选项眯着眼,
+
+1333
+00:58:19,837 --> 00:58:23,305
+really, what class needs to be in here?
+真的,需要在这里哪个班?
+
+1334
+00:58:23,374 --> 00:58:26,408
+What's the only class that does squinting?
+什么是唯一的类,眯着眼?
+
+1335
+00:58:26,477 --> 00:58:29,044
+It's that blinking face view controller, right?
+闪烁面临视图控制器,对吧?
+
+1336
+00:58:29,113 --> 00:58:31,479
+So we need to put an NBC in here, okay?
+所以我们需要将一个美国全国广播公司(NBC)在这里,好吗?
+
+1337
+00:58:31,548 --> 00:58:32,980
+Blinking face view controller is an NBC,
+闪烁的脸视图控制器是一个美国全国广播公司(NBC),
+
+1338
+00:58:33,049 --> 00:58:35,716
+we can't use face view, which is what I have in here now,
+我们不能用脸看来,这就是我现在在这里,
+
+1339
+00:58:35,785 --> 00:58:38,118
+Face view doesn't know how to do squinting, so
+面对视图不知道如何做眯着眼,
+
+1340
+00:58:38,186 --> 00:58:39,419
+we need to put an NBC,
+我们需要将一个美国全国广播公司(NBC),
+
+1341
+00:58:39,488 --> 00:58:41,754
+So this is where we're going to do an embedded
+这是我们要做嵌入式的地方
+
+1342
+00:58:41,823 --> 00:58:43,890
+view controller, so let's do the embedded view controller,
+视图控制器,让我们来做嵌入式视图控制器,
+
+1343
+00:58:45,892 --> 00:58:47,359
+Okay, we're gonna go here, we hit,
+好的,我们会在这里,,
+
+1344
+00:58:47,427 --> 00:58:49,561
+right now we have it's face view inside here,
+现在我们这里有它的脸视图内,
+
+1345
+00:58:49,630 --> 00:58:51,562
+So we're just gonna get rid of that face view,
+所以我们要摆脱面临的观点,
+
+1346
+00:58:51,631 --> 00:58:52,162
+we don't want that,
+我们不希望这样,
+
+1347
+00:58:52,231 --> 00:58:54,331
+Oops, I dela deleted the entire row, sorry,
+哎呀,我菲律宾人质删除整行,对不起,
+
+1348
+00:58:55,433 --> 00:58:58,801
+Is that my face view right there?
+是,我的脸视图?
+
+1349
+00:58:58,870 --> 00:59:01,070
+Yeah, so we'll delete the face view and
+是的,我们会查看和删除的脸
+
+1350
+00:59:01,138 --> 00:59:04,473
+instead of having a face view, I'm gonna go over here and
+而不是一张脸看来,我要在这里
+
+1351
+00:59:04,542 --> 00:59:07,542
+look for a container view,
+寻找一个容器视图,
+
+1352
+00:59:07,611 --> 00:59:09,377
+Container, there it is,
+容器,这是,
+
+1353
+00:59:09,446 --> 00:59:13,115
+container view, I'm gonna drag this container view in here,
+容器的观点,我将这个容器视图拖到这里,
+
+1354
+00:59:13,183 --> 00:59:15,416
+I'm gonna do the exact same thing as I did before,
+我要做我之前做的一样的,
+
+1355
+00:59:15,485 --> 00:59:18,752
+I'm gonna use my bl let's, zoom in a little so
+我要用我的提单我们,放大一点
+
+1356
+00:59:18,821 --> 00:59:19,954
+I can see it a little better,
+我可以看得更清楚,
+
+1357
+00:59:20,022 --> 00:59:23,890
+I'm gonna use my da dash blue lines to place this thing
+我要用我的da冲蓝线将这个东西
+
+1358
+00:59:23,959 --> 00:59:24,991
+where I want,
+我想要的,
+
+1359
+00:59:25,060 --> 00:59:28,627
+I'm still going to do reset to constraint, I'm going to check
+我仍然要做重置为约束,我要检查
+
+1360
+00:59:28,696 --> 00:59:31,263
+that make sure that this is all hooked up right,
+确保这是所有连接正确,
+
+1361
+00:59:31,332 --> 00:59:33,299
+It appears to be hooked up right,
+它似乎是连接正确,
+
+1362
+00:59:33,367 --> 00:59:36,735
+look what also appeared, it's kind of hidden,
+看看也出现,它是隐藏的,
+
+1363
+00:59:36,803 --> 00:59:42,040
+it's kind of afraid, there it is, right here,
+有点害怕,在这里,在这里,
+
+1364
+00:59:42,108 --> 00:59:46,377
+Okay, when we created this in it also created this
+好的,当我们创建这个在它还创建了这个
+
+1365
+00:59:46,446 --> 00:59:47,679
+new NBC right here,
+新NBC在这里,
+
+1366
+00:59:49,381 --> 00:59:54,084
+Okay, this is the MVC whose self,view is going to appear
+好的,这是自我的MVC、视图将会出现
+
+1367
+00:59:54,152 --> 00:59:56,953
+right here, and all the auto layout constraints are gonna
+在这里,所有的会自动布局约束
+
+1368
+00:59:57,022 --> 00:59:58,020
+apply to it and everything so
+适用于它,所以的一切
+
+1369
+00:59:58,089 --> 01:00:00,556
+it's gonna be fit in there and everything,
+它会适应那里的一切,
+
+1370
+01:00:00,625 --> 01:00:01,690
+So what do we want this to be?
+我们希望这是什么?
+
+1371
+01:00:01,758 --> 01:00:03,558
+Wel, we want it to be a blinking,
+嗯,我们希望它是一个闪烁,
+
+1372
+01:00:03,626 --> 01:00:04,326
+face view controller,
+面视图控制器,
+
+1373
+01:00:04,394 --> 01:00:07,195
+So I'm gonna go here, go to identity, Fir-,
+所以我要去这里,去身份,冷杉,
+
+1374
+01:00:07,263 --> 01:00:08,028
+I'm gonna select this,
+我要选择这个,
+
+1375
+01:00:08,097 --> 01:00:10,731
+Go to identity and say blinking face view controller,
+去身份和说闪烁的脸视图控制器,
+
+1376
+01:00:10,799 --> 01:00:14,501
+Of course, I have to still build the UI of this thing and
+当然,我还必须构建UI的和
+
+1377
+01:00:14,569 --> 01:00:15,802
+of course it has a face view in it,
+当然它面临视图,
+
+1378
+01:00:15,871 --> 01:00:18,237
+So I'm gonna again try and copy and paste,
+所以我要再次尝试复制粘贴,
+
+1379
+01:00:18,306 --> 01:00:20,740
+it didn't work last time I did it but we'll try again,
+它没有上次我做,但我们将再试一次,
+
+1380
+01:00:21,809 --> 01:00:23,241
+Paste, there we go,
+粘贴,好了,
+
+1381
+01:00:23,310 --> 01:00:26,111
+Okay and so we're gonna make it fit perfectly
+好的,所以我们要让它完美
+
+1382
+01:00:26,179 --> 01:00:31,115
+in here as usual, ahead and reset,
+在这里像往常一样,重置,
+
+1383
+01:00:31,183 --> 01:00:34,651
+Adjust constraints and of course, this phase view right
+调整约束,当然,这一阶段的观点正确
+
+1384
+01:00:34,720 --> 01:00:38,288
+here needs to be wired up as an outlet of this blinking
+这里需要连接一个出口闪烁
+
+1385
+01:00:38,357 --> 01:00:41,225
+face view controller and how am I gonna do that?
+脸视图控制器,我要怎么做呢?
+
+1386
+01:00:41,293 --> 01:00:43,326
+Same way I did that text field delegate, so,
+同样我文本字段委托,所以,
+
+1387
+01:00:43,394 --> 01:00:45,961
+we'll control drag now from the view controller to this
+我们会控制拖现在从视图控制器
+
+1388
+01:00:46,030 --> 01:00:47,163
+face view and wire it up,
+面视图和线,
+
+1389
+01:00:47,231 --> 01:00:49,064
+We don't have to bring up the code,
+我们不需要把代码,
+
+1390
+01:00:49,132 --> 01:00:51,566
+in a side by side window, especially this is a pain for
+并排在一个窗口中,尤其是这是一个痛苦
+
+1391
+01:00:51,635 --> 01:00:52,901
+blinking view controller,
+闪烁的视图控制器,
+
+1392
+01:00:52,969 --> 01:00:57,005
+Because, the, it's a subclass of it, a superclass,
+因为,它的一个子类,一个超类,
+
+1393
+01:00:57,073 --> 01:01:00,240
+rather that we're hooking up to, etc, okay?
+而我们勾搭等等,好吗?
+
+1394
+01:01:00,309 --> 01:01:05,079
+So I built this embedded view, I've created the MVC is
+所以我建这个嵌入视图,我创建了MVC
+
+1395
+01:01:05,148 --> 01:01:08,915
+actually the way I want and so now if we run,
+其实我想现在如果我们运行,
+
+1396
+01:01:08,984 --> 01:01:12,285
+We should have that blinking view controller embedded
+我们应该有闪烁的视图控制器嵌入式
+
+1397
+01:01:12,354 --> 01:01:14,186
+inside of this into that row and
+在进这一行
+
+1398
+01:01:14,255 --> 01:01:16,088
+of course it should be square,
+当然应该是广场,
+
+1399
+01:01:16,157 --> 01:01:19,758
+And all those things just as if it were the regular
+和所有这些东西一样普通
+
+1400
+01:01:19,826 --> 01:01:22,461
+face view I'm sure that here it is,
+我相信这是面对视图,
+
+1401
+01:01:22,530 --> 01:01:24,296
+Okay now, how do make it so
+好,怎么让它如此
+
+1402
+01:01:24,364 --> 01:01:27,131
+when we change these things, it changes this?
+当我们改变这些事情,它改变了呢?
+
+1403
+01:01:27,200 --> 01:01:30,100
+Well, this is just a segue right here, so
+好吧,这只是一个segue这里,
+
+1404
+01:01:30,169 --> 01:01:31,368
+in our prepare for segue,
+在我们准备segue,
+
+1405
+01:01:31,437 --> 01:01:34,104
+we're gonna grab onto that blinking view controller,
+我们要抓住,闪烁的视图控制器,
+
+1406
+01:01:34,172 --> 01:01:36,205
+And then every time things change, we'll just tell
+然后每次变化,我们就告诉
+
+1407
+01:01:36,274 --> 01:01:38,474
+the blinking view controller what its expression is, so
+闪烁的视图控制器的表达式,所以
+
+1408
+01:01:38,543 --> 01:01:39,708
+let's give this thing a name,
+让我们给这件事一个名字,
+
+1409
+01:01:39,777 --> 01:01:45,080
+We'll call this our EmbedFace, segue right here, and let's
+我们称之为EmbedFace,继续在这里,让我们
+
+1410
+01:01:45,149 --> 01:01:50,452
+go back to our editor and it's the thing we're segueing from,
+回到我们的编辑器,它是我们segue从,
+
+1411
+01:01:50,521 --> 01:01:54,990
+So it's the thing that gets to prepare, so let's go prepare
+所以的准备,所以我们准备去吧
+
+1412
+01:01:55,058 --> 01:01:58,593
+for segue, and inside this prepare for segue,
+继续,在这个准备segue,
+
+1413
+01:01:58,662 --> 01:02:02,063
+All we really need to do is grab onto that Face view
+我们真正需要做的就是抓住那张脸视图
+
+1414
+01:02:02,131 --> 01:02:05,866
+controller, so let's create a little private var,
+控制器,所以让我们创建一个私有变量,
+
+1415
+01:02:05,935 --> 01:02:09,802
+which we'll call our faceViewController,
+我们称之为faceViewController,
+
+1416
+01:02:09,871 --> 01:02:14,074
+It's going to be of type linkingFaceViewController and
+这将是linkingFaceViewController和类型
+
+1417
+01:02:14,142 --> 01:02:16,342
+it's not set initially, so we'll have it be an optional,
+这不是最初,我们必须是一个可选的,
+
+1418
+01:02:16,411 --> 01:02:21,080
+And here I'm just gonna say if the segue,destination
+这里我只是想说如果segue,目的地
+
+1419
+01:02:21,148 --> 01:02:24,482
+view controller is, actually we'll even say if let,
+视图控制器,我们甚至会说如果,
+
+1420
+01:02:24,551 --> 01:02:28,053
+Let's say if let Controller we didn't mean to do that,
+比方说如果让控制器我们并不想这样做,
+
+1421
+01:02:28,122 --> 01:02:30,555
+actually I can do an even easier way to do it,
+其实我可以做一个更简单的办法去做,
+
+1422
+01:02:30,624 --> 01:02:34,258
+Let's just say face view controller equals the segue's
+假设视图控制器= segue的脸
+
+1423
+01:02:34,327 --> 01:02:37,261
+destination as a blinking view controller and
+目的地是一个闪烁的控制器和视图
+
+1424
+01:02:37,330 --> 01:02:40,964
+if it's not a blinking view controller and won't work,
+如果它不是一个闪烁的视图控制器和不会工作,
+
+1425
+01:02:41,033 --> 01:02:44,000
+Then of course we probably want to check our identifier
+当然,我们可能要检查我们的标识符
+
+1426
+01:02:44,069 --> 01:02:46,769
+here so we'll say if the segue's identifier =,
+所以我们会说如果segue的标识符=,
+
+1427
+01:02:46,838 --> 01:02:48,137
+what did I call it?
+我把它叫做什么?
+
+1428
+01:02:48,206 --> 01:02:48,905
+Embed Face,
+嵌入的脸,
+
+1429
+01:02:51,875 --> 01:02:52,941
+Then we'll do this,
+然后我们会做这个,
+
+1430
+01:02:54,711 --> 01:02:56,176
+Okay? So all I did here,
+好吧?
+
+1431
+01:02:56,245 --> 01:02:58,679
+when I'm preparing, is just grab onto
+当我准备的时候,只是抓住
+
+1432
+01:02:58,747 --> 01:03:02,583
+that view controller, so now I have the view controller,
+视图控制器,所以现在我有视图控制器,
+
+1433
+01:03:02,652 --> 01:03:05,519
+So for example, when updateFace happens, okay?
+举个例子,当updateFace发生,好吗?
+
+1434
+01:03:05,588 --> 01:03:07,086
+Instead of printing out on the console,
+而不是打印在控制台上,
+
+1435
+01:03:07,155 --> 01:03:09,955
+I can just say that my faceViewController
+我可以说我faceViewController
+
+1436
+01:03:10,024 --> 01:03:15,027
+expression equals my expression, right?
+=我的表情,表达对吗?
+
+1437
+01:03:15,095 --> 01:03:19,798
+My expression is this thing right here, cool with that?
+我的表达是这里,酷吗?
+
+1438
+01:03:19,867 --> 01:03:20,566
+Let's go see that,
+我们去看,
+
+1439
+01:03:23,837 --> 01:03:27,037
+Okay, so we go here, we add eyes closed,
+好的,我们去这里,我们添加闭上眼睛,
+
+1440
+01:03:27,106 --> 01:03:30,541
+looking good and the frown there, grin,
+看上去不错,皱眉,笑,
+
+1441
+01:03:30,610 --> 01:03:33,744
+Notice that it started out with the wrong face though,
+注意,它一开始错误的脸,
+
+1442
+01:03:33,813 --> 01:03:34,611
+so probably,
+所以很可能,
+
+1443
+01:03:34,680 --> 01:03:36,980
+when I grab that face view controller right here,
+当我抓住那张脸视图控制器,
+
+1444
+01:03:37,048 --> 01:03:43,085
+probably want to update it right away with my expression,
+可能想和我的表情,马上更新
+
+1445
+01:03:43,154 --> 01:03:44,153
+Whatever expression I have now,
+无论表达我现在,
+
+1446
+01:03:44,221 --> 01:03:47,489
+In other words, as soon as that embedded segue gets
+换句话说,只要嵌入segue
+
+1447
+01:03:47,558 --> 01:03:50,859
+embedded, I wanna have it update with my my face, but
+嵌入式,我想更新我的我的脸,但是
+
+1448
+01:03:50,928 --> 01:03:54,262
+it's working, and it even works for squinting, okay?
+它的工作,甚至为斜视工作,好吗?
+
+1449
+01:03:54,330 --> 01:03:55,997
+So we got squinting even happening in here,
+我们甚至有斜视发生在这里,
+
+1450
+01:03:57,567 --> 01:04:00,634
+All right, we got this awesome system here,
+好的,我们得到了这个可怕的系统,
+
+1451
+01:04:00,703 --> 01:04:04,772
+this awesome MVC for editing and
+这个可怕的编辑和MVC
+
+1452
+01:04:04,840 --> 01:04:09,042
+emotion right with the emotion's name and its face,
+情绪与情感的名字和它的脸,
+
+1453
+01:04:09,110 --> 01:04:13,146
+So how do we communicate what we just edited back?
+那么我们如何沟通我们刚才编辑吗?
+
+1454
+01:04:13,214 --> 01:04:15,615
+And that's through unwinding ao let's go ahead and
+这是通过解除ao让我们继续
+
+1455
+01:04:15,683 --> 01:04:20,653
+create an unwind segue back to our presenter okay,
+创建一个放松segue回到我们的主持人好,
+
+1456
+01:04:20,721 --> 01:04:24,990
+And let's move this thing so we can see this whole thing,
+我们把这件事我们可以看到整个事情,
+
+1457
+01:04:25,058 --> 01:04:26,925
+what we're doing here,
+我们在做什么,
+
+1458
+01:04:26,993 --> 01:04:29,960
+So we're going to create an unwind from a done button in
+所以我们要创建一个放松的完成按钮
+
+1459
+01:04:30,029 --> 01:04:32,763
+this, and it's going to unwind back to this guy,
+这个,它会放松回到这个家伙,
+
+1460
+01:04:32,831 --> 01:04:35,999
+And when it unwinds we'll communicate the expression and
+当它展开我们的表达和交流
+
+1461
+01:04:36,068 --> 01:04:38,968
+the name of the expression that was chosen here in this
+的名称被选在这个表达式
+
+1462
+01:04:39,037 --> 01:04:40,337
+editor,
+编辑器,
+
+1463
+01:04:40,405 --> 01:04:44,207
+Now what's the first thing we want to do in unwind?
+现在我们要做的第一件事是什么在放松吗?
+
+1464
+01:04:44,275 --> 01:04:47,043
+We need to create that magic method to unwind to, that's
+我们需要创建,神奇的方法放松,这是
+
+1465
+01:04:47,111 --> 01:04:48,810
+always the first thing you're gonna do when you unwind,
+总是你要做的第一件事当你放松时,
+
+1466
+01:04:48,879 --> 01:04:51,746
+So that's over here in this EmotionsViewController, so
+这就是在这EmotionsViewController,所以
+
+1467
+01:04:51,815 --> 01:04:54,482
+let's go over to the EmotionsViewController, and
+让我们去EmotionsViewController,
+
+1468
+01:04:54,550 --> 01:04:57,818
+create that magic method, put it right here at the top,
+创建这个神奇的方法,把它在顶部,
+
+1469
+01:04:57,887 --> 01:05:00,521
+Okay, it's gotta be an IBAction,
+好了,这是要IBAction,
+
+1470
+01:05:00,589 --> 01:05:03,724
+Okay, just a function, we can call it anything we want,
+好吧,只是一个函数,我们可以叫它任何我们想要的,
+
+1471
+01:05:03,792 --> 01:05:05,225
+I'll call this,
+我叫,
+
+1472
+01:05:05,294 --> 01:05:08,661
+addEmotionalFace, because that's what it's gonna do,
+addEmotionalFace,因为它会做什么,
+
+1473
+01:05:08,730 --> 01:05:12,365
+it's gonna add an emotional face to this array right here,
+它会添加一个情感面对这个数组,
+
+1474
+01:05:12,434 --> 01:05:14,767
+And I'll say from segue
+并从segue我会说
+
+1475
+01:05:14,836 --> 01:05:18,571
+UIStoryBoardSegue, and this satisfies the second thing we
+UIStoryBoardSegue,这满足了我们的第二件事
+
+1476
+01:05:18,639 --> 01:05:21,607
+have to do which it has one and only one argument,
+要做它有且只有一个参数,
+
+1477
+01:05:21,675 --> 01:05:26,344
+And hit the storyboard segue and inside here, we will use
+点击故事板segue里面,我们将使用
+
+1478
+01:05:26,413 --> 01:05:29,914
+the segue information to get the expression that we chose,
+segue信息让我们选择的表达,
+
+1479
+01:05:31,217 --> 01:05:33,417
+So, now let's go back to our storyboard,
+所以,现在让我们回到我们的故事板,
+
+1480
+01:05:35,521 --> 01:05:40,623
+And wire up that, unwind which we do right here,
+连接,放松,我们在这里,
+
+1481
+01:05:40,692 --> 01:05:43,025
+So I'm gonna add a done button right here,
+所以我要添加一个按钮,完成
+
+1482
+01:05:43,094 --> 01:05:47,764
+Click down here, this is bar button, there it is,
+点击这里,这是工具栏按钮,,
+
+1483
+01:05:49,033 --> 01:05:50,565
+Okay, I wanted a standard one again,
+好的,我想要一个标准,
+
+1484
+01:05:50,634 --> 01:05:51,666
+this is the done button,
+这是“完成”按钮,
+
+1485
+01:05:51,735 --> 01:05:53,767
+See all these standard ones we had add for
+看到所有这些标准的我们添加了
+
+1486
+01:05:53,836 --> 01:05:57,371
+the other one, cancel for the other one, done for this one,
+为另一个,另一个,取消了这一个,
+
+1487
+01:05:57,440 --> 01:05:58,806
+So we have done and
+所以我们所做的
+
+1488
+01:05:58,875 --> 01:06:01,675
+I'm just gonna control drag, over there?
+我要控制阻力,在那里?
+
+1489
+01:06:01,744 --> 01:06:02,742
+No, up here,
+不,在这里,
+
+1490
+01:06:02,811 --> 01:06:06,646
+Okay, so this exit button,
+这个退出按钮,
+
+1491
+01:06:06,714 --> 01:06:08,380
+look what appeared there, add emotional face from,
+看看出现,加上情绪的脸,
+
+1492
+01:06:08,381 --> 01:06:10,047
+When I let go,
+当我放手,
+
+1493
+01:06:10,117 --> 01:06:11,617
+Notice that it puts the little from
+注意,它把小
+
+1494
+01:06:11,685 --> 01:06:13,451
+that was the external name on the end of it,
+这是在结束时,外部的名字
+
+1495
+01:06:13,520 --> 01:06:16,821
+It's kind of a backwards compatibility with objective c
+这是一种用objective - c向后兼容性
+
+1496
+01:06:16,890 --> 01:06:19,189
+there and so, I click that I want that connection and
+所以,我希望连接和点击
+
+1497
+01:06:19,258 --> 01:06:20,457
+now it's made that segue,
+现在,segue,
+
+1498
+01:06:20,526 --> 01:06:21,858
+Now where is that segue?
+现在这个segue在哪?
+
+1499
+01:06:21,927 --> 01:06:23,460
+If I zoom out am I gonna be able to see
+如果我缩小我要能够看到
+
+1500
+01:06:23,528 --> 01:06:24,794
+that on my storyboard?
+在我的故事板吗?
+
+1501
+01:06:24,863 --> 01:06:26,229
+No, you don't see it, so
+不,你没有看到它,所以
+
+1502
+01:06:26,297 --> 01:06:29,431
+where are things that you can't see in your storyboard?
+是你看不见的东西在你的故事板吗?
+
+1503
+01:06:29,500 --> 01:06:30,432
+Where do you go to find them?
+你在哪里去找到他们吗?
+
+1504
+01:06:31,935 --> 01:06:33,301
+Yeah, the document outline here,
+是的,这里的文档大纲,
+
+1505
+01:06:33,370 --> 01:06:36,003
+so let's go to the document outline and sure enough,
+让我们去文档大纲,果然,
+
+1506
+01:06:36,071 --> 01:06:37,354
+Look at that, unwind segue to add emotional faces,
+看,unwind添加情绪面孔,
+
+1507
+01:06:37,355 --> 01:06:38,638
+right here,
+在这里,
+
+1508
+01:06:38,707 --> 01:06:39,972
+we could give this segue,
+我们可以给这个segue,
+
+1509
+01:06:40,041 --> 01:06:42,942
+A name, maybe we could call it
+一个名字,也许我们可以叫它
+
+1510
+01:06:43,011 --> 01:06:44,810
+add emotion because that's what it does, right?
+增加情感,因为这就是它的作用,对吧?
+
+1511
+01:06:44,879 --> 01:06:47,412
+It calls this add emotional face so
+它调用这个增加情感的脸
+
+1512
+01:06:47,481 --> 01:06:49,648
+it kind of add emotion segue,
+它添加情感segue,
+
+1513
+01:06:49,717 --> 01:06:52,550
+Now we could transfer our information kind of
+现在我们可以传递我们的信息
+
+1514
+01:06:52,619 --> 01:06:55,620
+either way, either in the prepare in this guy,
+无论哪种方式,在准备这个家伙,
+
+1515
+01:06:55,688 --> 01:06:58,522
+But I usually like to do it in this guy because this is
+但我通常喜欢用这个,因为这是
+
+1516
+01:06:58,591 --> 01:07:01,558
+the guy who I would have to create some public API to add
+的人我必须创建一些公共API添加
+
+1517
+01:07:01,627 --> 01:07:03,460
+an emotional face or something,
+一种情感的脸,
+
+1518
+01:07:03,528 --> 01:07:06,496
+So I'm just gonna have this guy and his special method,
+所以我要有这家伙和他的特殊方法,
+
+1519
+01:07:06,565 --> 01:07:10,767
+He's going to ask the editor there what is your expression
+他要问编辑你的表情
+
+1520
+01:07:10,835 --> 01:07:15,271
+and name and it's gonna add it to his model here,
+和名称,它会将它添加到他的模型,
+
+1521
+01:07:16,507 --> 01:07:21,043
+All right, so we're gonna say if we can let
+好吧,如果我们可以让我们会说
+
+1522
+01:07:21,111 --> 01:07:24,011
+the editor, basically we'll call it editor,
+基本上我们叫它编辑器,编辑器
+
+1523
+01:07:24,080 --> 01:07:26,947
+If we can let the editor equal the segue is what?
+如果我们可以让编辑等于segue是什么?
+
+1524
+01:07:27,016 --> 01:07:30,084
+The source, it's the source of the segue,
+源,它的来源segue,
+
+1525
+01:07:30,152 --> 01:07:33,721
+we're segueing from the editor to this guy,
+我们segue从编辑到这家伙,
+
+1526
+01:07:33,790 --> 01:07:38,925
+So this as a ExpressionEditorViewCOntrol-
+这是一个ExpressionEditorViewCOntrol -
+
+1527
+01:07:38,994 --> 01:07:40,727
+ler, so if I'm able to get the editor,
+l,所以如果我能编辑,
+
+1528
+01:07:40,796 --> 01:07:42,762
+then I'm just gonna say EmotionalFaces,
+然后我要EmotionalFaces说,
+
+1529
+01:07:42,831 --> 01:07:46,032
+Not kGuard [LAUGH] EmotionalFaces, append, and
+不是kGuard[笑]EmotionalFaces、附加和
+
+1530
+01:07:46,101 --> 01:07:48,667
+I wanna append a tuple, and the tuple is
+我想添加一个元组,而元组
+
+1531
+01:07:48,736 --> 01:07:53,138
+gonna have the editor's name, and the editor's expression,
+要编辑的名字,编辑器的表达式,
+
+1532
+01:07:55,775 --> 01:07:57,475
+That's it!
+就是这样!
+
+1533
+01:07:57,543 --> 01:07:58,909
+To unwind?
+放松吗?
+
+1534
+01:07:58,978 --> 01:08:01,945
+Super simple, all right,
+超级简单,
+
+1535
+01:08:02,014 --> 01:08:03,546
+So, here's, we got worried,
+这是,我们担心,
+
+1536
+01:08:03,615 --> 01:08:05,849
+We got happy, we got sad,
+我们有快乐,悲伤,
+
+1537
+01:08:05,918 --> 01:08:10,386
+Let's add another one, let's go, I don't know,
+加另一个,我们走吧,我不知道,
+
+1538
+01:08:10,455 --> 01:08:14,156
+Now let's go, okay, this face looks like contentment to me,
+现在我们走吧,好了,这张脸看起来对我满意,
+
+1539
+01:08:14,225 --> 01:08:15,657
+he looks content so
+他看起来内容
+
+1540
+01:08:15,726 --> 01:08:17,225
+we're going to call this one content,
+我们要调用这一内容,
+
+1541
+01:08:17,294 --> 01:08:23,431
+Content, content, there it is, okay?
+内容,内容,在这里,好吗?
+
+1542
+01:08:23,500 --> 01:08:26,500
+So we've got this named content, eyes closed, grin,
+所以我们有这个内容命名,闭着眼睛,笑容,
+
+1543
+01:08:26,569 --> 01:08:29,370
+I'm going to hit done right here, it's going to unwind and
+我要做在这里,它会放松
+
+1544
+01:08:29,439 --> 01:08:31,438
+add that, hopefully, and it didn't show,
+添加,希望,它没有显示,
+
+1545
+01:08:31,507 --> 01:08:33,574
+Anyone have an idea why it didn't show there?
+有人有一个想法,为什么它没有显示吗?
+
+1546
+01:08:35,144 --> 01:08:38,310
+Because we appended it to our model, but
+因为我们添加到我们的模型,但是
+
+1547
+01:08:38,379 --> 01:08:39,812
+we never told the tableview to update,
+我们从来没有告诉tableview更新,
+
+1548
+01:08:39,880 --> 01:08:43,014
+Okay, so this is a common thing you'll do, you'll update
+好了,这是一种常见的事情你会做,你就会更新
+
+1549
+01:08:43,083 --> 01:08:45,617
+your model and you're like, my tableview doesn't work,
+你的模型,你喜欢,我的表视图不起作用,
+
+1550
+01:08:45,686 --> 01:08:47,652
+And we just need to do tableview here,
+我们只需要做表视图,
+
+1551
+01:08:47,721 --> 01:08:50,588
+reload data cuz it to call of
+因为它叫重新加载数据
+
+1552
+01:08:50,656 --> 01:08:53,290
+its UI table view data source methods again,
+它的UI表视图数据源的方法,
+
+1553
+01:08:53,359 --> 01:08:54,959
+Hopefully you experience that,
+希望你的经验,
+
+1554
+01:08:55,027 --> 01:08:56,559
+maybe in your homework assignment,
+也许在你的作业,
+
+1555
+01:08:56,628 --> 01:09:01,131
+You're used to this particular forgetfulness but
+你习惯这个特别健忘
+
+1556
+01:09:01,199 --> 01:09:04,000
+here we go, try again,
+我们开始吧,再试一次,
+
+1557
+01:09:04,068 --> 01:09:08,471
+Okay, we'll do content again, I liked content, content,
+好的,我们也会做同样的内容,我喜欢的内容,内容,
+
+1558
+01:09:10,741 --> 01:09:14,743
+Tent there it is and content was what did I say, green,
+帐篷和内容是什么我说,绿色,
+
+1559
+01:09:14,812 --> 01:09:17,712
+Eyes closed yes looks content, done, there's content,
+闭上眼睛看起来是的内容,完成,有内容,
+
+1560
+01:09:17,780 --> 01:09:19,113
+We click on it, we've got content,
+我们点击它,我们有内容,
+
+1561
+01:09:19,181 --> 01:09:20,247
+we've got worried, we've got happy,
+我们担心,我们有快乐,
+
+1562
+01:09:20,316 --> 01:09:25,886
+Whoops, happy, okay?
+哦,快乐,好吗?
+
+1563
+01:09:25,955 --> 01:09:28,088
+Everybody understand that unwinding?
+大家都明白,解除?
+
+1564
+01:09:28,157 --> 01:09:30,290
+Everyone understand the modal?
+大家都理解模态?
+
+1565
+01:09:30,359 --> 01:09:32,124
+Lets go take a look at this on iPad,
+让我们去看看这个iPad,
+
+1566
+01:09:32,193 --> 01:09:33,025
+lets see what it looks like here,
+让我们看看它是什么样子,
+
+1567
+01:09:33,094 --> 01:09:41,700
+Okay, let's make this a lot smaller,
+好的,让我们把这个小很多,
+
+1568
+01:09:41,769 --> 01:09:45,437
+is that the smallest we can make it?
+这是最小的我们可以让它吗?
+
+1569
+01:09:45,505 --> 01:09:47,104
+No, four, here we go,
+不,四,我们开始吧,
+
+1570
+01:09:47,173 --> 01:09:49,541
+Okay, so here it is on iPad well,
+好吧,这是iPad,
+
+1571
+01:09:49,609 --> 01:09:52,476
+lets go to landscape here, make sure it's working,
+让去,确保它是工作,
+
+1572
+01:09:52,545 --> 01:09:56,647
+Sad, happy, worried, lets add another one, woah!
+悲伤,快乐,担心,允许添加另一个,哇!
+
+1573
+01:09:56,715 --> 01:10:01,485
+Big face, now, this is the kind of UI that in your final
+大脸,现在,这是你最后的UI
+
+1574
+01:10:01,553 --> 01:10:04,187
+project you're going to get dinged on the UI
+项目你会得到升到UI
+
+1575
+01:10:04,255 --> 01:10:07,490
+part of the rubric, because this is a horrible UI,
+标题的一部分,因为这是一个可怕的UI,
+
+1576
+01:10:07,559 --> 01:10:10,325
+Look at the tiny, little things at the bottom,
+看小,小事在底部,
+
+1577
+01:10:10,394 --> 01:10:13,395
+gigantic face this is a classic,
+巨大的脸这是一个经典的,
+
+1578
+01:10:13,464 --> 01:10:16,431
+my app works on iPad and iPhone, okay?
+我应用在iPad和iPhone,工作好吗?
+
+1579
+01:10:16,500 --> 01:10:17,432
+Because I just
+因为我刚
+
+1580
+01:10:17,500 --> 01:10:19,801
+clicked the button that said do iPad, okay?
+点击按钮,说做iPad,好吗?
+
+1581
+01:10:19,869 --> 01:10:22,303
+Sometimes we have to do more to make things work on both
+有时候我们必须做更多的工作
+
+1582
+01:10:22,372 --> 01:10:25,472
+platforms and in this case, clearly this is bad UI,
+平台和在这种情况下,显然这是糟糕的UI,
+
+1583
+01:10:25,541 --> 01:10:27,090
+it's an opportunity to make points on your rubric and your
+这是一个在你的标题和机会点
+
+1584
+01:10:27,091 --> 01:10:28,640
+And in fact,
+事实上,
+
+1585
+01:10:28,710 --> 01:10:31,711
+final project by implementing an iPad specific idiom,
+通过实现iPad最终项目特定的成语,
+
+1586
+01:10:31,780 --> 01:10:34,747
+In this case that's what we wanna do this clearly wants to
+在这种情况下,这就是我们想要这样做显然想
+
+1587
+01:10:34,816 --> 01:10:36,515
+be in a pop over,
+在流行,
+
+1588
+01:10:36,584 --> 01:10:39,818
+When we click this little plus we want this a little
+当我们点击这个小加上我们希望这一点
+
+1589
+01:10:39,887 --> 01:10:42,987
+to appear right here in that little pop over, so
+出现在那个小流行,所以
+
+1590
+01:10:43,056 --> 01:10:44,755
+what do we need to do that?
+我们需要做什么?
+
+1591
+01:10:44,824 --> 01:10:49,060
+Is could be simpler, we gonna go back to our story bore here
+是可以更简单,我们会回到我们的故事了吗
+
+1592
+01:10:49,128 --> 01:10:51,728
+and we're gonna change this segue,
+我们要改变这个segue,
+
+1593
+01:10:51,797 --> 01:10:53,897
+which is currently our modal segue, right?
+目前我们的模态segue,对吧?
+
+1594
+01:10:53,966 --> 01:10:56,833
+The modal segway from emotions right here
+模态赛格威的情绪
+
+1595
+01:10:56,901 --> 01:11:01,771
+over to this editor from being modal to being a popover,
+在这个编辑器从模态是一个弹出窗口,
+
+1596
+01:11:03,241 --> 01:11:05,941
+Now we know that it automatically is going to
+现在我们知道,它自动会
+
+1597
+01:11:06,010 --> 01:11:10,512
+adapt to being like modal full screen on the iPhone,
+适应,像iPhone上的模态全屏,
+
+1598
+01:11:10,580 --> 01:11:12,814
+So by changing it to popover it's gonna work now on
+因此通过改变弹窗的工作
+
+1599
+01:11:12,883 --> 01:11:13,882
+both platforms but
+两个平台,但
+
+1600
+01:11:13,950 --> 01:11:16,951
+we're going to see a little bit of problems here,
+我们将会看到一些问题,
+
+1601
+01:11:17,020 --> 01:11:21,956
+All right, so, let's try it, plus, nice, okay,
+好吧,让我们试试,另外,不错,好吧,
+
+1602
+01:11:22,024 --> 01:11:24,424
+Maybe not seeing this very well because of the high
+可能没有看到这很好,因为高
+
+1603
+01:11:24,493 --> 01:11:26,293
+resolution being scaled way down but
+向下扩展但决议
+
+1604
+01:11:26,361 --> 01:11:29,262
+it's picked a reasonable size, it's a little bigger than
+选择一个合理的大小,它是一个小比
+
+1605
+01:11:29,331 --> 01:11:31,364
+it needs to be, it's a reasonable size,
+它需要一个合理的大小,
+
+1606
+01:11:31,432 --> 01:11:34,466
+But there's actually one thing that's wrong with this UI
+但有一件事是错误的,这个UI
+
+1607
+01:11:34,535 --> 01:11:36,635
+which is this cancel button right here,
+这里的取消按钮,
+
+1608
+01:11:36,704 --> 01:11:39,938
+Okay on in a pop over you don't have cancel buttons
+好的在流行在你没有取消按钮
+
+1609
+01:11:40,007 --> 01:11:43,374
+because watch if I click over here it canceled it, so
+因为看如果我点击这里取消它,
+
+1610
+01:11:43,443 --> 01:11:46,677
+I don't need this cancel button right here,
+我不需要这个取消按钮,
+
+1611
+01:11:46,746 --> 01:11:49,480
+I need it on iPhone but I don't need it on iPad, so
+我需要它在iPhone iPad但是我不需要它
+
+1612
+01:11:49,548 --> 01:11:52,249
+let's add a little bit of code to take this cancel
+让我们添加一些代码来把这个取消
+
+1613
+01:11:52,318 --> 01:11:53,015
+button out,
+按钮,
+
+1614
+01:11:53,084 --> 01:11:54,483
+If we're actually in a pop over,
+如果我们在一个流行,
+
+1615
+01:11:54,552 --> 01:11:57,019
+and the way I'm going to tell I'm in a pop over is I'm going
+我要告诉我的方式在一个流行的是
+
+1616
+01:11:57,088 --> 01:11:59,155
+to look at my pop over presentation controller,
+看我的流行表示控制器,
+
+1617
+01:11:59,223 --> 01:12:01,823
+And see if my arrow is pointing any way, and if my
+看看我的箭头指向任何方式,如果我的
+
+1618
+01:12:01,892 --> 01:12:04,759
+arrow is pointing somewhere I must be in a pop over,
+箭头指向的地方我必须在一个流行,
+
+1619
+01:12:04,828 --> 01:12:07,595
+If i don't have an arrow then I'm probably over full screen,
+如果我没有箭那么我可能在全屏幕,
+
+1620
+01:12:08,597 --> 01:12:09,663
+Okay so let's go ahead and do that,
+好,让我们继续这样做,
+
+1621
+01:12:09,732 --> 01:12:14,868
+Let's go back here to our editor and
+让我们回到这里,和编辑
+
+1622
+01:12:14,937 --> 01:12:18,972
+in our editor, I'm gonna do this in view will appear,
+在我们的编辑,我要做这个视图将会出现,
+
+1623
+01:12:19,041 --> 01:12:22,508
+Nice late in the game time to do it, so view will appear,
+好晚的游戏时间,所以视图将会出现,
+
+1624
+01:12:22,577 --> 01:12:24,777
+super view will appear,
+父视图将显示,
+
+1625
+01:12:26,447 --> 01:12:30,682
+I'm just gonna say in here, if I can If I can, and here I'll
+在这里我只是想说,如果我可以,如果我可以,我将在这里
+
+1626
+01:12:30,751 --> 01:12:33,451
+make it wide so that I have pick good variable names here,
+让它宽,这样我有选好的变量名,
+
+1627
+01:12:33,520 --> 01:12:37,422
+If I can let popoverPresentationController
+如果我能让popoverPresentationController
+
+1628
+01:12:37,490 --> 01:12:45,962
+= my navigationControllers popoverPresentationController,
+=我的导航控制器popoverPresentationController,
+
+1629
+01:12:46,031 --> 01:12:46,830
+Now, why am I giving that
+现在,为什么我给
+
+1630
+01:12:46,899 --> 01:12:49,266
+navigationControllers popoverPresentationController?
+导航控制器popoverPresentationController吗?
+
+1631
+01:12:49,335 --> 01:12:51,167
+Cuz it's actually the highest level MVC
+因为它实际上是MVC的最高水平
+
+1632
+01:12:51,236 --> 01:12:53,269
+that's in the popover, okay?
+在弹出窗口,好吗?
+
+1633
+01:12:53,338 --> 01:12:54,670
+Also, that cancel button
+同时,取消按钮
+
+1634
+01:12:54,739 --> 01:12:56,405
+is in the navigationController, right?
+在导航控制器,对吧?
+
+1635
+01:12:56,474 --> 01:12:57,872
+It's part of the navigation items for
+这是导航项目的一部分
+
+1636
+01:12:57,941 --> 01:12:58,873
+the navigationController,
+导航控制器,
+
+1637
+01:12:58,942 --> 01:13:00,207
+so if I'm not in a navigationController,
+如果我不在导航控制器,
+
+1638
+01:13:00,276 --> 01:13:02,276
+this whole thing is kinda useless anyway,
+这整个事情是有点用处,
+
+1639
+01:13:02,344 --> 01:13:04,678
+So here I'm gonna say if the popoverPresentationControll-
+这里我想说如果popoverPresentationControll -
+
+1640
+01:13:04,746 --> 01:13:09,650
+er's arrowDirection equals unknown, or well let's say if
+er arrowDirection等于未知,或假设
+
+1641
+01:13:09,718 --> 01:13:13,219
+it doesn't equal unknown, so it points somewhere,
+它不等于未知,所以点的地方,
+
+1642
+01:13:13,288 --> 01:13:17,123
+Then I must be in a popover, so I'm gonna remove
+然后我必须在一个弹出窗口,所以我要删除
+
+1643
+01:13:17,191 --> 01:13:20,159
+from my navigation items, my left bar button item,
+从我的导航项,我的左栏按钮项目,
+
+1644
+01:13:22,562 --> 01:13:24,896
+Okay, remember navigation item is what controls, what bar
+好的,记得导航项控制什么,酒吧
+
+1645
+01:13:24,965 --> 01:13:27,733
+buttons appear when you are in a navigation controller,
+按钮出现在导航控制器,
+
+1646
+01:13:36,843 --> 01:13:39,477
+Okay, so here we go, we click, no cancel button
+好吧,我们走,我们点击,没有取消按钮
+
+1647
+01:13:39,545 --> 01:13:41,278
+which is good and we'll run it on iPhone in a second and
+这很好,我们会在iPhone上运行它第二
+
+1648
+01:13:41,347 --> 01:13:44,281
+we'll make sure the cancel button is still there,
+我们会确保取消按钮仍然存在,
+
+1649
+01:13:44,350 --> 01:13:45,649
+Okay, what's another problem here though?
+好吧,还有什么问题吗?
+
+1650
+01:13:45,717 --> 01:13:48,050
+Well the problem is this is a little too big,
+问题是这个有点太大了,
+
+1651
+01:13:48,119 --> 01:13:50,886
+it's kind of got this extra space down here at the bottom
+这是一种有底部下面这个额外的空间
+
+1652
+01:13:50,955 --> 01:13:52,555
+that we don't want, okay?
+我们不希望,好吗?
+
+1653
+01:13:52,623 --> 01:13:57,559
+And, in fact, if I go this way, and I slide this out and
+事实上,如果我走这条路,我滑出去
+
+1654
+01:13:57,628 --> 01:14:00,428
+bring this up, now it's a little too small, so
+把这个,现在有点太小了,所以
+
+1655
+01:14:00,497 --> 01:14:02,764
+it's either a little too small or too big,
+这是有点太小或太大,
+
+1656
+01:14:02,832 --> 01:14:06,133
+That's because it doesn't know how big this thing is, so
+那是因为它不知道这个东西有多大,所以
+
+1657
+01:14:06,202 --> 01:14:08,435
+it's just picking kind of standard sizes,
+它只是挑选的标准尺寸,
+
+1658
+01:14:08,504 --> 01:14:10,670
+For these particular orientations, so
+对于这些特定的方向
+
+1659
+01:14:10,739 --> 01:14:14,941
+let's teach this MBC, this editor MBC, how big it is,
+让我们教这个MBC,这个编辑MBC,它是多大,
+
+1660
+01:14:15,010 --> 01:14:18,044
+And we're gonna do that by adding up all the heights
+我们要做的,通过添加所有的高度
+
+1661
+01:14:18,112 --> 01:14:21,747
+of all the rows and seeing which row is the widest,
+的所有行,看到这行是最宽的
+
+1662
+01:14:21,815 --> 01:14:25,284
+By doing that, we'll be able to see how big this section
+通过这样做,我们就能看到本节多大
+
+1663
+01:14:25,353 --> 01:14:27,886
+in the table view is, we'll do that, and
+在表视图中,我们将这样做,和
+
+1664
+01:14:27,954 --> 01:14:29,454
+view will appear also,
+视图也会出现,
+
+1665
+01:14:29,523 --> 01:14:34,893
+I'm gonna say here, var size = tableView,, well,
+点击这里,var = tableView大小,,好吧,
+
+1666
+01:14:34,961 --> 01:14:38,495
+it'd really be nice if I had a method called minimumSize
+就真的好了如果我有一个方法叫做minimumSize
+
+1667
+01:14:38,564 --> 01:14:42,866
+forSection: 0, okay, if it could just tell me the size,
+forSection:0,如果它可以告诉我大小,
+
+1668
+01:14:42,935 --> 01:14:45,702
+And unfortunately, tableView doesn't have a thing like that
+不幸的是,tableView没有这样的事情
+
+1669
+01:14:45,770 --> 01:14:50,173
+but luckily for you I have such a thing right here
+但对你来说幸运的是我有这样一个东西
+
+1670
+01:14:50,242 --> 01:14:54,143
+as an extension today will view and we don't have time
+今天为一个扩展视图和我们没有时间
+
+1671
+01:14:54,212 --> 01:14:57,046
+to type it all in such like quick typed it,
+输入所有类似快速输入,
+
+1672
+01:14:57,114 --> 01:14:59,315
+But you can see as pretty easy it's just goes through all
+但是你可以看到很简单只是经过
+
+1673
+01:14:59,383 --> 01:15:02,984
+the rows in the section that you ask and it gets the cell
+部分的行,你问和细胞
+
+1674
+01:15:03,053 --> 01:15:06,287
+at that row or even creates a cell at that row if necessary,
+在这一行,甚至创建一个细胞在这一行如果有必要,
+
+1675
+01:15:06,356 --> 01:15:09,089
+And then it uses this really cool method here, system
+然后它使用这个很酷的方法,系统
+
+1676
+01:15:09,158 --> 01:15:13,928
+layout, size fitting, UI layout, fitting compress size,
+布局,大小合适,UI布局,装配压缩规模,
+
+1677
+01:15:13,997 --> 01:15:18,098
+This guy right here uses auto layout
+这家伙在这里使用自动布局
+
+1678
+01:15:18,166 --> 01:15:22,669
+to say what's the smallest this thing can be, okay?
+说什么最小的这个东西,好吗?
+
+1679
+01:15:22,738 --> 01:15:25,472
+So this is a really cool little function
+这是一个很酷的小功能
+
+1680
+01:15:25,541 --> 01:15:26,939
+that you can do in UI view,
+你可以在UI视图,
+
+1681
+01:15:27,008 --> 01:15:29,475
+By the way, notice I'm sending that to the content view of
+顺便说一下,请注意我发送的内容视图
+
+1682
+01:15:29,543 --> 01:15:30,042
+each cell,
+每一个细胞,
+
+1683
+01:15:30,111 --> 01:15:31,610
+We didn't talk about content view but
+但我们没有讨论内容视图
+
+1684
+01:15:31,678 --> 01:15:34,078
+each table view cell has a content view that's where all
+每个表视图单元格有一个视图的所有内容
+
+1685
+01:15:34,147 --> 01:15:35,379
+the contents really are,
+内容是什么
+
+1686
+01:15:35,448 --> 01:15:38,048
+And that's the thing you want to ask to apply all the auto
+这就是你想问的所有汽车应用
+
+1687
+01:15:38,117 --> 01:15:41,318
+layout rules to see if it will fit,
+布局规则,看看它是否适合,
+
+1688
+01:15:41,386 --> 01:15:43,853
+So then here I'm just getting the one that's has that's
+所以这里我刚刚的这是
+
+1689
+01:15:43,922 --> 01:15:46,222
+the widest okay maxing the width and
+最宽的宽度和好的尽最大努力
+
+1690
+01:15:46,291 --> 01:15:48,691
+here I'm adding the heights of the rows okay?
+这里我添加的行?
+
+1691
+01:15:48,760 --> 01:15:50,292
+Height for row is just the height of the row by
+高度行只是一行的高度
+
+1692
+01:15:50,361 --> 01:15:52,328
+asking the delegate here,
+问这里的委托,
+
+1693
+01:15:52,396 --> 01:15:55,463
+Okay, so good, so we got the size this is the size,
+好的,太好了,所以我们得到了尺寸大小,
+
+1694
+01:15:55,532 --> 01:15:58,132
+but actually we got a little trickiness to do here because
+但实际上我们因为有点棘手
+
+1695
+01:15:58,201 --> 01:15:59,868
+we've got that square face view,
+我们有那个方脸视图,
+
+1696
+01:15:59,936 --> 01:16:02,903
+I still want it to be square even when I shrink it down,
+我仍然想要平方,即使我把它缩小,
+
+1697
+01:16:02,972 --> 01:16:08,408
+So I'm going to take the size's height and remove
+所以我需要尺寸的高度和删除
+
+1698
+01:16:08,477 --> 01:16:14,381
+the height that it got for that
+的高度了
+
+1699
+01:16:14,450 --> 01:16:20,020
+index path that the little face is at, that's row 1,
+索引路径,小脸在第一行,
+
+1700
+01:16:20,089 --> 01:16:22,722
+Section 0, so I'm gonna remove that and
+段0,所以我要删除,
+
+1701
+01:16:22,791 --> 01:16:24,757
+I'm gonna add back the width of the tableView,
+我要添加视图的宽度,
+
+1702
+01:16:24,825 --> 01:16:29,527
+Actually the width of the tableView I calculated,
+实际上我计算表视图的宽度,
+
+1703
+01:16:29,596 --> 01:16:31,763
+which is size, okay?
+这是尺寸,好吗?
+
+1704
+01:16:31,831 --> 01:16:33,364
+So I've just added it's square, so
+所以我刚刚添加的广场
+
+1705
+01:16:33,433 --> 01:16:35,533
+it's square in the new smaller size,
+这是广场在新的尺寸小一点的,
+
+1706
+01:16:35,601 --> 01:16:39,136
+Hopefully everybody understand what I did there, it looks
+希望大家理解我所做的,它的样子
+
+1707
+01:16:39,205 --> 01:16:42,172
+like I'm missing something here yes the parenthesis,
+就像我在这里少了什么是的括号,
+
+1708
+01:16:42,241 --> 01:16:46,543
+Set it as our prefered content size equals that size,
+把它作为我们的优先内容大小等于那个大小,
+
+1709
+01:16:46,611 --> 01:16:49,846
+So this prefered content size remember is the thing
+记得是这优先内容大小
+
+1710
+01:16:49,915 --> 01:16:53,983
+that tells the system this is how big this MVC
+它告诉系统这是多大的MVC
+
+1711
+01:16:54,051 --> 01:16:55,584
+should be when it's in a pop over,
+应该在一个流行的时候,
+
+1712
+01:16:55,653 --> 01:16:58,320
+So let's see if that worked, all right?
+让我们看看如果工作,对吧?
+
+1713
+01:16:58,389 --> 01:17:01,789
+So let's just slide it out here and click,
+让我们滑出来,点击,
+
+1714
+01:17:01,858 --> 01:17:04,425
+Perfect size right there, right?
+完美的大小,对吗?
+
+1715
+01:17:04,494 --> 01:17:09,230
+Let's do it in landscape, click, perfect size, okay?
+让我们做景观,点击,完美的尺寸,好吗?
+
+1716
+01:17:09,299 --> 01:17:14,235
+So that's how you get your pop overs to fit their size
+这是你如何让你的流行越过适合它们的大小
+
+1717
+01:17:14,304 --> 01:17:16,503
+exactly, you've gotta figure out what their size is,
+没错,你必须找出他们的大小,
+
+1718
+01:17:16,572 --> 01:17:17,704
+Okay, that might be a little work but
+但这可能有点工作
+
+1719
+01:17:17,772 --> 01:17:19,505
+once you figure out what their size especially using that
+一旦你找出它们的大小尤其是使用
+
+1720
+01:17:19,574 --> 01:17:23,509
+nice system fitting thing, you can do that,
+好的系统配件的事情,你能做到这一点,
+
+1721
+01:17:23,578 --> 01:17:27,046
+So last thing I wanna do is go back to iPhone and
+所以我要做的就是回到iPhone和
+
+1722
+01:17:27,115 --> 01:17:31,650
+see what damage we've over there by doing this
+看看我们那边的损害
+
+1723
+01:17:31,719 --> 01:17:33,785
+clicking this pop over business in,
+点击这个流行业务,
+
+1724
+01:17:33,854 --> 01:17:38,289
+Okay, so here's our iPhone version, so
+好的,这是我们的iPhone版本,因此
+
+1725
+01:17:38,358 --> 01:17:42,526
+still working here, plus it's still adapting,
+仍然在这里工作,此外,它还适应,
+
+1726
+01:17:42,595 --> 01:17:44,896
+It not, it didn't show it in a popover even though we changed
+不,它没有显示在弹出窗口即使我们改变
+
+1727
+01:17:44,964 --> 01:17:47,665
+this segue to be a popover on all platforms,
+这个segue窗在所有平台上,
+
+1728
+01:17:47,733 --> 01:17:50,834
+It does that adaptive behavior to make this happen, okay,
+它的适应性行为来实现这一点,好吧,
+
+1729
+01:17:50,903 --> 01:17:52,169
+it's still working fine, though,
+不过,它仍然工作正常
+
+1730
+01:17:54,005 --> 01:17:55,304
+Call this happy,
+称之为幸福,
+
+1731
+01:18:00,544 --> 01:18:02,527
+Works like a charm, let's take a look over here,
+就像一个魅力,让我们来看看这里,
+
+1732
+01:18:02,528 --> 01:18:04,511
+Okay?
+好吧?
+
+1733
+01:18:04,581 --> 01:18:07,048
+This is landscape mode on the phone, this is pretty good,
+这是景观模式的电话,这是很好,
+
+1734
+01:18:07,116 --> 01:18:08,949
+I'm sure, woah!
+我敢肯定,哇!
+
+1735
+01:18:09,018 --> 01:18:10,584
+Big forehead guy,
+大额头的人,
+
+1736
+01:18:10,653 --> 01:18:13,053
+Okay, now again you could argue
+好了,现在你可能会说
+
+1737
+01:18:13,121 --> 01:18:16,656
+well this is just the way it makes it be but this is bad,
+这只是它的方式是但这是不好的,
+
+1738
+01:18:16,724 --> 01:18:19,225
+This is bad UI, I mean really if you had an app and
+这是糟糕的UI,我的意思是如果你有一个应用程序
+
+1739
+01:18:19,294 --> 01:18:21,227
+you bought it and it did this you'd be like what the?
+你买了它,它这样做你会喜欢吗?
+
+1740
+01:18:21,295 --> 01:18:22,828
+Who wrote that?
+谁写的?
+
+1741
+01:18:22,897 --> 01:18:25,330
+Now this is a strange situation where on an iPhone I
+这是一个奇怪的情况我在iPhone上
+
+1742
+01:18:25,398 --> 01:18:27,932
+actually think this would look a ton better
+实际上认为这看起来一吨更好
+
+1743
+01:18:28,001 --> 01:18:30,167
+as a pop over, wouldn't it?
+作为一种流行,不是吗?
+
+1744
+01:18:30,236 --> 01:18:32,737
+Because the pop over is nice minimum size,
+因为流行是不错的最小尺寸,
+
+1745
+01:18:32,805 --> 01:18:35,973
+so if we had this thing where you clicked on this plus,
+如果我们有这个东西,你点击这个加上,
+
+1746
+01:18:36,042 --> 01:18:38,508
+And it made a nice little pop over here wow that'd be just
+它做了一个漂亮的小流行在这里哇,会
+
+1747
+01:18:38,577 --> 01:18:40,477
+really cool in landscape mode,
+非常酷的景观模式,
+
+1748
+01:18:40,546 --> 01:18:43,345
+So how can I make it stop adapting cuz that's, well
+所以我怎么能让它停止适应因为这
+
+1749
+01:18:43,414 --> 01:18:46,248
+the problem here is when I hit plus it's adapting to the fact
+这里的问题是当我点击+适应这样的事实
+
+1750
+01:18:46,317 --> 01:18:49,318
+that it's on a compact width,
+它是在一个紧凑的宽度,
+
+1751
+01:18:49,386 --> 01:18:51,887
+All right, and it's turning it to full screen, so
+好吧,把它全屏幕,所以
+
+1752
+01:18:51,955 --> 01:18:53,455
+I don't want that, I want it to still be pop over,
+我不希望这样,我希望它仍然是流行,
+
+1753
+01:18:53,524 --> 01:18:55,757
+So let's use those that delegate method thing
+所以让我们用那些委托方法的事情
+
+1754
+01:18:55,826 --> 01:18:58,559
+I was talking about to make it stop doing that,
+我在谈论让它停止这样做,
+
+1755
+01:18:58,628 --> 01:19:02,696
+So that delegate stuff happens in the prepare for
+这代表东西的准备
+
+1756
+01:19:02,765 --> 01:19:05,365
+this segway, that prepare happens over here in
+赛格威,准备在这里发生
+
+1757
+01:19:05,434 --> 01:19:06,533
+the emotions view controllers,
+视图控制器的情感,
+
+1758
+01:19:06,602 --> 01:19:07,933
+We already have a prepare for that,
+我们已经有了准备,
+
+1759
+01:19:08,002 --> 01:19:10,436
+just preparing a different segue,
+只是准备不同segue,
+
+1760
+01:19:10,504 --> 01:19:12,504
+it's the segue that actually shows the face,
+segue实际上显示了脸,
+
+1761
+01:19:12,573 --> 01:19:14,406
+So here I'm just gonna say else,
+这里我只是想说,
+
+1762
+01:19:14,475 --> 01:19:15,673
+because I'm not talking about that segue,
+因为我并不是在谈论segue,
+
+1763
+01:19:15,742 --> 01:19:18,276
+I'm gonna talking about a different one else if
+我要谈论一个不同的人
+
+1764
+01:19:18,345 --> 01:19:24,081
+the segues destination is the editor,
+segue目的地是编辑,
+
+1765
+01:19:24,150 --> 01:19:28,185
+expression editor, view controller, okay?
+表达式编辑器视图控制器,对吧?
+
+1766
+01:19:28,253 --> 01:19:32,188
+Then I wanna Prep my popoverPresentationController
+然后我要准备我的popoverPresentationController
+
+1767
+01:19:32,257 --> 01:19:33,289
+so I'm the delegate,
+我委托,
+
+1768
+01:19:33,358 --> 01:19:34,157
+So I'm gonna say,
+所以我想说,
+
+1769
+01:19:36,094 --> 01:19:40,562
+if I can let the popoverPresentationController,
+如果我能让popoverPresentationController,
+
+1770
+01:19:40,631 --> 01:19:46,668
+= segue, Destinations popover presentation controller,
+= segue目的地弹窗显示控制器,
+
+1771
+01:19:46,736 --> 01:19:48,736
+Remember that the presentation controller is always
+记住,总是表示控制器
+
+1772
+01:19:48,805 --> 01:19:50,672
+on the thing being presented,
+件事被呈现,
+
+1773
+01:19:50,741 --> 01:19:53,507
+it's controlling the presentation itself,
+这是控制演讲本身,
+
+1774
+01:19:53,576 --> 01:19:54,608
+Not the thing that's presenting, but
+不提供的,但是
+
+1775
+01:19:54,677 --> 01:19:56,677
+the thing presented,
+的东西,
+
+1776
+01:19:56,746 --> 01:19:58,177
+So now I'm just gonna tell this popover
+现在我要告诉这个弹窗
+
+1777
+01:19:58,246 --> 01:20:03,115
+presentation controller to set delegate to be myself, okay?
+表示控制器设置委托自己,好吗?
+
+1778
+01:20:03,184 --> 01:20:04,717
+And then of course I have to go up here and
+当然,我得走了
+
+1779
+01:20:04,785 --> 01:20:06,986
+say I'm a UI popover,
+说我是UI弹出窗口,
+
+1780
+01:20:07,054 --> 01:20:09,420
+Presentation controller delegates,
+代表们表示控制器,
+
+1781
+01:20:09,489 --> 01:20:10,855
+All the methods are optional, so
+所有方法都是可选的,所以
+
+1782
+01:20:10,924 --> 01:20:14,192
+I am nicely implementing that,
+我很好地实施,
+
+1783
+01:20:14,260 --> 01:20:15,325
+But I'm going to implement the one,
+但是我要实现的,
+
+1784
+01:20:15,394 --> 01:20:18,128
+which is this adaption, adaptive behavior thing,
+这是适应,适应行为的东西,
+
+1785
+01:20:18,197 --> 01:20:22,266
+It's called adaptive presentation style for
+它被称为自适应表示风格
+
+1786
+01:20:22,334 --> 01:20:23,900
+view controller, trait collection,
+视图控制器,特征集合,
+
+1787
+01:20:25,403 --> 01:20:26,169
+Right here,
+在这里,
+
+1788
+01:20:26,237 --> 01:20:29,238
+well maybe arguments a little easier to see,
+也许参数更容易看到,
+
+1789
+01:20:32,943 --> 01:20:36,678
+Okay, so this is the thing where it's asking the pop over
+这是问的流行的东西
+
+1790
+01:20:36,746 --> 01:20:38,346
+presentation manager,
+报告经理,
+
+1791
+01:20:38,415 --> 01:20:41,782
+hey do you wanna control the adapting behavior?
+嘿你想控制适应行为?
+
+1792
+01:20:41,851 --> 01:20:44,084
+Right, how it adapts, and I do,
+它如何适应,我做,
+
+1793
+01:20:44,153 --> 01:20:45,452
+And what is it that I wanna do?
+我想做的是什么?
+
+1794
+01:20:45,520 --> 01:20:48,120
+Well, when it's in landscape mode in iPhone,
+当它在横向模式在iPhone,
+
+1795
+01:20:48,189 --> 01:20:49,555
+I want it to be pop over,
+我希望它是流行,
+
+1796
+01:20:49,624 --> 01:20:52,024
+So basically what is the traitCollection
+所以基本上traitCollection是什么
+
+1797
+01:20:52,093 --> 01:20:54,126
+of the iPhone in landscape mode?
+iPhone在横向模式?
+
+1798
+01:20:54,195 --> 01:20:55,694
+It's vertically compact,
+这是垂直紧凑,
+
+1799
+01:20:55,763 --> 01:20:58,330
+It's the only case that's vertically compact,
+这是唯一的垂直紧凑的情况下,
+
+1800
+01:20:58,399 --> 01:21:00,698
+No other device has vertically compact,
+没有其他设备垂直紧凑,
+
+1801
+01:21:00,767 --> 01:21:03,401
+So I'm gonna, just gonna say if the traitCollection, okay,
+所以我要,只是会说如果traitCollection,好吧,
+
+1802
+01:21:03,469 --> 01:21:06,269
+cuz that's passed along to me here as an argument, if I,
+因为这是我作为参数传递,如果我,
+
+1803
+01:21:06,338 --> 01:21:11,174
+I'm gonna say if it verticalSizeClass = compact,
+我想说如果它verticalSizeClass =紧凑,
+
+1804
+01:21:11,243 --> 01:21:13,342
+then what's the adaptation mode I want?
+然后适应模式我想要什么?
+
+1805
+01:21:13,411 --> 01:21:17,080
+,none, do not adapt,
+,没有,不适应,
+
+1806
+01:21:17,148 --> 01:21:20,082
+Just be your normal pop over self,
+只是你的正常的流行的自我,
+
+1807
+01:21:20,151 --> 01:21:23,185
+However, if the traitCollection
+然而,如果traitCollection
+
+1808
+01:21:23,253 --> 01:21:29,024
+horizontalSizeClass is compact, I do want to adapt,
+horizontalSizeClass紧凑,我想适应,
+
+1809
+01:21:29,093 --> 01:21:31,592
+In fact, I wanna adapt to overFullScreen,
+事实上,我想适应overFullScreen,
+
+1810
+01:21:31,661 --> 01:21:35,329
+By the way, overFullScreen means full screen and
+顺便说一下,overFullScreen全屏和手段
+
+1811
+01:21:35,398 --> 01:21:38,632
+don't show the view controller behind it,
+不显示视图控制器,
+
+1812
+01:21:38,701 --> 01:21:42,136
+over, what you call, full screen,
+结束了,你叫什么,全屏,
+
+1813
+01:21:42,204 --> 01:21:45,739
+just ,FullScreen is go over the whole screen,
+只是,全屏是整个屏幕,
+
+1814
+01:21:45,808 --> 01:21:48,407
+But let the one that I'm on top of show through, and
+但是让我上面给的,和
+
+1815
+01:21:48,476 --> 01:21:51,510
+usually if we do that one, we blur, we put a blur background
+通常如果我们这么做,我们模糊,我们放了一个模糊的背景
+
+1816
+01:21:51,579 --> 01:21:54,313
+or something like that, you might check out UI visual
+或类似的东西,你可能会查看界面视觉
+
+1817
+01:21:54,382 --> 01:21:57,215
+effects, if you wanna do that in your final project,
+效果,如果你想在期末项目,
+
+1818
+01:21:57,284 --> 01:21:59,084
+UI visual effects great way to do a blur,
+一个模糊界面视觉效果的好方法,
+
+1819
+01:22:00,387 --> 01:22:01,819
+Otherwise I'm gonna return none,
+否则我要返回,
+
+1820
+01:22:01,888 --> 01:22:04,788
+because otherwise I'm regular width or height or something,
+否则我常规的宽度或高度,
+
+1821
+01:22:04,857 --> 01:22:07,157
+I'm on an iPad basically probably or
+我在iPad上基本上可能或
+
+1822
+01:22:07,226 --> 01:22:11,862
+maybe I'm on an iPhone 6+ or something like that,
+也许我在iPhone上6 +之类的,
+
+1823
+01:22:11,930 --> 01:22:15,097
+iPhone 7+ but I don't wanna adapt in those cases either,
+iPhone 7 +但我不想适应在这种情况下,
+
+1824
+01:22:15,166 --> 01:22:17,367
+All right, so this will control the adapted behavior,
+好的,这将控制适应行为,
+
+1825
+01:22:17,436 --> 01:22:19,902
+But one thing I have here is destination,
+但有一件事我是目的地,
+
+1826
+01:22:19,970 --> 01:22:23,105
+we don't want destination because the destination
+我们不想要的目的地,因为目的地
+
+1827
+01:22:23,173 --> 01:22:26,441
+of this segue is a UI navigation controller okay?
+这个segue UI导航控制器?
+
+1828
+01:22:26,510 --> 01:22:29,477
+We want here this destination view controller that we
+我们希望这个目标视图控制器
+
+1829
+01:22:29,546 --> 01:22:32,647
+calculated by looking inside the navigation controller, so
+计算通过导航控制器内
+
+1830
+01:22:32,716 --> 01:22:34,916
+this is destination view controller,
+这是目标视图控制器,
+
+1831
+01:22:36,519 --> 01:22:38,252
+Okay so now let's run this,
+好,现在让我们运行这个,
+
+1832
+01:22:39,654 --> 01:22:43,323
+Oops, >> No segue dot,
+噢,> >点,
+
+1833
+01:22:43,391 --> 01:22:44,490
+>> No segue dot, yeah,
+> >没有segue点,是的,
+
+1834
+01:22:46,827 --> 01:22:48,459
+Okay, there we go,
+好了,好了,
+
+1835
+01:22:48,528 --> 01:22:51,196
+So we've got our destination view controller B in this
+所以我们有我们的目标视图控制器B
+
+1836
+01:22:51,264 --> 01:22:53,998
+expression, then we're going to become the pop-over
+表达式,然后我们会成为做客
+
+1837
+01:22:54,067 --> 01:22:55,833
+presentation for those delegates,
+表示为代表,
+
+1838
+01:22:55,901 --> 01:22:58,502
+And we'll implement this adapted behavior where we
+我们会实现这个调整我们的行为
+
+1839
+01:22:58,570 --> 01:23:01,605
+don't do it, in the case where we're vertically compact,
+不这样做,如果我们垂直紧凑,
+
+1840
+01:23:01,673 --> 01:23:03,806
+So here this one, is vertically regular, so
+这一个,是垂直固定,所以
+
+1841
+01:23:03,875 --> 01:23:05,541
+it's not doing that,
+不这样做,
+
+1842
+01:23:05,610 --> 01:23:07,677
+But in here, we're vertically compact, so
+但是在这里,我们垂直紧凑,所以
+
+1843
+01:23:07,746 --> 01:23:09,478
+this shows up as a pop-over,
+这表现为突然到来,
+
+1844
+01:23:10,748 --> 01:23:13,114
+Right?
+对吧?
+
+1845
+01:23:13,183 --> 01:23:13,881
+long today,
+今天,
+
+1846
+01:23:13,950 --> 01:23:16,584
+And I will, see you Wednesday,
+我将星期三见到你,
+
+1847
+01:23:16,653 --> 01:23:27,261
+>> For more, please visit us at Stanford,edu,
+> >更多内容,请访问我们的斯坦福大学edu,

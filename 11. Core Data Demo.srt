@@ -1,0 +1,7959 @@
+1
+00:00:00,401 --> 00:00:04,569
+[MUSIC]
+(音乐)
+
+2
+00:00:04,638 --> 00:00:08,339
+Stanford University,
+斯坦福大学,
+
+3
+00:00:08,408 --> 00:00:11,075
+>> Welcome to Stanford CS193P,
+> >欢迎来到斯坦福CS193P,
+
+4
+00:00:11,144 --> 00:00:13,978
+developing applications for iOS,
+iOS应用程序开发,
+
+5
+00:00:14,047 --> 00:00:16,414
+It's winter of 2017,
+这是2017年冬天,
+
+6
+00:00:16,483 --> 00:00:19,083
+This is lecture number 11 and
+这是11号和讲座
+
+7
+00:00:19,152 --> 00:00:22,654
+today we're gonna do one gigantic demo,
+今天我们要做一个巨大的演示,
+
+8
+00:00:22,723 --> 00:00:25,390
+Last time I made you suffer through basically doing
+上次我让你遭受基本上做的
+
+9
+00:00:25,459 --> 00:00:26,625
+all slides,
+所有幻灯片,
+
+10
+00:00:26,693 --> 00:00:30,895
+Now, you get to enjoy all demo for the whole time,
+现在,你可以享受所有演示了整个时间,
+
+11
+00:00:30,964 --> 00:00:33,464
+And it's all gonna be about Core Data and applying all
+都是会对核心数据和应用
+
+12
+00:00:33,533 --> 00:00:36,268
+the things that we learned in the last lecture into a demo,
+我们在上节课学到的演示,
+
+13
+00:00:36,337 --> 00:00:38,870
+And then we'll be coming back to the slides, so
+然后我们会回到幻灯片,
+
+14
+00:00:38,938 --> 00:00:42,374
+let me just give you a heads up of what's happening here,
+让我给你一个头这里发生了什么,
+
+15
+00:00:42,443 --> 00:00:45,043
+On Friday, we have this other database mechanism for
+上周五,我们有这个其他数据库的机制
+
+16
+00:00:45,112 --> 00:00:46,712
+storing data in iCloud,
+在云存储数据,
+
+17
+00:00:46,780 --> 00:00:50,248
+I highly recommen this one, at our Friday section,
+我强烈recommen这个,在我们周五部分,
+
+18
+00:00:50,316 --> 00:00:51,883
+normal place and time,
+正常的地点和时间,
+
+19
+00:00:51,951 --> 00:00:52,918
+Monday's a holiday, so
+周一的一个节日,所以
+
+20
+00:00:52,986 --> 00:00:55,353
+don't show up here on Monday cuz I won't be here,
+周一没有出现在这里因为我不会在这里,
+
+21
+00:00:55,422 --> 00:00:58,356
+And then next Wednesday, I'll be going over the final
+然后下个星期三,我将会在最后
+
+22
+00:00:58,425 --> 00:01:01,226
+project requirements, including the rubric, and
+项目需求,包括标题和
+
+23
+00:01:01,295 --> 00:01:03,795
+also we'll be doing the topic, autolayout,
+我们也会做主题,自动布局,
+
+24
+00:01:03,863 --> 00:01:09,200
+Now, your assignment five has been
+现在,作业5
+
+25
+00:01:09,269 --> 00:01:14,439
+posted already, and it's due one
+已经发布了,它是由于一个
+
+26
+00:01:14,508 --> 00:01:19,544
+week from today before lecture,
+星期从今天开始演讲之前,
+
+27
+00:01:19,612 --> 00:01:23,882
+So here's Smashtag from last week,
+这是Smashtag从上周,
+
+28
+00:01:23,950 --> 00:01:26,952
+Remember we have this one MVC where we type in a search
+记得我们有这一个MVC输入一个搜索
+
+29
+00:01:27,020 --> 00:01:29,354
+string, #Stanford or whatever else,
+字符串,#斯坦福或者其他,
+
+30
+00:01:29,423 --> 00:01:31,790
+and it pulls down a bunch of tweets,
+这一群推拉下,
+
+31
+00:01:31,859 --> 00:01:34,592
+Now we're just gonna add another MVC,
+现在,我们要添加另一个MVC,
+
+32
+00:01:34,661 --> 00:01:35,961
+a core data driven MVC,
+一个核心数据驱动的MVC,
+
+33
+00:01:36,029 --> 00:01:40,198
+And when this MVC is gonna show all the Twitter users who
+当这个MVC会显示所有的Twitter用户
+
+34
+00:01:40,267 --> 00:01:44,035
+tweeted all the tweets that are showing in this MVC
+在推特上的所有微博显示MVC
+
+35
+00:01:44,104 --> 00:01:45,069
+right here,
+在这里,
+
+36
+00:01:45,138 --> 00:01:48,072
+So, if you type a certain search term like #Stanford,
+所以,如果你输入一个特定的搜索词像#斯坦福大学,
+
+37
+00:01:48,141 --> 00:01:49,674
+Stanford gets a bunch of tweets,
+斯坦福大学被一群微博,
+
+38
+00:01:49,743 --> 00:01:51,342
+And then there's gonna be a button on this MVC,
+然后会有一个按钮在这个MVC,
+
+39
+00:01:51,411 --> 00:01:52,878
+we're gonna put it up in the title bar,
+我们要把它的标题栏,
+
+40
+00:01:52,946 --> 00:01:54,780
+we're gonna show you how to do that as well,
+我们会告诉你怎么做,
+
+41
+00:01:54,848 --> 00:01:55,881
+And you're gonna click that button,
+你会点击那个按钮,
+
+42
+00:01:55,949 --> 00:01:58,483
+It's gonna bring a new MVC with all the users, and
+它会带来一个新的MVC的用户,和
+
+43
+00:01:58,552 --> 00:02:00,552
+we'll also put in there how many times,
+我们也会把多少次,
+
+44
+00:02:00,621 --> 00:02:02,187
+how many tweets they tweeted,
+多少微博发微博
+
+45
+00:02:02,256 --> 00:02:05,990
+When we do that, we're only gonna be looking at the tweets
+当我们这样做,我们只会看微博
+
+46
+00:02:06,059 --> 00:02:08,593
+that are in this result, this search result right here,
+在这个结果,这个搜索结果,
+
+47
+00:02:08,662 --> 00:02:11,329
+or that have ever come from typing this search term,
+或者曾经来自输入搜索词,
+
+48
+00:02:11,398 --> 00:02:15,233
+All right, so this is all gonna be core data,
+好吧,这是所有核心数据,
+
+49
+00:02:15,302 --> 00:02:17,469
+So we need core data in our app,
+所以我们需要核心数据在我们的应用程序,
+
+50
+00:02:17,537 --> 00:02:20,805
+When we built Smashtag we didn't click use core data, so
+当我们建立Smashtag没有点击使用核心数据,
+
+51
+00:02:20,874 --> 00:02:23,708
+we're gonna have to go through the procedures that I talked
+我们要办理的手续,我说
+
+52
+00:02:23,777 --> 00:02:28,514
+about last time for adding core data to our app,
+关于上次的核心数据添加到我们的应用程序,
+
+53
+00:02:28,582 --> 00:02:30,916
+And we're gonna do that by creating a dummy
+我们要做的,通过创建一个假
+
+54
+00:02:30,984 --> 00:02:31,749
+app right here,
+应用程序在这里,
+
+55
+00:02:31,818 --> 00:02:33,885
+Let's go to New > Project,
+让我们去新的>项目时,
+
+56
+00:02:33,954 --> 00:02:35,454
+So we're gonna create a dummy project,
+所以我们要创建一个虚拟项目,
+
+57
+00:02:35,522 --> 00:02:37,189
+you can call this project anything you want,
+这个项目你可以叫任何你想要的,
+
+58
+00:02:37,257 --> 00:02:39,057
+I'm gonna call it Foo,
+我要叫它Foo,
+
+59
+00:02:39,125 --> 00:02:42,528
+Just make sure that Use Core Data is clicked right there,
+确保使用核心数据点击,
+
+60
+00:02:44,130 --> 00:02:46,397
+We can put it anywhere we want cuz we're just gonna turn
+我们可以在任何地方把它因为我们要
+
+61
+00:02:46,466 --> 00:02:47,866
+around and delete it in a moment,
+删除它,
+
+62
+00:02:47,934 --> 00:02:50,702
+And you can see that it has created this dummy project,
+你可以看到它已经创造了这个虚拟项目,
+
+63
+00:02:50,771 --> 00:02:52,738
+And all we're really interested in here is
+和所有我们真正感兴趣的
+
+64
+00:02:52,806 --> 00:02:55,507
+the code from the AppDelegate that does core data,
+的代码在AppDelegate核心数据,
+
+65
+00:02:55,576 --> 00:02:58,610
+You can see that this AppDelegate imports CoreData,
+你可以看到这个AppDelegate CoreData进口,
+
+66
+00:02:58,679 --> 00:03:01,345
+Now we haven't talked about the AppDelegate, and we will,
+现在我们还没有谈到在AppDelegate,我们将
+
+67
+00:03:01,414 --> 00:03:04,115
+It's part of the application lifecycle,
+这是应用程序生命周期的一部分,
+
+68
+00:03:04,184 --> 00:03:05,016
+But, for now,
+但是,就目前而言,
+
+69
+00:03:05,084 --> 00:03:07,452
+all we need to know is that we're gonna go down here and
+我们需要知道的是,我们要在这里
+
+70
+00:03:07,521 --> 00:03:08,754
+get this stuff or core data,
+得到这个东西或核心数据,
+
+71
+00:03:08,822 --> 00:03:12,157
+you recognize this from the slides,
+你认识这个幻灯片,
+
+72
+00:03:12,225 --> 00:03:16,094
+And notice also this applicationWillTerminate calls
+注意这个applicationWillTerminate调用
+
+73
+00:03:16,163 --> 00:03:17,295
+saveContext,
+saveContext,
+
+74
+00:03:17,364 --> 00:03:21,366
+SaveContext is one of the Core Data methods that you get for
+SaveContext是核心数据的方法得到
+
+75
+00:03:21,434 --> 00:03:23,051
+So I'm actually gonna select that as well as all the rest
+所以我要选择,以及所有的休息
+
+76
+00:03:23,052 --> 00:03:24,669
+free here,
+在这里,自由
+
+77
+00:03:24,738 --> 00:03:27,906
+of this stuff is marked Core Data right there,
+这些被标记的核心数据,
+
+78
+00:03:27,975 --> 00:03:29,307
+And I'm just gonna copy it,
+我要复制它,
+
+79
+00:03:29,376 --> 00:03:31,776
+I'm gonna close this project cuz I don't need it,
+我要关闭这个项目因为我不需要它,
+
+80
+00:03:31,845 --> 00:03:35,547
+And I'm gonna go over to the AppDelegate in my Smashtag
+我要去在AppDelegate Smashtag
+
+81
+00:03:35,616 --> 00:03:36,447
+right here,
+在这里,
+
+82
+00:03:36,516 --> 00:03:39,017
+And you can see it doesn't import core data right there
+你可以看到它不导入核心数据
+
+83
+00:03:39,086 --> 00:03:39,584
+at the top,
+在顶部,
+
+84
+00:03:39,653 --> 00:03:41,919
+Nor does applicationWillTerminate call
+applicationWillTerminate也不叫
+
+85
+00:03:41,988 --> 00:03:45,390
+SaveContext, nor does it have any of other stuff down there,
+SaveContext,也没有任何其他的东西,
+
+86
+00:03:45,459 --> 00:03:48,393
+So I'm just gonna take that code and paste in here,
+所以我要把代码粘贴在这里,
+
+87
+00:03:48,461 --> 00:03:53,197
+And this code is generic, it works in all applications,
+这代码是通用的,适用于所有应用程序,
+
+88
+00:03:53,266 --> 00:03:56,768
+The only thing that's specific about it is this string right
+唯一的具体这个字符串是正确的
+
+89
+00:03:56,837 --> 00:03:59,938
+here, which tells you the data model, the thing that
+,告诉你数据模型,的事情
+
+90
+00:04:00,007 --> 00:04:03,575
+describes the schema of your object or in a database,
+描述了对象的模式或数据库中,
+
+91
+00:04:03,643 --> 00:04:06,044
+Now you notice we have an error right here, that's
+现在你注意到我们有一个错误,这是
+
+92
+00:04:06,112 --> 00:04:08,780
+because it doesn't recognize NSPeristentContainer,
+因为它不认识NSPeristentContainer,
+
+93
+00:04:08,848 --> 00:04:12,784
+Because NSPeristentContainer is in a different framework
+因为NSPeristentContainer是在一个不同的框架
+
+94
+00:04:12,853 --> 00:04:15,019
+than UIKit, it's in CoreData,
+比UIKit CoreData,
+
+95
+00:04:15,088 --> 00:04:18,657
+So every time you're using CoreData in a swift file,
+所以每次你使用CoreData在迅速文件中,
+
+96
+00:04:18,725 --> 00:04:22,494
+you need to import CoreData or it won't recognize in this
+你需要进口CoreData也不会承认这一点
+
+97
+00:04:22,563 --> 00:04:27,466
+managed object or any of the other symbols from core data,
+管理对象或任何其他符号的核心数据,
+
+98
+00:04:27,534 --> 00:04:31,303
+So that's one thing we have to do that we use Core Data
+这是我们必须做的一件事,我们使用核心数据
+
+99
+00:04:31,371 --> 00:04:33,004
+The other one is actually create the data model itself,
+另一个是实际创建数据模型本身,
+
+100
+00:04:33,005 --> 00:04:34,638
+button did,
+按钮,
+
+101
+00:04:34,708 --> 00:04:36,641
+And that we do with File > New > File, so
+我们与File > New >文件,
+
+102
+00:04:36,710 --> 00:04:38,276
+I'm gonna go File > New > File,
+点击File > New >文件,
+
+103
+00:04:38,345 --> 00:04:42,080
+And we, normally we're picking things up here but we're gonna
+我们通常我们捡东西但我们会
+
+104
+00:04:42,149 --> 00:04:46,651
+scroll down to where it says Core Data and pick Data Model,
+向下滚动到核心数据和数据模型,
+
+105
+00:04:46,720 --> 00:04:48,787
+We don't want Mapping Model, we want Data Model,
+我们不想映射模型,数据模型,
+
+106
+00:04:50,257 --> 00:04:52,324
+This is just gonna be that thing where we describe all
+这只是将那件事我们描述所有的地方
+
+107
+00:04:52,393 --> 00:04:55,026
+our entities and attributes,
+我们的实体和属性,
+
+108
+00:04:55,095 --> 00:04:56,528
+And we can call it anything we want,
+我们可以叫它任何我们想要的,
+
+109
+00:04:56,597 --> 00:04:59,330
+Just to be kind of different I'm gonna call it Smash,
+只是有点不同的我要叫它打碎,
+
+110
+00:04:59,399 --> 00:05:02,567
+That's gonna be the name of my Data Model,
+这是要我的名字数据模型,
+
+111
+00:05:02,636 --> 00:05:03,935
+And I'm not gonna put in Supporting Files,
+和我不会放在支持文件,
+
+112
+00:05:04,004 --> 00:05:07,305
+I'm gonna put it in Smashtag in a higher,
+我要把它放在Smashtag更高,
+
+113
+00:05:07,374 --> 00:05:10,308
+this level up here and click Create,
+这个水平并单击创建、
+
+114
+00:05:10,376 --> 00:05:10,908
+And here it is,
+是这样的,
+
+115
+00:05:10,977 --> 00:05:12,277
+You can probably recognize this, right?
+你可以认识到这一点,对吧?
+
+116
+00:05:12,346 --> 00:05:13,311
+This is our entities and attributes,
+这是我们的实体和属性,
+
+117
+00:05:13,380 --> 00:05:15,046
+We haven't put any of them in there,
+我们还没有把其中的任何一个,
+
+118
+00:05:15,115 --> 00:05:18,583
+Now, since I call this Smash and not Foo,
+现在,既然我称之为粉碎而不是Foo,
+
+119
+00:05:18,652 --> 00:05:21,719
+I've to go back to my AppDelegate and
+我回到AppDelegate和
+
+120
+00:05:21,788 --> 00:05:26,625
+change this Foo string in here to be Smash,
+改变这个字符串Foo被粉碎,
+
+121
+00:05:26,693 --> 00:05:29,494
+So I've pretty much now reproduced everything that
+所以我现在几乎复制一切
+
+122
+00:05:29,562 --> 00:05:31,263
+the use core data button would do,
+使用核心数据按钮,
+
+123
+00:05:31,331 --> 00:05:33,631
+The only difference would be the use core data would have
+唯一不同的是使用核心数据
+
+124
+00:05:33,700 --> 00:05:34,966
+called my xcdatamodeld file,
+叫我xcdatamodeld文件,
+
+125
+00:05:35,034 --> 00:05:36,868
+It would have called it Smashtag,
+它会称之为Smashtag,
+
+126
+00:05:36,937 --> 00:05:40,205
+cuz that's the name of my app, but I like to call it Smash,
+因为这是我的程序的名字,但是我喜欢叫它打碎,
+
+127
+00:05:41,674 --> 00:05:45,210
+All right, so now that we have this nice data model file,
+好了,现在我们有这个很好的数据模型文件,
+
+128
+00:05:45,279 --> 00:05:47,678
+let's go ahead and create our schema,
+让我们创建模式,
+
+129
+00:05:47,747 --> 00:05:51,383
+Now, I'm gonna do this really quick because I already showed
+现在,我要做这个很快,因为我已经显示
+
+130
+00:05:51,451 --> 00:05:54,151
+you how to do all this which you can just watch it
+你如何做这一切,你可以看它
+
+131
+00:05:54,220 --> 00:05:55,487
+happening real fast,
+发生的很快,
+
+132
+00:05:55,555 --> 00:05:58,756
+I'm not gonna show you anything that I didn't show
+我不会告诉你任何我没有展示
+
+133
+00:05:58,825 --> 00:06:00,391
+you in the last lecture,
+你的最后一课,
+
+134
+00:06:00,460 --> 00:06:03,027
+I'm gonna start by adding an entity down here at
+下面我要开始通过添加一个实体
+
+135
+00:06:03,096 --> 00:06:04,980
+All right, this entity I'm going to rename it,
+好吧,这个实体我要重命名它,
+
+136
+00:06:04,981 --> 00:06:06,865
+the bottom,
+底部,
+
+137
+00:06:06,933 --> 00:06:10,368
+And I'm gonna do tweets and Twitter users cuz I'm gonna
+我要做微博和推特用户因为我要
+
+138
+00:06:10,437 --> 00:06:13,204
+have that table that follows Twitter users,
+那张桌子,Twitter用户,
+
+139
+00:06:13,273 --> 00:06:15,073
+But obviously those Twitter users are determined by
+但显然这些Twitter用户是由
+
+140
+00:06:15,142 --> 00:06:17,108
+a bunch of tweets, so those are two entities I need,
+一群微博,所以我需要这两个实体,
+
+141
+00:06:17,176 --> 00:06:19,945
+So let's put Tweet here first, and
+所以我们先把推特这里,
+
+142
+00:06:20,013 --> 00:06:21,446
+we'll add attributes for the tweet,
+我们将添加属性的微博,
+
+143
+00:06:21,515 --> 00:06:24,382
+I'm gonna add them by clicking this little plus right here,
+我要把它们通过点击这个小加在这里,
+
+144
+00:06:24,451 --> 00:06:28,953
+So we have the Text Attribute which is a String,
+我们是一个字符串的文本属性,
+
+145
+00:06:29,022 --> 00:06:33,157
+We have our tweets, what if we search for
+我们有微博,如果我们在搜寻什么
+
+146
+00:06:33,226 --> 00:06:34,792
+#Stanford twice in a row?
+#斯坦福连续两次吗?
+
+147
+00:06:34,861 --> 00:06:36,694
+We might get the same tweet back,
+我们可能会得到同样的推回来,
+
+148
+00:06:36,763 --> 00:06:38,763
+And we want our database to have unique tweets,
+我们希望我们的数据库有独特的微博,
+
+149
+00:06:38,832 --> 00:06:40,865
+we don't wanna every time we search we're getting more and
+我们不想每次我们搜索我们获得更多
+
+150
+00:06:40,934 --> 00:06:42,400
+more of the same tweet in there,
+更多相同的微博,
+
+151
+00:06:42,469 --> 00:06:44,702
+So I need some sort of unique
+所以我需要某种独一无二的
+
+152
+00:06:44,771 --> 00:06:47,472
+attribute in my database which is gonna a string,
+属性在我的数据库是一个字符串,
+
+153
+00:06:47,541 --> 00:06:51,743
+Luckily, the Twitter info that comes in the Twitter
+幸运的是,Twitter的Twitter信息
+
+154
+00:06:51,811 --> 00:06:53,911
+framework, it has a unique identifier in there for
+框架,它有一个惟一的标识符
+
+155
+00:06:53,980 --> 00:06:56,481
+tweets so it'll be really easy to set that,
+微博所以就很容易,
+
+156
+00:06:56,549 --> 00:06:57,982
+And I'm not gonna use this but for
+我不会使用这个但
+
+157
+00:06:58,051 --> 00:07:02,286
+example, if I wanted a created attribute it would be a date,
+例子,如果我想要一个创建属性,那将是一个日期,
+
+158
+00:07:02,355 --> 00:07:03,287
+I would just click Date,
+我就点击日期,
+
+159
+00:07:03,356 --> 00:07:06,490
+I'm putting this in here cuz I just wanna show you what
+我将在这里因为我想告诉你什么
+
+160
+00:07:06,559 --> 00:07:08,426
+it's like to set a date in code,
+就像在代码中设定一个日期,
+
+161
+00:07:08,495 --> 00:07:09,461
+This looks slightly tricky,
+这看起来有点棘手,
+
+162
+00:07:09,530 --> 00:07:10,528
+So I'm gonna add another, or
+所以我要添加另一个,或
+
+163
+00:07:10,597 --> 00:07:12,596
+actually we could look here in the Editor Style,
+实际上我们可以看这里的编辑风格,
+
+164
+00:07:12,665 --> 00:07:14,332
+So this is the exact same thing here in
+这是相同的东西在这里
+
+165
+00:07:14,401 --> 00:07:15,500
+the Editor Style,
+编辑风格,
+
+166
+00:07:15,569 --> 00:07:16,334
+When you're in Editor Style,
+当你在编辑风格,
+
+167
+00:07:16,403 --> 00:07:19,170
+you're almost always gonna have your inspector
+你几乎总是会有你的检查员
+
+168
+00:07:19,239 --> 00:07:22,140
+open right here so that you can click on things and
+打开这里,这样您就可以点击,
+
+169
+00:07:22,209 --> 00:07:24,742
+change their types and things like that,
+改变他们的类型和类似这样的事情,
+
+170
+00:07:24,811 --> 00:07:27,378
+I'm gonna create another entity here and it's going to
+我要创建另一个实体,它会
+
+171
+00:07:27,447 --> 00:07:30,215
+be our Twitter user, I'm gonna call that Twitter user,
+是我们的Twitter用户,我要调用Twitter用户,
+
+172
+00:07:33,253 --> 00:07:34,752
+And notice when I move these around,
+注意当我移动这些,
+
+173
+00:07:34,821 --> 00:07:37,422
+it moves it around whatever other entities there are,
+它在任何其他实体,
+
+174
+00:07:37,491 --> 00:07:39,357
+And I'm gonna be connecting these two and
+我要这两个和连接
+
+175
+00:07:39,425 --> 00:07:42,160
+creating a relationship, and you're gonna see it's gonna
+创建一个关系,你会看到它
+
+176
+00:07:42,228 --> 00:07:43,829
+keep drawing it as we draw there,
+保持它画成画,
+
+177
+00:07:44,864 --> 00:07:46,697
+So let's add some attributes here,
+让我们添加一些属性,
+
+178
+00:07:46,766 --> 00:07:48,200
+So I'm gonna click Add Attribute,
+所以我要点击添加属性,
+
+179
+00:07:50,804 --> 00:07:57,475
+Sorry,
+对不起,
+
+180
+00:07:57,544 --> 00:07:59,244
+It's not deleting, let's go back to Editor Style here,
+不是删除,让我们回到编辑风格,
+
+181
+00:08:04,751 --> 00:08:08,019
+By the way, I do notice sometimes that when selecting
+顺便说一下,我确实注意到有时,当选择
+
+182
+00:08:08,087 --> 00:08:12,356
+things, it's not always that great,
+事情,这并不总是很好,
+
+183
+00:08:12,425 --> 00:08:13,657
+it doesn't do that great a job,
+没有伟大的工作,
+
+184
+00:08:13,726 --> 00:08:15,927
+I'm not sure what it is about the data modeler that makes it
+我不确定这是什么使得它的数据建模师
+
+185
+00:08:15,996 --> 00:08:17,629
+that way, but you'll click on something,
+这样,但是你会点击,
+
+186
+00:08:17,697 --> 00:08:19,564
+and it doesn't click on that thing,
+也不会点击它,
+
+187
+00:08:19,633 --> 00:08:21,232
+it clicked the entity or something else,
+它点击实体或别的东西,
+
+188
+00:08:21,300 --> 00:08:23,268
+So there is an example where I was clicking on that
+这是一个例子,我是点击
+
+189
+00:08:23,336 --> 00:08:25,503
+attribute, but it wouldn't let me delete it,
+属性,但它不让我删除它,
+
+190
+00:08:25,572 --> 00:08:27,171
+Here I have Twitter user chosen,
+在这里我有推特用户选择,
+
+191
+00:08:27,240 --> 00:08:28,539
+hopefully add attribute,
+希望添加属性,
+
+192
+00:08:28,608 --> 00:08:30,741
+Yes, it adds it to the Twitter user,
+是的,它将其添加到Twitter用户,
+
+193
+00:08:30,810 --> 00:08:34,078
+The only attributes I'm gonna have on my Twitter user
+唯一我要对我的Twitter用户属性
+
+194
+00:08:34,147 --> 00:08:38,683
+are the handle, that's your @whatever, and then your name,
+处理,这是你的@whatever,然后你的名字,
+
+195
+00:08:40,153 --> 00:08:43,021
+And those are both going to be strings, so
+这些都是字符串,所以
+
+196
+00:08:43,089 --> 00:08:46,524
+we'll go over here and make this be of type string,
+我们去这里,这是string类型的,
+
+197
+00:08:46,593 --> 00:08:51,595
+And we'll also make the handle be type string,
+和我们也会使处理字符串类型,
+
+198
+00:08:51,664 --> 00:08:54,499
+So that's it for the attributes,
+这是它的属性,
+
+199
+00:08:54,567 --> 00:08:56,834
+And the only thing we have left to do is the relationship
+和我们唯一剩下要做的就是关系
+
+200
+00:08:56,903 --> 00:08:57,735
+between these two,
+在这两个之间,
+
+201
+00:08:57,804 --> 00:08:59,437
+And I'm gonna hold down Ctrl and
+我要按住Ctrl和
+
+202
+00:08:59,506 --> 00:09:02,540
+drag between the two right here,
+拖两个在这里,
+
+203
+00:09:02,608 --> 00:09:06,544
+And you see it creates a new relationship on both sides,
+你看到它创建一个新的关系双方,
+
+204
+00:09:06,613 --> 00:09:07,344
+But we don't want that,
+但是我们不希望这样,
+
+205
+00:09:07,413 --> 00:09:10,615
+the Twitter user here, this relationship is the tweets
+这里的Twitter用户,这种关系是tweet
+
+206
+00:09:10,684 --> 00:09:12,850
+that this Twitter user has tweeted,
+这个推特用户写道:,
+
+207
+00:09:12,919 --> 00:09:15,887
+And for the tweet, this relationship is the tweeter,
+微博,这种关系是推特,
+
+208
+00:09:16,990 --> 00:09:19,157
+the person who tweeted it,
+的人在推特上,
+
+209
+00:09:19,226 --> 00:09:21,826
+This tweets relationship right here we know is a "too many"
+这个微博关系我们知道是“太多”
+
+210
+00:09:21,895 --> 00:09:24,729
+relationship because a Twitter user gonna have multiple
+因为Twitter用户将有多个的关系
+
+211
+00:09:24,798 --> 00:09:25,930
+tweets,
+微博,
+
+212
+00:09:25,999 --> 00:09:27,599
+That's why get the little double arrow there,
+这就是为什么小双箭头,
+
+213
+00:09:29,703 --> 00:09:32,403
+That's our entire data model that we need now,
+这就是我们现在需要我们整个数据模型,
+
+214
+00:09:32,472 --> 00:09:33,637
+For your homework assignment,
+你的家庭作业,
+
+215
+00:09:33,706 --> 00:09:35,540
+you're gonna need more things in here,
+你需要更多的事情在这里,
+
+216
+00:09:35,609 --> 00:09:37,742
+This is not gonna be sufficient to the task, so
+这是任务,不会足以
+
+217
+00:09:37,811 --> 00:09:40,378
+you're gonna have to add some more stuff,
+你需要添加一些更多的东西,
+
+218
+00:09:40,447 --> 00:09:43,914
+But for our simple example, this is all we need,
+但是对于我们的简单的例子,这是我们所需要的,
+
+219
+00:09:43,983 --> 00:09:47,852
+Now, we know that we wanna access all this stuff,
+现在,我们知道我们想要访问所有这些东西,
+
+220
+00:09:47,921 --> 00:09:50,988
+not using value in for key and set value for key,
+没有使用价值为键,键和设置值
+
+221
+00:09:51,057 --> 00:09:52,256
+We wanna have subclasses,
+我们想有子类,
+
+222
+00:09:52,325 --> 00:09:53,958
+a subclass called TwitterUser and a club,
+一个子类TwitterUser和一个俱乐部,
+
+223
+00:09:54,026 --> 00:09:55,392
+subclass called Tweet,
+子类称为Tweet,
+
+224
+00:09:55,461 --> 00:09:57,061
+And we want them to have the vars for
+我们希望他们有var
+
+225
+00:09:57,130 --> 00:09:59,063
+all of these attributes and relationships,
+所有这些属性和关系,
+
+226
+00:09:59,132 --> 00:10:02,099
+And so, we need that code to be generated,
+所以,我们需要生成代码,
+
+227
+00:10:02,168 --> 00:10:04,769
+And the way we do that is we just select the answer to,
+我们的方法是我们选择的答案,
+
+228
+00:10:04,838 --> 00:10:07,472
+you see I've selected Tweet right here, entity Tweet,
+你看到我选定的Tweet,实体推特,
+
+229
+00:10:07,541 --> 00:10:09,040
+And you go down here to Codegen, and
+你去下面Codegen,
+
+230
+00:10:09,109 --> 00:10:11,442
+this says, by default, Class Definition,
+这个说,默认情况下,类定义,
+
+231
+00:10:11,511 --> 00:10:13,244
+That means that it's done it,
+这意味着完成它,
+
+232
+00:10:13,313 --> 00:10:15,814
+it has generated a class called tweet, and
+它生成一个类称为tweet,
+
+233
+00:10:15,882 --> 00:10:17,782
+it's gonna work with all the vars in relationship,
+它会处理所有的var的关系,
+
+234
+00:10:17,851 --> 00:10:20,184
+But that's not actually what we want,
+但实际上这并不是我们想要的,
+
+235
+00:10:20,253 --> 00:10:22,987
+We want to pick this one, where it only
+我们想选这个,它只在哪里
+
+236
+00:10:23,056 --> 00:10:27,826
+creates an extension to tweet that add to the vars stuff,
+创建一个扩展tweet添加到,var的东西,
+
+237
+00:10:27,894 --> 00:10:30,127
+That's because we wanna write the class tweet and
+这是因为我们想要写类微博和
+
+238
+00:10:30,196 --> 00:10:31,796
+be able to put our own code in there,
+能够把我们自己的代码,
+
+239
+00:10:31,865 --> 00:10:35,066
+It's very common to one will write the class herself
+是很常见的一个将编写自己的类
+
+240
+00:10:35,134 --> 00:10:36,100
+the main class,
+主类,
+
+241
+00:10:36,169 --> 00:10:38,069
+But you still want the var magic, so
+但你仍然希望var魔法,所以
+
+242
+00:10:38,137 --> 00:10:40,104
+you want those extensions in there,
+你想要这些扩展,
+
+243
+00:10:40,173 --> 00:10:42,840
+Another thing that I didn't really mention in lecture, and
+另一件事我没有提到的讲座,和
+
+244
+00:10:42,909 --> 00:10:45,376
+really, I don't think really matters unless you're in
+真的,我不认为真正重要的,除非你在
+
+245
+00:10:45,445 --> 00:10:47,845
+a workspace like we are, you know, we have Twitter and
+一个工作区,你知道,我们有Twitter和
+
+246
+00:10:47,914 --> 00:10:50,248
+smash dot org space, is this module name right here,
+打碎点组织空间,这里的模块名称,
+
+247
+00:10:50,317 --> 00:10:51,950
+If you don't have anything in here,
+如果你在这里,没有什么
+
+248
+00:10:52,018 --> 00:10:54,719
+then it's gonna use a global namespace for these classes,
+然后它会使用这些类的全局名称空间,
+
+249
+00:10:54,788 --> 00:10:57,055
+like tweet, so it's gonna call the class tweet,
+喜欢微博,所以它会调用类微博,
+
+250
+00:10:57,123 --> 00:11:00,391
+But actually, we already have a Twitter,tweet, and
+但实际上,我们已经有一个推特,推特,
+
+251
+00:11:00,460 --> 00:11:02,960
+now we're gonna have Smashtag,tweet,
+现在我们要有Smashtag,推特,
+
+252
+00:11:03,029 --> 00:11:06,564
+So we want to change this to be current product module,
+所以我们要改变这是当前的产品模块,
+
+253
+00:11:06,632 --> 00:11:07,532
+So don't forget this,
+所以不要忘记这个,
+
+254
+00:11:08,702 --> 00:11:10,367
+Wake up, if you're not paying attention,
+醒来,如果你不注意,
+
+255
+00:11:10,436 --> 00:11:12,069
+If you don't put this right here,
+如果你不放这里,
+
+256
+00:11:12,138 --> 00:11:14,772
+you're likely to get tons of errors,
+你可能会得到大量的错误,
+
+257
+00:11:14,841 --> 00:11:17,074
+All kinds of conflicting class names,
+各种冲突的类名,
+
+258
+00:11:17,143 --> 00:11:20,077
+and even if your app builds, it won't run,
+即使你的应用构建,它不会跑,
+
+259
+00:11:20,146 --> 00:11:21,145
+Terrible things will happen, so
+可怕的事情会发生,所以
+
+260
+00:11:21,214 --> 00:11:22,446
+you definitely wanna do this,
+你一定要这样做,
+
+261
+00:11:22,515 --> 00:11:24,782
+I don't believe you need to do this if you're not in
+我不相信你不需要这样做,如果你在
+
+262
+00:11:24,851 --> 00:11:25,416
+a workspace,
+一个工作区,
+
+263
+00:11:25,485 --> 00:11:27,552
+I think if you just have an app by itself,
+我想,如果你只有一个应用程序本身
+
+264
+00:11:27,621 --> 00:11:30,288
+you can leave that unset, and it'll work fine,
+你可以把设置,它会工作很好,
+
+265
+00:11:31,524 --> 00:11:34,292
+So that, we did that for tweet right here, so
+因此,我们在这里做了推特,所以
+
+266
+00:11:34,360 --> 00:11:36,261
+let's do it now for Twitter user,
+让我们为Twitter用户,现在就做
+
+267
+00:11:36,329 --> 00:11:38,929
+Twitter user is default in class definition,
+Twitter用户默认的类定义,
+
+268
+00:11:38,998 --> 00:11:41,699
+I want that to be extension also, and of course,
+我也想要,扩展,当然,
+
+269
+00:11:41,768 --> 00:11:45,336
+I want current product module there,
+我想当前的产品模块,
+
+270
+00:11:45,404 --> 00:11:48,305
+So that's all we need to do, and behind the scenes,
+这就是我们要做的,在幕后,
+
+271
+00:11:48,374 --> 00:11:51,408
+Xcode has furiously written out this extension to make
+Xcode疯狂地写了这个扩展
+
+272
+00:11:51,477 --> 00:11:52,310
+the vars work,
+增值的工作,
+
+273
+00:11:52,378 --> 00:11:54,946
+But we have said that we're gonna write the class,
+但我们已经说过,我们要编写的类,
+
+274
+00:11:55,014 --> 00:11:57,348
+So let's do that, let's create the class for
+让我们这样做,让我们创建类
+
+275
+00:11:57,417 --> 00:11:58,616
+twitter user and for tweets,
+twitter用户微博,
+
+276
+00:11:58,685 --> 00:12:00,918
+So we're gonna go to File > New > File,
+所以我们要去File > New >文件,
+
+277
+00:12:00,987 --> 00:12:04,255
+it's just how we create any class, it's no different than
+这只是我们如何创建任何类,它没有不同
+
+278
+00:12:04,324 --> 00:12:08,092
+any other class we've created, Cocoa Touch Class,
+我们创建其他类,可可触摸类,
+
+279
+00:12:08,161 --> 00:12:10,427
+It's not a TableViewController,
+这不是一个表,
+
+280
+00:12:10,496 --> 00:12:14,698
+it's an NSManagedObject, so we go down here, it's in somewhat
+这是个NSManagedObject,我们去这里,它在某种程度上
+
+281
+00:12:14,767 --> 00:12:19,103
+alphabetical order, so, or is it here, NSManagedObject,
+字母顺序排列的,所以,还是这里,NSManagedObject,
+
+282
+00:12:19,172 --> 00:12:21,739
+We know that Twitter user and tweet are representing
+我们知道Twitter用户和微博是代表
+
+283
+00:12:21,808 --> 00:12:23,607
+the database as NSManagedObjects or
+数据库作为nsmanagedobject或
+
+284
+00:12:23,676 --> 00:12:26,010
+subclasses thereof, which we're creating,
+我们正在创建的子类,,
+
+285
+00:12:26,079 --> 00:12:29,847
+So we'll create the tweet one first and we hit Next,
+我们将创建推一分之一和冲击下,
+
+286
+00:12:29,916 --> 00:12:31,282
+It says, where do you wanna put it, and
+它说,你想把它放在哪里,
+
+287
+00:12:31,350 --> 00:12:33,718
+we'll put it in the same place as everything else,
+我们会把它放在其他地方一样,
+
+288
+00:12:33,787 --> 00:12:36,821
+And here it is, we know that we're gonna have an error here
+是这样的,我们知道,我们会有一个错误
+
+289
+00:12:36,890 --> 00:12:40,124
+immediately once this thing gets around to building that,
+马上这个建筑,
+
+290
+00:12:40,193 --> 00:12:41,792
+and that's the NSManagedObject,
+的NSManagedObject,
+
+291
+00:12:41,861 --> 00:12:45,095
+It's not gonna identify, it's not gonna know what that is
+它不会识别,不会知道那是什么
+
+292
+00:12:45,164 --> 00:12:47,132
+until we say import CoreData,
+直到我们说进口CoreData,
+
+293
+00:12:48,801 --> 00:12:52,036
+Don't forget this little piece in your subclass,
+不要忘记这一小段子类,
+
+294
+00:12:52,105 --> 00:12:55,273
+But now we can put anything we want inside these curly
+但是现在我们可以把任何我们想要在这些花
+
+295
+00:12:55,341 --> 00:12:57,976
+braces, and we're going to put a method in there,
+牙套,我们将把一个方法,
+
+296
+00:12:59,379 --> 00:13:02,347
+So let's do the same thing here for Twitter user,
+让我们为Twitter用户做同样的事,
+
+297
+00:13:04,117 --> 00:13:06,851
+Twitter user, in the same way,
+Twitter用户,以同样的方式,
+
+298
+00:13:06,919 --> 00:13:10,688
+put everything in the same place,
+把一切都在同一个地方,
+
+299
+00:13:10,756 --> 00:13:15,193
+Here it is, let's import CoreData,
+在这里,我们进口CoreData,
+
+300
+00:13:15,261 --> 00:13:19,096
+Now when you're first creating your model file and
+现在当你第一次创建文件和模型
+
+301
+00:13:19,165 --> 00:13:21,198
+you choose that extension thing, and
+你选择扩展的事情,
+
+302
+00:13:21,267 --> 00:13:24,435
+hopefully you remember to do current project model, and
+希望你记住当前项目模型,
+
+303
+00:13:24,504 --> 00:13:26,503
+all that stuff, the first time you build, and
+所有的东西,你第一次构建
+
+304
+00:13:26,572 --> 00:13:30,007
+I'm gonna build here, you might get some errors,
+我要建在这里,你可能会得到一些错误,
+
+305
+00:13:30,076 --> 00:13:33,411
+We didn't get any of the kind of errors that you get from
+我们没有得到任何的错误,你得到的
+
+306
+00:13:33,480 --> 00:13:35,713
+things being out of whack, but if things are out of whack,
+事情都是不正常的,但如果不正常,
+
+307
+00:13:35,781 --> 00:13:38,115
+one thing you can do is go up to the product menu,
+你可以做的一件事就是去产品菜单,
+
+308
+00:13:38,184 --> 00:13:40,518
+and clean, just clean everything out,
+和清洁,清洁,
+
+309
+00:13:40,586 --> 00:13:43,087
+That'll cause XCode to regenerate those extensions,
+这将导致XCode再生这些扩展,
+
+310
+00:13:43,156 --> 00:13:44,188
+for example,
+例如,
+
+311
+00:13:44,256 --> 00:13:48,225
+You can even hold down Option when you go to the Product
+你甚至可以按住选择当你去产品
+
+312
+00:13:48,294 --> 00:13:50,594
+menu and then Clean Build Folder,
+菜单,然后清洁建立文件夹,
+
+313
+00:13:50,663 --> 00:13:52,997
+And that will clean out all your drive data and
+这将清除所有的数据和开车
+
+314
+00:13:53,066 --> 00:13:55,466
+rebuild absolutely everything,
+重建一切,
+
+315
+00:13:55,534 --> 00:13:56,668
+So, those are options,
+所以,这些都是选择,
+
+316
+00:13:56,736 --> 00:13:58,536
+And sometimes those are options just to do anytime
+有时这些选项只是随时去做
+
+317
+00:13:58,604 --> 00:14:01,372
+something's kinda not really working right,
+有点不正常工作,
+
+318
+00:14:01,441 --> 00:14:03,207
+Now we do have some errors, though, let's click and
+现在我们有一些错误,让我们点击
+
+319
+00:14:03,275 --> 00:14:05,175
+see what this error is right here,
+看看这个错误是在这里,
+
+320
+00:14:05,244 --> 00:14:06,010
+What is this saying?
+这是什么意思吗?
+
+321
+00:14:06,078 --> 00:14:08,946
+It's saying cannot convert value tweet to specified
+它说不能推到指定转换值
+
+322
+00:14:09,015 --> 00:14:10,981
+value tweet,
+tweet价值,
+
+323
+00:14:11,050 --> 00:14:13,150
+Can anyone see what might be the problem with this line
+谁能看到这条线可能是什么问题
+
+324
+00:14:13,219 --> 00:14:13,818
+of code right here?
+的代码呢?
+
+325
+00:14:17,290 --> 00:14:19,823
+>> Exactly,
+> >,
+
+326
+00:14:19,892 --> 00:14:23,627
+Yes, this is saying tweet, it doesn't know which one we
+是的,这是说推特,它不知道我们哪一个
+
+327
+00:14:23,696 --> 00:14:27,532
+want, twitter,tweet or the smashtag,tweet,
+想要的,推特,推特或smashtag,推特,
+
+328
+00:14:27,600 --> 00:14:31,502
+So we have to, in Swift, fully specify which one we want,
+所以我们必须迅速,完全指定哪一个我们想要的,
+
+329
+00:14:31,571 --> 00:14:34,572
+So this one is the twitter,tweet from our
+这一个是推特,推特从我们
+
+330
+00:14:34,640 --> 00:14:35,339
+old code,
+旧代码,
+
+331
+00:14:35,407 --> 00:14:36,807
+And once we fix that,
+一旦我们解决这个问题,
+
+332
+00:14:36,876 --> 00:14:41,045
+then now it knows what we're talking about and all is well,
+然后现在知道我们讨论的是一切都很好,
+
+333
+00:14:42,982 --> 00:14:43,948
+All right, so
+好吧,那么
+
+334
+00:14:44,017 --> 00:14:46,884
+now we've really got our core data stuff all ready to go,
+现在我们真的有我们的核心数据的东西都准备好了,
+
+335
+00:14:46,953 --> 00:14:50,922
+We've got the classes, we've got our data model explained,
+我们的类,我们有我们的数据模型解释说,
+
+336
+00:14:50,990 --> 00:14:52,289
+all that stuff,
+所有的东西,
+
+337
+00:14:52,358 --> 00:15:00,598
+What we're gonna do next is have our main MVC right here,
+接下来我们要做的是让我们的主要MVC,
+
+338
+00:15:00,667 --> 00:15:05,136
+Every time it fetches tweets,
+每次获取tweet,
+
+339
+00:15:05,205 --> 00:15:12,776
+we're gonna have it put that tweet in the database,
+我们会把它推在数据库中,
+
+340
+00:15:12,845 --> 00:15:15,012
+Once it loads up the database, then we can build this other
+一旦加载数据库,然后我们可以建立其他
+
+341
+00:15:15,080 --> 00:15:16,981
+MVC that will query the database,
+MVC将查询数据库,
+
+342
+00:15:17,049 --> 00:15:18,916
+So this is gonna be kind of the loading one,
+所以这是装运,
+
+343
+00:15:18,984 --> 00:15:20,318
+That's gonna be the querying one,
+要查询的,
+
+344
+00:15:20,386 --> 00:15:23,854
+Now, I might be quite tempted to add this code to
+现在,我可能会很想将这段代码添加到
+
+345
+00:15:23,923 --> 00:15:27,357
+TweetTableViewController,sw- ift,
+TweetTableViewController sw -界面张力,
+
+346
+00:15:27,426 --> 00:15:29,627
+Remember the thing we spent the last lecture doing all
+还记得我们上节课做度过的
+
+347
+00:15:29,695 --> 00:15:30,728
+this wonderful stuff?
+这美好的东西呢?
+
+348
+00:15:30,797 --> 00:15:33,298
+This would be an obvious place, for example in search
+这将是一个明显的地方,例如在搜索
+
+349
+00:15:33,366 --> 00:15:35,599
+for tweets where I'm getting the tweets back,
+推,我推回来了,
+
+350
+00:15:35,668 --> 00:15:38,669
+this would be an obvious place to load up the database,
+这将是一个明显的地方加载数据库,
+
+351
+00:15:38,738 --> 00:15:41,472
+However, I don't wanna do that here,
+然而,在这里我不想这样做,
+
+352
+00:15:41,541 --> 00:15:43,674
+And why don't I wanna do that here?
+在这里,我想为什么不这样做呢?
+
+353
+00:15:43,743 --> 00:15:46,577
+Because I have a perfectly good tweet
+因为我有一个完美的tweet
+
+354
+00:15:46,646 --> 00:15:50,815
+table view controller here, an awesome MVC, very reusable,
+表视图控制器,一个了不起的MVC,可重用,
+
+355
+00:15:50,884 --> 00:15:53,518
+You give it a search term, it'll load up with tweets,
+你给它一个搜索词,它会加载微博,
+
+356
+00:15:53,586 --> 00:15:55,219
+I don't really wanna pollute it and
+我不太想和污染它
+
+357
+00:15:55,287 --> 00:15:58,823
+make it non-reusable by tying it to my data model here,
+使它不可重复使用的,把我的数据模型,
+
+358
+00:15:58,892 --> 00:16:00,892
+by making it a core data thing,
+通过它的核心数据,
+
+359
+00:16:02,395 --> 00:16:05,629
+So how do I resolve that conundrum where I wanna keep
+所以我怎么解决这个难题,我想保持
+
+360
+00:16:05,698 --> 00:16:06,497
+this thing reusable,
+这个东西可重用,
+
+361
+00:16:06,566 --> 00:16:09,600
+but I still need to put this stuff in the database?
+但是我还需要把这些东西放在数据库吗?
+
+362
+00:16:09,668 --> 00:16:13,938
+The answer is, I'm gonna subclass this controller,
+答案是,我要子类这个控制器,
+
+363
+00:16:14,006 --> 00:16:17,308
+I'm gonna make another MVC that is going to inherit
+我要让另一个MVC继承
+
+364
+00:16:17,376 --> 00:16:19,944
+all the capabilities of this nice generic one, and
+这个通用的所有功能,
+
+365
+00:16:20,013 --> 00:16:21,145
+add the core data stuff,
+添加的核心数据,
+
+366
+00:16:22,682 --> 00:16:26,850
+So I'm just gonna go File > New File,
+所以我要去文件>新建文件,
+
+367
+00:16:26,919 --> 00:16:30,854
+Cocoa Touch class, I'm gonna make it not a subclass of any
+可可触摸类,我要让它没有的一个子类
+
+368
+00:16:30,923 --> 00:16:34,324
+iOS class, but a subclass of TweetTableViewController,
+iOS类,但是TweetTableViewController的子类,
+
+369
+00:16:34,393 --> 00:16:36,627
+This is my nice generic reusable one,
+这是我漂亮的通用的可重用的一个,
+
+370
+00:16:36,696 --> 00:16:37,861
+I'm gonna make this a subclass of that,
+我要让这个的一个子类,
+
+371
+00:16:37,930 --> 00:16:42,533
+I'm gonna call it SmashTweetTableViewController,
+我要叫它SmashTweetTableViewController,
+
+372
+00:16:42,602 --> 00:16:45,536
+Cuz it uses my smash data model,
+因为它使用我粉碎数据模型,
+
+373
+00:16:45,605 --> 00:16:48,138
+So I'm just gonna create that, here we go,
+所以我要创建,我们开始吧,
+
+374
+00:16:48,207 --> 00:16:51,542
+put it in the same place as always other things,
+把它放在同一个地方一如既往,
+
+375
+00:16:51,611 --> 00:16:52,810
+I mean we're gonna just delete all these code out here,
+我的意思是我们会删除所有这些代码,
+
+376
+00:16:52,811 --> 00:16:54,010
+Here it is,
+在这里,
+
+377
+00:16:54,079 --> 00:16:56,980
+I always do that just to make it clearer to you what I'm
+我总是这样做只是为了让你我更清晰
+
+378
+00:16:57,049 --> 00:16:58,816
+actually adding in this things,
+加入这个东西,
+
+379
+00:16:58,884 --> 00:17:02,086
+So I have this SmashTweetTableViewController
+所以我有这个SmashTweetTableViewController
+
+380
+00:17:02,155 --> 00:17:05,055
+and I can go to my story board for example and
+我可以去我的故事板和例子
+
+381
+00:17:05,124 --> 00:17:06,890
+select this controller,
+选择这个控制器,
+
+382
+00:17:06,959 --> 00:17:07,892
+And go to Identity,
+去身份,
+
+383
+00:17:07,961 --> 00:17:10,661
+and instead of making it a TweetTableViewController,
+而不是让它TweetTableViewController,
+
+384
+00:17:10,729 --> 00:17:14,698
+I'm gonna make it a SmashTweetTableViewController,
+我要让它SmashTweetTableViewController,
+
+385
+00:17:14,767 --> 00:17:17,234
+So now, this is going to do all the things that
+现在,这是要做的所有的事情
+
+386
+00:17:17,303 --> 00:17:18,802
+TweetTableViewController does,
+TweetTableViewController,
+
+387
+00:17:18,871 --> 00:17:22,239
+plus anything I put in this sub class,
+加上我放在这个接头类,
+
+388
+00:17:22,308 --> 00:17:25,642
+Now, unfortunately, we didn't
+现在,不幸的是,我们没有
+
+389
+00:17:25,711 --> 00:17:29,614
+get all the way to designing our generic reusable one,
+得到所有我们通用的可重用设计,
+
+390
+00:17:29,682 --> 00:17:32,249
+so that it was really nice and subclassable,
+所以这是很好的和subclassable,
+
+391
+00:17:32,318 --> 00:17:35,253
+Specifically, it will be really hard to subclass search
+具体地说,它将很难子类搜索
+
+392
+00:17:35,321 --> 00:17:39,923
+for tweets and then get inside here, in this closure and
+tweet,然后进入这里,关闭和
+
+393
+00:17:39,992 --> 00:17:42,026
+do something when these tweets happen,
+做一些当这些tweet发生,
+
+394
+00:17:42,095 --> 00:17:44,729
+So I'm gonna make my generic TweetTableViewController
+所以我要让我的通用TweetTableViewController
+
+395
+00:17:44,798 --> 00:17:46,130
+a little more subclassable,
+更subclassable
+
+396
+00:17:46,198 --> 00:17:49,099
+What I'm gonna do is take this code right here and
+我要做的就是把这个代码
+
+397
+00:17:49,168 --> 00:17:50,968
+make a little method out of it,
+做一个小方法,
+
+398
+00:17:51,037 --> 00:17:53,171
+insert tweets I'm gonna call it,
+插入微博我要叫它,
+
+399
+00:17:55,541 --> 00:17:59,477
+Okay, I'm just gonna create a new method called insertTweets
+好的,我要创建一个名为insertTweets的新方法
+
+400
+00:17:59,545 --> 00:18:02,980
+that's gonna do what that code I just cut out there is,
+这是要做什么,代码我就删掉,
+
+401
+00:18:03,048 --> 00:18:04,414
+we'll put it up here,
+我们会把它放在这里,
+
+402
+00:18:04,483 --> 00:18:09,253
+Func insertsTweets, it can take some new tweets
+Func insertsTweets,它可以采取一些新的tweet
+
+403
+00:18:09,321 --> 00:18:13,824
+which is gonna be in array of Twitter,tweet,
+会在数组的推特,推特,
+
+404
+00:18:13,893 --> 00:18:16,861
+It's gonna have that same code in there, obviously I don't
+它会有相同的代码,很显然我不喜欢
+
+405
+00:18:16,929 --> 00:18:19,830
+need this weak self business here, because I'm not inside
+需要这个弱自我业务在这里,因为我不是在里面
+
+406
+00:18:19,899 --> 00:18:22,200
+the closure here, and it's going to do it,
+关闭,它会这样做,
+
+407
+00:18:24,070 --> 00:18:26,737
+I'm gonna leave this essentially internal,
+我要离开这个内部,
+
+408
+00:18:26,805 --> 00:18:28,906
+remember that in default internal,
+记住,在默认的内部,
+
+409
+00:18:28,974 --> 00:18:31,542
+which means it can be overwritten or called,
+这意味着它可以被覆盖或叫,
+
+410
+00:18:31,611 --> 00:18:32,710
+If I made that private,
+如果我做了,私人,
+
+411
+00:18:32,779 --> 00:18:36,346
+subclasses would not be able to overwrite it,
+子类不能覆盖它,
+
+412
+00:18:36,415 --> 00:18:39,616
+Unfortunately there's nothing like protected in Swift where
+不幸的是,没有什么比保护在斯威夫特
+
+413
+00:18:39,685 --> 00:18:42,586
+it's like subclassers can override it but people can't
+就像子类可以重写,但人不能
+
+414
+00:18:42,655 --> 00:18:46,424
+call it, unfortunately there's no such thing as that,
+称呼它,不幸的是,没有这种东西,
+
+415
+00:18:46,492 --> 00:18:50,260
+All right, so we have to leave this internal and but now
+好了,所以我们不得不离开这个内部和现在
+
+416
+00:18:50,329 --> 00:18:54,364
+I can take this method in my subclass here and override it,
+我可以把这个方法子类重写它,
+
+417
+00:18:54,433 --> 00:18:56,733
+So I just put it here and say override, so
+所以我就把它放在这里说覆盖,所以
+
+418
+00:18:56,802 --> 00:18:59,470
+Swift knows that I'm overriding this thing,
+迅速知道我重写这个东西,
+
+419
+00:18:59,539 --> 00:19:01,839
+Then I'm gonna let Super do its work,
+然后我要让超级做其工作,
+
+420
+00:19:04,244 --> 00:19:07,745
+And then I'm going to call a method on myself,
+然后我要对自己调用一个方法,
+
+421
+00:19:09,782 --> 00:19:18,389
+updateDatabase(with newTweets), all right?
+updateDatabase(newTweets)?
+
+422
+00:19:18,458 --> 00:19:22,893
+And that's going to update my database, so I'm gonna have
+要更新我的数据库,所以我要拥有的
+
+423
+00:19:22,961 --> 00:19:27,531
+a private func here called updateDatabase (with tweets),
+一个私人func叫updateDatabase(微博),
+
+424
+00:19:27,600 --> 00:19:30,167
+it's gonna be a Twitter,tweet,
+它会是一个推特,推特,
+
+425
+00:19:30,235 --> 00:19:36,373
+Sorry, I keep hitting this tiny button right there,
+对不起,我一直打这个小按钮,
+
+426
+00:19:36,442 --> 00:19:40,678
+That's just going to put these tweets into Core Data,
+就是要把这些tweet核心数据,
+
+427
+00:19:40,746 --> 00:19:43,881
+And of course it's complaining because import Twitter and
+当然这是抱怨,因为Twitter和进口
+
+428
+00:19:43,950 --> 00:19:46,416
+I'm starting using Twitter now,
+我现在开始使用Twitter,
+
+429
+00:19:46,485 --> 00:19:47,935
+I might as well put it now import CoreData because this
+我现在不妨把它导入CoreData因为这
+
+430
+00:19:47,936 --> 00:19:49,386
+By the way,
+顺便说一下,
+
+431
+00:19:49,455 --> 00:19:52,189
+SmashTweetTableViewController is obviously is
+SmashTweetTableViewController显然是
+
+432
+00:19:52,257 --> 00:19:55,292
+going to be doing a lot of core data stuff as well,
+要做很多核心数据的东西,
+
+433
+00:19:55,361 --> 00:19:56,960
+Everyone see what I did there?
+每个人都明白我在做什么?
+
+434
+00:19:57,029 --> 00:20:00,298
+I just subclass this and I'm putting all my smash tag,
+我只是这个子类,我把我所有的粉碎标签,
+
+435
+00:20:00,366 --> 00:20:03,033
+smash core data stuff into this subclass, so
+粉碎核心数据到这个子类
+
+436
+00:20:03,102 --> 00:20:06,537
+that the super class remains completely generic,
+超类是完全通用的,
+
+437
+00:20:06,606 --> 00:20:09,306
+I just had to make my super class a little
+我不得不让我的超类
+
+438
+00:20:09,375 --> 00:20:10,942
+more subclassible,
+更subclassible,
+
+439
+00:20:11,910 --> 00:20:13,043
+Now, as with any MVC,
+现在,对于任何MVC,
+
+440
+00:20:13,112 --> 00:20:15,879
+we want to think about the model of this SmashTable,
+我们要思考这个SmashTable的模型,
+
+441
+00:20:15,948 --> 00:20:19,182
+SmashTweetTableViewController, of course it's going to
+SmashTweetTableViewController,当然会
+
+442
+00:20:19,251 --> 00:20:21,251
+inherit the model of its super class,
+继承超类的模型,
+
+443
+00:20:21,320 --> 00:20:24,021
+But I'm also gonna add a model here,
+但我也会添加一个模型,
+
+444
+00:20:24,090 --> 00:20:26,791
+which is the database to use,
+数据库的使用,
+
+445
+00:20:26,859 --> 00:20:31,862
+And I'm gonna do it by passing in a PersistentContainer,
+我要做PersistentContainer通过,
+
+446
+00:20:31,931 --> 00:20:35,766
+Now normally we probably want this to be the app delegate
+现在通常我们可能想要这个应用程序委托
+
+447
+00:20:35,834 --> 00:20:39,270
+view, the app delegate persistence container,
+看来,应用委托持久性容器,
+
+448
+00:20:39,339 --> 00:20:41,905
+But I wanna allow people who are using my MVC,
+但是我想允许人们使用MVC,
+
+449
+00:20:41,974 --> 00:20:43,540
+to use any database they want,
+他们想要使用任何数据库,
+
+450
+00:20:43,609 --> 00:20:45,876
+I don't wanna force them to use that app delegate one,
+我不想强迫他们使用这个应用程序委托,
+
+451
+00:20:45,945 --> 00:20:49,613
+Having said that, I am gonna have the default value of
+已经说过,我要的默认值
+
+452
+00:20:49,682 --> 00:20:51,649
+this, go ahead and be that,
+继续,,,
+
+453
+00:20:51,718 --> 00:20:57,254
+So I'm gonna say (UIApplication,shared,delegate
+所以我想说(UIApplication、分享委托
+
+454
+00:20:57,322 --> 00:21:01,859
+as?, AppDelegate)?,persistentConta-
+的吗?
+
+455
+00:21:01,928 --> 00:21:03,094
+iner,
+内心的,
+
+456
+00:21:03,162 --> 00:21:05,095
+That's just the default value but
+这是默认值
+
+457
+00:21:05,164 --> 00:21:06,897
+this is a non-private var, so
+这是一个私人var
+
+458
+00:21:06,966 --> 00:21:10,334
+I'm using this ViewController could set the container and
+我用这个ViewController可以设置容器和
+
+459
+00:21:10,403 --> 00:21:13,604
+cause it to show things in a certain database,
+因为它显示事情在某些数据库,
+
+460
+00:21:13,672 --> 00:21:16,673
+That is essentially my model, my model is this database,
+这本质上是我的模型,这是我的模型数据库,
+
+461
+00:21:16,742 --> 00:21:18,975
+All this class does though is write to the database,
+所有这门课虽然是写数据库,
+
+462
+00:21:19,044 --> 00:21:21,912
+it's just updating the database,
+只是更新数据库,
+
+463
+00:21:21,980 --> 00:21:25,716
+All its UI it inherits from the super class which is non
+所有的UI非从超类继承
+
+464
+00:21:25,785 --> 00:21:27,685
+database oriented,
+面向数据库的,
+
+465
+00:21:27,753 --> 00:21:29,987
+So how do we update this database?
+那么,我们如何更新该数据库?
+
+466
+00:21:30,055 --> 00:21:30,988
+What do we need to do?
+我们需要做什么?
+
+467
+00:21:31,057 --> 00:21:34,325
+Well, one thing is, I don't really wanna update this thing
+嗯,有一件事是,我不太想更新这个东西
+
+468
+00:21:34,394 --> 00:21:35,959
+on the main queue, because,
+在主队列,因为,
+
+469
+00:21:36,028 --> 00:21:39,396
+I don't know if my super class might fetch a thousand tweets,
+我不知道如果我的超类可能会卖一千条,
+
+470
+00:21:39,465 --> 00:21:41,865
+And do I really wanna be blocking the main queue while
+,我真的想要阻止主队列
+
+471
+00:21:41,934 --> 00:21:44,034
+I go write a thousand tweets into my database?
+我写了一千条微博进入数据库?
+
+472
+00:21:44,103 --> 00:21:48,506
+No way, so I'm gonna take my container right here, and
+没有办法,所以我要把我的容器,和
+
+473
+00:21:48,574 --> 00:21:52,943
+I'm going to ask it to perform something on a background
+我要问它执行一些背景
+
+474
+00:21:53,012 --> 00:21:54,278
+thread,
+线程,
+
+475
+00:21:54,347 --> 00:21:57,281
+A background queue, and you can see, here's the argument,
+背景队列,你可以看到,这里的论点,
+
+476
+00:21:57,350 --> 00:21:59,383
+it's a closure and it takes one argument,
+一个闭包,它接受一个参数,即
+
+477
+00:21:59,452 --> 00:22:01,285
+I double-clicked on it there,
+我双击后,
+
+478
+00:22:01,354 --> 00:22:03,987
+I'm gonna use trailing closure syntax even,
+我要使用后关闭的语法,
+
+479
+00:22:04,056 --> 00:22:05,356
+So this one argument right here,
+所以这里的一个参数,
+
+480
+00:22:05,424 --> 00:22:09,994
+This is the manage object context for that other queue,
+这是其他队列的管理对象上下文,
+
+481
+00:22:10,062 --> 00:22:14,331
+the one that I'm allowed to use inside here,
+我允许使用里面的,
+
+482
+00:22:14,400 --> 00:22:16,066
+In order to update my database,
+为了更新我的数据库,
+
+483
+00:22:16,134 --> 00:22:18,802
+So I'm just gonna use that context and put these tweets,
+所以我要用这个上下文和把这些推文,
+
+484
+00:22:18,871 --> 00:22:20,704
+these new tweets that I got right here,
+这些新的推文,我在这里,
+
+485
+00:22:20,773 --> 00:22:22,940
+I'm gonna put them in the database one by one,
+我要把它们放在数据库一个接一个地
+
+486
+00:22:23,008 --> 00:22:25,509
+I'm just gonna say for
+我只是想说
+
+487
+00:22:25,578 --> 00:22:31,048
+twitterInfo in this tweets and then add tweet,
+twitterInfo在这个tweet,然后加入推特,
+
+488
+00:22:32,351 --> 00:22:34,618
+So, how do I do this piece of it,
+所以,我怎么做这一块,
+
+489
+00:22:34,686 --> 00:22:36,319
+How do I add a tweet?
+我如何添加一个推特?
+
+490
+00:22:36,388 --> 00:22:39,256
+And by tweet there, I mean the tweet in our data model,
+的推特,推特,我的意思是我们的数据模型,
+
+491
+00:22:39,325 --> 00:22:40,523
+That's what I wanna do,
+这就是我想做的,
+
+492
+00:22:40,592 --> 00:22:44,828
+Add a tweet in our data model that matches this Twitter info
+添加一个tweet匹配这个Twitter信息在我们的数据模型
+
+493
+00:22:44,897 --> 00:22:45,729
+that I got,
+我得到了,
+
+494
+00:22:45,798 --> 00:22:48,732
+All right, so we're gonna put the method in tweet in
+好吧,所以我们要把推特的方法
+
+495
+00:22:48,801 --> 00:22:51,601
+our subclass of tweet that we created right here,
+我们的推特的子类创建,
+
+496
+00:22:51,670 --> 00:22:53,170
+that's currently empty,
+这是目前空,
+
+497
+00:22:53,239 --> 00:22:56,306
+We're gonna put a static method in there to either go
+我们要去把一个静态方法
+
+498
+00:22:56,375 --> 00:22:59,409
+out and find a tweet that matches that twitter info or
+并找到一个匹配,twitter的微博信息
+
+499
+00:22:59,478 --> 00:23:02,279
+to create one if there's not one there,
+创建一个如果没有一个,
+
+500
+00:23:02,347 --> 00:23:04,581
+So that way they'll keep being unique, because if we get
+所以这样他们会保持独特,因为如果我们得到的
+
+501
+00:23:04,650 --> 00:23:06,984
+the same tweet we'll find it and just return the one that's
+相同的微博我们会发现它的返回
+
+502
+00:23:07,053 --> 00:23:08,652
+already there versus creating a new one,
+已有与创建一个新的,
+
+503
+00:23:08,721 --> 00:23:11,755
+So I'm gonna call this thing,
+所以我要叫这个东西,
+
+504
+00:23:11,824 --> 00:23:15,693
+it's gonna be static or if its a class,
+它会是静态的或者它的一个类,
+
+505
+00:23:15,761 --> 00:23:21,065
+we can say class func findOrCreatTweet, matching,
+我们可以说类func findOrCreatTweet匹配,
+
+506
+00:23:21,133 --> 00:23:26,937
+twitterInfo and that's going to be a Twitter,tweet,
+twitterInfo是推特,推特,
+
+507
+00:23:27,006 --> 00:23:28,906
+That's the info that's gonna be passed into it,
+这是会传递给它的信息,
+
+508
+00:23:28,974 --> 00:23:33,577
+And I need to know what context to go look in, so
+我需要知道上下文去看看,
+
+509
+00:23:33,645 --> 00:23:39,783
+I'm gonna say, in context, NSMan, I need some more space,
+我想说,在上下文中,NSMan,我需要更多的空间,
+
+510
+00:23:39,852 --> 00:23:44,120
+MSManagedObjectContext, right there,
+MSManagedObjectContext,,
+
+511
+00:23:44,189 --> 00:23:46,724
+And it's just going to return a tweet,
+要返回一个微博,
+
+512
+00:23:49,428 --> 00:23:52,496
+So this static method, class method is just going to go and
+所以这个静态方法,类方法就是去
+
+513
+00:23:52,564 --> 00:23:54,798
+look in the database and find this thing and
+请在数据库中找到这个东西
+
+514
+00:23:54,867 --> 00:23:57,634
+if it can find it, then it'll just create a new one,
+如果能找到它,那么它会创建一个新的,
+
+515
+00:23:57,703 --> 00:24:01,104
+So, we have to import Twitter, (let's get rid of this), and
+所以,我们不得不进口Twitter,(让我们摆脱这个),
+
+516
+00:24:01,173 --> 00:24:03,507
+so how are we going to do this?
+所以我们要怎么做呢?
+
+517
+00:24:03,576 --> 00:24:04,574
+Well this method,
+这个方法,
+
+518
+00:24:04,643 --> 00:24:09,313
+pretty straight forward based on all you know in Core Data,
+很直接的核心数据,基于你所知道的
+
+519
+00:24:09,382 --> 00:24:12,449
+First, I'm going to create a fetch request to go find
+首先,我要创建一个获取请求去寻找
+
+520
+00:24:12,518 --> 00:24:13,083
+this tweet,
+这个微博,
+
+521
+00:24:14,720 --> 00:24:19,723
+Le's do that tha's easy how about let request equal and
+乐的,那如何让要求平等,很简单
+
+522
+00:24:19,792 --> 00:24:21,891
+remember I have to statically type this actually so
+记得我必须静态类型确实如此
+
+523
+00:24:21,960 --> 00:24:22,893
+this is going to be an NS,
+这将是一个NS,
+
+524
+00:24:25,497 --> 00:24:27,331
+Fetch request,
+获取请求,
+
+525
+00:24:27,400 --> 00:24:28,932
+The fetch is what?
+fetch是什么?
+
+526
+00:24:29,001 --> 00:24:30,767
+Tweets,
+微博,
+
+527
+00:24:30,836 --> 00:24:33,870
+So I'm gonna use this nice Tweet,fetchRequest
+所以我要用这个漂亮的Tweet,fetchRequest
+
+528
+00:24:33,939 --> 00:24:34,938
+method to get one,
+方法一,
+
+529
+00:24:35,007 --> 00:24:36,540
+So that got me a fetch request,
+所以让我获取请求,
+
+530
+00:24:36,608 --> 00:24:38,142
+A fetch request that's on tweets,
+获取请求的微博,
+
+531
+00:24:38,211 --> 00:24:39,943
+That's what I have there and
+这就是我在那里
+
+532
+00:24:40,012 --> 00:24:42,046
+then I have to have a predicate for this,
+然后我必须有一个谓语,
+
+533
+00:24:42,114 --> 00:24:45,482
+So I'm gonna say the request predicate this is the thing
+所以我想说请求谓词的事情
+
+534
+00:24:45,550 --> 00:24:49,520
+that gonna say which tweets do you want in the database?
+会说你要哪tweet的数据库?
+
+535
+00:24:49,589 --> 00:24:53,624
+So predicate here, and which tweets do we want?
+这里谓词,我们想要推?
+
+536
+00:24:53,692 --> 00:24:56,994
+Well, we want a tweet where the unique key,
+我们想要一个唯一键推,
+
+537
+00:24:57,063 --> 00:25:00,464
+remember the unique key is in our data model,
+记得独特的关键是在我们的数据模型中,
+
+538
+00:25:00,532 --> 00:25:02,132
+I'll be going back to this data model often,
+我将回到这个数据模型通常,
+
+539
+00:25:02,200 --> 00:25:04,601
+But see here's that unique key right there,
+但是看到这唯一键,
+
+540
+00:25:04,670 --> 00:25:08,338
+We wanna know when that unique key matches what
+我们想知道什么时候那独特的关键比赛
+
+541
+00:25:08,407 --> 00:25:09,373
+the person passed in here,
+通过在这里的人,
+
+542
+00:25:09,442 --> 00:25:10,774
+The twitter info of what they passed in,
+twitter信息的传入,
+
+543
+00:25:10,843 --> 00:25:17,113
+So that's %@", and that's twitterInfo,identifier,
+% @”,twitterInfo,标识符,
+
+544
+00:25:17,182 --> 00:25:20,650
+So it turns out identifier
+结果标识符
+
+545
+00:25:20,719 --> 00:25:22,720
+that in our twitter info dot tweet,
+,在我们点推特,推特信息
+
+546
+00:25:22,788 --> 00:25:25,356
+That's the thing that you need for all time for a tweet,
+这是你需要的东西时间一条微博,
+
+547
+00:25:26,725 --> 00:25:27,658
+It's always the same for
+它总是一样的
+
+548
+00:25:27,726 --> 00:25:29,460
+the tweet even if you download it multiple times,
+的推特即使你多次下载它,
+
+549
+00:25:29,528 --> 00:25:30,961
+it's always the same,
+它总是相同的,
+
+550
+00:25:31,030 --> 00:25:33,397
+Now what about our sort predicate here, or
+现在我们的谓词,或
+
+551
+00:25:33,466 --> 00:25:35,499
+our sort descriptors rather?
+我们的描述符,而?
+
+552
+00:25:35,568 --> 00:25:37,434
+We actually don't need any sort descriptors
+我们不需要任何类型描述符
+
+553
+00:25:37,503 --> 00:25:41,704
+because this better match exactly one or zero,
+因为这更好的完全匹配一个或零,
+
+554
+00:25:41,773 --> 00:25:45,542
+So you don't need to put zero things or one thing in order,
+所以你不需要把零或一件事,
+
+555
+00:25:45,611 --> 00:25:46,810
+So you don't need a sort descriptor and
+所以你不需要一个描述符和排序
+
+556
+00:25:46,879 --> 00:25:48,812
+if you don't specify a sort descriptor you'll get them
+如果你不指定一个类描述符你会得到它们
+
+557
+00:25:48,880 --> 00:25:49,813
+back in random order,
+在随机顺序,
+
+558
+00:25:49,882 --> 00:25:52,550
+But again, we don't care what that is because it
+但是,我们不在乎,是因为它
+
+559
+00:25:52,618 --> 00:25:54,552
+better be zero or one or we've got problems,
+更好的是零或一个或我们有问题,
+
+560
+00:25:55,521 --> 00:25:57,754
+So how do I fetch this thing?
+所以我拿这个东西怎么样?
+
+561
+00:25:57,823 --> 00:26:00,657
+Very easy, I'm just gonna say let the matches in
+很简单,我只是想说让比赛
+
+562
+00:26:00,726 --> 00:26:07,163
+the database equal context,fetch(request),
+数据库等背景下,获取(请求),
+
+563
+00:26:07,232 --> 00:26:11,034
+Now the only thing about this is it throws,
+现在唯一是它抛出,
+
+564
+00:26:11,103 --> 00:26:13,470
+Cuz it might not be able to access the database,
+因为它可能无法访问数据库,
+
+565
+00:26:13,538 --> 00:26:14,838
+It could be all kinds of problems, whatever,
+它可以是各种各样的问题,无论如何,
+
+566
+00:26:14,906 --> 00:26:18,475
+So I'm gonna put this in a do try, a do catch here,
+所以我要把这个在做尝试,做抓,
+
+567
+00:26:18,544 --> 00:26:24,348
+So we'll do do and put try here,
+所以我们会做的,在这里,
+
+568
+00:26:24,416 --> 00:26:27,350
+And we'll put catch, (I'll talk about what we're gonna do
+我们会把抓,(我将谈谈我们要做的
+
+569
+00:26:27,419 --> 00:26:29,286
+when we catch an error there),
+当我们发现一个错误),
+
+570
+00:26:29,354 --> 00:26:30,854
+All right, so we got the matches,
+好吧,我们有比赛,
+
+571
+00:26:30,923 --> 00:26:34,458
+So these matches what's the type of this match,
+这些比赛是什么类型的这场比赛,
+
+572
+00:26:34,526 --> 00:26:36,060
+We got an error here, some error,
+我们这里有一个错误,有些错误,
+
+573
+00:26:39,565 --> 00:26:40,030
+Context,
+背景下,
+
+574
+00:26:40,099 --> 00:26:41,064
+Sorry,
+对不起,
+
+575
+00:26:41,132 --> 00:26:46,269
+NSManageObjectContext,
+NSManageObjectContext,
+
+576
+00:26:46,338 --> 00:26:48,872
+So what is the type of this matches right here?
+所以这个匹配的类型是什么?
+
+577
+00:26:48,941 --> 00:26:49,840
+Anyone wanna guess?
+谁想猜一猜吗?
+
+578
+00:26:53,044 --> 00:26:56,479
+Let's look, it's array of tweets,
+让我们看,它是一系列微博,
+
+579
+00:26:56,548 --> 00:26:58,615
+Of course I dispatched,
+我当然派遣,
+
+580
+00:26:58,684 --> 00:27:00,584
+I get it back an array of Tweet,
+我把它弄回来一个Tweet数组,
+
+581
+00:27:00,652 --> 00:27:01,552
+Excellent,
+杰出、
+
+582
+00:27:01,621 --> 00:27:05,989
+And it should be that the matches count
+它应该是匹配数
+
+583
+00:27:06,058 --> 00:27:09,326
+if it's greater that zero, then I found my tweet,
+如果是更大的,零,然后我发现我的微博,
+
+584
+00:27:09,395 --> 00:27:10,494
+In fact I can just return it,
+事实上,我可以返回它,
+
+585
+00:27:10,563 --> 00:27:13,129
+Return matches(0),
+返回匹配(0),
+
+586
+00:27:13,198 --> 00:27:15,599
+So I found that unique tweet,
+所以我发现独特的微博,
+
+587
+00:27:15,667 --> 00:27:18,335
+I'm actually gonna put an assert here though
+我要把一个断言
+
+588
+00:27:18,404 --> 00:27:21,972
+that if the matches,count is greater than one,
+,如果匹配,数大于1,
+
+589
+00:27:22,041 --> 00:27:26,910
+then some kind of database inconsistency,
+然后某种数据库不一致,
+
+590
+00:27:26,979 --> 00:27:31,581
+because somehow in that unique field
+因为在这种独特的领域
+
+591
+00:27:31,650 --> 00:27:33,950
+there's more than one of them in there so that will be bad,
+有不止一个人这样会坏,
+
+592
+00:27:34,019 --> 00:27:38,222
+Maybe I'll put the name of the method in here tweet dot
+也许我会把方法的名称在这里推点
+
+593
+00:27:40,092 --> 00:27:44,094
+that database inconsistency or something like that so,
+数据库不一致或类似的东西,所以,
+
+594
+00:27:44,163 --> 00:27:44,928
+I'm putting a little assert,
+我把一个断言,
+
+595
+00:27:44,997 --> 00:27:47,197
+Now that should never happen if I've written my code
+现在,如果我写我的代码不应该发生
+
+596
+00:27:47,266 --> 00:27:49,366
+properly, it should never be possible for
+正确,应该不可能
+
+597
+00:27:49,435 --> 00:27:50,333
+two tweets to get in there,
+两个微博,
+
+598
+00:27:50,402 --> 00:27:52,202
+There would have to be a bug somewhere else in my code,
+其他地方会有一个错误在我的代码中,
+
+599
+00:27:52,271 --> 00:27:53,336
+that's why I'm asserting here,
+这就是为什么我在这里断言,
+
+600
+00:27:53,405 --> 00:27:57,374
+cuz I want it to crash if that happens so that I notice it,
+因为我想让它崩溃如果发生这种情况,我注意到它,
+
+601
+00:27:57,443 --> 00:27:59,977
+Things aren't being duplicated without my knowledge,
+事情并不在我不知情的情况下被复制,
+
+602
+00:28:01,213 --> 00:28:03,246
+Now what about this catch right here?
+现在这里赶呢?
+
+603
+00:28:03,315 --> 00:28:07,484
+What if we tried to do this fetch to get those tweets and
+如果我们试图去取回这些tweet和
+
+604
+00:28:07,552 --> 00:28:08,385
+it fails?
+失败了吗?
+
+605
+00:28:08,453 --> 00:28:10,353
+Some problem with the database or something,
+一些问题与数据库什么的,
+
+606
+00:28:10,422 --> 00:28:12,088
+What should we do in here?
+在这里我们应该做什么?
+
+607
+00:28:12,157 --> 00:28:17,093
+Well, we could fatal error and crash,
+我们可以致命错误和崩溃,
+
+608
+00:28:17,162 --> 00:28:18,495
+That's what save context does,
+什么拯救环境,
+
+609
+00:28:18,564 --> 00:28:21,397
+by the way, in the App Delegate, it just crash,
+顺便说一下,在应用程序委托,它只是崩溃,
+
+610
+00:28:21,466 --> 00:28:23,934
+We could look at the error and try to figure out what it is,
+我们可以看看错误并试图找出它是什么,
+
+611
+00:28:24,003 --> 00:28:24,968
+things like that,
+类似这样的事情,
+
+612
+00:28:25,036 --> 00:28:27,871
+But you know, I don't actually know what the person who's
+但你知道,我其实不知道的人
+
+613
+00:28:27,939 --> 00:28:31,108
+calling this find your create tweet wants me to do
+调用这个找到你创建微博要我做
+
+614
+00:28:31,177 --> 00:28:32,910
+if there's a database error,
+如果有一个数据库错误,
+
+615
+00:28:32,978 --> 00:28:34,577
+I'm not sure, do they want me to ignore it?
+我不确定,他们想让我忽略它吗?
+
+616
+00:28:34,646 --> 00:28:37,013
+Do they want me to crash?
+他们想让我崩溃吗?
+
+617
+00:28:37,082 --> 00:28:38,481
+Do they want me to try again or something?
+他们想让我再试一次吗?
+
+618
+00:28:38,550 --> 00:28:39,515
+What do they want?
+他们想要什么?
+
+619
+00:28:39,584 --> 00:28:43,620
+So when you don't really know what your caller wants to do,
+所以,当你不知道对方想要做什么,
+
+620
+00:28:43,689 --> 00:28:49,025
+why not just rethrow the error,
+为什么不重新抛出的错误,
+
+621
+00:28:49,094 --> 00:28:52,261
+When you rethrow, that means this method throws,
+当你重新抛出,这意味着该方法抛出,
+
+622
+00:28:52,330 --> 00:28:57,333
+Everyone understand what I did there?
+每个人都明白我在做什么吗?
+
+623
+00:28:57,402 --> 00:28:59,736
+I mean this method findOrCreateTweet throw,
+我的意思是这个方法findOrCreateTweet扔,
+
+624
+00:28:59,804 --> 00:29:03,406
+And the only where it throws is a rethrows if this
+唯一的,它将是一个重新抛出如果这
+
+625
+00:29:03,475 --> 00:29:06,476
+generates an error,
+生成一个错误,
+
+626
+00:29:06,544 --> 00:29:09,446
+So when we call this findOrCreateTweet back in our
+所以当我们称之为findOrCreateTweet回到我们
+
+627
+00:29:09,515 --> 00:29:12,049
+other class where we have to be careful cuz it throws now,
+其他类,我们必须要小心因为现在抛出,
+
+628
+00:29:12,117 --> 00:29:12,816
+So I like to use try,
+所以我喜欢用试试,
+
+629
+00:29:15,521 --> 00:29:16,653
+But if we get down here,
+但是如果我们得到下面,
+
+630
+00:29:16,721 --> 00:29:20,323
+then we made it passed here without finding a match, so
+然后我们通过这里没有找到一个匹配,
+
+631
+00:29:20,392 --> 00:29:22,225
+here's what we need to create the tweet,
+这就是我们需要创建微博,
+
+632
+00:29:22,294 --> 00:29:24,594
+So I'm gonna say let tweet equal, and
+所以我想说让tweet平等,
+
+633
+00:29:24,663 --> 00:29:25,862
+how do we create a tweet?
+我们如何创建一个推特?
+
+634
+00:29:25,930 --> 00:29:28,365
+We just say TweetContext context,
+我们只是说TweetContext上下文,
+
+635
+00:29:28,434 --> 00:29:31,935
+So that creates a tweet in the database,
+数据库中创建了一个微博,
+
+636
+00:29:32,003 --> 00:29:34,737
+Now I can just set the tweet fields by setting the vars,
+现在我可以设置微博领域中通过设置var,
+
+637
+00:29:34,806 --> 00:29:37,741
+like the tweets, that's actually do that unique first,
+像微博一样,其实这样做独特的第一,
+
+638
+00:29:37,809 --> 00:29:39,309
+that's important one,
+这很重要,
+
+639
+00:29:39,377 --> 00:29:43,113
+So that's TwitterInfo,identifier,
+这是TwitterInfo,标识符,
+
+640
+00:29:43,182 --> 00:29:45,148
+We're gonna make sure we said that, if we don't said that,
+我们要确保我们说,如果我们不能说,
+
+641
+00:29:45,216 --> 00:29:47,684
+then we might start getting problems here because every
+然后我们可以开始因为每一个问题
+
+642
+00:29:47,752 --> 00:29:50,653
+body is unique is gonna be the same zero or blank,
+身体是独一无二的是相同的零个或空白,
+
+643
+00:29:50,722 --> 00:29:51,988
+either or something,
+之类的,
+
+644
+00:29:52,057 --> 00:29:53,690
+How about the tweets text?
+微博的文本呢?
+
+645
+00:29:53,759 --> 00:30:00,296
+Let's set that to the twitterInfo,text,
+让我们集合twitterInfo、文本
+
+646
+00:30:00,365 --> 00:30:03,533
+Here's created tweet,created,
+这是推创建,创建,
+
+647
+00:30:03,602 --> 00:30:09,306
+That's twitterInfo,created and
+twitterInfo,创建和
+
+648
+00:30:09,375 --> 00:30:14,411
+then we'll return the tweet,
+然后我们返回tweet,
+
+649
+00:30:14,479 --> 00:30:16,913
+Now, this line over here is gonna give us an error,
+现在,这条线是要给我们一个错误,
+
+650
+00:30:16,982 --> 00:30:18,414
+as soon as it catches up,
+就追上了,
+
+651
+00:30:18,483 --> 00:30:20,016
+And this error's kinda weird one,
+这个错误有点奇怪,
+
+652
+00:30:20,085 --> 00:30:23,353
+It says cannot assign a value of type 'Date' to
+它说不能赋值类型的“约会”
+
+653
+00:30:23,421 --> 00:30:25,388
+type 'NSDate?',
+类型“NSDate ?”
+
+654
+00:30:25,457 --> 00:30:27,524
+And I mentioned on one of the slides from last time,
+我从上次提到的幻灯片,
+
+655
+00:30:27,593 --> 00:30:31,094
+that in the database, dates are NS dates,
+在数据库中,日期NS日期,
+
+656
+00:30:31,163 --> 00:30:34,431
+But I also mentioned that you can automatically bridge
+但我也提到过,您可以自动桥
+
+657
+00:30:34,499 --> 00:30:36,032
+a date to an NS date,
+一个NS日期的日期,
+
+658
+00:30:36,101 --> 00:30:37,734
+And you can do that with as,
+你可以这样做的,
+
+659
+00:30:37,803 --> 00:30:40,002
+So I can say as NSDate,
+所以我可以说NSDate,
+
+660
+00:30:40,071 --> 00:30:40,937
+And that will always work,
+总是工作,
+
+661
+00:30:41,006 --> 00:30:44,474
+This as will always work as long as this Is an NSDate,
+这是永远的工作只要这是nsdata,
+
+662
+00:30:44,543 --> 00:30:47,544
+then this as will always work, it always can bridge across,
+那么这个总是工作,它总是可以桥接,
+
+663
+00:30:47,613 --> 00:30:50,246
+So this is kind of unfortunate that you have to do this for
+这是一种不幸,你必须这样做
+
+664
+00:30:50,315 --> 00:30:52,049
+your dates, but you do, sorry,
+你的约会,但你,对不起,
+
+665
+00:30:53,319 --> 00:30:55,452
+Okay, there's one more thing in tweet, though,
+好了,有一件事在推特,不过,
+
+666
+00:30:55,520 --> 00:30:57,620
+What's the missing thing in tweet?
+失踪的事在微博是什么?
+
+667
+00:30:57,689 --> 00:31:00,623
+Tweet,tweeter,
+推特,推特,
+
+668
+00:31:00,692 --> 00:31:01,925
+I've got to set my tweeter here,
+我要把我推特,
+
+669
+00:31:01,994 --> 00:31:04,694
+I just created this tweet, I gotta set who the tweeter is,
+我刚刚创建的这个微博,我要推特是谁,
+
+670
+00:31:04,763 --> 00:31:07,497
+So to do the tweeter, I'm gonna go do this exact
+所以推特,我要去做这个
+
+671
+00:31:07,566 --> 00:31:12,201
+same method over in TwitterUser,
+同样的方法在TwitterUser,
+
+672
+00:31:12,270 --> 00:31:15,572
+So that I can create a Twitter user the exact same way,
+这样我可以创建一个Twitter用户相同的方式,
+
+673
+00:31:15,640 --> 00:31:18,474
+So we'll call it find or create Twitter user,
+所以我们叫它找到或创建Twitter用户,
+
+674
+00:31:18,543 --> 00:31:20,944
+I, kind of pre canned right here cuz you're not gonna
+我,以前这里因为你不会罐头
+
+675
+00:31:21,013 --> 00:31:22,479
+learn anything from me typing this,
+学习任何东西,从我打字,
+
+676
+00:31:22,548 --> 00:31:26,583
+basically this exact same thing in again,
+基本上,这同一件事情,
+
+677
+00:31:26,651 --> 00:31:28,718
+Gotta import twitter,
+要进口推特上
+
+678
+00:31:28,787 --> 00:31:32,022
+But it's exactly the same, it has the same exact logic,
+但这是完全相同的,它有相同的逻辑,
+
+679
+00:31:32,090 --> 00:31:33,055
+I'm doing exactly the same thing,
+我在做同样的事情,
+
+680
+00:31:33,124 --> 00:31:34,758
+I'm even rethrowing,
+我甚至将,
+
+681
+00:31:34,826 --> 00:31:37,828
+just creating the twitter user if I can't find it,
+只是创建一个twitter用户如果我找不到它,
+
+682
+00:31:37,896 --> 00:31:40,997
+And for a twitter user, it's handle, the person's handle,
+对于twitter用户,处理,人的处理,
+
+683
+00:31:41,066 --> 00:31:43,600
+@ whatever, is the unique identifier,
+@,是唯一标识符,
+
+684
+00:31:46,371 --> 00:31:48,071
+So now that we know how to create a Twitter user
+现在我们知道如何创建一个Twitter用户
+
+685
+00:31:48,140 --> 00:31:52,141
+using that I can say Tweeter equals Twitter user,
+我能说推特= Twitter用户使用,
+
+686
+00:31:52,210 --> 00:31:54,477
+Find or there it is, finally recognize it,
+发现或,终于承认,
+
+687
+00:31:54,546 --> 00:31:57,147
+Okay, find or create Twitter user, and
+好的,找到或创建Twitter用户,
+
+688
+00:31:57,215 --> 00:32:00,317
+we wanna use the Tweets user field, Twitter,
+我们想要使用推特用户领域,推特,
+
+689
+00:32:02,187 --> 00:32:05,955
+Lowercase Twitter info dot user, that's the user,
+小写的Twitter信息。用户,用户,
+
+690
+00:32:06,024 --> 00:32:08,258
+Then we'll do it in the same context of course,
+然后我们将用同样的背景当然,
+
+691
+00:32:10,462 --> 00:32:14,364
+Now this throws, so we have to try this,
+现在这把,所以我们要试试这个,
+
+692
+00:32:14,433 --> 00:32:18,201
+And if it can't do it, I'm just going to fail again,
+如果它不能这样做,我将再次失败,
+
+693
+00:32:18,270 --> 00:32:22,505
+Here maybe I want to maybe re-throw again, possibly,
+这里我想也许再次抛出收到,可能
+
+694
+00:32:22,574 --> 00:32:25,308
+I might even wanna crash or something, I don't know,
+我甚至想崩溃或什么东西,我不知道,
+
+695
+00:32:25,376 --> 00:32:26,310
+It's not clear to me,
+我不清楚,
+
+696
+00:32:27,612 --> 00:32:29,913
+what to do if I can't create the twitter,
+要做什么如果我不能创建twitter,
+
+697
+00:32:29,982 --> 00:32:33,716
+If Tweeter is something that has to be set for
+如果推特是必须设置的
+
+698
+00:32:33,785 --> 00:32:36,519
+a tweet to make any sense in the database, then I probably
+数据库中的任何意义的tweet,然后我可能
+
+699
+00:32:36,588 --> 00:32:39,155
+do wanna re-throw or do something terrible here,
+想抛出收到,做一些可怕的事情
+
+700
+00:32:39,224 --> 00:32:43,426
+But by just saying try, instead I'm just giving up,
+而是说试一试,我就放弃,
+
+701
+00:32:43,495 --> 00:32:44,794
+okay I'm just not setting the tweeter,
+好吧我只是不设置来说,
+
+702
+00:32:44,863 --> 00:32:49,399
+So, there could be tweets that
+所以,可能会有微博
+
+703
+00:32:49,467 --> 00:32:54,704
+are created with no tweeter there,
+创建与没有推特,
+
+704
+00:32:54,773 --> 00:32:56,740
+Twitter user, yeah,
+Twitter用户,是的,
+
+705
+00:32:56,808 --> 00:33:00,977
+twitter user doesn't need to be an optional there,
+twitter用户不需要一个可选的,
+
+706
+00:33:01,046 --> 00:33:02,312
+Sorry, I made that accidentally,
+对不起,我不小心,
+
+707
+00:33:04,315 --> 00:33:06,349
+So It's just going to return a twitter user,
+所以它只是返回一个twitter用户,
+
+708
+00:33:06,418 --> 00:33:09,219
+And the try makes it into an optional twitter user which is
+试着让它变成一个可选的twitter用户
+
+709
+00:33:09,287 --> 00:33:10,587
+okay because tweeter,
+因为推特,
+
+710
+00:33:10,656 --> 00:33:13,422
+this relationship, is an optional twitter user,
+这种关系,是一个可选的twitter用户,
+
+711
+00:33:13,491 --> 00:33:16,860
+It comes out of our data model,
+它来自我们的数据模型,
+
+712
+00:33:19,664 --> 00:33:22,099
+So, that's it, that's how we create a tweet,
+所以,就是这样,这就是我们创建一个微博,
+
+713
+00:33:22,167 --> 00:33:24,734
+We need to use this method right here to put
+我们需要使用这个方法
+
+714
+00:33:24,803 --> 00:33:25,868
+those tweets in the database,
+在数据库中,
+
+715
+00:33:25,937 --> 00:33:29,572
+So, let's go back to here,
+因此,让我们回到这里,
+
+716
+00:33:29,641 --> 00:33:34,210
+Let's go to our SmashTweetTableViewController,
+让我们去SmashTweetTableViewController,
+
+717
+00:33:34,279 --> 00:33:37,147
+And here, where we wanna add the tweets, we'll just say
+在这里,我们想加入微博,我们就说
+
+718
+00:33:38,683 --> 00:33:43,753
+Let a Tweet equal Tweet,findOrCreateTweet,
+让翠特平等,findOrCreateTweet留言;
+
+719
+00:33:43,822 --> 00:33:46,722
+We'll pass it, the Twitter info,
+我们会通过Twitter信息,
+
+720
+00:33:46,791 --> 00:33:49,358
+That's this Twitter info right here that was passed to us and
+这是这里的Twitter信息,传递给我们
+
+721
+00:33:49,427 --> 00:33:50,560
+these Tweets,
+这些微博,
+
+722
+00:33:50,628 --> 00:33:54,798
+And in context, we're gonna use our containers context,
+在上下文中,我们要使用我们的容器上下文,
+
+723
+00:33:58,670 --> 00:34:00,069
+Sorry, we're not using our container context,
+对不起,我们不使用容器上下文,
+
+724
+00:34:00,138 --> 00:34:02,672
+We're using this context right here,
+我们使用这个背景,
+
+725
+00:34:02,741 --> 00:34:04,407
+So we use this little context right here,
+所以我们用这个小环境,
+
+726
+00:34:04,475 --> 00:34:07,444
+Now of course we know this thing throws right here,
+当然我们知道这事扔在这里,
+
+727
+00:34:07,513 --> 00:34:10,080
+So we'll just do try question mark here,
+所以我们在这里尝试问号,
+
+728
+00:34:10,148 --> 00:34:13,282
+Because here I do know that when I'm updating
+因为我知道当我更新
+
+729
+00:34:13,351 --> 00:34:14,884
+if I can't create that tweet, I'm just gonna drop it,
+如果我不能创建这个微博,我要放弃,
+
+730
+00:34:14,885 --> 00:34:16,418
+the database,
+数据库,
+
+731
+00:34:16,487 --> 00:34:18,588
+It's not gonna hurt anything if just not collecting
+它不会伤害任何东西如果不收集
+
+732
+00:34:18,656 --> 00:34:19,455
+the data it needs too,
+它需要的数据,
+
+733
+00:34:19,524 --> 00:34:21,891
+There's really nothing I can do about it whatever
+其实我能为力
+
+734
+00:34:21,959 --> 00:34:24,827
+the database error is it's in there maybe I could report
+数据库错误是在那里也许我可以报告
+
+735
+00:34:24,896 --> 00:34:27,464
+an error to the user and say couldn't update data base but
+一个错误给用户说但不能更新数据基地
+
+736
+00:34:27,532 --> 00:34:29,332
+a lot of times user are like what the heck is that,
+很多时候用户就像究竟是怎么一回事,
+
+737
+00:34:29,401 --> 00:34:34,971
+So here dropping it is probably fine,
+这里下降可能是好,
+
+738
+00:34:35,040 --> 00:34:37,674
+Now notice we have a warning here, see this warning?
+注意这里有一个警告,看到这个警告?
+
+739
+00:34:37,743 --> 00:34:41,744
+It says let tweet equals and you never use tweet, and
+让微博=和你永远不使用推特,和
+
+740
+00:34:41,813 --> 00:34:44,113
+in fact I don't wanna use tweet,
+事实上我不想使用微博,
+
+741
+00:34:44,182 --> 00:34:47,917
+So what do you do in this case where I found and
+所以你做什么工作在这种情况下,我发现
+
+742
+00:34:47,986 --> 00:34:49,552
+create this tweet but I actually don't want it,
+创建这个tweet但我真的不想要它,
+
+743
+00:34:49,621 --> 00:34:50,587
+I don't wanna do anything,
+我不想做任何事情,
+
+744
+00:34:50,656 --> 00:34:52,989
+I just wanted it to get created if it wasn't there,
+我只是想让它得到了如果它不在那里,
+
+745
+00:34:53,057 --> 00:34:55,257
+Well here you can say, "Under bar",
+这里你可以说,“在酒吧”,
+
+746
+00:34:55,326 --> 00:34:59,829
+If you say _ =" something it means I'm ignoring the return
+如果你说_ = "这意味着我忽略了返回的东西
+
+747
+00:34:59,897 --> 00:35:01,831
+value, which is fine,
+值,这是可以的,
+
+748
+00:35:01,900 --> 00:35:04,301
+I don't need the return value I just want this thing created
+我不需要返回值我想这事了
+
+749
+00:35:04,369 --> 00:35:06,403
+in the database, doesn't have to do anything,
+在数据库中,不需要做任何事情,
+
+750
+00:35:08,340 --> 00:35:10,539
+Everybody following me so far here?
+每个人都跟着我到目前为止吗?
+
+751
+00:35:10,608 --> 00:35:12,776
+So now we have loaded up the database,
+现在我们有装数据库,
+
+752
+00:35:12,845 --> 00:35:14,544
+That's it, That's all of the code we need
+就是这样,这就是我们需要的所有代码
+
+753
+00:35:14,613 --> 00:35:16,646
+to load our database up with all these tweets,
+加载数据库所有这些推文,
+
+754
+00:35:16,715 --> 00:35:20,383
+Now let's go ahead and print some database statistics here
+现在让我们去打印一些数据库统计数据
+
+755
+00:35:20,451 --> 00:35:22,852
+just to see if this is working before we go off and
+只是为了看看这是工作在我们离开之前,
+
+756
+00:35:22,921 --> 00:35:25,755
+do our UI for a new MBC,
+做我们的UI MBC,
+
+757
+00:35:25,824 --> 00:35:30,293
+So I'm gonna say, printDatabaseStatistics and
+所以我会说,printDatabaseStatistics和
+
+758
+00:35:30,362 --> 00:35:34,630
+I'm gonna create a new private func here called
+我要创建一个新的私人func叫
+
+759
+00:35:34,699 --> 00:35:37,734
+printDatabaseStatistics,
+printDatabaseStatistics,
+
+760
+00:35:37,803 --> 00:35:41,370
+Copy, paste,
+复制,粘贴,
+
+761
+00:35:41,439 --> 00:35:44,874
+And what I want this thing to do is tell me how many tweets
+我想要这个东西做告诉我多少tweet
+
+762
+00:35:44,943 --> 00:35:47,076
+and how many twitter users are in the database,
+和有多少twitter用户在数据库中,
+
+763
+00:35:47,145 --> 00:35:50,446
+That's all I wanted to do here,
+这就是我想做的,
+
+764
+00:35:50,515 --> 00:35:53,383
+So if I wanna do anything in the database, if
+如果我想做任何事在数据库中,如果
+
+765
+00:35:53,451 --> 00:35:56,452
+I wanna look in the database I obviously need a context,
+我想看数据库中我显然需要一个背景下,
+
+766
+00:35:56,521 --> 00:35:58,121
+I have to have a context to
+我必须有一个上下文
+
+767
+00:36:00,058 --> 00:36:01,357
+look inside the database or whatever,
+看在数据库或其他,
+
+768
+00:36:01,426 --> 00:36:03,192
+So what context am I gonna use?
+上下文我要使用什么?
+
+769
+00:36:03,261 --> 00:36:08,064
+I'm gonna say, if I can let my let context equal my
+我想说,如果我可以让我让上下文相同
+
+770
+00:36:08,133 --> 00:36:11,234
+containers?,viewContext,
+viewContext,容器?
+
+771
+00:36:11,303 --> 00:36:15,104
+Now the viewContext Is the mainqueue context for
+现在viewContext mainqueue上下文
+
+772
+00:36:15,173 --> 00:36:17,006
+this database,
+这个数据库,
+
+773
+00:36:17,075 --> 00:36:19,342
+So, I'm gonna have printDatabaseStatistics,
+所以,我要有printDatabaseStatistics,
+
+774
+00:36:19,411 --> 00:36:21,811
+It's not inside this closure, so
+这不是在这个闭包,
+
+775
+00:36:21,880 --> 00:36:23,613
+it's not gonna use this context,
+它不会使用这样的背景下,
+
+776
+00:36:23,682 --> 00:36:25,448
+We'll have it use the main viewContext,
+我们会使用主要viewContext,
+
+777
+00:36:25,517 --> 00:36:28,752
+This is pretty much, unless you had it perform background
+这是相当多的,除非你把它做背景
+
+778
+00:36:28,820 --> 00:36:31,754
+tasks, this is pretty much the only context you have, so
+任务,这几乎是唯一的上下文,所以
+
+779
+00:36:31,823 --> 00:36:33,623
+we'll have it do on the main context,
+我们要做的主要背景,
+
+780
+00:36:33,692 --> 00:36:36,692
+So how am I gonna find out how many tweets there are?
+那么我要如何找到有多少条?
+
+781
+00:36:36,761 --> 00:36:39,629
+Okay, I'm gonna create a request and do a fetch,
+好的,我要创建一个请求并取回,
+
+782
+00:36:39,698 --> 00:36:41,464
+So NSFetchRequest,
+所以NSFetchRequest,
+
+783
+00:36:42,734 --> 00:36:44,934
+And this one is a request for tweets,
+这个是一个tweet请求
+
+784
+00:36:45,003 --> 00:36:47,571
+Equals Tweet,fetchRequest,
+= Tweet,fetchRequest,
+
+785
+00:36:47,639 --> 00:36:50,206
+So now I got this request, the fetch request
+现在我有这个请求,获取请求
+
+786
+00:36:50,275 --> 00:36:54,844
+I need no predicate here because I want all the tweets,
+我需要没有谓词,因为我希望所有的微博,
+
+787
+00:36:54,913 --> 00:36:58,214
+If you have no predicate that means give me them all,
+如果你没有谓语就意味着给我,
+
+788
+00:36:58,282 --> 00:37:02,151
+So that's what I want, and so now I'm just going to
+这就是我想要的,所以现在我要
+
+789
+00:37:02,220 --> 00:37:07,390
+say here if I can let the tweetCount equal
+说如果我能让tweetCount相等
+
+790
+00:37:07,458 --> 00:37:12,629
+trying to access the context to fetch this request,
+试图访问上下文获取这个请求,
+
+791
+00:37:12,697 --> 00:37:14,831
+Which it may or not be able to do,
+它是否可以做,
+
+792
+00:37:14,899 --> 00:37:19,302
+But if it can then you understand what I did there?
+但是如果你能理解我所做的吗?
+
+793
+00:37:20,371 --> 00:37:22,138
+Then I'm going to get the count,
+然后我将得到计数,
+
+794
+00:37:24,775 --> 00:37:26,943
+What's the type of that expression?
+这个表达式的类型是什么?
+
+795
+00:37:28,713 --> 00:37:31,381
+Optional array of tweets,
+可选的微博,
+
+796
+00:37:31,449 --> 00:37:34,384
+Because this returns an array of tweets if it
+因为这个tweet如果它返回一个数组
+
+797
+00:37:34,453 --> 00:37:37,386
+doesn't throw and this turns into an optional,
+不把这变成一个可选的,
+
+798
+00:37:37,455 --> 00:37:39,589
+So this is an optional array of tweets,
+这是一个可选的微博,
+
+799
+00:37:39,658 --> 00:37:41,857
+Here I'm optional chaining,
+这里我可选的链接,
+
+800
+00:37:41,926 --> 00:37:45,194
+So if that's not new then I get to continue and
+如果这不是新的然后我得到继续
+
+801
+00:37:45,263 --> 00:37:46,328
+get the count,
+数,
+
+802
+00:37:46,397 --> 00:37:49,565
+This is just array's count, this is a method count in
+这仅仅是数组的计算,这是一个计数的方法
+
+803
+00:37:49,634 --> 00:37:52,535
+array a var for the count in array,
+在数组,数组的var计算
+
+804
+00:37:52,604 --> 00:37:58,408
+Now I've got the tweetCount, now I'm just gonna say print,
+现在我有tweetCount,现在我只是想说打印,
+
+805
+00:37:58,476 --> 00:38:02,979
+tweetCount, tweets, and that's it,
+tweetCount、微博,就是这样,
+
+806
+00:38:03,048 --> 00:38:06,383
+I fetch them all,
+我取回,
+
+807
+00:38:06,451 --> 00:38:10,353
+I just fetched every tweet in the entire database,
+我只是获取每条tweet在整个数据库,
+
+808
+00:38:10,422 --> 00:38:12,188
+just to find out how many there were,
+为了找出有多少,
+
+809
+00:38:12,257 --> 00:38:14,323
+What if there's a 100,000 Tweets in there?
+如果有100000微博呢?
+
+810
+00:38:14,392 --> 00:38:16,792
+I'm really gonna fetch and that, of course we know that
+我真的要卖,当然我们知道
+
+811
+00:38:16,861 --> 00:38:19,328
+it's only gonna fault sum of min until I ask for the data,
+它只会错之和最小,直到我问的数据,
+
+812
+00:38:19,397 --> 00:38:21,163
+So it's not that bad but
+所以它没那么糟糕,但
+
+813
+00:38:21,232 --> 00:38:23,599
+there's a better way to do this,
+有一个更好的方法来做到这一点,
+
+814
+00:38:23,668 --> 00:38:25,801
+By the way here's another, before I show that,
+顺便说一下这是另一个,在我表明,
+
+815
+00:38:25,870 --> 00:38:28,270
+See this request I made this separate variable, right here,
+看到这个请求我做这个独立的变量,在这里,
+
+816
+00:38:28,339 --> 00:38:30,006
+That's not actually necessary,
+实际上这并不是必要的,
+
+817
+00:38:30,075 --> 00:38:32,475
+I can just take this request right here and
+我可以把这个请求
+
+818
+00:38:32,543 --> 00:38:33,976
+put it right in,
+正确的,
+
+819
+00:38:34,045 --> 00:38:35,044
+To here,
+到这里,
+
+820
+00:38:35,113 --> 00:38:35,978
+Watch this,
+看这个,
+
+821
+00:38:36,047 --> 00:38:40,283
+Cut, paste, and get rid of that,
+剪切、粘贴和摆脱,
+
+822
+00:38:40,352 --> 00:38:43,285
+That's because the fetch method takes
+这是因为fetch方法
+
+823
+00:38:43,354 --> 00:38:45,354
+any kind of fetch request,
+任何一种获取请求,
+
+824
+00:38:45,423 --> 00:38:49,492
+It takes anything whose type is a fetchRequest result
+需要任何的类型是fetchRequest结果
+
+825
+00:38:49,561 --> 00:38:51,294
+basically, which is a protocol,
+基本上,这是一个协议,
+
+826
+00:38:51,363 --> 00:38:54,129
+And so I didn't have to create that other variable,
+所以我不需要创建其他变量,
+
+827
+00:38:54,198 --> 00:38:56,232
+And notice I don't have to statically type this because
+注意这个,因为我不需要静态类型
+
+828
+00:38:56,301 --> 00:38:58,501
+this would take anything that returns a fetchRequest,
+这将返回一个fetchRequest,
+
+829
+00:38:58,569 --> 00:38:59,602
+It'd return something,
+它会返回一些东西,
+
+830
+00:38:59,671 --> 00:39:02,071
+So anyway, so
+所以无论如何,
+
+831
+00:39:02,140 --> 00:39:04,274
+what's the better way to do counting right here?
+有什么更好的方法来计算在这里吗?
+
+832
+00:39:04,343 --> 00:39:07,276
+Is I'm gonna say if let tweeterCount, so
+我想说如果让tweeterCount,所以呢
+
+833
+00:39:07,345 --> 00:39:10,880
+I'll count the tweeters in this better way, equals try
+我会计算高音在这个更好的方法,等于试一试
+
+834
+00:39:12,083 --> 00:39:16,719
+to get the context,count for:
+上下文,计数:
+
+835
+00:39:16,787 --> 00:39:22,992
+TwitterUsers,fetchRequest, okay, all twitter users,
+TwitterUsers fetchRequest,好吧,所有的twitter用户,
+
+836
+00:39:24,462 --> 00:39:27,263
+Then I can print the twitterCount,
+然后我可以打印twitterCount,
+
+837
+00:39:30,935 --> 00:39:36,605
+Twitter users,
+Twitter用户,
+
+838
+00:39:36,674 --> 00:39:40,143
+So this method count is very much like fetch but
+这方法很像卖但计数
+
+839
+00:39:40,211 --> 00:39:43,913
+it doesn't is still kinda evaluating this fetch request,
+它不仍有点评估这个获取请求,
+
+840
+00:39:43,982 --> 00:39:44,913
+it's getting the same things,
+同样的事情,
+
+841
+00:39:44,982 --> 00:39:46,882
+In this case we're counting users, but
+在这种情况下,我们计算的用户,但是
+
+842
+00:39:46,951 --> 00:39:48,851
+it's really just asking the data base,
+它只是要求数据基础,
+
+843
+00:39:48,920 --> 00:39:54,256
+If I were to fetch this, how many would you give me?
+如果我拿这个,你会给我多少?
+
+844
+00:39:54,325 --> 00:39:56,158
+So it's all done on the database side,
+这是所有在数据库端完成,
+
+845
+00:39:56,227 --> 00:39:57,827
+nothing actually has to get fetched,
+没有什么实际上获取,
+
+846
+00:39:59,030 --> 00:40:00,563
+So it's just another method count,
+这只是另一种方法计算,
+
+847
+00:40:00,632 --> 00:40:02,899
+But it does throw, as well, in the same was as Fetch does,
+但它扔,相同的是获取,
+
+848
+00:40:02,968 --> 00:40:04,366
+So we still have to do try,
+所以我们仍然要做尝试,
+
+849
+00:40:04,435 --> 00:40:08,138
+So this whole expression right here, isn't option int,
+所以整个表达式,不是选择int,
+
+850
+00:40:09,641 --> 00:40:12,609
+So I'm unwrapping it with if let, and printing it out,
+如果让我打开它,打印出来,
+
+851
+00:40:14,545 --> 00:40:15,111
+Got all that?
+得到了所有吗?
+
+852
+00:40:16,781 --> 00:40:19,282
+Let's cross our fingers here that this
+这让我们交叉手指
+
+853
+00:40:19,351 --> 00:40:21,751
+all works that we've got all this database learning,
+所有作品,我们有这个数据库学习,
+
+854
+00:40:21,820 --> 00:40:27,122
+And we gonna print our database
+我们会打印数据库
+
+855
+00:40:27,191 --> 00:40:34,197
+statistics and it all gonna work,
+统计所有要工作,
+
+856
+00:40:34,265 --> 00:40:40,002
+Here we go and this is just some junk from IOS there so
+好了,这只是一些垃圾从IOS
+
+857
+00:40:40,071 --> 00:40:41,871
+we'll ignore that,
+我们会忽略,
+
+858
+00:40:41,939 --> 00:40:43,739
+Right here let's search for some,
+让我们找一些,
+
+859
+00:40:43,808 --> 00:40:46,642
+Let's search for, how about hash tag stan,
+让我们寻找,散列标签斯坦,
+
+860
+00:40:46,711 --> 00:40:49,178
+well let's do hash tag stan, yeah, that's a good one,
+好让我们做散列标签斯坦,是的,这是一个很好的一个,
+
+861
+00:40:49,247 --> 00:40:52,882
+All right, it wants to use my Twitter account,
+好吧,它希望用我的Twitter帐户,
+
+862
+00:40:52,950 --> 00:40:55,851
+Sure, here it is, and,
+当然,在这里,,
+
+863
+00:40:55,920 --> 00:40:59,755
+Uh-oh, look on the console there,
+哦,看在控制台上,
+
+864
+00:40:59,824 --> 00:41:02,992
+Zero tweets, zero Twitter users,
+零,零推特用户,
+
+865
+00:41:04,829 --> 00:41:07,296
+Maybe let's pull some more,
+也许我们拉一些,
+
+866
+00:41:07,365 --> 00:41:10,833
+No, it's still zero tweets, zero Twitter user,
+不,它仍然是零tweet,零Twitter用户,
+
+867
+00:41:10,901 --> 00:41:12,402
+Well it's not working,
+这不是工作,
+
+868
+00:41:13,571 --> 00:41:16,738
+Anyone see anything in this code for
+任何人看到这个代码的任何东西
+
+869
+00:41:16,807 --> 00:41:18,208
+why this is not working,?
+为什么这是不工作,?
+
+870
+00:41:20,778 --> 00:41:24,480
+Yeah, we're doing a good job of loading up that database,
+是的,我们正在做一份好工作的加载数据库,
+
+871
+00:41:24,548 --> 00:41:25,982
+but we never save it,
+但是我们从来没有保存它,
+
+872
+00:41:27,218 --> 00:41:29,886
+So all that is just waste of time,
+所以这只是浪费时间,
+
+873
+00:41:29,954 --> 00:41:34,356
+we need to say try, context, save,
+我们需要说、上下文、保存
+
+874
+00:41:34,425 --> 00:41:35,924
+Now again I'm ignoring the error here,
+现在我在这里忽略错误,
+
+875
+00:41:35,993 --> 00:41:38,494
+In a demo a lot of the time I use try, question mark because
+在一个演示我尝试使用很多时候,问号,因为
+
+876
+00:41:38,563 --> 00:41:40,229
+I just don't have time to do the due catch and
+我只是没有时间去捕捉和
+
+877
+00:41:40,297 --> 00:41:41,531
+handle all the errors,
+处理所有的错误,
+
+878
+00:41:41,600 --> 00:41:42,632
+That's something you should
+这是你应该的
+
+879
+00:41:42,700 --> 00:41:44,033
+be looking at the option of doing,
+看着做的选择,
+
+880
+00:41:44,102 --> 00:41:45,168
+So here I'm just gonna save and
+这里我要保存并
+
+881
+00:41:45,237 --> 00:41:47,136
+ignore any errors, alright?
+忽略任何错误,对吧?
+
+882
+00:41:47,205 --> 00:41:48,671
+So that should fix it right?
+所以,应该修理它?
+
+883
+00:41:48,740 --> 00:41:57,346
+Let's go see,
+让我们去看看,
+
+884
+00:41:57,414 --> 00:41:58,447
+All right, here we go,
+好吧,我们开始吧,
+
+885
+00:41:58,516 --> 00:42:03,218
+Hash tag Stanford,
+散列标签斯坦福大学,
+
+886
+00:42:03,287 --> 00:42:04,020
+No,
+不,
+
+887
+00:42:04,089 --> 00:42:05,421
+Zero tweet,
+0条,
+
+888
+00:42:05,490 --> 00:42:06,555
+Zero Twitter users,
+零Twitter用户,
+
+889
+00:42:06,624 --> 00:42:08,524
+I put that save in there,
+我把它保存在那里,
+
+890
+00:42:08,593 --> 00:42:09,324
+What is going on?
+什么是怎么回事?
+
+891
+00:42:09,393 --> 00:42:10,827
+I had to pull again,
+我不得不再次拉,
+
+892
+00:42:12,030 --> 00:42:15,697
+Look, I pulled and it worked,
+看,我把这工作,
+
+893
+00:42:15,766 --> 00:42:17,233
+What the heck is going on?
+到底是怎么回事?
+
+894
+00:42:17,302 --> 00:42:19,902
+When I first loaded up it said zero tweets and
+当我第一次装tweets和它说零
+
+895
+00:42:19,971 --> 00:42:21,837
+then now it's saying 57th,
+然后现在是说第57位,
+
+896
+00:42:21,906 --> 00:42:23,773
+Something weird going on here,
+奇怪的东西,
+
+897
+00:42:23,842 --> 00:42:25,174
+What's happening?
+发生什么事情了?
+
+898
+00:42:25,243 --> 00:42:28,877
+Well, this is actually a multi threading problem,
+这实际上是一个多线程问题,
+
+899
+00:42:28,946 --> 00:42:32,881
+Can anyone see the multi-threading problem here?
+谁能看到这里的多线程问题吗?
+
+900
+00:42:32,950 --> 00:42:34,583
+No? I'm gonna put some print in,
+没有?
+
+901
+00:42:34,652 --> 00:42:35,384
+so you can see it,
+所以你可以看到它,
+
+902
+00:42:35,453 --> 00:42:42,258
+So watch this, print, starting database load,
+所以看这个,打印,从数据库加载,
+
+903
+00:42:42,327 --> 00:42:45,328
+And then down here, when I'm done with the save here,
+然后下面,当我完成了保存在这里,
+
+904
+00:42:45,396 --> 00:42:49,566
+I'm gonna just print, done loading database,
+我要打印,完成加载数据库,
+
+905
+00:42:50,935 --> 00:42:56,472
+And there, so
+在那里,所以
+
+906
+00:42:56,541 --> 00:43:03,012
+now let's run,
+现在,让我们来运行,
+
+907
+00:43:03,081 --> 00:43:08,451
+All right, hash tag Stanford,
+好了,散列标签斯坦福大学,
+
+908
+00:43:08,519 --> 00:43:12,755
+Got a crash there, database inconsistency, interesting,
+有崩溃,数据库不一致,有趣,
+
+909
+00:43:12,823 --> 00:43:15,324
+So this is why we put this inserts in here,
+所以这就是为什么我们把这个插入在这里,
+
+910
+00:43:15,393 --> 00:43:18,193
+Asserts in here, so let's see why do we think we have
+断言在这里,让我们看看为什么我们认为我们有
+
+911
+00:43:18,262 --> 00:43:20,163
+a data basing consistency here?
+数据基于一致性呢?
+
+912
+00:43:22,334 --> 00:43:22,899
+Yeah?
+是吗?
+
+913
+00:43:29,006 --> 00:43:29,772
+>> That's what it is,
+> >这是它是什么,
+
+914
+00:43:29,840 --> 00:43:32,208
+Yes, my search is backwards, there,
+是的,我的搜索是向后的,,
+
+915
+00:43:32,276 --> 00:43:34,643
+I'm inserting here that matches,count == 1,
+我在这里插入相匹配,计算= = 1,
+
+916
+00:43:34,712 --> 00:43:37,580
+So that's why that's crashing, okay,
+这就是为什么崩溃,好吧,
+
+917
+00:43:37,648 --> 00:43:42,718
+Good, Let's
+好,让我们
+
+918
+00:43:42,787 --> 00:43:47,723
+go back,
+回去,
+
+919
+00:43:47,792 --> 00:43:49,993
+Now let's try again, hashtag Stanford,
+现在,让我们再试一次,标签斯坦福大学,
+
+920
+00:43:52,263 --> 00:43:55,030
+Let's see what's going on down here,
+下面让我们来看看发生了什么,
+
+921
+00:43:55,099 --> 00:43:59,568
+Starting database load, it prints the statistics, and
+从数据库加载,它打印统计,
+
+922
+00:43:59,637 --> 00:44:01,170
+then it's done loading,
+然后加载完成,
+
+923
+00:44:01,239 --> 00:44:02,671
+That's bad,
+这是坏的,
+
+924
+00:44:02,740 --> 00:44:04,273
+You see, it's not waiting for
+你看,这不是等待
+
+925
+00:44:04,342 --> 00:44:07,143
+it to be done loading before it prints the statistics,
+它加载完成之前打印统计,
+
+926
+00:44:08,279 --> 00:44:08,744
+You see?
+你看到了什么?
+
+927
+00:44:08,813 --> 00:44:10,813
+Now why is that happening?
+现在为什么发生?
+
+928
+00:44:10,882 --> 00:44:14,583
+Because we're putting print databaseStatistics here after
+因为我们将打印后databaseStatistics这里
+
+929
+00:44:14,652 --> 00:44:15,117
+downloading,
+下载,
+
+930
+00:44:15,186 --> 00:44:17,419
+So why isn't it saying starting, done,
+为什么不是说开始,完成,
+
+931
+00:44:17,488 --> 00:44:18,687
+and then printing?
+然后打印?
+
+932
+00:44:18,756 --> 00:44:22,391
+Because this right here,
+因为这里,
+
+933
+00:44:22,460 --> 00:44:27,263
+happens on a different queue,
+发生在一个不同的队列,
+
+934
+00:44:27,331 --> 00:44:29,098
+So the way that this code goes is,
+所以这段代码的方式,
+
+935
+00:44:29,167 --> 00:44:33,102
+starting, this execute returns immediately,
+开始,这个执行立即返回,
+
+936
+00:44:33,171 --> 00:44:34,603
+Because all it does is put this
+因为它所做的是把这个
+
+937
+00:44:34,672 --> 00:44:37,640
+closure onto the background task queue,
+关闭后台任务队列,
+
+938
+00:44:37,709 --> 00:44:38,775
+Then this happens,
+然后这一切发生的时候,
+
+939
+00:44:40,144 --> 00:44:43,612
+Then, this closure starts running on that background
+然后,这个闭包开始运行在这一背景下
+
+940
+00:44:43,681 --> 00:44:45,714
+queue, loads up these things,
+队列,加载了这些事情,
+
+941
+00:44:45,783 --> 00:44:46,649
+And it prints,
+它打印,
+
+942
+00:44:48,419 --> 00:44:49,619
+Do you see what's going on there?
+你看到那边发生了什么吗?
+
+943
+00:44:49,688 --> 00:44:52,221
+Everyone understand the multi-threading?
+每个人都理解多线程?
+
+944
+00:44:52,290 --> 00:44:55,224
+So the way to make this work is to take print database
+所以做这项工作的方法是采取打印数据库
+
+945
+00:44:55,293 --> 00:44:57,627
+statistics, and put it inside here,
+统计数据,并把它在这里,
+
+946
+00:45:01,665 --> 00:45:03,799
+All right, cuz now it's not going to print the database
+现在好了,因为它不会打印数据库
+
+947
+00:45:03,868 --> 00:45:05,701
+statistics until it's done,
+统计数据,直到它完成
+
+948
+00:45:05,770 --> 00:45:07,836
+Now this has a problem though,
+现在有一个难题,
+
+949
+00:45:07,905 --> 00:45:09,838
+Okay, this is very bad,
+好的,这是非常糟糕的,
+
+950
+00:45:09,907 --> 00:45:12,575
+First of all, we're gonna have to do, I'm not sure why it's
+首先,我们要做的,我不知道为什么
+
+951
+00:45:12,644 --> 00:45:14,577
+not complaining here, there we go, now it is,
+不抱怨,好了,现在,
+
+952
+00:45:14,645 --> 00:45:18,281
+It wants to know, it wants self dot here, so
+要知道,它希望self。,所以
+
+953
+00:45:18,349 --> 00:45:22,652
+I'm gonna do weak self to break that memory cycle,
+我要做弱自我突破,记忆周期,
+
+954
+00:45:22,720 --> 00:45:25,988
+Hopefully everyone understands that now, what's going on,
+希望每个人都明白,这是怎么回事,
+
+955
+00:45:26,057 --> 00:45:26,588
+Okay,
+好吧,
+
+956
+00:45:26,657 --> 00:45:27,656
+But that's not the problem here,
+但这不是问题,
+
+957
+00:45:27,725 --> 00:45:29,191
+There's an even worse problem,
+有一个更糟糕的问题,
+
+958
+00:45:29,260 --> 00:45:30,459
+And in the interest of time,
+由于时间关系,
+
+959
+00:45:30,528 --> 00:45:34,664
+I'm going to put a print down in here to show you something,
+我要放下一个打印在这里给你看些东西,
+
+960
+00:45:36,233 --> 00:45:39,034
+If I'm gonna check to see if this code
+如果我要看看这段代码
+
+961
+00:45:39,103 --> 00:45:40,302
+is running on the main thread,
+运行在主线程,
+
+962
+00:45:40,371 --> 00:45:41,637
+So I'm gonna say IF,
+所以我想说,如果
+
+963
+00:45:41,706 --> 00:45:46,342
+and the way you do that is you say thread,ismainthread,
+你说你这样做的方法是线程,ismainthread,
+
+964
+00:45:46,411 --> 00:45:47,743
+Okay, if I'm in the main thread it'll be true,
+好吧,如果我在主线程会是真的,
+
+965
+00:45:47,812 --> 00:45:51,280
+So I'm gonna say on main thread,
+所以我想说在主线程,
+
+966
+00:45:51,349 --> 00:45:57,920
+And if it's not true, I'm gonna say off main thread,
+如果这不是真的,我要从主线程说,
+
+967
+00:45:57,988 --> 00:46:01,289
+So let's see if this statistics is happening
+让我们看看这个数据正在发生的事情
+
+968
+00:46:01,358 --> 00:46:02,992
+on the main thread or not,
+在主线程,
+
+969
+00:46:03,061 --> 00:46:06,195
+I think many of you know which one it's going to be,
+我想很多人都知道这将是哪一个,
+
+970
+00:46:07,565 --> 00:46:09,331
+By looking at the code here,
+通过查看代码,
+
+971
+00:46:09,400 --> 00:46:13,135
+All right, here we go again, hash tag Stanford,
+好吧,又来了,散列标签斯坦福大学,
+
+972
+00:46:13,204 --> 00:46:15,304
+Here we go,
+我们开始吧,
+
+973
+00:46:15,372 --> 00:46:16,672
+Off main thread,
+主线程,
+
+974
+00:46:18,342 --> 00:46:19,842
+Okay, why is it off the main thread?
+好的,为什么从主线程?
+
+975
+00:46:19,911 --> 00:46:22,511
+Because I called print database statistics inside
+因为我叫打印数据库统计进去
+
+976
+00:46:22,580 --> 00:46:25,548
+this closure, it happens on a background thread thus this
+这个闭包,它发生在一个后台线程
+
+977
+00:46:25,617 --> 00:46:28,117
+entire method is happening off the main thread,
+整个方法正在发生的主线程,
+
+978
+00:46:28,186 --> 00:46:30,152
+Now, is that a problem?
+现在,这是一个问题吗?
+
+979
+00:46:30,221 --> 00:46:34,824
+That's a huge problem, because what context am I using here?
+这是一个巨大的问题,因为我正在使用什么背景呢?
+
+980
+00:46:34,892 --> 00:46:36,192
+The mainQueue context,
+mainQueue上下文,
+
+981
+00:46:37,295 --> 00:46:40,129
+ViewContext is the mainQueue context,
+ViewContext mainQueue上下文,
+
+982
+00:46:40,198 --> 00:46:44,333
+I cannot be using the mainQueue context off the main
+我不能使用mainQueue上下文主要
+
+983
+00:46:44,402 --> 00:46:45,200
+thread,
+线程,
+
+984
+00:46:45,269 --> 00:46:47,303
+You see the problem here?
+你看到这里的问题吗?
+
+985
+00:46:47,372 --> 00:46:50,572
+So it worked, but could have easily crashed or
+它工作,但是可以轻松或坠毁
+
+986
+00:46:50,641 --> 00:46:51,674
+done something terrible,
+做可怕的事情,
+
+987
+00:46:51,742 --> 00:46:53,876
+So how do we fix that?
+那么,我们如何解决这个问题?
+
+988
+00:46:53,945 --> 00:46:55,944
+This is where we use that method I was telling
+这就是我告诉我们使用方法
+
+989
+00:46:56,013 --> 00:46:58,246
+you about in context called perform,
+你在上下文中执行,
+
+990
+00:46:58,315 --> 00:47:04,287
+I'm gonna say context perform this code on your safe queue,
+点击安全队列上下文执行这段代码,
+
+991
+00:47:06,457 --> 00:47:11,059
+When I say context perform and I put this code in there,
+当我说上下文执行和我把这段代码,
+
+992
+00:47:11,128 --> 00:47:13,562
+it says to that context, do this block but
+它说,这种情况下,块,但这样做
+
+993
+00:47:13,630 --> 00:47:17,599
+whatever you do, do it on the right queue for you,
+无论你做什么,对你做正确的队列,
+
+994
+00:47:17,668 --> 00:47:20,068
+And since this is the view context,
+因为这是背景,
+
+995
+00:47:20,137 --> 00:47:26,175
+it's going to be back on the main thread,
+这将是回到主线程,
+
+996
+00:47:26,244 --> 00:47:29,378
+watch,
+手表,
+
+997
+00:47:29,447 --> 00:47:32,814
+Hashtag Stanford,
+标签斯坦福大学,
+
+998
+00:47:32,883 --> 00:47:34,851
+Here we go back on main thread,
+我们回到主线程,
+
+999
+00:47:36,353 --> 00:47:39,688
+So this perform right here is something that
+所以这里的执行的东西
+
+1000
+00:47:39,757 --> 00:47:41,356
+a lot of people would advise,
+很多人建议,
+
+1001
+00:47:41,425 --> 00:47:45,594
+always use it unless you're Inside one of these where it's
+总是使用它,除非你在其中一个的
+
+1002
+00:47:45,663 --> 00:47:49,298
+clearly using this context in this background thing,
+显然使用这个背景在这个背景,
+
+1003
+00:47:49,366 --> 00:47:50,232
+Any other time,
+其他时间,
+
+1004
+00:47:50,300 --> 00:47:52,401
+a lot of people say always wrap your calls in this,
+很多人说总是在这个包裹你的电话,
+
+1005
+00:47:52,469 --> 00:47:54,903
+That way, you'll never have a problem where some things
+这样,你永远不会有一个问题,一些东西
+
+1006
+00:47:54,972 --> 00:47:58,307
+being executed on the wrong thread, okay, wrong que,
+被错误的线程上执行,好吧,错了,
+
+1007
+00:47:59,643 --> 00:48:01,177
+Understood all that?
+理解这一切吗?
+
+1008
+00:48:01,245 --> 00:48:04,346
+A little crash course in core data thread safety there,
+有点速成课核心数据线程安全,
+
+1009
+00:48:04,415 --> 00:48:07,382
+All right, so this is great,
+好的,这是伟大的,
+
+1010
+00:48:07,451 --> 00:48:09,284
+We've got our database loading up, so
+我们有我们的数据库加载,所以
+
+1011
+00:48:09,353 --> 00:48:11,153
+we've got a database full of tweets,
+我们有一个数据库的微博,
+
+1012
+00:48:11,222 --> 00:48:16,191
+Now, we want to add some UI to show all this data somehow,
+现在,我们要添加一些UI显示所有这些数据在某种程度上,
+
+1013
+00:48:16,260 --> 00:48:18,327
+So let's go back to our storyboard and take a look,
+让我们回到故事板,看一看,
+
+1014
+00:48:18,396 --> 00:48:19,061
+what we got here,
+我们所得到的,
+
+1015
+00:48:19,130 --> 00:48:21,930
+And what kinda UI we're gonna have?
+有点UI我们要什么?
+
+1016
+00:48:21,999 --> 00:48:24,766
+Like I said, I'm just gonna have another MVC over here
+就像我说的,我要有另一个MVC
+
+1017
+00:48:24,835 --> 00:48:27,903
+that I'm gonna segue to, with a little bar button item,
+我要继续,小工具栏按钮,
+
+1018
+00:48:27,972 --> 00:48:30,239
+So how many of you figured out how to use a bar button item
+所以你们中有多少人知道如何使用工具栏按钮
+
+1019
+00:48:30,307 --> 00:48:32,374
+as part of your homework assignment I think?
+你的作业我认为一部分?
+
+1020
+00:48:32,443 --> 00:48:34,943
+But if you didn't you're gonna see today how to do it, and
+但如果你今天没你会看到怎么做,和
+
+1021
+00:48:35,012 --> 00:48:36,311
+it's quite simple,
+这很简单,
+
+1022
+00:48:36,380 --> 00:48:40,216
+So this new MVC that I'm gonna segue to, let's go ahead and
+这新的MVC,我会继续,让我们继续
+
+1023
+00:48:40,285 --> 00:48:43,385
+create an MVC for it, Cocoa Touch Class,
+创建一个MVC,可可触摸类,
+
+1024
+00:48:43,453 --> 00:48:45,053
+It is just going to be a sub class
+它就是一个次级类
+
+1025
+00:48:45,122 --> 00:48:46,588
+of UITableViewController,
+UITableViewController,
+
+1026
+00:48:46,657 --> 00:48:50,392
+I'm gonna call it SmashTweetersTableViewControl-
+我要叫它SmashTweetersTableViewControl -
+
+1027
+00:48:50,460 --> 00:48:52,360
+ler, so this is showing tweeters,
+l,这是显示推特,
+
+1028
+00:48:52,429 --> 00:48:54,229
+Remember this table's gonna show all the tweeters who
+记住这个表会显示所有的高音
+
+1029
+00:48:54,298 --> 00:49:00,402
+tweeted the tweets that are in the other MVC,
+在其他MVC推的推,
+
+1030
+00:49:00,471 --> 00:49:03,072
+We'll put it up at the, not in the Twitter project,
+我们将把它的,而不是在Twitter的项目中,
+
+1031
+00:49:03,140 --> 00:49:03,805
+that's for sure,
+那是肯定的,
+
+1032
+00:49:03,874 --> 00:49:05,340
+Let's put it down here, okay?
+让我们把它在这里,好吗?
+
+1033
+00:49:05,409 --> 00:49:07,443
+I always check this list, this one here or
+我总是检查这个列表,这个
+
+1034
+00:49:07,511 --> 00:49:09,611
+you end up with files all in random places,
+你最终得到的文件都在随机的地方,
+
+1035
+00:49:09,680 --> 00:49:12,181
+You don't want that,
+你不想要,
+
+1036
+00:49:12,249 --> 00:49:13,181
+Here it is, Again,
+在这里,再一次,
+
+1037
+00:49:13,250 --> 00:49:15,417
+I'm gonna delete all this stuff,
+我要删除所有这些东西,
+
+1038
+00:49:15,486 --> 00:49:16,552
+See it's a tableView, so
+看到这是一个视图,所以
+
+1039
+00:49:16,621 --> 00:49:19,187
+it's got all this UITableView, so we don't need any of this
+它有所有这些UITableView,所以我们不需要这些
+
+1040
+00:49:19,256 --> 00:49:20,790
+stuff as you're gonna see here,
+你会看到,
+
+1041
+00:49:24,395 --> 00:49:27,896
+This is our new TableViewController,
+这是我们的新表,
+
+1042
+00:49:27,965 --> 00:49:28,897
+Let's go ahead and
+让我们继续
+
+1043
+00:49:28,966 --> 00:49:31,267
+update our storyboard to segue to this thing,
+更新我们的故事板segue这个东西,
+
+1044
+00:49:31,335 --> 00:49:33,202
+So we'll go over here,
+所以我们会在这里,
+
+1045
+00:49:33,271 --> 00:49:36,138
+Let's create our bar button item to do the segue, so
+让我们创建工具栏按钮segue,
+
+1046
+00:49:36,206 --> 00:49:38,139
+I'm gonna search here for button,
+我要在这里搜索按钮,
+
+1047
+00:49:38,208 --> 00:49:40,742
+You never wanna put a button in here,
+在这里,你永远不会想要把一个按钮
+
+1048
+00:49:40,811 --> 00:49:45,246
+it'll look like it's gonna working, but it's not right,
+它会看起来像它会工作,但它是不正确的,
+
+1049
+00:49:45,315 --> 00:49:47,316
+Put a bar button in a bar,
+在酒吧里放一个工具栏按钮,
+
+1050
+00:49:49,553 --> 00:49:52,821
+So we'll call this Tweeter cuz that's what it shows, it shows
+所以我们称之为推特因为这就是它所示,它显示了
+
+1051
+00:49:52,889 --> 00:49:55,725
+the tweeters that tweeted all the tweets in this table,
+推特,推特这个表的所有微博,
+
+1052
+00:49:56,961 --> 00:49:59,995
+Let's get a TableViewController out,
+,让我们一个表
+
+1053
+00:50:00,064 --> 00:50:04,733
+here it is,
+在这里,
+
+1054
+00:50:04,802 --> 00:50:07,203
+TableViewController right there,
+表,
+
+1055
+00:50:07,271 --> 00:50:09,805
+Lets go ahead and segue from this,
+让我们继续,继续,
+
+1056
+00:50:09,874 --> 00:50:11,606
+Ctrl + drag,
+Ctrl +拖,
+
+1057
+00:50:11,675 --> 00:50:14,543
+Show segue, we're inside a navigation controller here,
+显示segue,我们这里在导航控制器,
+
+1058
+00:50:14,612 --> 00:50:18,747
+Let's set this segue identifier, we'll call this,
+设这个segue标识符,我们叫这个,
+
+1059
+00:50:18,816 --> 00:50:19,682
+what did I?
+我什么?
+
+1060
+00:50:19,751 --> 00:50:20,715
+I had a good name for this,
+我有一个好名字,
+
+1061
+00:50:20,784 --> 00:50:25,620
+Yes, Tweeters Mentioning Search Term,
+是的,高音提到搜索词,
+
+1062
+00:50:25,689 --> 00:50:26,788
+Cuz that's what this segue does,
+因为这是这个segue做什么,
+
+1063
+00:50:26,857 --> 00:50:29,792
+It show the tweeters that have mentioned this search
+它显示了高音,提到这个搜索
+
+1064
+00:50:29,860 --> 00:50:31,160
+term right here,
+一项,
+
+1065
+00:50:31,228 --> 00:50:34,964
+Let's also have our little cell here be a subtitle cell,
+我们也有我们的小细胞是一个副标题细胞,
+
+1066
+00:50:35,032 --> 00:50:37,166
+So we'll change that to subtitle,
+所以我们会改变字幕,
+
+1067
+00:50:37,234 --> 00:50:39,401
+And we need a reuse identifier for this cell right here,
+我们需要一个重用标识符这个细胞,
+
+1068
+00:50:39,470 --> 00:50:43,939
+We'll call this a TwitterUser Cell, cuz that's what it is,
+我们称之为TwitterUser细胞,因为它是什么,
+
+1069
+00:50:44,007 --> 00:50:47,376
+The Twitter user gonna be shown in this cell right here,
+所示的Twitter用户将这个细胞,
+
+1070
+00:50:47,445 --> 00:50:48,077
+All right, so that's it,
+好吧,就是这样,
+
+1071
+00:50:48,145 --> 00:50:50,645
+That's our entire UI,
+这是我们整个用户界面,
+
+1072
+00:50:50,714 --> 00:50:51,613
+Super simple,
+超级简单,
+
+1073
+00:50:51,682 --> 00:50:54,817
+All we need to do now is implement the guts of
+现在我们需要做的就是实现的勇气
+
+1074
+00:50:54,886 --> 00:50:56,217
+this controller right here,
+这个控制器,
+
+1075
+00:50:56,286 --> 00:50:58,153
+So let's go back to that,
+让我们回到,
+
+1076
+00:50:58,221 --> 00:51:00,922
+Here it is right here,
+这是在这里,
+
+1077
+00:51:00,991 --> 00:51:03,325
+Let's talk about the public API,
+让我们来谈谈公共API,
+
+1078
+00:51:03,394 --> 00:51:04,860
+I just really want to get in the habit of this,
+我只是想的习惯,
+
+1079
+00:51:04,928 --> 00:51:07,763
+Every time we introduce a new MVC, let's talk about it,
+每次我们引入一个新的MVC,让我们谈论它,
+
+1080
+00:51:07,831 --> 00:51:09,297
+its public API,
+它的公共API,
+
+1081
+00:51:09,366 --> 00:51:11,767
+So this SmashTweetersTableViewControl-
+所以这SmashTweetersTableViewControl -
+
+1082
+00:51:11,836 --> 00:51:14,369
+ler, really has two parts in its model,
+l,真的有两个部分的模型,
+
+1083
+00:51:14,438 --> 00:51:18,474
+One is, it needs to know the mention, the search term that
+一个是,它需要知道提到,搜索词
+
+1084
+00:51:18,542 --> 00:51:22,911
+its supposed to be showing the Tweeters for, so I'm gonna
+它应该显示的高音,所以我要
+
+1085
+00:51:22,980 --> 00:51:26,748
+have, I'll call it mention, which is just a string,
+我叫它提到,这是一个字符串,
+
+1086
+00:51:26,817 --> 00:51:28,817
+So that's part of its public model, and then,
+这就是公共模型的一部分,然后,
+
+1087
+00:51:28,885 --> 00:51:30,553
+what's the other part of its model?
+另一部分的模型是什么?
+
+1088
+00:51:31,522 --> 00:51:33,355
+The database,
+数据库,
+
+1089
+00:51:35,059 --> 00:51:37,092
+What it does is look up in the database and
+它是在数据库中查找和
+
+1090
+00:51:37,161 --> 00:51:39,661
+find tweeters who mention this in their tweets,
+发现高音提到这个在他们的微博,
+
+1091
+00:51:39,730 --> 00:51:44,166
+So it's gotta have an NSPersistentContainer here,
+所以要有一个NSPersistentContainer这里,
+
+1092
+00:51:44,235 --> 00:51:50,139
+By the way, some people, import CoreData,
+顺便说一下,有些人,进口CoreData,
+
+1093
+00:51:50,207 --> 00:51:52,574
+Instead of having the database represented in the public
+而不是代表在公共的数据库
+
+1094
+00:51:52,643 --> 00:51:54,376
+model here as a container,
+模型是一个容器,
+
+1095
+00:51:54,445 --> 00:51:57,212
+they might just pass the context only,
+他们可以通过上下文,
+
+1096
+00:51:57,281 --> 00:51:59,648
+If they pass the context only here though,
+不过,如果他们只通过上下文这里
+
+1097
+00:51:59,716 --> 00:52:01,683
+you can't do any background stuff,
+你不能做任何背景的东西,
+
+1098
+00:52:01,752 --> 00:52:04,119
+So I like to pass, pass the container here,
+所以我想通过,通过这里的容器,
+
+1099
+00:52:04,188 --> 00:52:07,690
+Plus, this whole thing is a UI element,
+另外,这整个事情是一个UI元素,
+
+1100
+00:52:07,758 --> 00:52:10,625
+so it wants to use a view context,
+所以想要使用一个视图上下文,
+
+1101
+00:52:10,694 --> 00:52:13,295
+No other context cuz it does its stuff all on the main
+因为它没有其他上下文对最主要的东西
+
+1102
+00:52:13,364 --> 00:52:14,830
+queue, it's a UI,
+队列,这是一个用户界面,
+
+1103
+00:52:14,899 --> 00:52:17,466
+So it's nice when you pass a container cuz you're gonna ask
+所以很高兴当你通过容器因为你会问
+
+1104
+00:52:17,535 --> 00:52:18,534
+for the view context and
+的背景和观点
+
+1105
+00:52:18,603 --> 00:52:20,669
+you know you're getting a main queue context,
+你知道你得到一个主要的队列上下文,
+
+1106
+00:52:20,738 --> 00:52:23,238
+Where if someone passes a context in here,
+如果有人在这里,通过上下文
+
+1107
+00:52:23,306 --> 00:52:27,008
+could be not be a main queue context, that could be bad,
+可能不是一个主要的队列上下文,可能是坏的,
+
+1108
+00:52:27,077 --> 00:52:30,612
+So I think a container is a good wrapper when you want to
+所以我认为一个容器是一个很好的包装当你想
+
+1109
+00:52:30,681 --> 00:52:33,949
+tell an MVC this is the database to use to do what you
+告诉MVC是做你所使用的数据库
+
+1110
+00:52:34,017 --> 00:52:35,584
+do, here it is,
+在这里,
+
+1111
+00:52:35,653 --> 00:52:39,788
+And sure we'll do our little trick here where we make
+当然我们会做我们这里的小技巧
+
+1112
+00:52:39,856 --> 00:52:40,723
+a default,
+缺省情况下,
+
+1113
+00:52:40,791 --> 00:52:44,259
+(UIApplication,shared,delegete as?
+(UIApplication,共享,delegete吗?
+
+1114
+00:52:44,328 --> 00:52:49,264
+AppDelegate)?,persistentConta- iner,
+AppDelegate)?
+
+1115
+00:52:49,333 --> 00:52:54,770
+You don't even really have to do this but we'll do it,
+你甚至不需要这样做,但我们将这样做,
+
+1116
+00:52:56,139 --> 00:53:00,341
+So that's basically our model and
+这就是我们的模型
+
+1117
+00:53:00,410 --> 00:53:03,912
+anytime our model changes,
+在我们的模型的变化,
+
+1118
+00:53:03,981 --> 00:53:10,719
+I'm gonna have a didSet here that updates my UI,
+我要在这里有一个didSet更新我的界面,
+
+1119
+00:53:10,788 --> 00:53:12,655
+We'll do the same thing,
+我们会做同样的事情,
+
+1120
+00:53:13,824 --> 00:53:14,723
+If I can select it,
+如果我可以选择的话,
+
+1121
+00:53:14,792 --> 00:53:16,692
+do the same thing with this guy right here,
+与这个东西,做同样的事情
+
+1122
+00:53:19,029 --> 00:53:22,331
+We need a private func to do that,
+我们需要一个私有函数,
+
+1123
+00:53:24,901 --> 00:53:30,372
+So this is our model, and it's UI updating,
+这是我们的模型,它的UI更新
+
+1124
+00:53:30,440 --> 00:53:32,974
+Now before I go implement this UI updating,
+现在我去实现这个UI更新之前,
+
+1125
+00:53:33,043 --> 00:53:34,343
+cuz it's pretty straightforward,
+因为它很简单,
+
+1126
+00:53:34,411 --> 00:53:38,314
+I'm gonna back to my SmashTweetTableViewController,
+我要回到我的SmashTweetTableViewController,
+
+1127
+00:53:38,382 --> 00:53:40,482
+the one that's gathering all the statistics,
+收集所有的数据,
+
+1128
+00:53:40,551 --> 00:53:42,985
+because that's also the one I'm segueing from,
+因为这也是我segue从,
+
+1129
+00:53:44,021 --> 00:53:45,687
+This smash, this one right here,
+这个,这粉碎
+
+1130
+00:53:45,755 --> 00:53:47,356
+Smash Tweet Table View Controller,
+粉碎推表视图控制器,
+
+1131
+00:53:47,424 --> 00:53:49,625
+I'm segueing from this to this using this button,
+我从这segue使用这个按钮,
+
+1132
+00:53:49,694 --> 00:53:51,893
+So that's where the prepare needs to be,
+这是需要准备的,
+
+1133
+00:53:51,962 --> 00:53:54,129
+So I'm gonna put the prepare in here for that,
+所以我要把这里的准备,
+
+1134
+00:53:54,198 --> 00:53:56,364
+So let's put the prepare down at the bottom here,
+我们将准备在底部,
+
+1135
+00:53:56,433 --> 00:54:00,802
+prepare (for segue:,
+准备(:,
+
+1136
+00:54:00,871 --> 00:54:01,603
+Here it is, Now,
+在这里,现在,
+
+1137
+00:54:01,672 --> 00:54:04,173
+I'm gonna go through this really fast because you guys
+我要通过这个非常快,因为你们
+
+1138
+00:54:04,242 --> 00:54:06,208
+surely know prepare (for segue: by now,
+肯定知道准备(segue:到目前为止,
+
+1139
+00:54:06,276 --> 00:54:09,745
+I mean to say if the segue:identifier is what
+我的意思是说如果segue:标识符是什么
+
+1140
+00:54:09,813 --> 00:54:11,045
+I said which is,
+我是说,
+
+1141
+00:54:11,114 --> 00:54:15,217
+and again I should make a constant here but for speed,
+我应该做一个常数但是速度,
+
+1142
+00:54:15,285 --> 00:54:18,753
+so this is Tweeters Mentioning Search Term,
+这是高音提到搜索词,
+
+1143
+00:54:18,822 --> 00:54:21,489
+that's what I called that segue,
+这就是我称之为segue,
+
+1144
+00:54:21,558 --> 00:54:23,592
+Then I'm going to get the destination,
+然后我将得到目的地,
+
+1145
+00:54:23,661 --> 00:54:28,363
+So that is a TweetersTableViewController =
+这是一个TweetersTableViewController =
+
+1146
+00:54:28,431 --> 00:54:31,233
+segues,destination as?
+segues目的地,as ?
+
+1147
+00:54:31,301 --> 00:54:35,604
+SmashTweetersTableViewControl- ler,
+SmashTweetersTableViewControl - l,
+
+1148
+00:54:35,673 --> 00:54:38,840
+And yeah, I could probably do ContentViewController here,
+是的,我可以在这里做ContentViewController,
+
+1149
+00:54:38,909 --> 00:54:41,810
+because if I had that extension in here, because
+因为在这里,如果我有,扩展
+
+1150
+00:54:41,879 --> 00:54:44,913
+maybe I want to put this in a split view someday and etc,
+也许我想把它拆分视图有一天等,
+
+1151
+00:54:44,982 --> 00:54:47,849
+But first time I won't do that,
+但是第一次我不会这样做,
+
+1152
+00:54:47,918 --> 00:54:50,418
+So now I've got the tweetersTVC,
+所以现在我有tweetersTVC,
+
+1153
+00:54:50,487 --> 00:54:51,954
+This is my TweetersTableViewController,
+这是我的TweetersTableViewController,
+
+1154
+00:54:52,022 --> 00:54:53,922
+I'm just gonna set its public API,
+我要设置它的公共API,
+
+1155
+00:54:53,991 --> 00:54:56,791
+TweetersTVC,mention,
+TweetersTVC提到,
+
+1156
+00:54:56,860 --> 00:55:01,997
+Mention equals my search term,
+提到=我的搜索词,
+
+1157
+00:55:02,066 --> 00:55:05,200
+This is the MVC where you type the text in so
+这就是你输入MVC中的文本
+
+1158
+00:55:05,269 --> 00:55:06,602
+it has search text,
+搜索文本,
+
+1159
+00:55:06,671 --> 00:55:10,271
+And then the tweetersTVC,container equals
+然后tweetersTVC,容器=
+
+1160
+00:55:10,340 --> 00:55:11,539
+my container,
+我的容器,
+
+1161
+00:55:11,608 --> 00:55:12,640
+I have the same one,
+我也有同样的一个,
+
+1162
+00:55:12,709 --> 00:55:15,877
+The tweeters MVC looking in the same database I'm
+高音MVC相同的数据库我看
+
+1163
+00:55:15,946 --> 00:55:16,811
+looking in,
+在看,
+
+1164
+00:55:16,880 --> 00:55:19,915
+So here I am actually setting this thing,
+所以我在这里实际上设置这个东西,
+
+1165
+00:55:19,983 --> 00:55:22,217
+We got an error here, what is it?
+我们这里有一个错误,它是什么?
+
+1166
+00:55:22,285 --> 00:55:24,452
+Tweeters, okay,
+Tweeters,好吧,
+
+1167
+00:55:24,521 --> 00:55:27,989
+All right, so I'm just setting my public model of
+好吧,我只是设置的公共模型
+
+1168
+00:55:28,058 --> 00:55:32,393
+my Tweeters, not Tweet, TweetersTableViewController,
+我的推特,不是微博,TweetersTableViewController
+
+1169
+00:55:32,462 --> 00:55:33,962
+SImple enough,
+很简单,
+
+1170
+00:55:34,031 --> 00:55:37,332
+All right, now that we are all ready to segue to this nice
+好吧,既然我们都准备segue这个不错
+
+1171
+00:55:37,400 --> 00:55:40,668
+SmashTableViewController, how do we update its UI?
+SmashTableViewController,我们如何更新它的UI ?
+
+1172
+00:55:40,737 --> 00:55:43,138
+How do we get it to look in CoreData,
+我们如何让它看CoreData,
+
+1173
+00:55:43,206 --> 00:55:46,975
+find the Twitter users that have tweeted something that
+找到的Twitter用户在推特上的东西
+
+1174
+00:55:47,044 --> 00:55:49,411
+matches this mention and show it?
+匹配这提及并展示吗?
+
+1175
+00:55:49,479 --> 00:55:51,079
+Well, there's really,
+有真的,
+
+1176
+00:55:51,147 --> 00:55:53,681
+we're gonna use NS Fetched Results Controller, of course,
+我们将使用NS控制器获取结果,当然,
+
+1177
+00:55:53,750 --> 00:55:55,984
+that's the main deal here,
+这是这里的主要协议,
+
+1178
+00:55:56,053 --> 00:55:58,954
+And what are the pieces we need to do?
+件我们需要做的是什么?
+
+1179
+00:55:59,023 --> 00:56:01,823
+This was the last slide from the last lecture,
+这是上节课的最后一张幻灯片,
+
+1180
+00:56:01,892 --> 00:56:05,460
+I hope you all remember it, it was very recent,
+我希望你们记住它,它很近,
+
+1181
+00:56:05,528 --> 00:56:09,264
+First thing is we have to have this table-view controller
+第一件事是我们必须有这个表格视图控制器
+
+1182
+00:56:09,332 --> 00:56:12,935
+be an NS-fetched-result-controller
+是一个NS-fetched-result-controller
+
+1183
+00:56:13,003 --> 00:56:13,836
+If you're going to use a fetched results controller
+如果你想使用一个控制器获取结果
+
+1184
+00:56:13,837 --> 00:56:14,670
+delegate,
+委托,
+
+1185
+00:56:14,738 --> 00:56:17,505
+your table needs to be the delegate of that fetched
+你的表需要获取的委托
+
+1186
+00:56:17,574 --> 00:56:20,008
+controller, and I told you I was going to help you out with
+控制器,我告诉过你我要帮助你
+
+1187
+00:56:20,077 --> 00:56:23,212
+that and provide that code and sure enough I am,
+,并提供代码,果然,我
+
+1188
+00:56:23,280 --> 00:56:23,845
+It's right here,
+就在这里,
+
+1189
+00:56:23,914 --> 00:56:28,550
+I'm gonna drag it in somewhere, copy it in, yes,
+我要把它拖到某处,复制它,是的,
+
+1190
+00:56:30,220 --> 00:56:33,255
+All right, and let's take a look at it, here it is,
+好吧,让我们看看,在这里,
+
+1191
+00:56:33,324 --> 00:56:35,824
+FetchedResultsTableViewContro- ller,
+FetchedResultsTableViewContro——噢,
+
+1192
+00:56:35,893 --> 00:56:38,293
+You can see that it is a subclass of
+你可以看到它的子类
+
+1193
+00:56:38,362 --> 00:56:40,796
+UITableViewController that implements the
+UITableViewController实现
+
+1194
+00:56:40,865 --> 00:56:43,398
+NSFetchedResultsControllerDel- egate protocol,
+NSFetchedResultsControllerDel egate协议,
+
+1195
+00:56:43,467 --> 00:56:46,001
+So these are the methods right here in our protocol,
+所以这些方法在我们的协议,
+
+1196
+00:56:46,070 --> 00:56:47,702
+there are four of them,
+有四个,
+
+1197
+00:56:47,771 --> 00:56:51,139
+You can see that it is just using table view methods
+你可以看到它是使用表格视图的方法
+
+1198
+00:56:51,208 --> 00:56:52,975
+to update the table,
+更新表,
+
+1199
+00:56:53,043 --> 00:56:55,810
+These controller methods get called whenever the NS
+这些控制器方法被调用时NS
+
+1200
+00:56:55,879 --> 00:56:59,414
+Fetched Result Controller notices the database change
+获取结果控制器通知数据库变更
+
+1201
+00:56:59,483 --> 00:57:01,650
+in a way that would affect the NS Fetched Result,
+在某种程度上影响NS获取结果,
+
+1202
+00:57:03,153 --> 00:57:04,652
+So this is the magic that makes your table
+这是一个神奇的让你的表
+
+1203
+00:57:04,721 --> 00:57:06,521
+automatically update when the database changes,
+自动更新数据库时的变化,
+
+1204
+00:57:06,590 --> 00:57:09,190
+You don't have to do anything, it just automatically updates,
+你不需要做任何事情,它就自动更新,
+
+1205
+00:57:09,259 --> 00:57:11,025
+It's because of this delegate,
+因为这个委托的,
+
+1206
+00:57:11,094 --> 00:57:14,696
+Now, for our thing to work we need to be a subclass of this,
+现在,我们需要对我们的工作的一个子类,
+
+1207
+00:57:14,764 --> 00:57:17,399
+so that we inherit all this stuff,
+这样我们继承这些东西,
+
+1208
+00:57:17,468 --> 00:57:19,335
+we're just going to go back to our smashTweeters here and
+我们将回到我们的smashTweeters这里
+
+1209
+00:57:19,336 --> 00:57:21,203
+So that's easy,
+这很简单,
+
+1210
+00:57:21,272 --> 00:57:22,938
+instead of being a UITableViewController,
+而不是一个UITableViewController,
+
+1211
+00:57:23,006 --> 00:57:25,139
+I'm gonna be a FetchedResultsTableViewContro-
+我要一个FetchedResultsTableViewContro -
+
+1212
+00:57:25,208 --> 00:57:28,110
+ller, simple,
+简单、默勒
+
+1213
+00:57:28,178 --> 00:57:31,012
+So, that's the easy way to become
+所以,这是最简单的方式
+
+1214
+00:57:31,081 --> 00:57:33,114
+a FetchedResultsController delegate,
+一个,FetchedResultsController委托,
+
+1215
+00:57:33,183 --> 00:57:34,616
+Now, what was the next thing we need to do?
+现在,接下来我们需要做的是什么?
+
+1216
+00:57:34,685 --> 00:57:37,452
+We have to implement all of our UITableViewDataSource
+我们要实现我们所有的需要
+
+1217
+00:57:37,521 --> 00:57:41,689
+Methods using a fetchedResultsController,
+方法使用,fetchedResultsController,
+
+1218
+00:57:41,758 --> 00:57:43,258
+So there's two parts to that,
+有两个部分,
+
+1219
+00:57:43,327 --> 00:57:45,793
+One is we need to create a var, which is
+一个是我们需要创建一个var,
+
+1220
+00:57:45,862 --> 00:57:51,099
+a fetchedResultsController controller,
+,fetchedResultsController控制器,
+
+1221
+00:57:51,168 --> 00:57:54,136
+It's going to be a type NSFetchedResultsController,
+这将是一种NSFetchedResultsController,
+
+1222
+00:57:58,541 --> 00:58:01,877
+It's FetchResultsController that fetches tweeter users,
+FetchResultsController获取的推特用户,
+
+1223
+00:58:04,147 --> 00:58:06,615
+So FetchResultsController is also generic type and
+所以FetchResultsController也是泛型类型
+
+1224
+00:58:06,683 --> 00:58:09,184
+you have to say what kind of thing does it fetch?
+你说什么东西卖吗?
+
+1225
+00:58:09,252 --> 00:58:12,053
+So I've got this var, how do I implement all
+所以我有这个var,如何实现
+
+1226
+00:58:12,122 --> 00:58:13,721
+those UI table of your data source methods as well?
+这些UI数据源表方法吗?
+
+1227
+00:58:13,790 --> 00:58:15,890
+Well, I can type them all in but you know what,
+好吧,我可以输入他们所有人,但你知道吗,
+
+1228
+00:58:15,959 --> 00:58:18,960
+it's exactly the same in every single to every single time
+在每一个完全相同的每一次
+
+1229
+00:58:19,029 --> 00:58:21,663
+you implement one of these the code is exactly the same
+实现一个完全相同的代码
+
+1230
+00:58:21,732 --> 00:58:22,897
+because fetchedResultsController
+因为,fetchedResultsController
+
+1231
+00:58:22,966 --> 00:58:25,700
+always answers those questions in exactly the same way,
+总是以完全相同的方式回答这些问题,
+
+1232
+00:58:25,768 --> 00:58:26,901
+So you could copy and
+所以你可以复制和
+
+1233
+00:58:26,970 --> 00:58:29,404
+paste it from some other half that you've done or
+粘贴在其他一些你所做的一半
+
+1234
+00:58:29,473 --> 00:58:31,706
+you could use this little beauty that I've created for
+你可以用这个小美女,我创建了
+
+1235
+00:58:31,775 --> 00:58:35,210
+you right here, another little thing you can drag in,
+你在这里,另一个小东西你可以拖拽,
+
+1236
+00:58:35,279 --> 00:58:36,211
+which we'll take a look,
+我们会看一看,
+
+1237
+00:58:36,279 --> 00:58:40,949
+Copy that, and this is an extension
+复制,这是一个扩展
+
+1238
+00:58:41,018 --> 00:58:45,354
+that you can extend your class,
+你能扩展你的类,
+
+1239
+00:58:45,422 --> 00:58:46,188
+So in this case,
+所以在这种情况下,
+
+1240
+00:58:46,256 --> 00:58:50,092
+it's our smash tweeters tableviewController,
+这是我们粉碎,高音表
+
+1241
+00:58:50,160 --> 00:58:51,359
+And in this extension,
+在这个扩展,
+
+1242
+00:58:51,428 --> 00:58:55,330
+it adds all the UI tableview data source methods,
+它增加了所有uitableview数据源方法,
+
+1243
+00:58:56,333 --> 00:58:57,365
+See,
+看到的,
+
+1244
+00:58:57,434 --> 00:58:59,434
+And implements them in terms of your
+和你的来实现
+
+1245
+00:58:59,503 --> 00:59:01,069
+fetchresultscontroller,
+fetchresultscontroller,
+
+1246
+00:59:01,138 --> 00:59:04,172
+Now, this extension will not compile if you do not have
+现在,这个扩展将不会编译如果你没有
+
+1247
+00:59:04,241 --> 00:59:07,508
+a fetch results controller because extensions can't add
+获取结果控制器,因为扩展不能添加
+
+1248
+00:59:07,577 --> 00:59:10,812
+any storage themselves so you have to have the storage be in
+任何存储自己所以你需要存储
+
+1249
+00:59:10,881 --> 00:59:14,382
+your class but this class does have fetch result controller,
+你的类,但这类获取结果控制器,
+
+1250
+00:59:14,451 --> 00:59:18,386
+Now, the one thing it doesn't implement here though is
+现在,这里是没有实现
+
+1251
+00:59:18,455 --> 00:59:22,357
+cellForRowAt cuz cellForRowAt add is specific to whatever
+cellForRowAt因为cellForRowAt添加特定于任何
+
+1252
+00:59:22,426 --> 00:59:24,993
+data you're showing in the table but
+但你的数据显示在表
+
+1253
+00:59:25,062 --> 00:59:29,064
+even cellForRowAt, if we go back here and do cellForRowAt,
+即使cellForRowAt,如果我们回到这里,做cellForRowAt,
+
+1254
+00:59:29,133 --> 00:59:33,835
+let's do that so cellForRowAt index path more with,
+做一下所以cellForRowAt索引路径,
+
+1255
+00:59:33,904 --> 00:59:35,436
+And, of course, we know how to do that right,
+当然,我们知道怎么做吧,
+
+1256
+00:59:35,505 --> 00:59:40,542
+let the cell equal to tableView deque this one,
+让细胞等于tableView双端队列,
+
+1257
+00:59:40,611 --> 00:59:45,880
+and the Identifier was "TwitterUser Cell" I believe,
+标识符是“TwitterUser单元”我相信,
+
+1258
+00:59:45,949 --> 00:59:47,315
+correct me if I'm wrong,
+纠正我如果我错了,
+
+1259
+00:59:47,383 --> 00:59:50,151
+And we want IndexPath there, so I got the cell, and
+我们希望IndexPath那里,所以我得到了细胞,
+
+1260
+00:59:50,220 --> 00:59:51,586
+we return the cell,
+我们返回的细胞,
+
+1261
+00:59:51,654 --> 00:59:52,587
+And in between,
+在之间,
+
+1262
+00:59:52,655 --> 00:59:57,025
+I need to load the cell up with its various information,
+我需要负载细胞和它的各种信息,
+
+1263
+00:59:57,094 --> 00:59:59,627
+Now we set our cell to be, if you remember,
+现在我们组细胞,如果你还记得,
+
+1264
+00:59:59,696 --> 01:00:01,196
+a Subtitle cell, right?
+一个副标题细胞,对吧?
+
+1265
+01:00:01,265 --> 01:00:03,231
+This is a Subtitle cell,
+这是一个副标题细胞,
+
+1266
+01:00:03,300 --> 01:00:06,668
+So we can set its TextLabel and its detailTextLabel,
+所以我们可以设置其TextLabel及其detailTextLabel
+
+1267
+01:00:06,736 --> 01:00:08,904
+So let's just start with just the TextLabel,
+让我们开始TextLabel,
+
+1268
+01:00:08,973 --> 01:00:14,175
+So I wanna set the cell,textLabels Text,
+我想设置单元,textLabels文本,
+
+1269
+01:00:14,244 --> 01:00:19,814
+basically equal to the twitter uses handle,
+基本上等于twitter使用句柄,
+
+1270
+01:00:19,883 --> 01:00:23,051
+But I have to get the twitter user that's in this row,
+但是我必须让twitter用户在这一行,
+
+1271
+01:00:24,288 --> 01:00:26,254
+Okay, how do I find the twitter user
+好了,我怎么找到twitter用户
+
+1272
+01:00:26,323 --> 01:00:27,121
+that's in the role?
+的作用?
+
+1273
+01:00:27,190 --> 01:00:30,192
+I'm gonna ask my fetch results controller,
+我要问一下我取回结果控制器,
+
+1274
+01:00:30,260 --> 01:00:33,595
+Let the twitter user in this role,
+让这个角色的twitter用户,
+
+1275
+01:00:33,664 --> 01:00:37,299
+in this row, equal my fetch results controller
+在这一行,等于我取回结果控制器
+
+1276
+01:00:38,568 --> 01:00:40,235
+which might be null cuz it's an optional,
+这可能是零因为它是一个可选的,
+
+1277
+01:00:40,303 --> 01:00:45,640
+Object(at: indexPath),
+对象(:indexPath),
+
+1278
+01:00:45,709 --> 01:00:50,178
+And since this could be nil because this could be nil
+因为这可能是零,因为这可能是零
+
+1279
+01:00:50,247 --> 01:00:55,517
+right here let's do if let, then we will update our cell,
+如果让我们做,然后我们将更新我们的细胞,
+
+1280
+01:00:57,987 --> 01:01:00,054
+Now if we didn't have a fetchedResultsController,
+如果我们没有,fetchedResultsController,
+
+1281
+01:01:00,123 --> 01:01:02,090
+by the way, if this were nil, our number of rows and
+顺便说一下,如果这是零,我们的行数
+
+1282
+01:01:02,159 --> 01:01:03,625
+sections would be zero all the time,
+部分将是零,
+
+1283
+01:01:03,694 --> 01:01:04,559
+This would never be called,
+这永远不会被称为,
+
+1284
+01:01:04,627 --> 01:01:07,095
+So we can even put an exclamation point here,
+所以我们甚至可以把感叹号,
+
+1285
+01:01:07,163 --> 01:01:08,730
+And maybe we should put an exclamation point here
+也许我们应该把一个感叹号
+
+1286
+01:01:08,799 --> 01:01:11,499
+because this should never be called if this is nil,
+因为这个不应该被称为如果这是零,
+
+1287
+01:01:11,567 --> 01:01:14,702
+But anyway, so it's this very simple method, object)at:,
+但无论如何,这是非常简单的方法,对象):
+
+1288
+01:01:14,771 --> 01:01:17,873
+is gonna return you the thing of the type
+你会返回类型的东西吗
+
+1289
+01:01:17,941 --> 01:01:19,774
+that it's controlling, which is Twitter user,
+它的控制,这是Twitter用户,
+
+1290
+01:01:19,843 --> 01:01:21,176
+And if we look at the type here,
+如果我们看看类型,
+
+1291
+01:01:21,244 --> 01:01:24,179
+you can see that's a Twitter user that goes at this
+你可以看到这是一个Twitter用户
+
+1292
+01:01:24,248 --> 01:01:24,812
+index path,
+索引路径,
+
+1293
+01:01:24,881 --> 01:01:26,213
+So that row and that section,
+这一行和这部分,
+
+1294
+01:01:26,282 --> 01:01:27,582
+So it could not be easier,
+所以它不能简单,
+
+1295
+01:01:27,651 --> 01:01:29,851
+And now we can just, in here, update whatever you or
+现在我们可以,在这里,不管你或更新
+
+1296
+01:01:29,920 --> 01:01:31,620
+I want, no matter how complicated it is,
+我希望,不管它有多复杂,
+
+1297
+01:01:31,688 --> 01:01:33,521
+We've got the Twitter user that's showing there, so
+我们有显示的Twitter用户,所以
+
+1298
+01:01:33,590 --> 01:01:36,424
+we can his handle, his username, whatever else,
+我们可以处理,用户名,其他,
+
+1299
+01:01:36,493 --> 01:01:38,727
+We wanna get on him and put it in there,
+我们想要在他身上,把它放在那里,
+
+1300
+01:01:40,497 --> 01:01:42,297
+Everybody got that?
+大家都明白了吗?
+
+1301
+01:01:42,366 --> 01:01:43,298
+Super simple, and
+超级简单,
+
+1302
+01:01:43,367 --> 01:01:46,400
+yes it is super simple that's what's great about in fetch
+是的它是超级简单,就是伟大的取回
+
+1303
+01:01:46,469 --> 01:01:49,304
+results controller is that really the amount of code we
+结果控制器是我们真正的代码数量
+
+1304
+01:01:49,373 --> 01:01:52,641
+actually had to write here is absolutely tiny,
+有写在这里绝对是小,
+
+1305
+01:01:52,709 --> 01:01:56,244
+Now, there is one piece left which is update UI so
+现在,还有一块是更新UI
+
+1306
+01:01:56,313 --> 01:01:59,648
+when someone sets our mention or sets our database,
+当有人集我们提到或设置数据库,
+
+1307
+01:01:59,716 --> 01:02:03,584
+we need to create a fetch results controller, obviously,
+我们需要创建一个控制器获取结果,显然,
+
+1308
+01:02:03,653 --> 01:02:05,353
+Just can't be nil all the time,
+不能是零,
+
+1309
+01:02:05,421 --> 01:02:07,555
+we actually have to create one and we're just gonna say,
+我们必须创建一个和我们只是想说,
+
+1310
+01:02:07,624 --> 01:02:13,495
+fetchResultsController = a new
+fetchResultsController =一个新的
+
+1311
+01:02:13,563 --> 01:02:18,567
+NSFetchedResultsController, which is for Twitter users,
+NSFetchedResultsController,Twitter用户,
+
+1312
+01:02:20,804 --> 01:02:24,939
+And we will use this constructor right here,
+我们将使用这个构造函数,
+
+1313
+01:02:25,008 --> 01:02:27,208
+I'll go ahead and separate this out so
+我要独立出来
+
+1314
+01:02:27,277 --> 01:02:29,410
+you can see a little better what the arguments are,
+你可以看到一个更好的理由是什么,
+
+1315
+01:02:29,479 --> 01:02:31,379
+Let me see from this slide as well,
+让我看看从这张幻灯片,
+
+1316
+01:02:33,350 --> 01:02:35,182
+So what are the four things we need?
+那么我们需要的四件事是什么呢?
+
+1317
+01:02:35,251 --> 01:02:38,486
+We need a request, I'll make a request,
+我们需要一个请求,我将做一个请求,
+
+1318
+01:02:38,555 --> 01:02:41,923
+We need a context, I'll make a context,
+我们需要一个环境,我将做一个背景下,
+
+1319
+01:02:41,991 --> 01:02:46,561
+We need the name of the var in TwitterUser,
+我们需要在TwitterUser var的名称,
+
+1320
+01:02:46,630 --> 01:02:48,829
+that says this section title,
+说本节标题,
+
+1321
+01:02:48,898 --> 01:02:50,698
+Well, we don't have any sections all our Twitter users
+好吧,我们没有任何部分我们所有的Twitter用户
+
+1322
+01:02:50,767 --> 01:02:52,567
+are gonna be shown in one big like long list,
+会显示在一个大长串,
+
+1323
+01:02:52,636 --> 01:02:55,003
+so that's nil and we won't cache our results,
+这是零,我们不会缓存结果,
+
+1324
+01:02:55,071 --> 01:02:58,473
+Although we could, because we're never gonna change this
+虽然我们可以,因为我们不会改变这一现状
+
+1325
+01:02:58,542 --> 01:03:01,375
+request--well, actually that's not true,
+请求,其实那不是真的,
+
+1326
+01:03:01,444 --> 01:03:03,345
+We could change this because someone might
+我们可以改变这个,因为有人会
+
+1327
+01:03:03,413 --> 01:03:05,647
+bring up this MVC and then change the mention and
+把这MVC然后改变提及
+
+1328
+01:03:05,715 --> 01:03:07,949
+that would be changing the request to look for different
+这将是改变请求不同
+
+1329
+01:03:08,018 --> 01:03:10,484
+twitter users so it's better not to catch this beside
+twitter用户最好不要抓这个旁边
+
+1330
+01:03:10,553 --> 01:03:13,221
+the results are hopefully gonna be fairly small,
+希望结果会是相当小的,
+
+1331
+01:03:13,290 --> 01:03:15,123
+So I have to do a request in context here,
+所以我要做一个请求上下文,
+
+1332
+01:03:15,192 --> 01:03:16,257
+Let's do context first,
+让我们先做背景,
+
+1333
+01:03:16,326 --> 01:03:19,895
+I'm gonna say if I can let my context equal my containers
+我想说如果我可以让我的上下文相同的容器中
+
+1334
+01:03:22,365 --> 01:03:23,631
+View context,
+视图的背景下,
+
+1335
+01:03:23,700 --> 01:03:26,634
+Now, this is very important right here to use
+现在,这是非常重要的
+
+1336
+01:03:26,703 --> 01:03:29,837
+view context because this is a Ui thing,
+视图上下文Ui的事情,因为这是一个
+
+1337
+01:03:29,906 --> 01:03:32,473
+And this fetch results controller is gonna be working
+这取结果控制器会工作
+
+1338
+01:03:32,542 --> 01:03:34,909
+with our table view controller, that's all UI so
+与我们的表格视图控制器,这是所有UI
+
+1339
+01:03:34,978 --> 01:03:36,778
+we wanna do this all in the main queue,
+我们想在主队列做这一切,
+
+1340
+01:03:36,846 --> 01:03:39,881
+So, you have to use view context,
+所以,你必须使用视图上下文,
+
+1341
+01:03:39,949 --> 01:03:42,417
+You cannot do that background thing
+你不能这样做背景
+
+1342
+01:03:42,486 --> 01:03:43,918
+to create your FetchResultController,
+创建你的FetchResultController,
+
+1343
+01:03:43,987 --> 01:03:47,389
+All right, so all that leaves is this request here so
+好吧,这是所有的叶子请求这里
+
+1344
+01:03:47,457 --> 01:03:50,758
+I'm gonna let the request it's obviously going to
+我要让它显然会请求
+
+1345
+01:03:50,827 --> 01:03:53,829
+be an NSFetchRequest for Twitter users,
+是一个NSFetchRequest Twitter用户,
+
+1346
+01:03:56,099 --> 01:03:58,633
+And we use this nice convenience thing here
+我们使用这个方便的事情
+
+1347
+01:03:58,702 --> 01:04:02,571
+TwitterUser,FetchRequest and so what does our request need?
+TwitterUser,FetchRequest和我们的要求需要什么?
+
+1348
+01:04:02,639 --> 01:04:06,374
+Well, our request needs sort descriptors, so
+嗯,我们的要求需要描述符,所以
+
+1349
+01:04:06,442 --> 01:04:09,210
+we're gonna have to have some array of sort descriptors,
+我们要有一系列的描述符,
+
+1350
+01:04:09,278 --> 01:04:11,279
+Our request also needs a predicate,
+我们的要求也需要一个谓词,
+
+1351
+01:04:11,347 --> 01:04:19,153
+Predicate,
+谓词,
+
+1352
+01:04:19,222 --> 01:04:25,660
+Whoops, gotta get format right here, this one,
+哎呀,这里得格式,这一个,
+
+1353
+01:04:27,530 --> 01:04:29,831
+We're gonna have to have some format string there, and
+我们会有一些格式字符串,和
+
+1354
+01:04:29,900 --> 01:04:33,067
+then some args for the percent at signs,
+然后一些args的百分比的迹象,
+
+1355
+01:04:33,136 --> 01:04:34,936
+So let's do this sort descriptor first,
+让我们先做这类描述符,
+
+1356
+01:04:35,004 --> 01:04:37,305
+We're looking for all the Twitter users who have tweeted
+我们正在寻找所有的Twitter用户
+
+1357
+01:04:37,373 --> 01:04:39,507
+something that mentioned that search for a minute,
+提到搜索一下,
+
+1358
+01:04:39,576 --> 01:04:43,444
+Let's order them by their handle, at sign whatever,
+我们命令他们处理,在任何迹象,
+
+1359
+01:04:43,513 --> 01:04:47,848
+So all we need to do then is say, NSSortDescriptor with and
+那么我们需要做的是说,NSSortDescriptor和
+
+1360
+01:04:47,917 --> 01:04:50,084
+we'll use the one with the key,
+我们将使用的关键,
+
+1361
+01:04:50,153 --> 01:04:56,957
+It's not, it's going to make me type it, arg,
+它不是,它会让我输入,参数,
+
+1362
+01:04:57,026 --> 01:05:03,364
+So we'll do the key handle and we'll do ascending true,
+所以我们要做的关键处理,我们会提升真的,
+
+1363
+01:05:03,433 --> 01:05:05,299
+That's good enough, we'll just have it sort however it sorts,
+那已经足够好了,我们就把它但是它,
+
+1364
+01:05:05,368 --> 01:05:08,002
+We'll come back to sorting later and look at it,
+我们将回到排序后,看着它,
+
+1365
+01:05:08,071 --> 01:05:09,704
+We only need one sort descriptor we're not gonna
+我们只需要一个描述符我们不会
+
+1366
+01:05:09,773 --> 01:05:11,573
+sort by the a handle and
+一个句柄和排序
+
+1367
+01:05:11,641 --> 01:05:14,041
+then subsort by something else because the handle will be
+然后由其他东西,因为subsort处理
+
+1368
+01:05:14,110 --> 01:05:17,345
+sufficient sorting in there, and what about our predicate?
+足够的排序,和我们的谓语呢?
+
+1369
+01:05:17,414 --> 01:05:20,214
+What tweeter users are we looking for here?
+推特用户我们在这里找什么?
+
+1370
+01:05:20,283 --> 01:05:22,783
+This is really the key to making anything work and for
+这是真正的关键和任何工作
+
+1371
+01:05:22,852 --> 01:05:23,718
+your homework by the way,
+顺便说一下,你的家庭作业
+
+1372
+01:05:23,787 --> 01:05:28,990
+really this homework it's not a lot of programming,
+真的这作业不是很多编程,
+
+1373
+01:05:29,059 --> 01:05:30,792
+It's a lot of thinking,
+这是一个很多思考,
+
+1374
+01:05:30,860 --> 01:05:33,294
+Especially designing your schema so
+特别是设计模式
+
+1375
+01:05:33,362 --> 01:05:38,065
+that this line of code right here is really simple,
+这行代码是很简单的,
+
+1376
+01:05:38,134 --> 01:05:39,600
+If you design your schema properly you can make
+如果你正确你可以设计你的模式
+
+1377
+01:05:39,669 --> 01:05:40,501
+this quite simple,
+这很简单,
+
+1378
+01:05:40,570 --> 01:05:43,838
+It's all about thinking about what am I actually showing,
+其实都是想我展示,
+
+1379
+01:05:43,906 --> 01:05:46,307
+and how do I calculate what those things are,
+和我如何计算这些东西是什么,
+
+1380
+01:05:46,376 --> 01:05:49,377
+In this case I'm showing all the Twitter users,
+在这种情况下我给所有的Twitter用户,
+
+1381
+01:05:50,547 --> 01:05:57,718
+Any of the twitter users here whose tweets,
+这里的twitter用户的微博,
+
+1382
+01:05:57,787 --> 01:06:01,456
+the text in their tweets actually, contains, and
+文本在他们的微博,包含,
+
+1383
+01:06:01,525 --> 01:06:05,126
+we'll go case insensitively, that search term,
+我们将区分大小写,搜索词,
+
+1384
+01:06:05,195 --> 01:06:06,494
+Our mention,
+我们提到,
+
+1385
+01:06:06,563 --> 01:06:08,662
+Which is optional, so we'd better unwrap,
+这是可选的,所以我们最好打开,
+
+1386
+01:06:08,731 --> 01:06:11,398
+And if I'm gonna unwrap this forcibly,
+如果我要强行打开,
+
+1387
+01:06:11,467 --> 01:06:14,402
+I'm actually going to check to make sure it's not nil,
+我要检查,以确保它不是零,
+
+1388
+01:06:16,572 --> 01:06:18,940
+Just to be careful there,
+只是要小心,
+
+1389
+01:06:20,343 --> 01:06:21,875
+So this is the predicate we want,
+这是我们想要的谓词,
+
+1390
+01:06:21,944 --> 01:06:24,612
+We want any Twitter user,
+我们希望任何Twitter用户,
+
+1391
+01:06:24,681 --> 01:06:26,014
+Because we're looking for Twitter users,
+因为我们正在寻找Twitter用户,
+
+1392
+01:06:26,082 --> 01:06:29,617
+any Twitter user who's tweets, any of their tweets,
+任何Twitter用户的微博,他们的微博,
+
+1393
+01:06:29,686 --> 01:06:34,956
+texts contains this mention,
+文本包含这个提到,
+
+1394
+01:06:35,025 --> 01:06:35,590
+This is actually,
+这是,
+
+1395
+01:06:35,659 --> 01:06:38,292
+I probably said that a little bit wrong there,
+我可能说错了,一点
+
+1396
+01:06:38,361 --> 01:06:40,895
+We're looking for any Twitter user who have any
+我们正在寻找任何有Twitter用户
+
+1397
+01:06:40,964 --> 01:06:44,932
+of it's tweets text contains this mention,
+推文的文本包含这个提到,
+
+1398
+01:06:45,001 --> 01:06:48,035
+Off of any, means here, anything, any of the tweets
+的,意味着在这里,任何东西,任何的tweet
+
+1399
+01:06:48,104 --> 01:06:53,541
+texts contains this, then show this twitter user here,
+文本包含这个,那么显示这里的twitter用户,
+
+1400
+01:06:55,478 --> 01:06:56,877
+Everybody got all that?
+每个人都有吗?
+
+1401
+01:06:56,946 --> 01:07:00,014
+So now, I got my fetch request controller,
+所以现在,我取回请求控制器,
+
+1402
+01:07:00,082 --> 01:07:02,683
+remember the only two things I need to do now is to
+记得唯一我现在需要做的是两件事
+
+1403
+01:07:02,752 --> 01:07:07,221
+try to have my fetched results controller perform this fetch,
+试图让我获取结果控制器执行此取回,
+
+1404
+01:07:07,290 --> 01:07:10,324
+okay that can throw, so that's why we're trying there,
+能把好了,这就是为什么我们正在那里,
+
+1405
+01:07:10,393 --> 01:07:12,927
+And we've got to tell our table view, time to go
+我们要告诉我们的表视图,时间去
+
+1406
+01:07:12,995 --> 01:07:16,130
+call all of your UI table view data source methods, and
+叫你所有的UI数据源表视图方法,和
+
+1407
+01:07:16,199 --> 01:07:17,799
+we know whose going to answer that,
+我们知道,要回答这个问题,
+
+1408
+01:07:17,867 --> 01:07:20,201
+that extension that we have there,
+我们有,扩展,
+
+1409
+01:07:20,270 --> 01:07:22,436
+And it's going to ask fetched results controller for
+这是要问控制器获取结果
+
+1410
+01:07:22,505 --> 01:07:23,838
+all the information it needs,
+所需的所有信息,
+
+1411
+01:07:27,643 --> 01:07:33,014
+By the way, notice I made this public, (internal, basically),
+顺便说一下,请注意我做了这个,(内部,基本上),
+
+1412
+01:07:33,082 --> 01:07:36,784
+That's because I put that extension over here
+那是因为我把它扩展
+
+1413
+01:07:36,853 --> 01:07:38,119
+in a different file and
+在一个不同的文件
+
+1414
+01:07:38,188 --> 01:07:40,755
+it wouldn't be a receive this otherwise,
+它不会收到这否则,
+
+1415
+01:07:40,824 --> 01:07:43,691
+So, if you wanna make this var private,
+所以,如果你想让这个var私人,
+
+1416
+01:07:43,759 --> 01:07:46,094
+which is not a bad idea, actually,
+这不是一个坏主意,实际上,
+
+1417
+01:07:46,162 --> 01:07:48,762
+In a MVC that is using a fetchedResultsController,
+使用,fetchedResultsController MVC中,
+
+1418
+01:07:48,831 --> 01:07:51,365
+making its controller public is kinda opening up
+使其控制器公众开放
+
+1419
+01:07:51,434 --> 01:07:52,400
+the internal guts of it,
+它的内部结构,
+
+1420
+01:07:52,468 --> 01:07:55,703
+If you wanna make this private, then you would just
+如果你想让这个私人的,那么你就会
+
+1421
+01:07:55,772 --> 01:07:57,605
+put this extension at the bottom of the file,
+把这个扩展在文件的底部,
+
+1422
+01:07:57,674 --> 01:07:58,272
+in the same file,
+在相同的文件,
+
+1423
+01:07:58,341 --> 01:08:00,875
+That way they you would be able to see it,
+这样你能看到它,
+
+1424
+01:08:02,945 --> 01:08:10,718
+Hopefully we've remembered everything,
+希望我们记得一切,
+
+1425
+01:08:10,787 --> 01:08:15,523
+let's go give this a try,
+让我们去做这个实验,
+
+1426
+01:08:16,526 --> 01:08:18,393
+Let's go here #stanford again,
+让我们再#斯坦福大学,
+
+1427
+01:08:19,896 --> 01:08:21,429
+Now I'm gonna press Tweeters,
+现在我要按推特,
+
+1428
+01:08:21,497 --> 01:08:24,399
+And it's going to segue to this new MVC that
+它将继续这个新MVC
+
+1429
+01:08:24,467 --> 01:08:26,934
+will hopefully show us a list of all the people who
+希望给我们所有的人的列表吗
+
+1430
+01:08:27,003 --> 01:08:27,802
+have tweeted here,
+这里有推特,
+
+1431
+01:08:27,871 --> 01:08:29,069
+And sure enough, there it is,
+果然,就在那里。
+
+1432
+01:08:29,138 --> 01:08:31,706
+These are all the people who have tweeted one of
+这些都是推的人之一
+
+1433
+01:08:31,775 --> 01:08:33,975
+the tweets that was found by that search team,
+搜索团队的微博发现,
+
+1434
+01:08:34,043 --> 01:08:35,310
+Search term #stanford,
+搜索词#斯坦福大学,
+
+1435
+01:08:35,378 --> 01:08:37,411
+It even has that listed at the top, which is kinda cool,
+它甚至有上市顶部,有点酷,
+
+1436
+01:08:37,480 --> 01:08:40,914
+because that's the same as the back button here,
+因为这是一样的后退按钮,
+
+1437
+01:08:40,983 --> 01:08:42,850
+Now, one thing I don't like about this,
+现在,有一件事我不喜欢,
+
+1438
+01:08:42,918 --> 01:08:45,786
+a couple of things, one, subtitle,
+几件事情,1、副标题,
+
+1439
+01:08:45,855 --> 01:08:46,821
+Okay that's no good,
+好,不好,
+
+1440
+01:08:46,890 --> 01:08:48,423
+we could put something better there like,
+我们可以把更好的东西,
+
+1441
+01:08:48,491 --> 01:08:51,659
+maybe we could put how many tweets they've tweeted
+也许我们可以把多少推他们推
+
+1442
+01:08:51,727 --> 01:08:53,561
+that match that search term, that'd be cool,
+搜索词的匹配,会很酷,
+
+1443
+01:08:53,630 --> 01:08:55,763
+And then, the other thing is the order its in,
+然后,另一件事是订单,
+
+1444
+01:08:55,832 --> 01:08:59,100
+look at this, all the capital letter's first and
+看看这个,所有的大写字母的第一个
+
+1445
+01:08:59,169 --> 01:09:03,004
+then all the lowercase letters after it,
+之后所有的小写字母,
+
+1446
+01:09:03,072 --> 01:09:04,505
+I want it all to be alphabetical case insensitive,
+我想要所有的字母不区分大小写,
+
+1447
+01:09:04,506 --> 01:09:05,939
+And like that,
+像这样,
+
+1448
+01:09:06,008 --> 01:09:08,576
+so let's fix those things,
+所以让我们解决这些事情,
+
+1449
+01:09:08,645 --> 01:09:12,212
+So the case insensitive is just a matter of sorting,
+因此,不分大小写只是一个排序的问题,
+
+1450
+01:09:12,281 --> 01:09:14,349
+We're sorting there and it's sorting by some default,
+我们整理的一些默认的排序,
+
+1451
+01:09:14,417 --> 01:09:17,084
+while the default is obviously case sensitive search and
+在默认搜索,显然是大小写敏感的
+
+1452
+01:09:17,153 --> 01:09:18,185
+we don't want that,
+我们不希望这样,
+
+1453
+01:09:18,254 --> 01:09:21,155
+So, this is where this sorting selector comes in,
+所以,这就是这个排序选择器,
+
+1454
+01:09:21,223 --> 01:09:25,326
+And we just say #selector and it's gotta be an NSString
+我们只是说#选择器要NSString
+
+1455
+01:09:25,394 --> 01:09:27,628
+selector because this is an NSString field,
+选择器,因为这是一个NSString领域,
+
+1456
+01:09:27,697 --> 01:09:29,063
+And there's quite a few of them,
+还有很多,
+
+1457
+01:09:29,132 --> 01:09:32,733
+if you type compare, you'll get to see what they are,
+如果你类型比较,你就会看到它们是什么,
+
+1458
+01:09:32,802 --> 01:09:35,603
+So, there's a localizedCaseInsensitive,
+所以,有一个localizedCaseInsensitive,
+
+1459
+01:09:35,671 --> 01:09:38,973
+this kind of thing, so, let's try CaseInsensitive,
+这种事情,所以,让我们尝试CaseInsensitive,
+
+1460
+01:09:39,041 --> 01:09:41,675
+Let's do localized case insensitive compare,
+让我们做本地化不分大小写比较,
+
+1461
+01:09:41,744 --> 01:09:44,812
+So that's case insensitive, and using the user's local
+这是不分大小写,并使用用户的地方
+
+1462
+01:09:44,881 --> 01:09:48,783
+language to know what goes where, what the ordering is,
+语言知道了,定是什么,
+
+1463
+01:09:48,852 --> 01:09:49,884
+So that's a pretty good one,
+这是一个很好的一个,
+
+1464
+01:09:49,953 --> 01:09:52,420
+to use localized case insensitive compare,
+使用局部不分大小写比较,
+
+1465
+01:09:52,489 --> 01:09:54,956
+So that's all we need to do to the case sensitivity,
+这就是我们要做的大小写敏感性,
+
+1466
+01:09:55,024 --> 01:09:56,824
+that was really easy,
+这真的很容易,
+
+1467
+01:09:56,893 --> 01:10:01,496
+How about this thing of having the cells detail text label?
+这事怎么样的细胞详细文本标签吗?
+
+1468
+01:10:03,032 --> 01:10:05,065
+Have the twitter account,
+twitter帐户,
+
+1469
+01:10:05,134 --> 01:10:06,034
+basically the account of tweet,
+基本上twitter的帐户,
+
+1470
+01:10:06,102 --> 01:10:13,407
+So I'm gonna say this equals twitter tweet count,
+所以我会说,这等于twitter微博数,
+
+1471
+01:10:13,476 --> 01:10:18,980
+Tweet and let's even be nice here and put an s if it's one,
+微博让我们即使在这里很好,把一个年代如果是一个,
+
+1472
+01:10:20,483 --> 01:10:23,250
+Count equals one,
+数等于1,
+
+1473
+01:10:23,319 --> 01:10:27,654
+Then we'll put an s on the end otherwise we're nothing,
+然后我们会把一个年代的结束,否则我们什么都没有,
+
+1474
+01:10:27,723 --> 01:10:28,622
+Okay, every one see what I did there?
+好的,每一个看到我做了什么?
+
+1475
+01:10:28,691 --> 01:10:29,690
+So it will take one tweet,
+所以需要一个微博,
+
+1476
+01:10:29,759 --> 01:10:32,059
+What else do we need to do here?
+我们还需要做什么吗?
+
+1477
+01:10:32,128 --> 01:10:38,732
+We'll do this,
+我们会这样做,
+
+1478
+01:10:38,801 --> 01:10:40,001
+All right, so I just want to make it look nice,
+好吧,我只是想让它看起来不错,
+
+1479
+01:10:40,069 --> 01:10:42,804
+One tweet, two tweets, zero tweets,
+一个微博,两个微博,微博,零
+
+1480
+01:10:42,872 --> 01:10:44,738
+How do I get this tweet count right here and
+我怎么得到这个tweet计数和
+
+1481
+01:10:44,807 --> 01:10:47,742
+let tweet count equal something?
+让微博数等于什么?
+
+1482
+01:10:49,512 --> 01:10:53,580
+And to do this, I'm going to do a little quick
+要做到这一点,我要做的有点快
+
+1483
+01:10:53,649 --> 01:10:57,518
+fast type code, because we're getting close to the end here,
+快速类型代码,因为我们这里接近结束时,
+
+1484
+01:10:57,587 --> 01:11:00,588
+I have a method here called tweet count,
+我在这里有一个方法叫做微博数,
+
+1485
+01:11:00,657 --> 01:11:03,691
+with mention by right here,
+提到的在这里,
+
+1486
+01:11:03,760 --> 01:11:05,660
+And let's look at this method and how this works,
+让我们看看这个方法,这是如何工作的,
+
+1487
+01:11:05,728 --> 01:11:12,133
+So this is gonna give the tweetCountWithMentionBy
+这是要给tweetCountWithMentionBy
+
+1488
+01:11:12,201 --> 01:11:15,603
+this twitterUser, the twitterUser that we got from
+我们从这个twitterUser twitterUser
+
+1489
+01:11:15,672 --> 01:11:16,671
+our fetchResultsController,
+我们的fetchResultsController,
+
+1490
+01:11:16,739 --> 01:11:17,739
+It's gonna give us the tweetCount,
+它会给我们tweetCount,
+
+1491
+01:11:17,807 --> 01:11:20,541
+And the way it's work is it's gonna create a fetch
+和它的工作是要创建一个取回
+
+1492
+01:11:20,609 --> 01:11:21,408
+for tweet,
+微博,
+
+1493
+01:11:21,477 --> 01:11:25,880
+So here even in the middle of my cellForRowAtIndexPath,
+这甚至在半夜我cellForRowAtIndexPath,
+
+1494
+01:11:25,949 --> 01:11:29,083
+I'm making a request perfectly valid to go to a fetch
+我正在做一个请求完全有效去取回
+
+1495
+01:11:29,152 --> 01:11:31,285
+request right in the middle here to find some information,
+请求在这里找到一些信息,
+
+1496
+01:11:31,354 --> 01:11:33,187
+So here I'm fetching for Tweets this time,
+这里我抓取微博这一次,
+
+1497
+01:11:33,256 --> 01:11:36,557
+cause I wanna count the number of Tweets this Twitter user
+因为我想数一数这个Twitter用户的tweet
+
+1498
+01:11:36,626 --> 01:11:37,725
+has Tweeted with that so sure,
+推了,那么肯定,
+
+1499
+01:11:37,793 --> 01:11:39,126
+And the predicate is,
+谓词是,
+
+1500
+01:11:39,195 --> 01:11:44,398
+"tell me all the Tweets who's text contains that mention",
+“告诉我所有的消息文本包含提及是谁”,
+
+1501
+01:11:44,467 --> 01:11:47,335
+And who's Tweeter is this Twitter user?
+和推特这是Twitter用户是谁?
+
+1502
+01:11:50,606 --> 01:11:51,673
+Mention and a twitterUser,
+提到twitterUser,
+
+1503
+01:11:51,741 --> 01:11:54,241
+And I'm gonna go ahead and force unwrap that,
+我要和力打开,
+
+1504
+01:11:54,310 --> 01:11:56,577
+because, boy if I get all the way down to here,
+因为,男孩如果我一直到在这里,
+
+1505
+01:11:56,646 --> 01:11:58,246
+surely the mention is not nil,
+当然提到不是零,
+
+1506
+01:11:59,282 --> 01:12:01,015
+And then I'm going to return,
+然后我要返回,
+
+1507
+01:12:01,083 --> 01:12:04,351
+I'm going to use the same context the twitterUser is in,
+我将使用相同的上下文twitterUser在,
+
+1508
+01:12:04,420 --> 01:12:06,920
+hopefully that's a view context,
+希望这是一个视图上下文,
+
+1509
+01:12:06,989 --> 01:12:10,224
+And I'm going to count, use that count thing for
+我要统计,使用计数的事情
+
+1510
+01:12:10,293 --> 01:12:11,559
+that request,
+请求,
+
+1511
+01:12:11,627 --> 01:12:12,993
+And if that fails for some reason,
+如果由于某种原因失败时,
+
+1512
+01:12:13,062 --> 01:12:14,896
+I'm gonna say 0 tweets,
+我会说0条,
+
+1513
+01:12:17,000 --> 01:12:18,733
+Have you got that?
+你明白我的意思吗?
+
+1514
+01:12:18,802 --> 01:12:23,671
+So let's go
+所以让我们去
+
+1515
+01:12:23,740 --> 01:12:29,076
+take a look,
+看一看,
+
+1516
+01:12:29,145 --> 01:12:32,513
+Right, #stanford,
+#斯坦福大学,
+
+1517
+01:12:32,582 --> 01:12:33,681
+Right, here it is,
+在这里,
+
+1518
+01:12:33,750 --> 01:12:38,419
+Tweeters, look at that, not 1 tweet, 37 tweets from MEC30,
+高音,你看那个,不是1条推特,从MEC30 37 tweet,
+
+1519
+01:12:38,488 --> 01:12:41,021
+Let's go see if we can find MEC30 in here,
+让我们去看看我们是否能找到MEC30在这里,
+
+1520
+01:12:41,090 --> 01:12:43,824
+Sure, there's one my MEC30, another one, sure enough,
+当然,有一个我MEC30,另一个,果然,
+
+1521
+01:12:43,893 --> 01:12:45,392
+Look at this ME, what the?
+看这我,什么?
+
+1522
+01:12:45,461 --> 01:12:49,530
+Okay, what if I decide I don't want MEC30 in there anymore,
+好吧,如果我决定我不想MEC30在那里了,
+
+1523
+01:12:49,598 --> 01:12:51,999
+I don't like, this guy is a spammer or something,
+我不喜欢,这个人是一个垃圾邮件发送者,
+
+1524
+01:12:52,067 --> 01:12:53,534
+I don't know what his problem is,
+我不知道他的问题是什么,
+
+1525
+01:12:53,603 --> 01:12:54,868
+But I don't want him in there,
+但我不希望他在那里,
+
+1526
+01:12:54,937 --> 01:12:58,706
+Well, I can go back here and change my predicate right here
+好了,我可以回到这里,改变我的谓词
+
+1527
+01:12:58,774 --> 01:13:02,309
+to say, I want all the tweets that have that,
+说,我想要的所有微博,
+
+1528
+01:13:02,378 --> 01:13:07,881
+But I don't want ones where the handle of that guy, let's
+但我不希望处理的那个家伙,我们
+
+1529
+01:13:07,950 --> 01:13:13,454
+say it even begins with, just to be kind of interesting MEC,
+说它甚至开始,就有点有趣的MEC,
+
+1530
+01:13:13,523 --> 01:13:14,055
+What was it?
+是什么?
+
+1531
+01:13:14,123 --> 01:13:16,156
+MEC, we'll say,
+MEC,我们会说,
+
+1532
+01:13:16,225 --> 01:13:20,260
+And we can't put this literal in here, so
+我们不能把这个文字在这里,
+
+1533
+01:13:20,329 --> 01:13:26,534
+we have to say %@ and then we put the MEC on the outside,
+我们不得不说% @然后我们把MEC在外面,
+
+1534
+01:13:26,603 --> 01:13:31,205
+So let's see
+让我们看看
+
+1535
+01:13:31,273 --> 01:13:36,277
+if that got rid
+如果去掉
+
+1536
+01:13:36,346 --> 01:13:40,981
+of Mr, MEC,
+MEC先生,
+
+1537
+01:13:41,050 --> 01:13:44,418
+He gone!
+他不见了!
+
+1538
+01:13:44,487 --> 01:13:46,653
+Got that spammer out of there,
+明白了垃圾信息散布者,
+
+1539
+01:13:46,722 --> 01:13:47,254
+No questions?
+没有问题吗?
+
+1540
+01:13:47,323 --> 01:13:48,489
+Yes? Question?
+是吗?
+
+1541
+01:13:48,558 --> 01:13:51,191
+Yeah, so the question is, are the tweets in the database,
+是的,问题是,数据库中的信息,
+
+1542
+01:13:51,260 --> 01:13:53,861
+do they stay in there for run to run?
+他们呆在那里跑,跑吗?
+
+1543
+01:13:53,930 --> 01:13:55,262
+And the answer is absolutely,
+答案是绝对的,
+
+1544
+01:13:55,331 --> 01:13:57,264
+that's one, core data is kinda all about,
+这是一个核心数据是有点,
+
+1545
+01:13:57,333 --> 01:13:58,432
+There's a permanent database,
+有一个永久的数据库,
+
+1546
+01:13:58,501 --> 01:14:01,535
+So all those tweets, those #stanford tweets in there,
+所以所有这些推文,那些#斯坦福微博,
+
+1547
+01:14:01,604 --> 01:14:03,137
+if we go back and run again,
+如果我们回去再次运行,
+
+1548
+01:14:08,611 --> 01:14:10,244
+And search for #stanford,
+和搜索#斯坦福大学,
+
+1549
+01:14:10,313 --> 01:14:11,712
+If there have, you know,
+如果有,你知道,
+
+1550
+01:14:11,780 --> 01:14:14,148
+been some tweets since then they'll be added,
+一些twitter之后他们会被添加,
+
+1551
+01:14:14,217 --> 01:14:16,717
+But every single tweet we ever got is still
+但每一个微博我们仍了
+
+1552
+01:14:16,786 --> 01:14:17,517
+going to be in here,
+在这里,
+
+1553
+01:14:17,586 --> 01:14:19,453
+So you can see this list actually got slightly longer,
+所以你可以看到这个列表实际上有稍微长一点,
+
+1554
+01:14:19,522 --> 01:14:21,388
+a few tweets were in there, but they're all in there,
+几个微博都在那里,但他们都在那里呢,
+
+1555
+01:14:21,457 --> 01:14:26,159
+we're unique-ing them so it's not adding them over and over,
+我们unique-ing他们这不是增加他们一遍又一遍,
+
+1556
+01:14:26,228 --> 01:14:27,761
+And you gotta be careful to do that on your homework,
+你要小心地做你的家庭作业,
+
+1557
+01:14:27,830 --> 01:14:29,630
+Don't add them over and over,
+不要把它们一遍又一遍,
+
+1558
+01:14:29,699 --> 01:14:31,632
+But yeah, that CoreData database is there,
+但是是的,CoreData数据库,
+
+1559
+01:14:31,701 --> 01:14:33,467
+By the way, I'm gonna show you a trick,
+顺便说一下,我要告诉你一个窍门,
+
+1560
+01:14:33,535 --> 01:14:35,569
+We just enough time to show you something's really cool,
+我们只是足够的时间向你展示一些很酷,
+
+1561
+01:14:35,638 --> 01:14:38,472
+What if you want to delete your database?
+如果你想删除数据库呢?
+
+1562
+01:14:38,541 --> 01:14:40,507
+Okay, now there's two reasons you wanna,
+好了,现在有两个原因你想,
+
+1563
+01:14:40,576 --> 01:14:41,641
+might wanna delete your database,
+可能想删除数据库,
+
+1564
+01:14:41,710 --> 01:14:43,844
+One, you wanna clear the data out cuz you wanna get a fresh
+一个,你想要清除数据因为你想要一个新鲜
+
+1565
+01:14:43,913 --> 01:14:45,880
+set so you can see if things are working,
+所以你可以看到如果事情工作,
+
+1566
+01:14:45,948 --> 01:14:49,416
+And number two, you might change your data model,
+第二,你可能会改变你的数据模型,
+
+1567
+01:14:49,485 --> 01:14:53,453
+If I go back here and I go to my data model here and
+如果我回到这里,我去和我的数据模型
+
+1568
+01:14:53,522 --> 01:14:56,323
+I add some attributes or add an entity,
+我添加一些属性或添加一个实体,
+
+1569
+01:14:56,392 --> 01:15:01,628
+then my app will no longer run on that device or
+然后我的设备或应用程序将不再运行
+
+1570
+01:15:01,697 --> 01:15:05,833
+on the simulator cuz it'll say your data model doesn't match
+模拟器上因为它会说你的数据模型不匹配
+
+1571
+01:15:05,902 --> 01:15:07,902
+the data that's already on this device,
+已经在这个设备的数据,
+
+1572
+01:15:07,970 --> 01:15:10,938
+So here's the magic to get rid of, it's not very magical,
+这是魔法摆脱,它不是很神奇,
+
+1573
+01:15:11,006 --> 01:15:12,206
+Is on your device, or
+在你的设备上,还是
+
+1574
+01:15:12,275 --> 01:15:15,543
+on the simulator, you go to the home button right here and
+模拟器,按钮在这里和你去家里
+
+1575
+01:15:15,612 --> 01:15:19,413
+you press and hold to make the things jiggle,
+你按住摇晃的东西,
+
+1576
+01:15:19,482 --> 01:15:20,280
+You all know about that?
+你们都知道吗?
+
+1577
+01:15:20,349 --> 01:15:21,648
+It's how you delete apps,
+这是你如何删除应用程序,
+
+1578
+01:15:21,717 --> 01:15:25,018
+And just delete your app,
+删除你的应用,
+
+1579
+01:15:25,087 --> 01:15:28,755
+And when you delete your app, your core data goes with it,
+当你删除你的应用,你的核心数据,
+
+1580
+01:15:28,824 --> 01:15:31,491
+And now when you run the next time, you're gonna run,
+现在,当您运行下次,你要跑,
+
+1581
+01:15:31,560 --> 01:15:33,160
+it's gonna be a fresh database,
+它会是一个新的数据库,
+
+1582
+01:15:33,229 --> 01:15:34,961
+it will have the new data model etc,
+它将有新的数据模型等,
+
+1583
+01:15:35,030 --> 01:15:36,664
+So I'm very glad you asked that,
+我很高兴你问,
+
+1584
+01:15:36,732 --> 01:15:39,599
+really important to know how to clear out your database,
+真正重要的知道如何清理你的数据库,
+
+1585
+01:15:39,668 --> 01:15:43,070
+Now if we do #trump or something,
+如果我们做#特朗普,
+
+1586
+01:15:43,138 --> 01:15:48,342
+see it's even asking me again, do I wanna allow it?
+再次见到甚至问我,我想让它吗?
+
+1587
+01:15:48,410 --> 01:15:49,143
+And I do,
+我做的,
+
+1588
+01:15:53,582 --> 01:15:55,449
+All right, that is it,
+好吧,就是这样,
+
+1589
+01:15:55,518 --> 01:15:58,319
+I will see you next Wednesday after you turn in your
+下周三我将见到你在你在你转
+
+1590
+01:15:58,388 --> 01:15:59,252
+homework and
+作业,
+
+1591
+01:15:59,321 --> 01:16:04,691
+we'll learn all about the final project in Autolayout,
+我们将学习所有关于自动布局,最终项目的
+
+1592
+01:16:04,760 --> 01:16:14,768
+For more, please visit us at stanford,edu,
+更多信息,请访问我们的斯坦福大学edu,

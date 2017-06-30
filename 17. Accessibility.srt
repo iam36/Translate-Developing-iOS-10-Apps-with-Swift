@@ -1,0 +1,4489 @@
+1
+00:00:00,401 --> 00:00:02,000
+[MUSIC]
+(音乐)
+
+2
+00:00:02,069 --> 00:00:07,506
+Stanford University,
+斯坦福大学,
+
+3
+00:00:07,575 --> 00:00:12,410
+>> Okay, welcome to Stanford CS193P, Winter of 2017,
+> >好的,欢迎来到斯坦福CS193P,2017年冬天,
+
+4
+00:00:12,479 --> 00:00:15,447
+This is Developing iOS Applications,
+这是开发iOS应用程序,
+
+5
+00:00:15,515 --> 00:00:18,416
+this is lecture number 17, I said,
+我说,这是讲座数量17日
+
+6
+00:00:18,485 --> 00:00:21,119
+Yes, and we have a guest lecturer today
+是的,我们有今天的客座讲师
+
+7
+00:00:21,188 --> 00:00:24,056
+who's gonna talk to us about accessibility,
+谁来和我们谈谈可访问性,
+
+8
+00:00:24,125 --> 00:00:25,223
+His name is Skylar Peterson,
+他的名字叫Skylar彼得森,
+
+9
+00:00:25,292 --> 00:00:26,592
+Why don't you come up here, Skylar?
+你为什么不来这里,Skylar吗?
+
+10
+00:00:28,662 --> 00:00:29,761
+It's all yours,
+都是你的,
+
+11
+00:00:29,830 --> 00:00:31,696
+Thank you very much,
+非常感谢你,
+
+12
+00:00:31,765 --> 00:00:33,297
+All righty,
+好了,
+
+13
+00:00:33,366 --> 00:00:34,499
+Good afternoon, everybody,
+大家下午好,
+
+14
+00:00:34,568 --> 00:00:36,468
+As he said, my name is Skylar Peterson,
+他说,我的名字叫Skylar彼得森,
+
+15
+00:00:36,536 --> 00:00:39,571
+I am a member of Apple's Accessibility team,
+我是一个苹果的可访问性小组成员,
+
+16
+00:00:39,640 --> 00:00:41,373
+If you don't know exactly what I mean by that,
+如果你不知道我的意思,
+
+17
+00:00:41,442 --> 00:00:42,174
+then don't worry,
+别担心,
+
+18
+00:00:42,243 --> 00:00:44,609
+It's what I'm here to talk to you about today,
+这就是我今天来和你谈谈,
+
+19
+00:00:44,678 --> 00:00:45,877
+I first wanna thank Paul for
+我第一次想感谢保罗
+
+20
+00:00:45,946 --> 00:00:47,412
+inviting us here to speak today,
+邀请我们今天在这里说,
+
+21
+00:00:47,481 --> 00:00:50,215
+Hopefully you'll find what I have to say meaningful in some
+希望你会发现我不得不说有意义一些
+
+22
+00:00:50,284 --> 00:00:53,085
+way, and choose to apply it to your own work in the future,
+,选择把它应用到自己的工作在未来,
+
+23
+00:00:54,988 --> 00:00:56,054
+So before we get started,
+在我们开始之前,
+
+24
+00:00:56,123 --> 00:00:58,089
+let me tell you just a little bit about myself,
+让我告诉你一点关于我自己,
+
+25
+00:00:58,158 --> 00:01:00,959
+I actually graduated from Stanford in 2014,
+我2014年毕业于斯坦福大学,
+
+26
+00:01:01,028 --> 00:01:03,195
+I studied computer science, and
+我学习计算机科学,
+
+27
+00:01:03,264 --> 00:01:05,230
+my concentration was in HCI,
+我的注意力在人机交互,
+
+28
+00:01:05,299 --> 00:01:07,165
+I took this class while I was here, and
+我把这门课的时候,
+
+29
+00:01:07,234 --> 00:01:09,768
+it's actually one of the reasons that I fell in love
+它实际上的原因之一,我爱上了你
+
+30
+00:01:09,837 --> 00:01:12,737
+with iOS as a platform and why I'm in the job I'm in today,
+与iOS平台,为什么我在工作我在今天,
+
+31
+00:01:12,806 --> 00:01:14,505
+so thank you for that as well,
+谢谢你,,
+
+32
+00:01:14,574 --> 00:01:17,209
+After I graduated I spent a year and a half working at
+毕业后我工作了一年半
+
+33
+00:01:17,277 --> 00:01:19,778
+an enterprise software company called Citrix,
+企业软件公司叫Citrix,
+
+34
+00:01:19,846 --> 00:01:22,514
+where I worked on two different iOS applications,
+我工作在两个不同的iOS应用程序,
+
+35
+00:01:22,582 --> 00:01:24,316
+And then a little over a year ago,
+然后一年多前,
+
+36
+00:01:24,384 --> 00:01:27,085
+I made the jump to the Accessibility team at Apple,
+我跳上了可访问性团队在苹果,
+
+37
+00:01:27,154 --> 00:01:28,754
+where I focus mainly on iOS,
+我主要关注iOS的地方,
+
+38
+00:01:30,890 --> 00:01:32,123
+there's a couple things that I'd like to cover with you,
+有很多事情我想和你在一起,
+
+39
+00:01:32,124 --> 00:01:33,357
+So for today,
+所以在今天,
+
+40
+00:01:33,427 --> 00:01:34,259
+First of all,
+首先,
+
+41
+00:01:34,327 --> 00:01:37,529
+what exactly do we mean when we say accessibility?
+我们具体指的是当我们说易访问性?
+
+42
+00:01:37,598 --> 00:01:39,197
+And once you understand that,
+一旦你明白了,
+
+43
+00:01:39,265 --> 00:01:42,167
+how do you take the tools that we've created for you and
+你怎么把你的工具,我们已经创建了吗
+
+44
+00:01:42,236 --> 00:01:45,303
+apply them to your own work to make your apps accessible?
+将它们应用到自己的工作使您的应用程序访问吗?
+
+45
+00:01:45,372 --> 00:01:47,906
+So included in that we're gonna take a look at
+中,我们会看一看
+
+46
+00:01:47,975 --> 00:01:49,474
+the UIAccessibility API,
+UIAccessibility API,
+
+47
+00:01:49,542 --> 00:01:52,844
+We're gonna take a look at several vision accommodations
+我们会看看一些视觉住宿
+
+48
+00:01:52,913 --> 00:01:56,448
+that you should consider when designing your applications,
+你应该考虑在设计应用程序时,
+
+49
+00:01:56,517 --> 00:01:59,184
+and specifically I'm going to call out dynamic
+特别是我要调用动态
+
+50
+00:01:59,253 --> 00:02:01,019
+type as an important feature,
+类型作为一个重要的特性,
+
+51
+00:02:01,088 --> 00:02:04,189
+And at the end I'd like to discuss some opportunities
+最后我想讨论一些机会
+
+52
+00:02:04,258 --> 00:02:07,292
+available to you as a developer in the accessibility
+提供给你作为一个开发者的可访问性
+
+53
+00:02:07,361 --> 00:02:07,793
+space,
+空间,
+
+54
+00:02:07,861 --> 00:02:09,861
+So let's get started,
+所以让我们开始,
+
+55
+00:02:09,930 --> 00:02:14,533
+I'd like to begin with a brief video that
+我想开始一个简短的视频
+
+56
+00:02:14,601 --> 00:02:19,737
+Apple produced towards the end of last year,
+去年年底苹果生产,
+
+57
+00:02:19,806 --> 00:02:23,609
+[MUSIC]
+(音乐)
+
+58
+00:02:23,677 --> 00:02:26,511
+People think that having a disability is a barrier,
+人认为残疾是一个障碍,
+
+59
+00:02:26,580 --> 00:02:31,950
+[MUSIC],
+(音乐)
+
+60
+00:02:32,019 --> 00:02:34,186
+But that's not the way I see it,
+但这不是我看来,
+
+61
+00:02:34,254 --> 00:02:37,021
+It, [MUSIC]
+(音乐)
+
+62
+00:02:37,090 --> 00:02:39,157
+You can catch up with friends,
+你可以赶上朋友,
+
+63
+00:02:39,226 --> 00:02:41,359
+[MUSIC]
+(音乐)
+
+64
+00:02:41,428 --> 00:02:43,562
+Ready? You can capture a moment with
+准备好了吗?
+
+65
+00:02:43,631 --> 00:02:44,463
+your family,
+你的家人,
+
+66
+00:02:44,531 --> 00:02:46,865
+One face, small face,
+一个脸,小小的脸,
+
+67
+00:02:46,933 --> 00:02:47,966
+Focus log,
+集中日志,
+
+68
+00:02:48,035 --> 00:02:50,602
+[MUSIC]
+(音乐)
+
+69
+00:02:50,670 --> 00:02:53,304
+And you can start the day bright and early,
+你可以一大早的开始一天的工作,
+
+70
+00:02:53,373 --> 00:02:58,076
+[MUSIC]
+(音乐)
+
+71
+00:02:58,145 --> 00:03:00,812
+You can take a trip to somewhere new,
+你可以去新的地方,
+
+72
+00:03:00,881 --> 00:03:06,585
+[MUSIC]
+(音乐)
+
+73
+00:03:06,653 --> 00:03:08,286
+3 miles to the summit,
+3英里的峰会上,
+
+74
+00:03:08,355 --> 00:03:09,888
+[MUSIC]
+(音乐)
+
+75
+00:03:09,957 --> 00:03:13,091
+You can concentrate on every word of the story,
+你可以专注于故事的每一个字,
+
+76
+00:03:13,159 --> 00:03:15,560
+A bird begun to sing,
+鸟儿开始唱歌,
+
+77
+00:03:15,628 --> 00:03:17,362
+Jack opened his eyes,
+杰克睁开眼睛,
+
+78
+00:03:17,431 --> 00:03:19,664
+[MUSIC]
+(音乐)
+
+79
+00:03:19,733 --> 00:03:22,367
+You can take the long way home,
+你可以把漫长的回家的路上,
+
+80
+00:03:22,436 --> 00:03:32,310
+[MUSIC]
+(音乐)
+
+81
+00:03:32,378 --> 00:03:33,811
+Or edit a film,
+或编辑一个电影,
+
+82
+00:03:33,880 --> 00:03:35,346
+[MUSIC]
+(音乐)
+
+83
+00:03:35,415 --> 00:03:36,614
+Like this one,
+喜欢这个,
+
+84
+00:03:36,683 --> 00:03:43,688
+[MUSIC],
+(音乐)
+
+85
+00:03:43,757 --> 00:03:46,457
+When technology is designed for everyone,
+当技术是为每个人设计的,
+
+86
+00:03:46,526 --> 00:03:48,326
+[MUSIC]
+(音乐)
+
+87
+00:03:48,395 --> 00:03:53,398
+It lets anyone do what they love, including me,
+它允许任何人做他们爱,包括我,
+
+88
+00:03:53,467 --> 00:03:56,334
+[MUSIC]
+(音乐)
+
+89
+00:03:56,403 --> 00:03:57,769
+So the woman narrating and
+所以女人叙述
+
+90
+00:03:57,838 --> 00:04:00,705
+whom you saw featured throughout that video is named
+你看见谁在视频被命名为特色
+
+91
+00:04:00,773 --> 00:04:03,375
+Sady, and she has cerebral palsy,
+回来,和她有脑瘫,
+
+92
+00:04:03,444 --> 00:04:06,578
+And she's the principal editor on that video,
+她的主编,视频,
+
+93
+00:04:06,646 --> 00:04:09,481
+which I think is a powerful example of the way in which
+我认为这是一个功能强大的方法的例子吗
+
+94
+00:04:09,549 --> 00:04:12,483
+technology can empower people with disabilities and
+技术可以使残疾人
+
+95
+00:04:12,552 --> 00:04:14,586
+fundamentally change their lives,
+从根本上改变他们的生活,
+
+96
+00:04:14,654 --> 00:04:16,955
+So that is really what accessibility is all about,
+这是真正的可访问性,
+
+97
+00:04:17,024 --> 00:04:20,325
+It's making technology work for everyone,
+是做技术工作的每个人,
+
+98
+00:04:20,393 --> 00:04:23,061
+making it accessible for everyone,
+这使得每一个人,可
+
+99
+00:04:23,130 --> 00:04:26,131
+So let's take a look at some statistics,
+让我们看看一些统计数据,
+
+100
+00:04:26,199 --> 00:04:30,035
+There are 285 million people worldwide who have some sort
+全世界有2.85亿人一些
+
+101
+00:04:30,103 --> 00:04:33,371
+of low vision condition or who are entirely blind,
+低视力的条件或完全失明,
+
+102
+00:04:33,440 --> 00:04:38,076
+There are 360 million who are hard of hearing or deaf,
+有3.6亿个重听或失聪,
+
+103
+00:04:38,145 --> 00:04:42,947
+One in every 12 men is colorblind in some way, and 1
+每12人是色盲,和1
+
+104
+00:04:43,016 --> 00:04:48,119
+in 68 children fall somewhere on the autism spectrum,
+68年,儿童自闭症介于
+
+105
+00:04:48,187 --> 00:04:51,322
+And so what this means is that worldwide there are over
+所以这意味着,全球有超过
+
+106
+00:04:51,391 --> 00:04:54,525
+a billion people that have a disability of some sort,
+某种形式的残疾十亿人,
+
+107
+00:04:54,594 --> 00:04:56,795
+Or in other words, one in seven,
+换句话说,七分之一,
+
+108
+00:04:56,864 --> 00:04:59,864
+So by no means is accessibility a small issue,
+所以绝不可访问性是一个小问题,
+
+109
+00:04:59,933 --> 00:05:01,733
+It affects a lot of people and
+它影响了很多人
+
+110
+00:05:01,802 --> 00:05:05,570
+if your app has an audience of any significant size you're
+如果您的应用程序有任何重要的大小你的观众
+
+111
+00:05:05,638 --> 00:05:08,573
+going to have users that have disabilities,
+有障碍的用户,
+
+112
+00:05:08,641 --> 00:05:11,743
+And you should be doing the best, your best to make sure
+你应该做的最好的,最好的,以确保
+
+113
+00:05:11,812 --> 00:05:14,946
+that whatever you're working on works for everybody,
+无论你在工作,
+
+114
+00:05:15,015 --> 00:05:18,449
+So at Apple we think of accessibility in four distinct
+所以在苹果在四个不同的可访问性
+
+115
+00:05:18,518 --> 00:05:21,519
+groups,
+组,
+
+116
+00:05:21,588 --> 00:05:24,789
+which includes things like autism, dyslexia, and
+其中包括诸如自闭症、诵读困难和
+
+117
+00:05:24,857 --> 00:05:27,225
+other forms of learning disability,
+其他形式的学习障碍,
+
+118
+00:05:27,294 --> 00:05:30,395
+Physical and motor skills, so people that have tremors or
+身体和运动技能,所以人们有震动或
+
+119
+00:05:30,463 --> 00:05:33,398
+Parkinson's and maybe can't make precise movements
+帕金森症,也许不能做出精确的运动
+
+120
+00:05:33,467 --> 00:05:36,001
+or gestures, but this also includes people who
+或手势,但这也包括人
+
+121
+00:05:36,069 --> 00:05:38,670
+are paralyzed or have a limited set of digits that
+瘫痪或一组有限的数字吗
+
+122
+00:05:38,739 --> 00:05:40,938
+they can use to interact with the system,
+他们可以使用与系统交互,
+
+123
+00:05:41,007 --> 00:05:43,641
+For instance a single finger or a single toe, or
+例如一个手指或一个脚趾,或
+
+124
+00:05:43,710 --> 00:05:45,477
+in Sadie's case, her head,
+在赛迪的案例中,她的头,
+
+125
+00:05:47,381 --> 00:05:51,049
+Vision, which covers a spectrum of vision impairment
+涵盖了一系列的愿景,障碍
+
+126
+00:05:51,118 --> 00:05:53,885
+from low vision to completely blind, and
+从低视力完全失明
+
+127
+00:05:53,953 --> 00:05:57,455
+also includes different forms of color blindness,
+还包括不同形式的色盲,
+
+128
+00:05:57,524 --> 00:05:59,056
+And finally we have hearing,
+最后我们有听力,
+
+129
+00:05:59,125 --> 00:06:02,160
+which also like vision exists on a spectrum from the hard of
+也喜欢视觉存在频谱的困难
+
+130
+00:06:02,229 --> 00:06:04,096
+hearing to the completely deaf,
+听力完全失聪,
+
+131
+00:06:05,865 --> 00:06:09,200
+So now our team has developed a huge set of features on iOS
+现在我们的团队开发了一个巨大的iOS的特征
+
+132
+00:06:09,268 --> 00:06:12,603
+that assists in all of these categories, and best of all
+协助所有这些类别,最重要的是
+
+133
+00:06:12,672 --> 00:06:16,040
+they all come baked into the system from the beginning,
+他们都来烤到系统从一开始,
+
+134
+00:06:16,109 --> 00:06:19,410
+So they're all on all of your iOS devices that you can turn
+所以他们都是你的iOS设备上,你可以转弯
+
+135
+00:06:19,479 --> 00:06:21,112
+on, no add-ons required,
+不需要插件,
+
+136
+00:06:21,181 --> 00:06:23,681
+And as much as I'd like to go feature by feature and
+尽管我想去特性和功能
+
+137
+00:06:23,750 --> 00:06:26,684
+tell you why each of these is cool, and why it's necessary
+告诉你为什么这些很酷,为什么它是必要的
+
+138
+00:06:26,753 --> 00:06:29,454
+and solves the problem, we don't have all night, so
+和解决问题,我们没有一整夜,所以
+
+139
+00:06:29,523 --> 00:06:31,356
+I'm going to focus on just a couple,
+我要关注几,
+
+140
+00:06:31,425 --> 00:06:34,759
+But I do encourage you to go and check them out for
+但我鼓励你去检查他们
+
+141
+00:06:34,828 --> 00:06:36,561
+You can find accessibility settings on your device by
+你可以找到可访问性设置你的设备
+
+142
+00:06:36,562 --> 00:06:38,295
+yourself,
+你自己,
+
+143
+00:06:38,365 --> 00:06:39,631
+going to General and
+一般,
+
+144
+00:06:39,699 --> 00:06:43,501
+tapping on Accessibility where you'll find a long list of
+开发可访问性,你会发现一长串
+
+145
+00:06:43,570 --> 00:06:47,071
+all the features that you can enable on your devices,
+的所有功能,您可以使在你的设备上,
+
+146
+00:06:47,140 --> 00:06:49,340
+What I'd like to do now though is demo for you,
+我现在想做的是为你演示,
+
+147
+00:06:49,409 --> 00:06:52,343
+one of our most popular pieces of assistive technology which
+我们最受欢迎的作品之一的辅助技术
+
+148
+00:06:52,412 --> 00:06:53,444
+is called VoiceOver,
+被称为画外音,
+
+149
+00:06:53,513 --> 00:06:56,681
+It's a screen reader that allows blind and low vision
+这是一个屏幕阅读器,允许盲和低视力
+
+150
+00:06:56,750 --> 00:07:00,351
+users to use a touch screen by audibly describing elements of
+用户使用一个触摸屏,可听见地描述的元素
+
+151
+00:07:00,420 --> 00:07:02,887
+the screen as they pan or swipe around it,
+屏幕上锅或刷卡时,
+
+152
+00:07:02,956 --> 00:07:05,556
+So without a technology like this, blind users would be
+没有这样的技术,用户会视而不见
+
+153
+00:07:05,625 --> 00:07:08,426
+unable to use the iPhone which is why it's really important
+无法使用iPhone,这就是为什么它是非常重要的
+
+154
+00:07:08,494 --> 00:07:11,062
+for you to take advantage of the API which I'm gonna get
+你利用我要得到的API
+
+155
+00:07:11,130 --> 00:07:13,865
+into in a little bit so that your apps play well with it,
+到一点,这样你的应用打好了,
+
+156
+00:07:17,804 --> 00:07:20,371
+So, I have my device here on the home screen and
+所以,我在主屏幕和设备
+
+157
+00:07:20,440 --> 00:07:22,106
+I'm gonna turn VoiceOver on,
+我要打开配音,
+
+158
+00:07:22,175 --> 00:07:25,543
+And what you're gonna notice is that it's going to focus on
+你要注意的是,它会关注的
+
+159
+00:07:25,612 --> 00:07:27,445
+the first element of the screen,
+第一个元素在屏幕的,
+
+160
+00:07:27,514 --> 00:07:30,114
+which is the Mail app in the upper left corner,
+这是邮件应用程序在左上角,
+
+161
+00:07:30,183 --> 00:07:31,349
+VoiceOver on,
+画外音,
+
+162
+00:07:31,418 --> 00:07:32,083
+Mail,
+邮件,
+
+163
+00:07:32,152 --> 00:07:33,751
+No unread emails,
+没有未读邮件,
+
+164
+00:07:33,820 --> 00:07:36,520
+And it described it to me, and told me some extra information
+描述我,告诉我一些额外的信息
+
+165
+00:07:36,589 --> 00:07:39,123
+about it, for instance, that I have no unread emails,
+,例如,我没有未读邮件,
+
+166
+00:07:39,192 --> 00:07:43,160
+So if I wanted to navigate between items,
+如果我想导航条目之间,
+
+167
+00:07:43,229 --> 00:07:47,731
+if I wanna go item by item, I can swipe right or left,
+如果我想去逐项,我可以左右滑动,
+
+168
+00:07:47,800 --> 00:07:50,568
+Calendar, photos, camera,
+日历,照片,相机,
+
+169
+00:07:50,637 --> 00:07:53,805
+And it's going to read to me the description of each
+和我要读的描述
+
+170
+00:07:53,874 --> 00:07:55,140
+But if we're on the home screen which I'm here fairly
+但如果我们在主屏幕上,我是相当的
+
+171
+00:07:55,141 --> 00:07:56,407
+item as I go,
+项目,我去,
+
+172
+00:07:56,476 --> 00:07:59,077
+frequently, I know my way around, I can also just feel
+经常,我知道我的方式,我也可以感觉
+
+173
+00:07:59,146 --> 00:08:01,145
+my way around the screen with my finger,
+我与我的手指在屏幕上,
+
+174
+00:08:01,214 --> 00:08:04,415
+You tapped on Music,
+你在音乐了,
+
+175
+00:08:04,484 --> 00:08:06,952
+And once I found exactly what I'm looking for,
+一旦我找到我在寻找什么,
+
+176
+00:08:07,020 --> 00:08:09,487
+a double tap acts like a single tap would when you
+双击就像一个水龙头当你
+
+177
+00:08:09,556 --> 00:08:10,955
+don't have VoiceOver on,
+没有解说,
+
+178
+00:08:11,024 --> 00:08:12,023
+So it's gonna open Music,
+所以它会打开音乐,
+
+179
+00:08:15,795 --> 00:08:18,129
+Music, this is now playing screen, button,
+音乐,现在玩屏幕,按钮,
+
+180
+00:08:18,198 --> 00:08:21,899
+Now because music is a first party application,
+因为音乐是第一方的应用程序,
+
+181
+00:08:21,968 --> 00:08:23,134
+Apple engineers have gone through and
+苹果公司的工程师已经通过
+
+182
+00:08:23,203 --> 00:08:26,237
+made sure that all of the UI in that app is accessible,
+确保所有UI应用程序访问,
+
+183
+00:08:26,306 --> 00:08:29,106
+So VoiceOver interacts with this interface
+所以画外音与这个接口
+
+184
+00:08:29,175 --> 00:08:31,042
+exactly the same way that it would on the home screen,
+完全相同的方式,它将在主屏幕上,
+
+185
+00:08:31,111 --> 00:08:33,978
+I could swipe, [SOUND] Or
+我可以刷卡,[声音]或
+
+186
+00:08:34,046 --> 00:08:35,580
+find exactly what I'm looking for,
+发现我在找什么,
+
+187
+00:08:37,083 --> 00:08:41,452
+Now VoiceOver, because it is intercepting gestures
+现在画外音,因为它是拦截动作
+
+188
+00:08:41,521 --> 00:08:42,653
+that are normally used for
+这通常用于
+
+189
+00:08:42,722 --> 00:08:44,956
+other things when VoiceOver's turned off,
+其他的事情当画外音的关闭,
+
+190
+00:08:45,024 --> 00:08:46,925
+There are analogs for
+有类似物
+
+191
+00:08:46,993 --> 00:08:49,160
+each different kind of interaction with the system
+每个不同的交互系统
+
+192
+00:08:49,229 --> 00:08:51,362
+that you might need when VoiceOver is turned on,
+时,您可能需要配音,
+
+193
+00:08:51,430 --> 00:08:55,566
+So, for instance, with the track scrubber, if I only want
+例如,追踪洗涤器,如果我只希望
+
+194
+00:08:55,635 --> 00:08:57,936
+to scrub through the track, if I don't have voice over on,
+通过跟踪擦洗,如果我没有语音,
+
+195
+00:08:58,004 --> 00:09:00,137
+then I'm just gonna run my finger along it,
+然后我要运行我的手指沿着它,
+
+196
+00:09:00,206 --> 00:09:01,205
+like a slider,
+像一个滑块,
+
+197
+00:09:01,274 --> 00:09:04,742
+But when VoiceOver's on it's trying to
+但当画外音的尝试
+
+198
+00:09:04,811 --> 00:09:07,312
+interpret that gesture as me trying to find an element,
+解释这种姿态和我试图找到一个元素,
+
+199
+00:09:07,381 --> 00:09:10,948
+So instead we have this adjustable gesture on
+所以我们有这个可调的姿态
+
+200
+00:09:11,017 --> 00:09:13,484
+items that are adjustable, I can swipe my finger up and
+可调的物品,我可以刷我的手指
+
+201
+00:09:13,553 --> 00:09:20,258
+down to change the value,
+变化的值,
+
+202
+00:09:20,327 --> 00:09:21,926
+8 seconds and 3 minutes,
+8秒和3分钟,
+
+203
+00:09:21,995 --> 00:09:22,961
+30 seconds,
+30秒,
+
+204
+00:09:23,030 --> 00:09:24,729
+So those are just some very,
+这些只是一些非常,
+
+205
+00:09:24,798 --> 00:09:27,565
+very basic examples of how VoiceOver works,
+非常基本的例子,画外音是如何工作的,
+
+206
+00:09:27,634 --> 00:09:29,934
+It's much more advanced than that when you get into
+这是比,当你进入更高级的
+
+207
+00:09:30,003 --> 00:09:31,469
+the nitty, nitty gritty of it,
+细节,细节,
+
+208
+00:09:31,537 --> 00:09:33,604
+And I highly encourage you to turn it on and
+我强烈建议你打开它
+
+209
+00:09:33,673 --> 00:09:36,507
+play around with it and see what the experience is really
+与它玩耍,看看经验是什么
+
+210
+00:09:36,576 --> 00:09:38,042
+like for a user who's blind,
+像用户的盲人,
+
+211
+00:09:38,111 --> 00:09:41,245
+So where does the information that an assistive technology
+那么,一个辅助技术的信息
+
+212
+00:09:41,314 --> 00:09:43,548
+like VoiceOver uses coming from?
+像画外音使用来自?
+
+213
+00:09:43,616 --> 00:09:46,785
+Well it runs in it's own process on the system, and
+它运行在它自己的系统上的过程,和
+
+214
+00:09:46,853 --> 00:09:49,854
+it uses the UIAccessibility protocol to communicate with
+它使用UIAccessibility协议与通信
+
+215
+00:09:49,923 --> 00:09:51,288
+other processes, and
+其他进程,
+
+216
+00:09:51,357 --> 00:09:55,960
+ask them information about the current element on the screen,
+问他们关于当前元素在屏幕上的信息,
+
+217
+00:09:56,029 --> 00:09:57,761
+So VoiceOver will receive an input, for
+所以画外音将获得一个输入
+
+218
+00:09:57,830 --> 00:10:00,932
+instance a single tap, and
+实例一个水龙头,和
+
+219
+00:10:01,000 --> 00:10:03,902
+it will get the currently focused element's description,
+它将当前集中元素的描述,
+
+220
+00:10:03,970 --> 00:10:06,805
+It will query the current process for predefined pieces
+将查询当前进程预定义的碎片
+
+221
+00:10:06,873 --> 00:10:09,106
+of information about that element,
+元素的信息,
+
+222
+00:10:09,175 --> 00:10:11,842
+And from those queries, it's going to stitch together
+从这些查询,它会缝在一起
+
+223
+00:10:11,911 --> 00:10:14,079
+a user friendly description and speak it,
+一个用户友好的描述和它说话,
+
+224
+00:10:16,316 --> 00:10:18,649
+So let's take a look at the different properties in
+让我们看看不同的属性
+
+225
+00:10:18,718 --> 00:10:21,152
+the protocol that an assistive technology is going to
+一个辅助技术将的协议
+
+226
+00:10:21,220 --> 00:10:22,620
+ask about,
+询问,
+
+227
+00:10:22,689 --> 00:10:24,689
+The first, and arguably most important,
+第一,可以说是最重要的,
+
+228
+00:10:24,757 --> 00:10:27,658
+is isAccessibilityElement which tells VoiceOver whether
+是isAccessibilityElement告诉画外音
+
+229
+00:10:27,727 --> 00:10:30,928
+or not the current thing should even be visible to it,
+甚至不是当前的事情应该是可见的,
+
+230
+00:10:30,997 --> 00:10:33,664
+And if this is set to no then obviously it's not going to be
+如果这是设置为不那么显然不是
+
+231
+00:10:33,733 --> 00:10:34,699
+an accessible element and
+一个访问元素和
+
+232
+00:10:34,768 --> 00:10:37,068
+VoiceOver will not be able to focus on it,
+画外音将无法关注它,
+
+233
+00:10:37,137 --> 00:10:40,572
+But in the case of say, a volume slider,
+但在说,音量滑块,
+
+234
+00:10:40,641 --> 00:10:42,006
+which I'm going to use as an example for
+我将使用作为一个例子
+
+235
+00:10:42,075 --> 00:10:44,376
+all these properties, we're gonna set this value to true,
+所有这些特性,我们将这个值设置为true,
+
+236
+00:10:46,412 --> 00:10:48,312
+Next we have the accessibilityLabel
+接下来我们有accessibilityLabel
+
+237
+00:10:48,381 --> 00:10:50,915
+which describes what an element,
+它描述了一个元素,
+
+238
+00:10:50,984 --> 00:10:55,153
+So in the case of the Volume slider, it changes the volume,
+所以在音量滑块的情况下,改变体积,
+
+239
+00:10:55,222 --> 00:10:56,454
+so it's going to say Volume,
+所以它会说体积,
+
+240
+00:10:56,523 --> 00:10:59,524
+And then you may wonder
+然后你可能想知道
+
+241
+00:10:59,593 --> 00:11:02,426
+why we don't say something like Volume Slider,
+为什么我们不这样说音量滑块,
+
+242
+00:11:02,495 --> 00:11:03,661
+And this is because of this next
+这是因为下一个
+
+243
+00:11:03,730 --> 00:11:05,696
+property accessibilityTraits
+财产accessibilityTraits
+
+244
+00:11:05,765 --> 00:11:09,801
+which is used to define what category an element fits into,
+用于定义类别元素融入,
+
+245
+00:11:09,869 --> 00:11:12,170
+So in the case of a slider, it's an adjustable element,
+所以在一个滑动条的情况下,这是一个可调的元素,
+
+246
+00:11:12,239 --> 00:11:14,339
+so we're going to give it the adjustable trait,
+所以我们要给它可调特性,
+
+247
+00:11:15,842 --> 00:11:17,542
+This means that when VoiceOver describes it,
+这意味着当画外音描述它,
+
+248
+00:11:17,611 --> 00:11:20,511
+it's going to say volume adjustable,
+它会说体积可调,
+
+249
+00:11:20,580 --> 00:11:23,280
+which means that the word slider is redundant,
+这意味着“滑块”这个词是多余的,
+
+250
+00:11:23,349 --> 00:11:24,315
+And doesn't need to be there,
+不需要,
+
+251
+00:11:25,752 --> 00:11:26,817
+Accessibility traits
+易访问性特征
+
+252
+00:11:26,886 --> 00:11:29,253
+are important in other ways as well,
+在其他方面也很重要,
+
+253
+00:11:29,322 --> 00:11:33,290
+So certain traits afford elements certain behaviors,
+因此某些特征元素特定的行为,
+
+254
+00:11:33,359 --> 00:11:36,060
+For instance, in my demo where I was showing the track
+例如,在我的演示,我是跟踪显示
+
+255
+00:11:36,129 --> 00:11:40,331
+scrubber, that increment and decrement gesture is added
+洗涤器,递增和递减的姿态
+
+256
+00:11:40,400 --> 00:11:44,134
+because that view has the adjustable trait set to it,
+因为这一观点有可调节的特征集,
+
+257
+00:11:44,203 --> 00:11:46,771
+So, VoiceOver knows that that view is going to respond
+画外音知道这一观点是要回应
+
+258
+00:11:46,839 --> 00:11:50,942
+in some way to having its value increased or decreased,
+在某些方面有它的价值的增加或减少,
+
+259
+00:11:52,345 --> 00:11:54,545
+VoiceOver also has a mechanism for
+画外音也的机制
+
+260
+00:11:54,614 --> 00:11:57,982
+navigating a display, where a user can say
+导航显示,用户可以说
+
+261
+00:11:58,050 --> 00:12:01,119
+I want to navigate based on only this kind of item,
+我只想导航基于这样的项目,
+
+262
+00:12:01,187 --> 00:12:04,422
+So, for instance, if I had a table view that I wanted to
+例如,如果我有一个我想要的表视图
+
+263
+00:12:04,491 --> 00:12:08,593
+navigate just by its headers then I could set this in
+导航的头然后我可以设置
+
+264
+00:12:08,661 --> 00:12:11,562
+VoiceOver, and it's going to go through and only focus on
+画外音,它会通过,只关注
+
+265
+00:12:11,631 --> 00:12:14,698
+elements in the hierarchy that have the header trait,
+头特征元素层次结构,
+
+266
+00:12:14,767 --> 00:12:17,001
+So it's important that all of your views have the right
+所以重要的是你所有的有正确的看法
+
+267
+00:12:17,070 --> 00:12:19,971
+traits so they behave as expected to voice over users,
+特征所以他们的行为符合预期时语音用户,
+
+268
+00:12:22,375 --> 00:12:24,442
+Next we have accessibility value,
+接下来,我们有可访问性价值,
+
+269
+00:12:24,511 --> 00:12:27,745
+Which you can override if your view has some sort of state,
+你可以覆盖如果你观点的某种状态,
+
+270
+00:12:27,814 --> 00:12:29,747
+So for example, the state for
+例如,国家
+
+271
+00:12:29,816 --> 00:12:32,283
+the volume slider is what is the current percent
+音量滑块是当前的百分比
+
+272
+00:12:32,352 --> 00:12:35,219
+that my volume is set to, and we're gonna return 50%,
+我的音量设置为,我们会返还50%,
+
+273
+00:12:35,288 --> 00:12:39,757
+And finally, we have accessibilityHint,
+最后,我们有accessibilityHint,
+
+274
+00:12:39,825 --> 00:12:42,593
+So this is another optional property that's meant
+这是另一个可选属性的意思
+
+275
+00:12:42,662 --> 00:12:45,129
+to provide a more long-form description of what something
+提供更多的长篇描述的东西
+
+276
+00:12:45,198 --> 00:12:47,398
+is or what something does,
+或者什么东西,
+
+277
+00:12:47,467 --> 00:12:51,035
+This is important often for VoiceOver users who have never
+这是重要的画外音用户从来没有经常
+
+278
+00:12:51,104 --> 00:12:53,705
+used your interface before and are trying to learn their way
+使用接口之前,正在努力学习
+
+279
+00:12:53,773 --> 00:12:57,575
+around it and figure out how things work together,
+,找出如何一起工作,
+
+280
+00:12:57,643 --> 00:13:00,211
+But you should never put information that is
+但你永远不应该把信息
+
+281
+00:13:00,280 --> 00:13:03,381
+critical to the user in this description
+用户在此描述的关键
+
+282
+00:13:03,450 --> 00:13:06,384
+because Accessibility can be turned off,
+因为易访问性可以被关闭,
+
+283
+00:13:06,452 --> 00:13:08,619
+And therefore a user may not ever hear them,
+因此用户可能没有听过他们,
+
+284
+00:13:08,688 --> 00:13:11,756
+Which they might do to keep VoiceOver from being
+他们可能防止画外音
+
+285
+00:13:11,825 --> 00:13:14,825
+too verbose if they're an experienced user,
+过于冗长,如果他们是一个有经验的用户,
+
+286
+00:13:14,894 --> 00:13:18,662
+So those are the fine five main accessibility traits,
+这是优良的五个主要的易访问性特征,
+
+287
+00:13:18,731 --> 00:13:21,599
+Without them the interface is totally unusable to VoiceOver,
+没有他们的接口是完全不可用画外音,
+
+288
+00:13:21,667 --> 00:13:25,036
+and that's the blind and low vision users who rely on it,
+这是盲人和低视力用户依赖它,
+
+289
+00:13:25,104 --> 00:13:29,674
+UIKit views define these properties by default, or
+UIKit视图定义这些属性在默认情况下,或
+
+290
+00:13:29,742 --> 00:13:32,543
+most of them do, which means that most of the legwork is
+他们中的大多数,这意味着大多数的跑腿工作
+
+291
+00:13:32,611 --> 00:13:34,078
+already done for you,
+已经完成了,
+
+292
+00:13:34,147 --> 00:13:35,612
+But what you really need to watch out for
+但你真的需要小心
+
+293
+00:13:35,681 --> 00:13:39,551
+is your own custom views, so let's look at some code,
+是您自己的自定义视图,所以让我们来看看代码,
+
+294
+00:13:41,154 --> 00:13:43,788
+Let's say that I have a view controller
+假设我有一个视图控制器
+
+295
+00:13:43,856 --> 00:13:47,925
+that has a property image view of subclass MyImageView,
+有一个属性图像视图MyImageView子类,
+
+296
+00:13:47,994 --> 00:13:50,695
+which is a subclass that I've created,
+这是我创建的一个子类,
+
+297
+00:13:50,764 --> 00:13:52,764
+It's just a UIView, it's not a UIImageView or
+它只是一个UIView,这不是UIImageView或
+
+298
+00:13:52,832 --> 00:13:54,131
+anything like that, so
+类似的,所以
+
+299
+00:13:54,200 --> 00:13:55,767
+it doesn't have accessibility by default,
+它没有可访问性在默认情况下,
+
+300
+00:13:57,437 --> 00:13:59,436
+Well in my viewDidLoad method I'm obviously gonna call
+在我viewDidLoad方法显然会调用
+
+301
+00:13:59,505 --> 00:14:01,572
+super and then I could do this,
+超级然后我可以这样做,
+
+302
+00:14:01,640 --> 00:14:04,342
+I could use dot notation to set each of these different
+我可以使用点符号设置这些不同
+
+303
+00:14:04,411 --> 00:14:05,275
+properties,
+属性,
+
+304
+00:14:05,344 --> 00:14:06,277
+I'm gonna say yes my
+我要说是我的
+
+305
+00:14:06,345 --> 00:14:08,179
+imageView,isAccessibilityElem- ent,
+imageView isAccessibilityElem - ent,
+
+306
+00:14:08,248 --> 00:14:12,550
+I'm gonna give it some reasonable label and I'm gonna
+我要给它一些合理的标签,我要
+
+307
+00:14:12,618 --> 00:14:15,185
+give it the trait, the image trait, because I want it to
+给它的特征,图像特征,因为我想要的
+
+308
+00:14:15,254 --> 00:14:17,322
+behave like any other image would on the system,
+像任何其他图片会在系统上,
+
+309
+00:14:18,658 --> 00:14:21,258
+Now, I probably want to do this in a case where these
+现在,我可能需要做这些
+
+310
+00:14:21,327 --> 00:14:25,963
+values depend on an instance of a view,
+值取决于一个视图的一个实例,
+
+311
+00:14:26,032 --> 00:14:28,565
+But, there may be a case where
+但是,可能存在一种情况
+
+312
+00:14:28,634 --> 00:14:31,602
+the value that is returned from one of these properties
+返回的值从这些属性之一
+
+313
+00:14:31,671 --> 00:14:33,270
+applies to all view of that kind,
+适用于所有的那种,
+
+314
+00:14:33,339 --> 00:14:37,475
+So, on the subclass MyImageView,
+所以,MyImageView子类,
+
+315
+00:14:37,544 --> 00:14:41,879
+I could have instead overridden the getter for
+我可以而不是覆盖的getter
+
+316
+00:14:41,948 --> 00:14:45,182
+isAccessibilityElement always return true,
+isAccessibilityElement始终返回true,
+
+317
+00:14:45,251 --> 00:14:47,451
+If I know that MyImageView is never not
+如果我知道MyImageView从来都不是
+
+318
+00:14:47,520 --> 00:14:48,585
+going to be an accessibility
+将是一个可访问性
+
+319
+00:14:48,654 --> 00:14:50,588
+element than this is probably what I want to do,
+元素比这可能是我想做的,
+
+320
+00:14:50,657 --> 00:14:53,791
+Or if there's some internal logic to that class that
+或者如果有一些类的内部逻辑
+
+321
+00:14:53,860 --> 00:14:55,793
+determines whether or not I should determine true or
+决定我是否应该确定真正的或
+
+322
+00:14:55,862 --> 00:14:58,762
+false from here, this is a much better way to do that,
+假的,这是一个更好的办法,
+
+323
+00:14:58,831 --> 00:15:00,899
+And then I can override the setter to just do nothing
+然后我可以覆盖setter什么也不做
+
+324
+00:15:02,435 --> 00:15:04,802
+this applies to all of the properties,
+这适用于所有的属性,
+
+325
+00:15:04,871 --> 00:15:06,570
+I can override them, their getters and
+我可以覆盖它们,它们的getter和
+
+326
+00:15:06,639 --> 00:15:07,639
+setters explicitly,
+setter明确,
+
+327
+00:15:10,510 --> 00:15:13,444
+So, now I'd like to demo what you've just seen
+所以,现在我想演示你刚才看到什么
+
+328
+00:15:13,513 --> 00:15:14,945
+on a sample app that I've been working on,
+在一个示例应用程序,我一直在工作,
+
+329
+00:15:15,014 --> 00:15:19,349
+So I'm gonna go back over here to my device and
+所以我要回去我的设备和
+
+330
+00:15:19,418 --> 00:15:20,618
+I'm gonna turn VoiceOver back on,
+我要打开画外音回来,
+
+331
+00:15:21,788 --> 00:15:22,353
+VoiceOver on,
+画外音,
+
+332
+00:15:23,789 --> 00:15:26,257
+So you see down here I have this app called Notecards,
+所以你看下面我有这个程序称为卡片,
+
+333
+00:15:26,326 --> 00:15:28,626
+[INAUDIBLE] Note note cards,
+卡(INAUDIBLE)注意,注意,
+
+334
+00:15:28,694 --> 00:15:33,264
+It's just a basic app that has stacks of notecards that I
+这只是一个基本的应用程序栈的卡片
+
+335
+00:15:33,333 --> 00:15:35,232
+can use to test myself,
+可以使用它来测试自己,
+
+336
+00:15:35,301 --> 00:15:37,535
+And I need to do an accessibility audit of this
+我需要做一个可访问性审计
+
+337
+00:15:37,603 --> 00:15:40,104
+app to see how well it works with VoiceOver,
+应用程序,看看它如何使用画外音,
+
+338
+00:15:40,172 --> 00:15:42,139
+So, I'm gonna start by tapping on the first thing I see,
+所以,我要开始利用我看到的第一件事,
+
+339
+00:15:42,208 --> 00:15:43,207
+which is that collection header,
+那就是收集头,
+
+340
+00:15:43,276 --> 00:15:46,010
+Collection,
+收藏
+
+341
+00:15:46,079 --> 00:15:50,814
+So, as you saw it read the label collection but
+所以,当你看到它读标签但集合
+
+342
+00:15:50,883 --> 00:15:52,583
+what it didn't say was header,
+它没有说什么头,
+
+343
+00:15:52,651 --> 00:15:54,952
+So I have no idea that this thing
+所以我不知道这个东西
+
+344
+00:15:55,021 --> 00:15:57,488
+is actually a label that is meant to be a header for
+实际上是一个标签,是一个头
+
+345
+00:15:57,557 --> 00:15:58,789
+all of the content underneath it,
+下面所有的内容,
+
+346
+00:15:58,858 --> 00:16:01,125
+So that's the first thing I need to do is add that trait,
+这就是我需要做的第一件事就是添加特征,
+
+347
+00:16:02,629 --> 00:16:03,294
+Add button,
+添加按钮,
+
+348
+00:16:03,362 --> 00:16:05,329
+That button has a sensible label,
+按钮有一个合理的标签,
+
+349
+00:16:05,398 --> 00:16:07,198
+Physics five cards,
+物理五张牌,
+
+350
+00:16:07,267 --> 00:16:07,865
+That seems right,
+这似乎是正确的,
+
+351
+00:16:07,934 --> 00:16:10,834
+Image one button,
+图片一个按钮,
+
+352
+00:16:10,903 --> 00:16:11,702
+That doesn't seem right,
+这似乎不正确的,
+
+353
+00:16:11,771 --> 00:16:14,038
+Image two button,
+图像两个按钮,
+
+354
+00:16:14,107 --> 00:16:17,008
+And neither does that so both of these buttons
+和也没有,所以这两个按钮
+
+355
+00:16:17,077 --> 00:16:19,243
+are missing accessibility labels and so
+缺少可访问性标签和
+
+356
+00:16:19,312 --> 00:16:21,745
+I have actually no idea what they do,
+我已经不知道他们做什么,
+
+357
+00:16:21,814 --> 00:16:24,949
+And it said image one and two because VoiceOver
+它说图片1和2因为画外音
+
+358
+00:16:25,017 --> 00:16:28,252
+by default when it doesn't have a label on something that
+默认情况下,当它没有标签的东西
+
+359
+00:16:28,321 --> 00:16:32,389
+uses an image like a UIButton, it's going to default to that
+使用一个图像像UIButton,它会默认
+
+360
+00:16:32,458 --> 00:16:36,027
+image's filename as a last resort to try and see if it
+图片的文件名作为最后的手段,试图看看它
+
+361
+00:16:36,095 --> 00:16:38,829
+can get something meaningful out of what this element is,
+可以得到有意义的这个元素是什么,
+
+362
+00:16:38,897 --> 00:16:42,533
+So I need to instead add my own labels to those buttons,
+所以我需要添加自己的标签的按钮,
+
+363
+00:16:42,602 --> 00:16:47,137
+Trivia, nine trivia,
+琐事,九琐事,
+
+364
+00:16:47,206 --> 00:16:47,939
+Now if I go in here,
+现在,如果我在这里,
+
+365
+00:16:48,008 --> 00:16:50,307
+I heard that that had the header trait,
+我听说有头特征,
+
+366
+00:16:50,376 --> 00:16:52,276
+Add button,
+添加按钮,
+
+367
+00:16:52,344 --> 00:16:53,076
+That has a good label,
+一个好的标签,
+
+368
+00:16:53,145 --> 00:16:55,513
+Close button,
+关闭按钮,
+
+369
+00:16:55,581 --> 00:16:56,447
+And if I come in here,
+如果我来这里,
+
+370
+00:16:56,516 --> 00:16:58,482
+The phrase "Let them eat cake" is commonly
+“让他们吃蛋糕”是常见的
+
+371
+00:16:58,551 --> 00:16:59,450
+attributed to whom?
+归功于谁?
+
+372
+00:16:59,519 --> 00:17:00,551
+Queen Marie Antoinette,
+Queen Marie Antoinette,
+
+373
+00:17:00,620 --> 00:17:02,119
+I notice that these two labels,
+我注意到这两个标签,
+
+374
+00:17:02,188 --> 00:17:04,388
+even though VoiceOver's picking them up,
+尽管画外音的捡起来,
+
+375
+00:17:04,457 --> 00:17:07,124
+they are picked up as separate elements and so, I don't
+他们拿起作为单独的元素,所以,我不喜欢
+
+376
+00:17:07,193 --> 00:17:10,094
+really have any context for how they work together,
+真的没有任何上下文他们如何一起工作,
+
+377
+00:17:10,163 --> 00:17:11,862
+One is the question and one is the answer,
+一个问题,一个是答案,
+
+378
+00:17:11,930 --> 00:17:14,865
+And it would actually be much better and give VoiceOver
+它会更好,给画外音
+
+379
+00:17:14,934 --> 00:17:17,735
+users much context if I were to group them together,
+用户上下文如果我组在一起,
+
+380
+00:17:17,803 --> 00:17:18,636
+That's one element and
+这是一个元素和
+
+381
+00:17:18,705 --> 00:17:21,405
+say this is the question, this is the answer,
+说这是一个问题,这是答案,
+
+382
+00:17:21,473 --> 00:17:23,107
+So they can actually understand what's happening in
+所以他们可以理解发生了什么
+
+383
+00:17:23,175 --> 00:17:24,575
+this interface,
+这个接口,
+
+384
+00:17:24,644 --> 00:17:27,845
+So I'm gonna go over to some code, to my app,
+所以我要去一些代码,我的应用程序,
+
+385
+00:17:27,913 --> 00:17:31,282
+The first thing I wanna take care of is that header trade
+首先我想照顾这个头贸易
+
+386
+00:17:31,350 --> 00:17:32,016
+cuz it's pretty easy,
+因为它很简单,
+
+387
+00:17:32,085 --> 00:17:36,853
+And I have this title label right here, so
+和我这里的标题标签,所以
+
+388
+00:17:36,922 --> 00:17:43,628
+I'm going to say accessibility traits or equals header,
+我要说的可访问性特征或等于头,
+
+389
+00:17:43,696 --> 00:17:46,430
+Now I'm using or equals instead of just explicitly
+现在我使用或=而不是显式地
+
+390
+00:17:46,498 --> 00:17:51,101
+equals, because I don't know what the superclass of title
+=,因为我不知道标题的超类
+
+391
+00:17:51,170 --> 00:17:54,071
+label, what traits it is added to
+标签,它被添加到什么特征
+
+392
+00:17:54,140 --> 00:17:56,774
+this accessibility element that it wants to have there,
+可访问性元素,它想要,
+
+393
+00:17:56,843 --> 00:17:58,642
+So I don't wanna override whatever it set,
+所以我不想覆盖任何设置,
+
+394
+00:17:58,711 --> 00:18:00,044
+I just wanna add my own in,
+我想增加我自己的,
+
+395
+00:18:00,113 --> 00:18:03,114
+So that's what I'm doing there,
+这是我在做什么,
+
+396
+00:18:03,182 --> 00:18:07,918
+Next, let's look at this cell and the shuffle, and
+接下来,让我们看看这个细胞和洗牌,和
+
+397
+00:18:07,987 --> 00:18:09,453
+delete button,
+删除按钮,
+
+398
+00:18:09,522 --> 00:18:13,357
+So I need to add accessibility labels for
+所以我需要添加可访问性标签
+
+399
+00:18:13,426 --> 00:18:15,893
+these and come here and say
+这些和来这里说
+
+400
+00:18:15,961 --> 00:18:20,064
+shuffleButton,accessibilityLa- bel,
+shuffleButton accessibilityLa -贝尔,
+
+401
+00:18:22,101 --> 00:18:24,701
+Shuffle seems like a reasonable label to give it,
+洗牌似乎是一个合理的标签给它,
+
+402
+00:18:24,770 --> 00:18:29,841
+I'm gonna say delete button equals delete,
+等于删除,点击删除按钮
+
+403
+00:18:31,577 --> 00:18:34,845
+This seems to convey to me what exactly these buttons
+这似乎传达我究竟这些按钮
+
+404
+00:18:34,914 --> 00:18:36,147
+are supposed to do,
+是应该做的,
+
+405
+00:18:36,215 --> 00:18:38,349
+And finally, I'm gonna come to this collection view cell
+最后,我要来到这个集合视图细胞
+
+406
+00:18:38,417 --> 00:18:40,518
+to have this question and answer,
+这个问题和答案,
+
+407
+00:18:40,586 --> 00:18:41,752
+What I'm gonna do here
+我要做什么
+
+408
+00:18:43,890 --> 00:18:49,393
+is override these methods or these properties,
+是覆盖这些方法或属性,
+
+409
+00:18:49,461 --> 00:18:51,095
+So I'm gonna override this accessibility element to
+所以我要覆盖此可访问性元素
+
+410
+00:18:51,164 --> 00:18:53,764
+always return true on the cell itself so
+始终返回true细胞本身
+
+411
+00:18:53,832 --> 00:18:56,000
+that the entire cell has the accessibility element
+整个单元的可访问性元素
+
+412
+00:18:56,068 --> 00:18:57,301
+instead of each individual label,
+而不是每个标签,
+
+413
+00:18:57,369 --> 00:19:01,471
+I'm gonna set the label to return Question,
+我要设置标签返回的问题,
+
+414
+00:19:01,540 --> 00:19:03,374
+then the question's text,
+问题的文本,
+
+415
+00:19:03,443 --> 00:19:05,543
+Answer, and then the answer's text,
+回答,然后答案的文本,
+
+416
+00:19:05,611 --> 00:19:07,611
+And I'm going to add the button trait to it because
+我要添加按钮特质,因为
+
+417
+00:19:07,680 --> 00:19:10,414
+that cell is a button where I can go in and edit the card,
+细胞是一个按钮,我可以编辑卡,
+
+418
+00:19:11,917 --> 00:19:14,018
+And I need to convey that to the user,
+我需要传达给用户,
+
+419
+00:19:16,255 --> 00:19:17,255
+So let's build this,
+所以让我们构建这个,
+
+420
+00:19:19,358 --> 00:19:20,191
+Notecards,
+卡片,
+
+421
+00:19:22,795 --> 00:19:26,129
+[SOUND] Notecards, collections heading,
+[声音]卡片,集合,
+
+422
+00:19:26,198 --> 00:19:27,197
+So I've got the header trait,
+我有头特征,
+
+423
+00:19:27,266 --> 00:19:32,836
+Tab physics shuffle button delete button,
+选项卡物理洗牌按钮删除按钮,
+
+424
+00:19:32,905 --> 00:19:34,638
+Both buttons have the right labels,
+两个按钮有正确的标签,
+
+425
+00:19:34,707 --> 00:19:38,942
+Trivia, link trivia, trivia question: the phrase "Let them
+琐事、链接琐事花絮的问题:“让他们
+
+426
+00:19:39,011 --> 00:19:41,945
+eat cake" is commonly attributed to whom?
+吃蛋糕”通常被归功于谁?
+
+427
+00:19:42,014 --> 00:19:44,448
+Answer Queen Marie Antoinette,
+回答玛丽·安托瓦内特王后,
+
+428
+00:19:44,517 --> 00:19:47,417
+So, I've got it behaving exactly as I want it,
+我有它的行为就像我想要的,
+
+429
+00:19:47,486 --> 00:19:50,220
+just a few simple lines of code,
+几行简单的代码,
+
+430
+00:19:50,289 --> 00:19:53,023
+That's just a couple examples of some of the issues that you
+这只是几个例子,你的一些问题
+
+431
+00:19:53,092 --> 00:19:54,325
+might find in your own apps,
+可能会发现在您自己的应用程序,
+
+432
+00:19:55,528 --> 00:19:58,129
+So I'm gonna go back, to my account,
+所以我要回去,我的账户,
+
+433
+00:20:00,933 --> 00:20:06,069
+I also would like to touch on- VoiceOver off,
+我也想触摸——画外音,
+
+434
+00:20:06,138 --> 00:20:08,906
+The idea of containers,
+容器的想法,
+
+435
+00:20:08,975 --> 00:20:11,042
+So aside from the attributes,
+所以除了属性,
+
+436
+00:20:12,711 --> 00:20:16,113
+We also have the accessibility container protocol,
+我们也有可访问性容器协议,
+
+437
+00:20:16,182 --> 00:20:17,648
+So let's say that I am the engineer who has been
+假设我是工程师
+
+438
+00:20:17,716 --> 00:20:20,150
+tasked with coding this view in the Calendar app,
+负责编码这一观点的日历应用程序,
+
+439
+00:20:20,219 --> 00:20:21,618
+it's the year view,
+今年看来,
+
+440
+00:20:21,687 --> 00:20:25,156
+And I've decided that I am going to design this view so
+我已经决定我要设计这一观点
+
+441
+00:20:25,225 --> 00:20:29,093
+that each week is its own custom UIView,
+每周都是自己的自定义UIView,
+
+442
+00:20:29,162 --> 00:20:31,561
+And within that UIView's drawRect method,
+和在UIView绘制矩形的方法中,
+
+443
+00:20:31,630 --> 00:20:35,232
+I'm going to explicitly draw all the days of the week,
+我要明确画出所有的日子,
+
+444
+00:20:35,301 --> 00:20:38,035
+Now because those views that I've drawn aren't standard
+现在因为这些观点,我画的不是标准
+
+445
+00:20:38,104 --> 00:20:39,337
+UIKit views,
+UIKit视图,
+
+446
+00:20:39,405 --> 00:20:42,106
+they don't inherit accessibility by default,
+他们不继承访问默认情况下,
+
+447
+00:20:42,175 --> 00:20:46,043
+And I don't really have an easy way of setting
+我没有一个简单的方法设置
+
+448
+00:20:46,112 --> 00:20:48,246
+the accessibility properties on each of them,
+每个人都可访问性属性,
+
+449
+00:20:50,182 --> 00:20:50,948
+But what we'd like for
+但是我们想要的
+
+450
+00:20:51,017 --> 00:20:53,984
+them to be is visible to VoiceOver one day at a time,
+他们是可见的画外音一天一次,
+
+451
+00:20:54,053 --> 00:20:56,920
+And so that I can navigate them day by day and
+所以,我可以每天和导航
+
+452
+00:20:56,989 --> 00:20:59,656
+get a description for each day at a time,
+每天一次,得到一个描述
+
+453
+00:20:59,725 --> 00:21:01,458
+rather than each week at a time,
+而不是一次每周,
+
+454
+00:21:01,527 --> 00:21:04,795
+So I need to do is create a set of accessibility elements
+所以我需要做的是创建一组可访问性元素
+
+455
+00:21:04,864 --> 00:21:07,364
+from scratch that overlay these day views and
+从头视图和覆盖这些天
+
+456
+00:21:07,433 --> 00:21:10,700
+return them as sub-elements of my accessibility, or
+返回我的易访问性作为子元素,或
+
+457
+00:21:10,769 --> 00:21:12,503
+of my week view container,
+我的星期视图容器,
+
+458
+00:21:14,540 --> 00:21:16,573
+So what does that look like in code?
+代码中看起来像什么?
+
+459
+00:21:16,642 --> 00:21:19,710
+Well, I have this MyWeekView class,
+好吧,我有这个MyWeekView类,
+
+460
+00:21:19,779 --> 00:21:22,913
+Which I'm going to explicitly say is not an accessibility
+我要明确地说不是一个可访问性
+
+461
+00:21:22,982 --> 00:21:26,150
+element, because I instead want VoiceOver to go through
+元素,而是因为我想让画外音
+
+462
+00:21:26,219 --> 00:21:29,320
+and find the sub-elements of it that are accessible,
+访问并找到它的子元素,
+
+463
+00:21:31,690 --> 00:21:34,625
+And I'm going to create an array of elements that
+我要创建一个数组的元素
+
+464
+00:21:34,694 --> 00:21:37,661
+are UIAccessibilityElement,
+UIAccessibilityElement,
+
+465
+00:21:37,730 --> 00:21:39,797
+I'm going to iterate over the days of the week that
+我要遍历的一周的日子
+
+466
+00:21:39,866 --> 00:21:41,432
+are in that week,
+在那一周,
+
+467
+00:21:41,501 --> 00:21:44,401
+And for each one I'm going to create an accessibility
+为每一个和我要创建一个可访问性
+
+468
+00:21:44,470 --> 00:21:47,537
+element, with the accessibility container set
+与可访问性容器元素,集
+
+469
+00:21:47,606 --> 00:21:50,207
+as myself, because I'm the one that contains it,
+作为我自己,因为我是一个包含它,
+
+470
+00:21:50,276 --> 00:21:52,776
+I'm going to set its label to be something
+我要设置它的标签
+
+471
+00:21:52,844 --> 00:21:53,677
+sensible for that day,
+明智的那一天,
+
+472
+00:21:53,746 --> 00:21:55,913
+And now I'm going to set this property
+现在我要设置该属性
+
+473
+00:21:55,982 --> 00:21:58,648
+accessibilityFrameInContainer- Space,
+accessibilityFrameInContainer——空间,
+
+474
+00:21:58,717 --> 00:22:01,618
+Now, this is crucial because it indicates to VoiceOver
+现在,这是至关重要的,因为它表明画外音
+
+475
+00:22:01,687 --> 00:22:04,721
+where the element is on the screen, so that when I'm
+在屏幕上的元素,所以当我吗
+
+476
+00:22:04,790 --> 00:22:09,760
+panning around with my finger VoiceOver knows where it is,
+平移在我的手指画外音知道它在哪里,
+
+477
+00:22:09,828 --> 00:22:12,863
+So if my finger is over it, it can describe it to me and
+如果我的手指,它可以描述它对我
+
+478
+00:22:12,931 --> 00:22:14,965
+see that I'm trying to focus on that element,
+看到我想关注的元素,
+
+479
+00:22:15,033 --> 00:22:17,368
+It's also what VoiceOver uses to draw the bounding box,
+这也是什么画外音用来绘制边界框,
+
+480
+00:22:19,805 --> 00:22:23,073
+And in case you couldn't tell this frame should be in
+如果你不能告诉这个框架应该在
+
+481
+00:22:23,142 --> 00:22:24,809
+the coordinate space of its container,
+坐标空间的容器,
+
+482
+00:22:26,278 --> 00:22:30,681
+So once I do that, I'll pan the element to my array of
+一旦我这样做,我将锅里的元素的数组
+
+483
+00:22:30,750 --> 00:22:33,650
+accessibility elements, and then, I will set the property
+可访问性的元素,然后,我将设置的属性
+
+484
+00:22:33,719 --> 00:22:37,488
+on MyWeekView accessibility elements to be those elements,
+这些元素MyWeekView可访问性元素,
+
+485
+00:22:37,556 --> 00:22:41,325
+And what this says is these are all my accessible
+这说的是这些都是我的访问
+
+486
+00:22:41,394 --> 00:22:45,228
+sub-elements and VoiceOver should navigate them
+子元素和画外音应该浏览它们
+
+487
+00:22:45,297 --> 00:22:48,065
+in the order that I returned them in this array,
+我返回这个数组的顺序,
+
+488
+00:22:49,868 --> 00:22:52,202
+So, let's take a look at adding that to my sample app,
+所以,让我们看一看,我的样本应用程序,
+
+489
+00:22:52,271 --> 00:22:55,106
+Let me go back over here,
+让我回到这里,
+
+490
+00:22:56,976 --> 00:22:58,008
+And turn the VoiceOver back on,
+打开配音,
+
+491
+00:22:58,077 --> 00:23:02,479
+VoiceOver on now,
+画外音在现在,
+
+492
+00:23:02,548 --> 00:23:03,814
+So you may have wondered
+所以你可能不知道
+
+493
+00:23:03,883 --> 00:23:05,582
+what this shuffle button actually does,
+实际上这个洗牌按钮,
+
+494
+00:23:05,651 --> 00:23:09,286
+Well, it shuffles the cards in the deck and puts them up so
+它打乱卡片在甲板上,使它们
+
+495
+00:23:09,354 --> 00:23:09,886
+I can test them,
+我可以测试他们,
+
+496
+00:23:09,955 --> 00:23:14,257
+Shuffle trivia heading,
+洗牌小标题,
+
+497
+00:23:14,326 --> 00:23:15,426
+And what I have down here,
+我在这里,
+
+498
+00:23:15,495 --> 00:23:19,163
+this little circle view is just a little UI to
+这个小圆的观点只是一个小的UI
+
+499
+00:23:19,231 --> 00:23:22,099
+indicate to me how far I am through the deck,
+告诉我多少我穿过甲板,
+
+500
+00:23:22,167 --> 00:23:25,369
+So if I go to the next card for instance- Next question,
+例如如果我进入下一个卡片,下一个问题,
+
+501
+00:23:25,437 --> 00:23:28,205
+It's increasing because I'm filling out the circle
+增加因为我填写这个圆
+
+502
+00:23:28,274 --> 00:23:29,974
+with how many cards I've done,
+我做了有多少卡,
+
+503
+00:23:30,042 --> 00:23:31,909
+However if I stay to swipe to it,
+但是如果我留下来刷,
+
+504
+00:23:31,977 --> 00:23:34,544
+Next question, from next question,
+下一个问题,从下一个问题,
+
+505
+00:23:34,613 --> 00:23:36,013
+I hear a bonk and
+我听到一个性交
+
+506
+00:23:36,081 --> 00:23:40,083
+try to run my finger I'm also hearing a bonk,
+尝试运行我的手指,我还听到一个性交,
+
+507
+00:23:40,152 --> 00:23:43,186
+So what that indicates is that when I swiped and
+这表明当我刷卡
+
+508
+00:23:43,255 --> 00:23:46,590
+did it it means there's nothing left on the screen for
+它意味着没有什么离开在屏幕上吗
+
+509
+00:23:46,658 --> 00:23:49,093
+VoiceOver to swipe to you've hit the last element,
+画外音来刷你打最后一个元素,
+
+510
+00:23:49,161 --> 00:23:50,961
+And when I'm running my finger over it means that there's
+当我运行它意味着有我的手指
+
+511
+00:23:51,030 --> 00:23:53,797
+nothing below my finger that is an accessible element,
+不低于我的手指是一个访问元素,
+
+512
+00:23:53,866 --> 00:23:56,900
+But we'd really like that to be accessible to VoiceOver
+但我们真的想画外音都可以访问
+
+513
+00:23:56,969 --> 00:23:59,837
+users, so they can track their progress through this stack,
+用户,这样他们就可以通过这个堆栈跟踪他们的进展,
+
+514
+00:23:59,905 --> 00:24:01,004
+And so we're gonna use
+所以我们要使用
+
+515
+00:24:01,073 --> 00:24:05,109
+accessibility elements to accomplish this,
+可访问性元素来实现这个目标,
+
+516
+00:24:05,178 --> 00:24:07,911
+So I'm gonna come back over to my code,
+所以我要回来到我的代码,
+
+517
+00:24:07,980 --> 00:24:09,913
+I'm gonna go to this ShuffleStatusView,
+我要去这个ShuffleStatusView,
+
+518
+00:24:09,982 --> 00:24:12,616
+which is where I've done the drawing of this circle,
+这是我做的画圆,
+
+519
+00:24:15,454 --> 00:24:16,954
+I'm gonna copy and paste,
+我要复制粘贴,
+
+520
+00:24:22,561 --> 00:24:24,528
+So, what I've done here is I've created
+所以,我在这里所做的是我创建的
+
+521
+00:24:24,597 --> 00:24:27,731
+an AccessibilityElement with myself as the container,
+一个AccessibilityElement以自己为容器,
+
+522
+00:24:27,800 --> 00:24:30,901
+I set its label to be card, whatever the current card
+我设置它的标签卡,无论当前卡
+
+523
+00:24:30,970 --> 00:24:33,937
+number is, of the total amount of cards,
+号码是,总额的卡片,
+
+524
+00:24:34,006 --> 00:24:36,072
+I've set its accessibilityFrame
+我设置其accessibilityFrame
+
+525
+00:24:36,141 --> 00:24:37,875
+to be the frame of the circle,
+圆的框架,
+
+526
+00:24:37,944 --> 00:24:40,411
+And in my AccessibilityElements because
+在我AccessibilityElements因为
+
+527
+00:24:40,479 --> 00:24:41,412
+the previous and
+前面的,
+
+528
+00:24:41,480 --> 00:24:44,114
+next button are also part of the StatusView,
+next按钮也StatusView的一部分,
+
+529
+00:24:44,183 --> 00:24:47,083
+I don't want them to be left out from VoiceOver,
+我不想让他们从画外音被排除在外,
+
+530
+00:24:47,152 --> 00:24:48,885
+So I'm gonna also include those in my
+所以我要还包括那些在我
+
+531
+00:24:48,954 --> 00:24:51,621
+AccessibilityElements along with the new element that
+AccessibilityElements随着新元素
+
+532
+00:24:51,690 --> 00:24:52,656
+I've just created,
+我刚刚创建的,
+
+533
+00:24:52,725 --> 00:24:55,425
+So let's see if that worked,
+让我们看看如果工作,
+
+534
+00:24:55,494 --> 00:24:58,329
+NoteCards, NoteCards, collect,
+收集卡片,卡片,
+
+535
+00:24:58,397 --> 00:25:03,100
+shuffle button, shuffle, trivia, previous question,
+调整按钮,洗牌,琐事,先前的问题,
+
+536
+00:25:03,169 --> 00:25:04,368
+I've got my previous button,
+我有我以前的按钮,
+
+537
+00:25:07,373 --> 00:25:12,175
+Next question, problem, part one of nine,
+下一个问题,问题,部分的九个,
+
+538
+00:25:12,244 --> 00:25:14,211
+So now it's become accessible,
+现在可以访问,
+
+539
+00:25:14,279 --> 00:25:18,048
+And pretty easy, not too many lines of code,
+很简单,没有太多行代码,
+
+540
+00:25:18,116 --> 00:25:19,383
+We can go back,
+我们可以回去,
+
+541
+00:25:21,687 --> 00:25:24,321
+So I'd like to change gears for a minute, and
+所以我想改变齿轮一会儿,和
+
+542
+00:25:24,390 --> 00:25:28,792
+talk a little bit about some visual accommodations that you
+谈谈一些你的视觉住宿
+
+543
+00:25:28,860 --> 00:25:30,594
+should be aware of when you're designing your app,
+应该意识到当你设计你的应用时,
+
+544
+00:25:31,897 --> 00:25:34,364
+So the first thing is color,
+首先是颜色,
+
+545
+00:25:34,433 --> 00:25:37,701
+Color is a useful means of differentiating information,
+颜色是一种有用的微分信息,
+
+546
+00:25:37,769 --> 00:25:40,537
+but if it's the sole differentiator
+但如果这是唯一的区别
+
+547
+00:25:40,606 --> 00:25:43,139
+then users who are colorblind won't be able to fully
+然后用户色盲无法完全
+
+548
+00:25:43,208 --> 00:25:44,974
+understand the user interface,
+理解用户界面,
+
+549
+00:25:45,043 --> 00:25:47,644
+So, take for example this view in Mail,
+所以,例如这一观点在邮件,
+
+550
+00:25:47,712 --> 00:25:50,714
+Our designers wanted the unread and
+我们的设计师想要读
+
+551
+00:25:50,783 --> 00:25:54,184
+flagged messages to be differentiated apart from each
+分化标记消息除了
+
+552
+00:25:54,253 --> 00:25:58,288
+other with circle views that are of a particular color,
+其他与圆视图的一个特定的颜色,
+
+553
+00:25:58,356 --> 00:26:01,691
+But to a colorblind user, they can't tell the difference,
+但一个色盲的用户,他们不能区分,
+
+554
+00:26:01,760 --> 00:26:05,695
+So what we did, is we added a setting in Mail so that you
+我们所做的,我们添加了一个邮件,以便您的设置
+
+555
+00:26:05,764 --> 00:26:10,533
+can change flag messages to use shape and color,
+可以改变国旗消息使用形状和颜色,
+
+556
+00:26:10,602 --> 00:26:14,204
+And what this does is it uses both color and shape to convey
+这是它使用两个颜色和形状来传达
+
+557
+00:26:14,272 --> 00:26:16,906
+meaning so that no user has to be left out,
+意思,没有用户必须离开,
+
+558
+00:26:16,975 --> 00:26:19,576
+So, if you're writing an app that uses color to
+因此,如果您正在编写一个应用程序,它使用颜色
+
+559
+00:26:19,644 --> 00:26:20,343
+convey meaning,
+传达的意思,
+
+560
+00:26:20,412 --> 00:26:22,046
+then you should consider doing something similar,
+然后你应该考虑做类似的事情,
+
+561
+00:26:23,949 --> 00:26:26,850
+Now color can also be too bright, distracting, and
+现在的颜色也可以太亮,分散注意力
+
+562
+00:26:26,919 --> 00:26:28,585
+contrast and transparency and
+对比和透明度和
+
+563
+00:26:28,653 --> 00:26:32,222
+blurring can all have negative impacts on legibility for
+模糊可以在易读性都有负面影响
+
+564
+00:26:32,291 --> 00:26:34,891
+people that have certain vision conditions,
+人有一定的视觉条件下,
+
+565
+00:26:34,960 --> 00:26:37,427
+This is the default control center on iOS and
+这是默认在iOS和控制中心
+
+566
+00:26:37,496 --> 00:26:40,330
+as you can see color bleeds through from behind and
+正如你所看到的颜色通过从后面和出血
+
+567
+00:26:40,399 --> 00:26:43,233
+is blurred by the control center's background,
+由控制中心的背景模糊,
+
+568
+00:26:43,302 --> 00:26:45,402
+But if I turn on the darken colors and
+但是如果我打开加深颜色
+
+569
+00:26:45,471 --> 00:26:47,370
+reduce transparency setting,
+降低透明度设置,
+
+570
+00:26:47,439 --> 00:26:51,941
+we no longer get those colors bleeding through from behind,
+我们不再把那些颜色流血通过从后面,
+
+571
+00:26:52,010 --> 00:26:53,777
+And the contrast between the colors and
+和颜色之间的对比
+
+572
+00:26:53,846 --> 00:26:55,846
+the lighter background is much more stark,
+较轻的背景更加鲜明,
+
+573
+00:26:55,914 --> 00:26:58,482
+which means that it's a lot more readable to those users
+这意味着用户更多的可读吗
+
+574
+00:26:58,550 --> 00:27:00,850
+that have those vision conditions,
+这些视觉条件,
+
+575
+00:27:00,919 --> 00:27:03,854
+So you can check whether things like these are enabled
+所以你可以检查是否启用了这样的事情
+
+576
+00:27:03,922 --> 00:27:06,523
+through these two UIKit functions,
+通过这两个UIKit功能,
+
+577
+00:27:06,591 --> 00:27:09,693
+And this way, you can adapt your interface to the needs
+和这种方式,您可以调整您的接口需求
+
+578
+00:27:09,761 --> 00:27:12,496
+of your users rather than having to try and create
+用户而不是尝试和创造
+
+579
+00:27:12,564 --> 00:27:16,066
+some design that, from the get go, applies to everybody,
+一些设计的,适用于每个人,
+
+580
+00:27:18,503 --> 00:27:21,071
+Now for this next one, I'm going to say that anybody in
+现在下一个,我说任何人
+
+581
+00:27:21,140 --> 00:27:23,840
+the room who gets motion sick from phone animation should
+房间里谁从手机动画应该运动病
+
+582
+00:27:23,909 --> 00:27:26,042
+probably look away for a second,
+可能去寻找第二个,
+
+583
+00:27:26,111 --> 00:27:27,911
+Device is gonna show these standard
+设备会显示这些标准
+
+584
+00:27:27,979 --> 00:27:30,047
+app opening animation,
+应用程序打开动画,
+
+585
+00:27:30,116 --> 00:27:32,282
+So you can see that when I tap on music,
+所以你可以看到,当我点击音乐,
+
+586
+00:27:32,351 --> 00:27:34,884
+the app expands from its place on the dock, and
+应用扩展其在码头,和
+
+587
+00:27:34,953 --> 00:27:38,154
+the screen swoops in to center on it,
+屏幕上俯冲而下,中心,
+
+588
+00:27:38,223 --> 00:27:40,623
+But if I turn on the reduce motion setting,
+但是如果我打开设置,减少运动
+
+589
+00:27:40,692 --> 00:27:43,193
+I instead get this cross fade,
+我得到这个交叉混合,而是
+
+590
+00:27:43,262 --> 00:27:46,864
+So there are certain people with vestibular disorders
+所以有一定的前庭障碍患者
+
+591
+00:27:46,932 --> 00:27:50,934
+that can be triggered by complex motion which most
+可以由最复杂的运动
+
+592
+00:27:51,002 --> 00:27:54,271
+often results in things like nausea and dizziness,
+往往导致恶心和头晕,
+
+593
+00:27:54,339 --> 00:27:57,407
+So you should be mindful of any animations in your app,
+所以你应该注意你的应用程序的任何动画,
+
+594
+00:27:57,476 --> 00:28:00,544
+particularly if they cause a lot of movement or
+特别是如果他们造成很多运动或
+
+595
+00:28:00,613 --> 00:28:03,113
+are unexpected in some way,
+在某种程度上意想不到的,
+
+596
+00:28:03,181 --> 00:28:05,715
+You should consider enabling an alternative
+你应该考虑启用另一种选择
+
+597
+00:28:05,784 --> 00:28:08,852
+animation when this setting is enabled which you can check
+动画启用该设置时,你可以检查
+
+598
+00:28:08,920 --> 00:28:09,953
+through a similar UIKit function,
+通过一个类似UIKit函数,
+
+599
+00:28:12,724 --> 00:28:14,391
+Now the final visual accommodation that I'd like
+我想现在最后视觉调节
+
+600
+00:28:14,460 --> 00:28:17,594
+to talk about today relates to typography, and
+谈论今天与排版
+
+601
+00:28:17,663 --> 00:28:20,430
+it's dynamic type which is a feature in iOS that allows
+这是动态类型iOS中一个功能,允许
+
+602
+00:28:20,499 --> 00:28:22,299
+a user to scale their font,
+用户规模的字体,
+
+603
+00:28:22,368 --> 00:28:24,535
+And I believe you touched on it very briefly,
+我相信你感动很短暂,
+
+604
+00:28:26,138 --> 00:28:29,339
+There are many users out there who struggle to use devices
+有许多用户很难使用设备
+
+605
+00:28:29,407 --> 00:28:32,442
+because the type is so small, or so thin that it ends up
+因为类型是如此之小,薄,最终
+
+606
+00:28:32,511 --> 00:28:35,111
+blurring together, and they can't read it,
+模糊起来,他们不能读它,
+
+607
+00:28:35,180 --> 00:28:38,582
+And this applies to people with low vision conditions,
+这适用于低视力患者的条件,
+
+608
+00:28:38,651 --> 00:28:41,718
+but it also applies to people whose vision is simply
+但它也适用于人的愿景是简单
+
+609
+00:28:41,787 --> 00:28:43,420
+deteriorated from age, or
+从年龄、恶化或
+
+610
+00:28:43,489 --> 00:28:46,223
+people who simply need to wear glasses,
+人只需要戴眼镜,
+
+611
+00:28:46,292 --> 00:28:48,925
+So, Dynamic Type is meant to help adapt these
+因此,动态类型是为了帮助适应这些
+
+612
+00:28:48,994 --> 00:28:50,327
+people's devices to their needs,
+人们对他们的需求的设备,
+
+613
+00:28:50,396 --> 00:28:54,865
+Now on the left you see the standard Mail inbox interface
+现在左边你会看到标准的邮件收件箱界面
+
+614
+00:28:54,933 --> 00:28:55,599
+with the default text,
+使用默认文本,
+
+615
+00:28:55,667 --> 00:28:58,968
+And on the right I've scaled it up several levels,
+我右边的按比例缩小的多个层面,
+
+616
+00:28:59,037 --> 00:28:59,836
+And as you can see,
+正如你所看到的,
+
+617
+00:28:59,904 --> 00:29:02,372
+the interface has adapted itself and the layout as well
+接口已经适应了本身和布局
+
+618
+00:29:02,441 --> 00:29:05,341
+to accommodate the larger text size,
+以适应更大的文本大小,
+
+619
+00:29:05,410 --> 00:29:07,811
+The most common way that you're gonna get this behavior
+最常见的方式,你会得到这种行为
+
+620
+00:29:07,880 --> 00:29:11,882
+is by using this method preferredFont(forTextStyle,
+通过使用这种方法preferredFont(forTextStyle,
+
+621
+00:29:11,950 --> 00:29:13,751
+which is a class method on UIFont,
+这是一个类方法UIFont,
+
+622
+00:29:14,986 --> 00:29:17,220
+When you set the font of a UILabel or
+当你设置字体UILabel或
+
+623
+00:29:17,288 --> 00:29:20,958
+UITextView, using this method, the font will be scaled to
+UITextView,使用这种方法,字体将被推广
+
+624
+00:29:21,026 --> 00:29:24,060
+the user's preference using the system font,
+用户的偏好使用系统字体,
+
+625
+00:29:24,129 --> 00:29:26,730
+And what you do is you pass through a TextStyle, which
+和你要做的就是通过TextStyle,
+
+626
+00:29:26,798 --> 00:29:29,565
+indicates what the general purpose of the text is,
+显示文本的一般目的是什么,
+
+627
+00:29:29,634 --> 00:29:33,036
+So titles are large and body is a more standard size,
+所以标题是大型和身体是一个标准尺寸,
+
+628
+00:29:33,105 --> 00:29:36,073
+There are these eight distinct styles that you can pass this
+有这八截然不同的风格,你可以通过这个
+
+629
+00:29:36,141 --> 00:29:39,009
+method and each of them have pre-defined point sizes and
+方法和每个人都有预定义的点大小和
+
+630
+00:29:39,077 --> 00:29:40,310
+weight sizes to them,
+尺寸,重量
+
+631
+00:29:42,414 --> 00:29:45,215
+So, let's look at some code where I used that,
+所以,让我们来看看一些代码,我使用,
+
+632
+00:29:45,284 --> 00:29:48,118
+So let's say I have MyLabelView which is
+假设我有MyLabelView就是
+
+633
+00:29:48,187 --> 00:29:50,987
+a custom UIView, and it has a sub label or
+自定义UIView,子标签或
+
+634
+00:29:51,056 --> 00:29:53,556
+a sub view that is of class UILabel,
+子视图的UILabel类,
+
+635
+00:29:53,625 --> 00:29:56,293
+Now in my init method, I'm going to init that label,
+现在我在init方法,我要初始化标签,
+
+636
+00:29:56,362 --> 00:29:58,828
+Now, I'm gonna set its number of lines to be 0,
+现在,我要设置它的行数为0,
+
+637
+00:29:58,897 --> 00:30:02,232
+And what this indicates to the UILabel, is that it doesn't
+这表明UILabel,是它不
+
+638
+00:30:02,301 --> 00:30:05,201
+need to be limited to any specific number of lines,
+需要限制在任何特定的行数,
+
+639
+00:30:05,270 --> 00:30:07,570
+It can actually grow to an unbounded number of lines,
+它可以长到一个无界的行数,
+
+640
+00:30:07,639 --> 00:30:10,440
+Which is important when I'm growing the text size because
+这是很重要的因为当我越来越多的文本尺寸的
+
+641
+00:30:10,508 --> 00:30:13,376
+as I get bigger and bigger, it's likelier, it's more and
+当我越来越大,更有可能,它是越来越
+
+642
+00:30:13,445 --> 00:30:16,012
+more likely that I'm not gonna be able to fit whatever
+更有可能的是,我无法适应
+
+643
+00:30:16,081 --> 00:30:17,581
+text I have on a single line,
+文字在一行,
+
+644
+00:30:19,985 --> 00:30:23,720
+Now I also need to set adjustsFontForContentSizeCate-
+现在我还需要设置adjustsFontForContentSizeCate -
+
+645
+00:30:23,788 --> 00:30:27,524
+gory to be true, and what this does is it tells the label
+血淋淋的是真实的,这是它讲述了标签
+
+646
+00:30:27,592 --> 00:30:30,927
+that when the user has changed their font size and
+当用户改变了他们的字体大小和
+
+647
+00:30:30,996 --> 00:30:35,565
+my app is opened in the background, I need to update,
+我的程序在后台打开,我需要更新,
+
+648
+00:30:35,633 --> 00:30:38,569
+The label needs to update itself to match whatever
+标签需要更新本身来匹配
+
+649
+00:30:38,637 --> 00:30:41,872
+the new font that I've changed my size to is,
+新字体,于是我改变了大小,
+
+650
+00:30:43,842 --> 00:30:46,009
+And then I am going to use that preferredFont
+然后我要用这个preferredFont
+
+651
+00:30:46,078 --> 00:30:46,843
+forTextStyle,
+forTextStyle,
+
+652
+00:30:46,912 --> 00:30:48,744
+Probably just gonna use body,
+可能只是用身体,
+
+653
+00:30:48,813 --> 00:30:52,482
+because it's standard in this case and then add my subview,
+因为它是标准的在这种情况下,然后添加我的子视图,
+
+654
+00:30:52,550 --> 00:30:55,485
+Now, what do you do in the case where you wanna use
+现在,你会怎么做如果你想使用
+
+655
+00:30:55,554 --> 00:30:58,355
+a custom point size when you're at the default
+一个自定义点当你在默认大小
+
+656
+00:30:58,423 --> 00:30:59,156
+text size?
+文本大小?
+
+657
+00:30:59,225 --> 00:31:01,457
+Or you even wanna use a custom font but
+甚至你想使用一个自定义字体
+
+658
+00:31:01,526 --> 00:31:02,926
+you still wanna support dynamic type,
+你仍然想支持动态类型,
+
+659
+00:31:04,229 --> 00:31:05,762
+I did this in my own sample app,
+我在我自己的样例应用程序,
+
+660
+00:31:05,831 --> 00:31:08,097
+it uses the boldSystemFontOfSize method,
+它使用boldSystemFontOfSize方法,
+
+661
+00:31:08,166 --> 00:31:10,600
+which is not going to automatically be scaled to
+它不会自动缩放
+
+662
+00:31:10,668 --> 00:31:12,135
+the user's preference,
+用户的偏好,
+
+663
+00:31:13,705 --> 00:31:16,973
+So, what I'm gonna do is I'm going to take advantage of
+所以,我要做的就是我要利用
+
+664
+00:31:17,042 --> 00:31:21,879
+this property on UIApplication preferredContestSizeCategory,
+这个属性在UIApplication preferredContestSizeCategory,
+
+665
+00:31:22,848 --> 00:31:24,113
+And what this tells me,
+这告诉我,
+
+666
+00:31:24,182 --> 00:31:26,450
+is what the user has currently set their font to,
+是目前用户设置的字体,
+
+667
+00:31:28,653 --> 00:31:35,124
+Now there are seven distinct size categories at default,
+现在有七个不同的大小类别违约,
+
+668
+00:31:35,193 --> 00:31:37,661
+The large size is the default size on iOS,
+大号的是iOS上默认大小,
+
+669
+00:31:39,031 --> 00:31:42,899
+But there are also five more accessibility sizes and
+但也有五个可访问性大小和
+
+670
+00:31:42,968 --> 00:31:46,536
+located in accessibility settings that can make
+位于易访问性设置
+
+671
+00:31:46,605 --> 00:31:48,872
+the text really, really big,
+文本非常大,
+
+672
+00:31:48,940 --> 00:31:52,409
+So what would my code for something like this look like?
+我的代码,这样看起来像什么?
+
+673
+00:31:52,478 --> 00:31:56,045
+Well, I'd probably create some sort of NSObject like
+嗯,我可能会创建一些NSObject像
+
+674
+00:31:56,114 --> 00:31:59,248
+MyFontManager, that will be an object that will manage all
+MyFontManager,那将是一个对象,将管理所有
+
+675
+00:31:59,317 --> 00:32:02,219
+the fonts for my app so that I can run everything through it,
+字体为我的应用程序,这样我可以通过它运行一切,
+
+676
+00:32:03,656 --> 00:32:06,289
+And then I'd have some method like this,
+然后我有一些方法,
+
+677
+00:32:06,358 --> 00:32:10,927
+where I'd use a fontSize variable and write a switch
+我使用一个字形大小变量和写一个开关呢
+
+678
+00:32:10,996 --> 00:32:14,197
+statement that changes the value of the fontSize based
+声明,基于改变字形大小的值
+
+679
+00:32:14,266 --> 00:32:17,734
+on what my sizeCategory is set to, to some sensible value,
+什么我的sizeCategory将一些合理的值,
+
+680
+00:32:17,802 --> 00:32:20,303
+I mean to do that for every case,
+我的意思是,每一个案例中,
+
+681
+00:32:20,372 --> 00:32:22,605
+And then I'm gonna use whatever the method
+然后我将使用的方法
+
+682
+00:32:22,674 --> 00:32:25,375
+I was going to use before, like systemFont(ofSize: or
+我要使用之前,像systemFont(ofSize:或
+
+683
+00:32:25,444 --> 00:32:28,445
+my custom font or boldSystemFont(ofSize:
+我的自定义字体或boldSystemFont(ofSize:
+
+684
+00:32:28,514 --> 00:32:31,281
+using whatever size I determined was appropriate for
+我决定使用任何大小是合适的
+
+685
+00:32:31,350 --> 00:32:32,482
+the current size class,
+当前大小类,
+
+686
+00:32:34,252 --> 00:32:39,556
+Now it's also important that I register myself to listen for
+现在也很重要,我自己注册监听
+
+687
+00:32:39,624 --> 00:32:42,125
+the UIContentSizeCategoryDidChange
+的UIContentSizeCategoryDidChange
+
+688
+00:32:42,194 --> 00:32:42,992
+notification,
+通知,
+
+689
+00:32:43,061 --> 00:32:45,428
+Because I'm no longer using that preferred font for
+因为我不再使用首选的字体
+
+690
+00:32:45,496 --> 00:32:48,831
+text style method so all my views aren't gonna know that
+文本样式的方法所以我的观点不会知道
+
+691
+00:32:48,900 --> 00:32:51,968
+they need to update themselves when the font size changes,
+他们需要更新自己当字体大小变化时,
+
+692
+00:32:52,036 --> 00:32:55,372
+So I'm gonna register myself as an observer on this
+所以我要自己注册一个观察者
+
+693
+00:32:55,440 --> 00:32:59,408
+notification and just write a method that updates
+通知和写一个更新的方法
+
+694
+00:32:59,477 --> 00:33:01,078
+my fonts in some sort of sensible way,
+我的字体以某种合理的方式,
+
+695
+00:33:02,814 --> 00:33:05,749
+So let's move for the final time to my demo app,
+让我们最后一次我的演示应用程序,
+
+696
+00:33:05,818 --> 00:33:08,185
+and see what it's like with dynamic type,
+用动态类型,看看是什么样子的
+
+697
+00:33:10,088 --> 00:33:13,090
+Now for this, I'm actually gonna exit full screen,
+现在,我真的要退出全屏,
+
+698
+00:33:17,162 --> 00:33:21,698
+And I'm going to bring up this tool in Xcode called
+我要把这个工具在Xcode中调用
+
+699
+00:33:21,767 --> 00:33:24,668
+the Accessibility Inspector,
+可访问性检查,
+
+700
+00:33:24,736 --> 00:33:27,870
+Now this is a super useful tool that I don't really have
+这是一个非常有用的工具,我真的没有
+
+701
+00:33:27,939 --> 00:33:31,040
+time to go in to today about how you can use it,
+时间去今天如何使用它,
+
+702
+00:33:31,109 --> 00:33:34,477
+But, it's an app that's built into Xcode that allows you to
+但是,这是一个建在Xcode,允许您的应用程序
+
+703
+00:33:34,546 --> 00:33:36,213
+audit your own application for
+审计自己的申请
+
+704
+00:33:36,281 --> 00:33:38,314
+all of its accessibility problems,
+所有的可访问性问题,
+
+705
+00:33:38,383 --> 00:33:41,284
+And there's a great video from last year's WWDC that you can
+有一个伟大的视频从去年的WWDC可以
+
+706
+00:33:41,353 --> 00:33:43,787
+find on the developer website to go through exactly
+开发者网站上发现的经过
+
+707
+00:33:43,855 --> 00:33:44,887
+how you used this app,
+你如何使用这个应用程序,
+
+708
+00:33:44,956 --> 00:33:48,558
+which I will have a link to at the end of the presentation,
+我将有一个链接到结束的时候,
+
+709
+00:33:48,627 --> 00:33:51,427
+But for now, I'm going to attach to my phone and
+但是现在,我要把我的电话
+
+710
+00:33:51,496 --> 00:33:54,531
+simply use it to change the font size dynamically so
+简单地使用它动态地更改字体大小
+
+711
+00:33:54,599 --> 00:33:57,867
+that you can see what happens on the screen, what I do,
+在屏幕上你可以看到发生了什么,我做什么,
+
+712
+00:33:57,936 --> 00:34:00,704
+So I'm gonna come to my stack of cards, and
+所以我要来参加我的卡片,和
+
+713
+00:34:00,773 --> 00:34:04,374
+I can see that the number of
+我可以看到很多
+
+714
+00:34:04,443 --> 00:34:08,144
+lines is already set to zero because this label is growing
+行已经设置为0,因为这个标签正在增长
+
+715
+00:34:08,213 --> 00:34:11,380
+based on how much text I have there as I want it to,
+基于文本多少我有我想要的,
+
+716
+00:34:11,449 --> 00:34:12,748
+But we're gonna see,
+但我们要看到,
+
+717
+00:34:12,817 --> 00:34:15,518
+is as I change this value here with the slider,
+是我改变这个值与滑块,
+
+718
+00:34:15,587 --> 00:34:18,622
+my text isn't updating at all, the content size,
+我的文字不更新,内容的大小,
+
+719
+00:34:18,690 --> 00:34:19,723
+So something is wrong,
+所以的东西是错误的,
+
+720
+00:34:20,892 --> 00:34:24,194
+So I'm gonna come over here to MyFontManager,
+所以我要来这里MyFontManager,
+
+721
+00:34:28,066 --> 00:34:29,832
+And I'm gonna go look at my appFont method and
+我要去看我的appFont方法和
+
+722
+00:34:29,901 --> 00:34:31,468
+I see the problem immediately,
+我立刻发现问题,
+
+723
+00:34:31,536 --> 00:34:34,504
+I'm not adapting myself to what the preferred contentSize
+我不适应自己首选contentSize
+
+724
+00:34:34,573 --> 00:34:36,673
+is and I'm not using the preferred font for
+我不使用首选的字体吗
+
+725
+00:34:36,742 --> 00:34:37,841
+text style method,
+文本样式的方法,
+
+726
+00:34:46,785 --> 00:34:51,420
+So I'm gonna replace that, With this,
+所以我要更换,,
+
+727
+00:34:51,489 --> 00:34:53,456
+which takes this size and,
+以这个尺寸,
+
+728
+00:34:53,524 --> 00:34:57,827
+based on some multiplier that I decided looks good,
+基于一些乘数,我决定看起来不错,
+
+729
+00:34:57,896 --> 00:35:00,696
+I'm going to modify what the font size is,
+我要修改字体大小是什么,
+
+730
+00:35:00,765 --> 00:35:02,632
+based on the SizeCategory,
+基于SizeCategory,
+
+731
+00:35:02,701 --> 00:35:04,534
+And I'm going to return that using my
+我要用我的回报
+
+732
+00:35:04,603 --> 00:35:06,135
+boldSystemFont(ofSize:,
+boldSystemFont(ofSize:,
+
+733
+00:35:06,204 --> 00:35:07,204
+Now, like I said,
+现在,就像我说的,
+
+734
+00:35:07,272 --> 00:35:09,940
+I also need to register for that notification, so
+我也需要注册通知,
+
+735
+00:35:10,008 --> 00:35:12,775
+that my view actually updates itself in real time,
+实际上,我认为实时更新本身,
+
+736
+00:35:12,844 --> 00:35:14,177
+So we're gonna go to that cell,
+所以我们要去那个细胞,
+
+737
+00:35:16,448 --> 00:35:19,849
+And I'm going to add myself as an observer,
+我要添加自己作为一个观察者,
+
+738
+00:35:19,917 --> 00:35:21,785
+not to put that there,
+不是把,,
+
+739
+00:35:27,426 --> 00:35:29,325
+And in my contentSizeCategoryChange
+在我contentSizeCategoryChange
+
+740
+00:35:29,394 --> 00:35:32,129
+method, I'm just going to update the fonts here,
+方法,我将更新这里的字体,
+
+741
+00:35:37,235 --> 00:35:39,136
+And that should work, hopefully, so let's rebuild,
+这应该工作,希望让我们重建,
+
+742
+00:35:41,172 --> 00:35:42,405
+So I'm gonna come back over here,
+所以我要回到这里,
+
+743
+00:35:44,309 --> 00:35:45,808
+I'm gonna open this and
+我要打开这个
+
+744
+00:35:45,877 --> 00:35:49,545
+I'm gonna bring up my Accessibility Inspector again,
+我要把我的可访问性检查,
+
+745
+00:35:49,614 --> 00:35:52,849
+And now as I change the size you see that it's growing
+现在我改变你看到它不断增长的规模
+
+746
+00:35:52,918 --> 00:35:57,486
+bigger, and bigger, until it's real, real big,
+大,大,直到它是真实的,真正的大,
+
+747
+00:35:57,555 --> 00:36:00,223
+And everything works exactly as I was expecting it to,
+和一切工作和我预期的一样,
+
+748
+00:36:00,292 --> 00:36:02,759
+And, not a huge change,
+不是一个巨大的变化,
+
+749
+00:36:02,828 --> 00:36:07,630
+So, I've covered several ways that you as a develop,
+所以,我介绍几种方法,你开发,
+
+750
+00:36:07,699 --> 00:36:11,901
+developer can make your app more accessible to people,
+开发人员可以使您的应用程序更容易,
+
+751
+00:36:11,969 --> 00:36:14,937
+This can actually be a great way to get your app featured
+这可以成为一个伟大的方式让你的应用程序中
+
+752
+00:36:15,006 --> 00:36:15,872
+on the store,
+在商店,
+
+753
+00:36:15,941 --> 00:36:18,608
+So we have sections that are devoted specifically to
+我们有专门致力于部分
+
+754
+00:36:18,677 --> 00:36:20,409
+general purpose applications,
+通用的应用程序,
+
+755
+00:36:20,478 --> 00:36:21,344
+That we think we've done
+我们认为我们所做的一切
+
+756
+00:36:21,413 --> 00:36:23,212
+a good job with their accessibility,
+一份好工作的可访问性,
+
+757
+00:36:23,281 --> 00:36:25,715
+For instance, this collection of apps that
+例如,这个应用程序的集合
+
+758
+00:36:25,784 --> 00:36:28,117
+are good to use with VoiceOver,
+使用画外音是好事,
+
+759
+00:36:28,186 --> 00:36:31,554
+Beyond making your own app accessible,
+除了让你自己的应用程序可访问,
+
+760
+00:36:31,622 --> 00:36:35,691
+there's also a whole set of apps that are aimed at
+还有一整套旨在应用
+
+761
+00:36:35,760 --> 00:36:38,628
+accessible users specifically,
+具体来说,访问用户
+
+762
+00:36:38,696 --> 00:36:41,665
+So, I'd like to run through a few of those examples with
+所以,我想通过几个的例子
+
+763
+00:36:41,733 --> 00:36:43,299
+you today,
+你今天,
+
+764
+00:36:43,368 --> 00:36:47,237
+We have knfbReader, which is an app that scans
+我们knfbReader,这是一个应用程序,扫描
+
+765
+00:36:47,305 --> 00:36:50,507
+text in real time, and let's users who are low vision or
+实时文本,低视力或用户
+
+766
+00:36:50,576 --> 00:36:52,975
+blind interact with things like paper or
+盲人与纸或交互
+
+767
+00:36:53,044 --> 00:36:54,811
+a restaurant menu, so they can read it,
+餐厅菜单,所以他们可以阅读它,
+
+768
+00:36:56,348 --> 00:36:59,783
+We have an app like Ava, which transcribes conversations in
+我们有一个应用程序像艾娃,转录的对话
+
+769
+00:36:59,851 --> 00:37:02,686
+real time, so that a user who's hard of hearing or
+实时,这样用户的重听或
+
+770
+00:37:02,754 --> 00:37:05,454
+even deaf, can follow a conversation easier,
+甚至失聪,可以按照交谈变得更容易,
+
+771
+00:37:05,523 --> 00:37:08,024
+And this includes a feature that actually breaks
+这包括一个功能,实际上打破
+
+772
+00:37:08,093 --> 00:37:10,860
+conversation down, differentiating the different
+谈话下来,区分不同的
+
+773
+00:37:10,929 --> 00:37:13,530
+speakers by color so I can tell who is speaking,
+演讲者通过颜色我可以告诉是谁说,
+
+774
+00:37:15,300 --> 00:37:18,034
+And finally we have this app, Children with Autism,
+最后我们有这个程序,自闭症儿童,
+
+775
+00:37:18,102 --> 00:37:20,537
+which is a visual scheduler built specifically for
+这是一个视觉调度器专门为
+
+776
+00:37:20,605 --> 00:37:22,471
+children with autism,
+自闭症儿童,
+
+777
+00:37:22,540 --> 00:37:25,374
+And allows them to be more independent and
+并允许他们更独立
+
+778
+00:37:25,443 --> 00:37:27,676
+understand what they need to do,
+了解他们需要做什么,
+
+779
+00:37:27,745 --> 00:37:31,548
+during their day as they are going along, task by task,
+在天他们会,任务的任务,
+
+780
+00:37:31,617 --> 00:37:34,283
+So these are just a couple of examples,
+这些只是几个例子,
+
+781
+00:37:34,352 --> 00:37:37,686
+And you may wonder, why am I telling you about this?
+你可能想知道,为什么我要告诉你吗?
+
+782
+00:37:37,755 --> 00:37:42,425
+Well, basically, if you're looking for a possible idea
+基本上,如果你正在寻找一个可能的想法
+
+783
+00:37:42,494 --> 00:37:44,994
+for a class of what you might want to work on,
+针对一类你可能想工作,
+
+784
+00:37:45,062 --> 00:37:48,231
+Or the next great thing that you think you wanna work on,
+或者下一个伟大的事情,你认为你想工作,
+
+785
+00:37:48,300 --> 00:37:51,534
+I encourage you to check out some of the work that's being
+我鼓励您的工作的
+
+786
+00:37:51,603 --> 00:37:54,837
+done in accessibility because there are a lot of problems
+在可访问性,因为有很多问题
+
+787
+00:37:54,906 --> 00:37:58,575
+that still aren't solved, and that are worthwhile to tackle,
+仍然没有解决,这是有价值的解决,
+
+788
+00:37:58,643 --> 00:38:00,476
+Now, I've covered a lot today and
+现在,我今天已经涵盖了许多
+
+789
+00:38:00,545 --> 00:38:03,379
+there's more that you can find on the web,
+有更多的,你在网上可以找到,
+
+790
+00:38:03,448 --> 00:38:06,682
+These are a couple of links to some resources that you might
+这些是几个你可能的一些资源的链接
+
+791
+00:38:06,751 --> 00:38:09,318
+find useful, including some of the things that I spoke about
+找到有用的,包括一些我谈到的事情
+
+792
+00:38:09,387 --> 00:38:10,720
+during the presentation today,
+在今天的演讲,
+
+793
+00:38:12,390 --> 00:38:14,324
+I would encourage you to check out some of these WWDC videos,
+我鼓励你去看看这些WWDC的视频,
+
+794
+00:38:14,325 --> 00:38:16,259
+In particular,
+特别是,
+
+795
+00:38:16,328 --> 00:38:18,628
+including the one on inclusive app design,
+包括一个包含应用程序设计,
+
+796
+00:38:18,697 --> 00:38:21,531
+which is a whole session on design, focused on
+整个会话在设计,关注吗
+
+797
+00:38:21,599 --> 00:38:24,734
+both accessibility as well as internationalization,
+可访问性和国际化,
+
+798
+00:38:24,803 --> 00:38:26,869
+And that auditing your apps for accessibility,
+审核你的应用程序的可访问性,
+
+799
+00:38:26,938 --> 00:38:29,572
+which goes through how to take advantage of the accessibility
+通过如何利用的可访问性
+
+800
+00:38:29,641 --> 00:38:31,708
+inspector to make your own apps accessible,
+检查员使您自己的应用程序可访问,
+
+801
+00:38:34,545 --> 00:38:35,645
+So, in closing,
+所以,最后,
+
+802
+00:38:35,714 --> 00:38:39,081
+I'd like to circle back to the why of it all,
+我想圆的原因,
+
+803
+00:38:39,150 --> 00:38:42,885
+Why should you take the time to do something like this?
+你为什么要花时间去这样做吗?
+
+804
+00:38:42,954 --> 00:38:46,055
+Let me read you this quote from Sady, the woman who,
+从回来,让我读你这句话的女人,
+
+805
+00:38:46,124 --> 00:38:49,492
+from the video that I showed at the beginning,
+从一开始,我显示的视频
+
+806
+00:38:49,561 --> 00:38:52,428
+My love for technology is more than just a passion,
+我对技术不仅仅是一个激情的爱,
+
+807
+00:38:52,497 --> 00:38:54,831
+It gives me access to my world,
+它给了我进入我的世界,
+
+808
+00:38:54,899 --> 00:38:57,634
+I need help in some areas, but assistive technology
+我需要帮助在某些地区,但辅助技术
+
+809
+00:38:57,702 --> 00:39:00,069
+enables me to communicate with my loved ones, and
+让我与我的亲人沟通,
+
+810
+00:39:00,138 --> 00:39:01,771
+pursue my career,
+追求我的事业,
+
+811
+00:39:01,840 --> 00:39:03,572
+What everybody else can do with a keyboard and
+用键盘和其他人能做什么
+
+812
+00:39:03,641 --> 00:39:06,009
+a mouse, I can do with my two switches,
+一只老鼠,我可以与我的两个开关,
+
+813
+00:39:08,012 --> 00:39:11,981
+The common person's life is enhanced by technology,
+一般人的生活是增强技术,
+
+814
+00:39:12,050 --> 00:39:15,318
+But for somebody like Sady, technology is transformative,
+但是有人喜欢回来,技术变革,
+
+815
+00:39:16,721 --> 00:39:19,455
+It can make them independent in ways that really couldn't
+它可以让他们独立的方式,真的不能
+
+816
+00:39:19,524 --> 00:39:22,024
+have been imagined ten years ago,
+一直想象的十年前,
+
+817
+00:39:22,093 --> 00:39:24,894
+It can allow them to do jobs that they couldn't have done,
+它可以让他们做他们不能做的工作,
+
+818
+00:39:24,962 --> 00:39:27,163
+have hobbies that they couldn't have had, or
+有他们不能有爱好,还是
+
+819
+00:39:27,232 --> 00:39:29,866
+experience the world in ways that they couldn't have,
+体验世界的方式,他们不可能,
+
+820
+00:39:31,569 --> 00:39:34,303
+So by taking the time and putting in the effort to make
+通过花时间和努力
+
+821
+00:39:34,372 --> 00:39:37,039
+sure that the work you do works for everyone, you can
+确保你做的工作适合每一个人,你可以
+
+822
+00:39:37,108 --> 00:39:41,110
+have a lasting, meaningful impact on people's lives,
+有一个持久的、有意义的影响人们的生活,
+
+823
+00:39:41,178 --> 00:39:43,546
+I promise you that you'll never find a more loyal
+我向你保证,你将永远不会找到一个更加忠诚
+
+824
+00:39:43,614 --> 00:39:46,783
+customer than the one whose life you made better,
+客户比你的生活更好,
+
+825
+00:39:46,851 --> 00:39:48,485
+Now I know that some of you may be thinking that that's
+现在我知道,你们中的一些人可能会认为这是
+
+826
+00:39:48,553 --> 00:39:50,686
+great and all, but there are some things that
+很棒,但有一些事情
+
+827
+00:39:50,755 --> 00:39:53,956
+really just don't work with accessibility,
+真的只是不使用可访问性,
+
+828
+00:39:54,025 --> 00:39:55,692
+And I challenge you to think different,
+我挑战你认为不同,
+
+829
+00:39:57,261 --> 00:40:00,095
+If you'd asked somebody 15 years ago how a blind person
+如果你问某人15年前一个盲人如何
+
+830
+00:40:00,164 --> 00:40:00,930
+could use a touch screen,
+可以使用一个触摸屏,
+
+831
+00:40:00,999 --> 00:40:03,465
+they probably would have told you that they couldn't,
+他们可能会告诉你,他们不能,
+
+832
+00:40:03,534 --> 00:40:04,534
+And that's not true today,
+今天,这不是真的,
+
+833
+00:40:06,137 --> 00:40:09,906
+Anything is really possible when you put your mind to it,
+任何事情都是可能当你把你的思想,
+
+834
+00:40:09,975 --> 00:40:13,476
+So this is a video of my colleague Ryan DJing at last
+这是一个视频,我的同事最后瑞恩打碟
+
+835
+00:40:13,545 --> 00:40:14,610
+year's WWDC,
+WWDC,
+
+836
+00:40:14,679 --> 00:40:16,412
+Where we awarded the app djay Pro for
+我们授予应用djay Pro在哪里
+
+837
+00:40:16,481 --> 00:40:19,148
+their work on accessibility,
+他们的工作在可访问性,
+
+838
+00:40:19,217 --> 00:40:22,018
+He DJed live on stage using the app with VoiceOver and
+他dj活在舞台上使用应用程序和画外音
+
+839
+00:40:22,087 --> 00:40:24,386
+I'd like to play this brief clip for you now,
+我想玩这个简短的视频给你现在,
+
+840
+00:40:24,455 --> 00:40:26,789
+I have an iPad Pro running djay Pro and
+我有一个iPad运行djay Pro和Pro
+
+841
+00:40:26,858 --> 00:40:28,324
+this external mixer,
+这个外部混合器,
+
+842
+00:40:28,392 --> 00:40:31,494
+I'm gonna go ahead and throw on my headphones now,
+我要把我的耳机现在,
+
+843
+00:40:31,562 --> 00:40:35,598
+So, here's the things that's interesting, the external DJ
+这是很有趣的事情,外部的DJ
+
+844
+00:40:35,667 --> 00:40:39,001
+controller acts as an extension of the onscreen UI,
+控制器作为扩展屏幕上的用户界面,
+
+845
+00:40:39,070 --> 00:40:42,104
+And so I can use it to really create kind of a pretty
+所以我真的可以使用它来创建一种漂亮
+
+846
+00:40:42,173 --> 00:40:43,505
+cool performance,
+很酷的性能,
+
+847
+00:40:43,574 --> 00:40:45,575
+Also you're probably wondering what of this can I see,
+你可能也想知道我可以看看,
+
+848
+00:40:46,911 --> 00:40:47,743
+Not much,
+不多,
+
+849
+00:40:47,812 --> 00:40:50,112
+I pretty can see the light coming from the screen and
+我可以看到屏幕,发出的光
+
+850
+00:40:50,181 --> 00:40:52,848
+some of the colorful lights coming from the DJ controller,
+一些来自DJ的彩灯控制器,
+
+851
+00:40:52,917 --> 00:40:54,417
+but that's about it,
+但仅此而已,
+
+852
+00:40:54,485 --> 00:40:55,518
+So knowing that,
+所以知道,
+
+853
+00:40:55,587 --> 00:40:58,154
+we're gonna use VoiceOver to control this interface,
+我们将使用画外音来控制这个接口,
+
+854
+00:40:58,223 --> 00:40:59,455
+Let's go ahead and get the music started,
+让我们继续,音乐开始,
+
+855
+00:40:59,524 --> 00:41:05,862
+Play Okay, so the first thing I'd like to point out is that
+玩好了,首先我想指出的是
+
+856
+00:41:05,930 --> 00:41:08,598
+I have access to information I've never had before,
+我获得信息之前,我从来没有,
+
+857
+00:41:08,666 --> 00:41:10,132
+For example, the time,
+例如,时间,
+
+858
+00:41:10,201 --> 00:41:11,501
+How much time is left on this track?
+在这个方向上还剩下多少时间?
+
+859
+00:41:11,569 --> 00:41:12,134
+Let's find out,
+让我们找到答案,
+
+860
+00:41:12,203 --> 00:41:14,804
+Time deck one, 2:56,
+时间甲板1 2:56
+
+861
+00:41:14,872 --> 00:41:15,471
+That's perfect,
+这是完美的,
+
+862
+00:41:15,540 --> 00:41:16,539
+Okay, so I'm the DJ,
+好的,那么我是DJ,
+
+863
+00:41:16,608 --> 00:41:17,873
+I'm supposed to keep the music going, and
+我应该保持音乐,
+
+864
+00:41:17,942 --> 00:41:19,642
+now I have that kind of information,
+现在我有这样的信息,
+
+865
+00:41:19,710 --> 00:41:21,710
+I also can use these tempo sliders,
+我也可以使用这些节奏滑块,
+
+866
+00:41:21,779 --> 00:41:25,948
+For example if I touch it right now, hold on a second,
+例如,如果我现在触摸它,等一会儿,
+
+867
+00:41:26,017 --> 00:41:27,817
+tempo deck one 0% adjustable,
+可调节奏甲板一0%,
+
+868
+00:41:27,885 --> 00:41:29,819
+So we hear it's at its standard playback speed, but
+所以我们听到它的标准播放速度,但是
+
+869
+00:41:29,888 --> 00:41:34,623
+if I slow it down using the DJ controller and
+如果我使用DJ控制器和慢下来
+
+870
+00:41:34,692 --> 00:41:35,391
+I touch it again,
+我又碰它,
+
+871
+00:41:35,459 --> 00:41:38,227
+Tempo deck one, -7,1%, adjustable,
+节奏甲板一7 1%,可调,
+
+872
+00:41:38,295 --> 00:41:40,996
+We can hear exactly how far I've slown that track down,
+我们可以听到究竟多远我slown追踪,
+
+873
+00:41:41,065 --> 00:41:42,131
+that's really cool,
+这是很酷的,
+
+874
+00:41:42,199 --> 00:41:44,633
+I also can use these multi-dimensional effect pads
+我也可以使用这些垫多维效果
+
+875
+00:41:44,702 --> 00:41:47,570
+for example if I touch it the first time Effects pad,
+例如,如果我第一次碰它影响垫,
+
+876
+00:41:47,638 --> 00:41:48,404
+deck one,
+甲板,
+
+877
+00:41:48,473 --> 00:41:54,576
+But the second time,
+但是第二次,
+
+878
+00:41:54,645 --> 00:41:55,744
+Really cool stuff, right,
+很酷的东西,
+
+879
+00:41:55,813 --> 00:41:59,448
+So between these effects pads, this external controller, and
+所以这些影响垫之间,这个外部控制器,和
+
+880
+00:41:59,517 --> 00:42:00,916
+all this accessible UI,
+所有这些访问UI,
+
+881
+00:42:00,985 --> 00:42:02,385
+I can do a pretty cool performance,
+我可以做一个很酷的性能,
+
+882
+00:42:02,453 --> 00:42:05,187
+So I'd like to go ahead and ask the stage crew to please
+所以我想继续,请让舞台工作人员
+
+883
+00:42:05,256 --> 00:42:07,189
+take VoiceOver off of the PA systems,
+休假画外音的PA系统,
+
+884
+00:42:07,258 --> 00:42:09,892
+So that it's only available to me in my headphones,
+所以我只能在我的耳机,
+
+885
+00:42:09,961 --> 00:42:11,293
+Play deck one,
+玩甲板,
+
+886
+00:42:11,362 --> 00:42:12,294
+Cool, thank you very much,
+酷,非常感谢,
+
+887
+00:42:12,363 --> 00:42:13,996
+And I'm gonna mix for you now,
+现在我要为你混合,
+
+888
+00:42:14,065 --> 00:42:14,496
+Here we go,
+我们开始吧,
+
+889
+00:42:14,565 --> 00:42:24,607
+[MUSIC]
+(音乐)
+
+890
+00:42:39,557 --> 00:42:44,960
+[APPLAUSE] So because of the effort
+(掌声)所以,因为工作
+
+891
+00:42:45,029 --> 00:42:48,030
+that their team put in, people with vision impairments,
+他们的团队,有视觉障碍的人,
+
+892
+00:42:48,099 --> 00:42:50,900
+like Ryan, can DJ just as well as anybody else,
+像瑞安,DJ一样别人,
+
+893
+00:42:50,969 --> 00:42:53,602
+It's something that he loves to do, and it's only possible
+他喜欢做的事情,这只是可能
+
+894
+00:42:53,671 --> 00:42:56,339
+because somebody at that company decided that it was
+因为有人在那公司决定
+
+895
+00:42:56,407 --> 00:42:59,943
+worth it,
+值得的,
+
+896
+00:43:00,011 --> 00:43:01,143
+Thank you,
+谢谢你！
+
+897
+00:43:01,212 --> 00:43:04,413
+[APPLAUSE] For more,
+(掌声)更多
+
+898
+00:43:04,482 --> 00:43:12,988
+please visit us at standford,edu
+请访问我们在斯坦福,埃杜

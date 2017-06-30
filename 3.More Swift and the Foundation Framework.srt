@@ -1,0 +1,8749 @@
+1
+00:00:00,401 --> 00:00:04,536
+[MUSIC]
+(音乐)
+
+2
+00:00:04,605 --> 00:00:10,876
+Stanford University, Welcome to Stanford CS193P,
+斯坦福大学,欢迎来到斯坦福CS193P
+
+3
+00:00:10,945 --> 00:00:14,279
+this is Developing Applications for iOS,
+这是iOS应用程序开发,
+
+4
+00:00:14,347 --> 00:00:18,984
+winter of 2017, This is the only lecture in this quarter
+2017年冬天,这是唯一的在这个季度讲座
+
+5
+00:00:19,052 --> 00:00:23,122
+where I'm not going to do a demo, so this is all slides,
+我不会做一个演示,这是所有幻灯片,
+
+6
+00:00:23,190 --> 00:00:27,025
+and that's because I'm pretty much going to try and
+因为我要尝试
+
+7
+00:00:27,094 --> 00:00:31,329
+get you fully up to speed on Swift, Everything that I'm
+让你完全速度迅速,我的一切
+
+8
+00:00:31,398 --> 00:00:34,233
+going to talk about today is covered either in your reading
+今天要讲的是覆盖在你的阅读
+
+9
+00:00:34,301 --> 00:00:37,236
+assignment one, which was due today, so hopefully you're
+分配一个,今天到期,所以希望你
+
+10
+00:00:37,304 --> 00:00:39,904
+done with that, or it's in reading assignment two,
+完成了,或者是在阅读作业2
+
+11
+00:00:39,973 --> 00:00:43,942
+which is going out today and is due next Wednesday, So,
+今天外出,预计下星期三,所以,
+
+12
+00:00:44,010 --> 00:00:47,011
+why am I even covering this? Because I know that reading
+为什么我甚至覆盖吗?
+
+13
+00:00:47,080 --> 00:00:50,115
+through that reading assignment can be a big slog
+通过阅读作业可以是一个很大的跋涉
+
+14
+00:00:50,184 --> 00:00:53,384
+through a lot of information, and I want you to understand
+通过大量的信息,我希望你能理解
+
+15
+00:00:53,453 --> 00:00:56,822
+the things in there that are really important, As I go
+那里的东西很重要,我走了
+
+16
+00:00:56,890 --> 00:00:59,358
+through the slides today, if you see something and
+通过今天的幻灯片,如果你看到的东西
+
+17
+00:00:59,426 --> 00:01:03,094
+I explain it and you're like, my gosh I didn't get that,
+我解释一下,你喜欢,我的天啊我没有得到,
+
+18
+00:01:03,163 --> 00:01:06,131
+just make a note about whatever the topic is that I'm
+只是记下不管主题是我
+
+19
+00:01:06,200 --> 00:01:07,532
+talking about and then you can go back and
+然后你可以回去
+
+20
+00:01:07,601 --> 00:01:09,667
+read about it again in your reading assignment to try and
+读过一遍阅读作业来
+
+21
+00:01:09,736 --> 00:01:11,770
+understand it, If you still don't understand it,
+理解,如果你还是不明白,
+
+22
+00:01:11,839 --> 00:01:15,440
+you can of course ask on the class forums,
+你当然可以问类论坛,
+
+23
+00:01:15,509 --> 00:01:18,443
+You can think of this as kind of the highlights of the fist
+你可以认为这是一种突出的拳头
+
+24
+00:01:18,512 --> 00:01:21,613
+two reading assignments, Some of these are also highlights
+两个阅读作业,其中一些也突出了
+
+25
+00:01:21,682 --> 00:01:24,283
+of the first two lectures I did in the demos,
+前两节课我做演示,
+
+26
+00:01:24,351 --> 00:01:25,817
+so there's a little bit of that in there to,
+有一点,在那里,
+
+27
+00:01:25,886 --> 00:01:28,787
+But, this is really kind of the important stuff in Swift,
+但是,这真的是很重要的东西在迅速,
+
+28
+00:01:28,855 --> 00:01:30,121
+that I can teach you at this point,
+我可以教你,
+
+29
+00:01:30,190 --> 00:01:33,758
+There's more important stuff in Swift to come, okay,
+在斯威夫特有更重要的东西,好吧,
+
+30
+00:01:33,827 --> 00:01:38,263
+but I'll teaching it kinda as we go in the next two weeks,
+但我会教它有点像我们在接下来的两周,
+
+31
+00:01:38,332 --> 00:01:41,500
+Okay, so lot of Swift topics,
+好的,所以很多迅速的话题,
+
+32
+00:01:41,569 --> 00:01:43,769
+let's start with the first one, probably everybody's
+让我们从第一个开始,可能每个人的
+
+33
+00:01:43,837 --> 00:01:45,537
+favorite topic when they first learn Swift,
+最喜欢的话题当他们第一次学习迅速,
+
+34
+00:01:45,606 --> 00:01:50,275
+which is optional, Optional is interesting in Swift,
+这是可选的,在迅速、可选的很有趣
+
+35
+00:01:50,344 --> 00:01:53,345
+because not a lot of other languages have optional, so
+因为不是很多其他语言可选的,所以
+
+36
+00:01:53,413 --> 00:01:56,047
+I'm sure, in fact I've heard, that some of you are like,
+我相信,事实上我听说,你们中有些人就像,
+
+37
+00:01:56,116 --> 00:01:58,250
+"Hmm, I'm not sure I really understand that optional
+“嗯,我不确定我真的明白,可选的
+
+38
+00:01:58,318 --> 00:02:02,654
+thing", And that's probably okay, but by the end of next
+事”,这可能是好的,但明年年底
+
+39
+00:02:02,723 --> 00:02:04,956
+week you should feel very confident with Optionals,
+周与可选的你应该感到非常有信心,
+
+40
+00:02:05,025 --> 00:02:07,659
+because you're gonna see that they are absolutely everywhere
+因为你会看到,他们绝对是无处不在
+
+41
+00:02:07,728 --> 00:02:10,696
+in iOS, Now, I mentioned this in the lecture but
+在iOS,讲座,但现在,我提到这个
+
+42
+00:02:10,765 --> 00:02:12,497
+I wanted to show it to you from a code,
+我想展示给你一个代码,
+
+43
+00:02:12,566 --> 00:02:16,134
+kind of a code point of view, which is that optional
+一种代码的角度来看,这是可选的
+
+44
+00:02:16,203 --> 00:02:19,971
+is nothing more than an enum, it is fact just an enum,
+只不过是一个枚举,它实际上只是一个枚举,
+
+45
+00:02:20,040 --> 00:02:23,408
+this is the enum that is an optional, It's a generic type,
+这是一个可选的枚举,这是一个泛型类型,
+
+46
+00:02:23,476 --> 00:02:26,011
+kind of like array, how with array when you say the type,
+有点像数组,数组类型当你说,如何
+
+47
+00:02:26,080 --> 00:02:29,013
+you say the type of the thing you're putting in the array,
+你说的类型将数组中,
+
+48
+00:02:29,082 --> 00:02:31,783
+You should all be familiar to that, with that from Java for
+你应该熟悉,从Java
+
+49
+00:02:31,852 --> 00:02:33,351
+example, same thing in Swift,
+例子中,斯威夫特一样,
+
+50
+00:02:33,420 --> 00:02:35,053
+So, with optional it is the same way,
+可选的是同样的方式,
+
+51
+00:02:35,122 --> 00:02:38,189
+you put this type and the type that's associated there, or
+你把这类型和类型的关联,或
+
+52
+00:02:38,258 --> 00:02:39,524
+not that's associated, but
+不相关的,但
+
+53
+00:02:39,593 --> 00:02:41,393
+the type of the generic type that we're talking about,
+泛型类型的类型,我们讨论,
+
+54
+00:02:41,462 --> 00:02:42,727
+that "T" in an optional,
+在一个可选的“T”,
+
+55
+00:02:42,796 --> 00:02:45,297
+is just the type that's going to be the associated value,
+只是一个类型就是相关的值,
+
+56
+00:02:45,366 --> 00:02:48,533
+When you look at this enum Optional,
+当你看这个枚举可选的,
+
+57
+00:02:48,602 --> 00:02:53,005
+it only has two cases: "none" which is "not set," and
+它只有两种情况:“没有”“不是,”
+
+58
+00:02:53,073 --> 00:02:56,241
+"some" which is "set", When it's in the some case, look:
+“一些”,这是“集”,当它在一些情况下,看:
+
+59
+00:02:56,310 --> 00:02:59,645
+"(T)", you know what that is from the calculator demo,
+”(T)
+
+60
+00:02:59,713 --> 00:03:02,480
+that's an associated value, just like when we had
+这是一个关联的值,就像当我们
+
+61
+00:03:02,549 --> 00:03:06,017
+operation in calculator it had associated values, like unary
+在计算器操作相关的值,就像一元
+
+62
+00:03:06,086 --> 00:03:09,087
+operation had an associative value of a function, and
+操作有一个关联的价值功能,
+
+63
+00:03:09,155 --> 00:03:12,824
+constant had an associated value of the constant's value,
+不断有一个相关值常数的值,
+
+64
+00:03:12,893 --> 00:03:15,260
+Same thing here, with optional, in the "some" case,
+这里也一样,可选的,在“一些”的情况下,
+
+65
+00:03:15,329 --> 00:03:17,562
+the "set" case, it just has an associated value, and
+“套”的情况下,它有一个相关值
+
+66
+00:03:17,631 --> 00:03:19,498
+it's whatever type the option was, so
+这是任何类型的选项,所以
+
+67
+00:03:19,566 --> 00:03:22,500
+if this is an optional string, then it would be a string,
+如果这是一个可选的字符串,那么这将是一个字符串,
+
+68
+00:03:22,569 --> 00:03:28,240
+Now what makes optional like, " I don't really get optional,
+现在是可选的,比如“我其实真的没有什么可选的,
+
+69
+00:03:28,309 --> 00:03:30,041
+what is it?", it's because of all those question marks and
+它是什么?
+
+70
+00:03:30,110 --> 00:03:32,577
+exclamation points, But, all those question marks and
+感叹号,但是,所有这些问号
+
+71
+00:03:32,646 --> 00:03:35,146
+exclamation points, are just sugar,
+感叹号,是糖,
+
+72
+00:03:35,215 --> 00:03:39,218
+syntactic sugar, to make your code look a little simpler and
+语法糖,使代码看起来有点简单,
+
+73
+00:03:39,286 --> 00:03:42,153
+straight forward, because it's so common to use them, So,
+笔直向前,因为它是如此常见的使用它们,所以,
+
+74
+00:03:42,222 --> 00:03:45,457
+I'm going to map this enum to that sugar,
+我要地图这个枚举,糖,
+
+75
+00:03:46,926 --> 00:03:51,897
+Let's take a look, here's the first one: If I say let x:
+让我们来看看,这是第一个:如果我说让x:
+
+76
+00:03:51,966 --> 00:03:56,835
+String?=nil, that's exactly the same as
+字符串?
+
+77
+00:03:56,904 --> 00:04:01,840
+saying let x = Optional<String>,none,
+说让x =可选<字符串>,没有,
+
+78
+00:04:01,908 --> 00:04:05,777
+just like by saying array, I'd say
+就像说数组,我想说
+
+79
+00:04:05,845 --> 00:04:09,147
+Array<String> that would mean I want an array of String,
+数组<字符串>那将意味着我要一个字符串数组,
+
+80
+00:04:09,216 --> 00:04:11,683
+here when I say Optional <String>, that means I want
+当我说选<字符串>,这意味着我想要的
+
+81
+00:04:11,752 --> 00:04:16,321
+an Optional String, And I'm picking the none case, and
+一个可选的字符串,我挑选的情况下,没有一个
+
+82
+00:04:16,389 --> 00:04:20,125
+in just the same way, if I say let x = Optional<string>=
+同样的,如果我说让x =可选<字符串> =
+
+83
+00:04:20,194 --> 00:04:24,329
+hello, I'm just saying x = Optional<string>,some
+你好,我只是说x =可选<字符串>,一些
+
+84
+00:04:24,398 --> 00:04:28,800
+with associated value hello, Everyone got that? That's all
+与关联值你好,大家都明白了吗?
+
+85
+00:04:28,869 --> 00:04:31,537
+that's happening there with the question mark thing,
+有问号的事情发生,
+
+86
+00:04:31,605 --> 00:04:34,839
+And then here is the unwrap, When we do that exclamation
+然后这是打开,当我们感叹
+
+87
+00:04:34,908 --> 00:04:38,410
+point all we're doing is doing the switch to get things out
+点我们正在做的是把事情做开关
+
+88
+00:04:38,478 --> 00:04:42,914
+of an optional, so we're switching on the optional,
+一个可选的,所以我们打开可选,
+
+89
+00:04:42,983 --> 00:04:46,251
+and it's in the "Some" case, then we're going to grab that
+“一些”的情况,然后我们会抓住
+
+90
+00:04:46,319 --> 00:04:49,053
+associated value just like we did in the calculator, and
+关联值计算器,就像我们所做的那样
+
+91
+00:04:49,122 --> 00:04:51,923
+we say "let function" or "let value" to grab the associated
+我们说“让函数”或“价值”相关
+
+92
+00:04:51,992 --> 00:04:53,325
+value, we're saying "let value" here and
+价值,我们在这里说“我们的价值”
+
+93
+00:04:53,393 --> 00:04:58,663
+it's grabbing that value that's associated with it,
+抓,与之相关的价值,
+
+94
+00:04:58,732 --> 00:05:00,798
+If it's in case none, where it's not set,
+如果它没有,它不是,
+
+95
+00:05:00,867 --> 00:05:04,002
+then it raises an exception and crashes your program,
+然后提出了程序异常和崩溃,
+
+96
+00:05:04,071 --> 00:05:07,572
+we haven't talked about how to do that, it's quite easy, but
+我们还没有谈到如何做到这一点,它很简单,但是
+
+97
+00:05:07,641 --> 00:05:08,173
+that's what happens here,
+这里发生了什么,
+
+98
+00:05:08,241 --> 00:05:10,843
+that's all exclamation point is, it's basically a switch,
+这就是感叹号,它基本上是一个开关,
+
+99
+00:05:11,979 --> 00:05:15,447
+And then finally, If we do the "if let",
+最后,如果我们做“如果让”,
+
+100
+00:05:15,515 --> 00:05:19,084
+"if let" is also just a switch, but
+“如果让”也只是一个开关,但是
+
+101
+00:05:19,153 --> 00:05:22,254
+in the none case of an if let, we don't raise an exception,
+如果我们在没有的情况下,我们不引发异常,
+
+102
+00:05:22,323 --> 00:05:26,658
+we just break, break out of the switch, do nothing, Okay,
+我们只是打破,打破的开关,什么也不做,好吧,
+
+103
+00:05:26,726 --> 00:05:29,361
+does that help you a little bit understand what optional
+这帮助你一点点明白可选吗
+
+104
+00:05:29,429 --> 00:05:32,931
+is? Optional is a type, it's an enum, it's just like any
+是什么?
+
+105
+00:05:33,000 --> 00:05:35,400
+other type, it just has this interesting behavior, and
+其他类型,它有这个有趣的行为,
+
+106
+00:05:35,468 --> 00:05:36,501
+it's got all the question marks and
+它有所有的问号
+
+107
+00:05:36,570 --> 00:05:39,070
+exclamation points to make all the code look a little
+感叹号的所有代码看起来有点
+
+108
+00:05:39,139 --> 00:05:42,407
+simpler, Now, there's even other stuff about optionals
+简单,现在,甚至还有其他东西可选
+
+109
+00:05:42,476 --> 00:05:46,311
+that are interesting, Optionals can be chained,
+有趣的,可选的链接,
+
+110
+00:05:46,380 --> 00:05:49,481
+Now what does this mean? Well, this is best shown by example,
+现在这是什么意思?
+
+111
+00:05:49,550 --> 00:05:53,885
+So, let's say I have a Optional UILabel like my
+假设我有一个可选的UILabel喜欢我
+
+112
+00:05:53,954 --> 00:05:57,556
+display in the calculator and it's got the text, that's also
+显示在计算器的文本,这是也
+
+113
+00:05:57,625 --> 00:06:00,859
+an optional, Optional String, we all know that, And
+一个可选的,可选的字符串,我们都知道,
+
+114
+00:06:00,928 --> 00:06:04,062
+let's say we want to get the hashValue which is just a var
+假设我们想要的hashValue只是一个var
+
+115
+00:06:04,131 --> 00:06:07,632
+on string, which hashes the string, gives you some integer
+字符串,散列值的字符串,给你一些整数
+
+116
+00:06:07,701 --> 00:06:10,401
+for it, I want to get that hashValue of what's in
+,我想hashValue是什么
+
+117
+00:06:10,470 --> 00:06:13,938
+the display, So then I would probably do some code that
+显示,所以我可能会做一些代码
+
+118
+00:06:14,007 --> 00:06:16,842
+looks like this, this is probably similar code to what
+是这样,这可能是类似的代码
+
+119
+00:06:16,911 --> 00:06:20,211
+we have in our calculator where I've got my display,
+我们已经在我们的计算器,我有我的显示器,
+
+120
+00:06:20,280 --> 00:06:24,882
+that's my IBOutlet probably that display UILabel?, and
+这是我IBOutlet可能显示UILabel吗?
+
+121
+00:06:24,951 --> 00:06:29,321
+I'm going go do "if let" here, because I don't want to crash
+我要去做“如果让”在这里,因为我不想崩溃
+
+122
+00:06:29,390 --> 00:06:30,755
+so I don't want to do exclamation points,
+所以我不想做感叹号,
+
+123
+00:06:30,824 --> 00:06:32,524
+I'm going to do "if let", so I'm going to say "if let
+我要做“如果让”,所以我将说“如果我们
+
+124
+00:06:32,593 --> 00:06:35,794
+some temporary value equals to the display" (now temp1 is
+一些临时的价值等于显示”(现在temp1
+
+125
+00:06:35,863 --> 00:06:40,599
+the UILabel), and then I say, "if let temp2 = temp1,text",
+UILabel),然后我说,“如果让temp2 = temp1,文本”,
+
+126
+00:06:40,667 --> 00:06:43,568
+I'm sending text to the UILabel and
+我发送标签和文本
+
+127
+00:06:43,637 --> 00:06:46,037
+now I'm getting back a String, not an Optional String, but
+现在我回到一个字符串,而不是一个可选的字符串,但是
+
+128
+00:06:46,106 --> 00:06:48,707
+a String, because I did "if let", then I can finally say,
+一个字符串,因为我做了“如果让”,然后我可以最后说,
+
+129
+00:06:48,776 --> 00:06:51,542
+then "let x = temp2", which is the String,
+“让x = temp2”,这是字符串,
+
+130
+00:06:51,611 --> 00:06:55,747
+the hashValue, Okay, this is a lot of code to have to type to
+hashValue,好的,这是大量的代码类型
+
+131
+00:06:55,816 --> 00:07:00,084
+just get that dang hashValue, out of that UILabel's text,
+只是得到党hashValue,UILabel的文本,
+
+132
+00:07:00,153 --> 00:07:03,422
+With optional chaining, this same code looks like this,
+可选的链接,这个相同的代码是这样的,
+
+133
+00:07:03,490 --> 00:07:05,290
+the first line of those two lines,
+两行,第一行
+
+134
+00:07:05,359 --> 00:07:10,696
+"If let x = display?,text?,hashValue,
+“如果让x =显示?、文本? hashValue,
+
+135
+00:07:10,764 --> 00:07:16,568
+then do something with x", In that case of course, x will
+然后做一些x”,当然,在这种情况下
+
+136
+00:07:16,636 --> 00:07:20,005
+be a non-optional, because I'm doing if let on it,
+是一个可选的,因为如果让我做,
+
+137
+00:07:20,073 --> 00:07:23,408
+If I take the "if" off, and just do "let x =" all that,
+如果我用“如果”,只做“让x =”,
+
+138
+00:07:23,476 --> 00:07:27,045
+then x will be an optional Int, Now, how is this working?
+那么x是一个可选的Int,现在,这是如何工作的?
+
+139
+00:07:27,113 --> 00:07:28,547
+What's happening is that every time that you have one of
+发生了什么是,每次你的
+
+140
+00:07:28,616 --> 00:07:31,750
+those question marks after an Optional, it's saying,
+这些问号之后,一个可选的,它是说,
+
+141
+00:07:31,819 --> 00:07:35,620
+if this is in the set case, then grab it and keep on
+如果这是在设定的情况下,然后抓住它并继续
+
+142
+00:07:35,689 --> 00:07:39,324
+going, send the next thing, If it's in the nil case, then
+发送下一件事,如果它是在零的情况下,
+
+143
+00:07:39,393 --> 00:07:42,861
+just return nil for this whole expression, this entire line,
+只是为整个表达式返回nil,整个行,
+
+144
+00:07:42,930 --> 00:07:45,998
+boom, it's just gonna return nil, If I'm if letting it,
+繁荣,就会返回nil,如果我如果让它,
+
+145
+00:07:46,066 --> 00:07:48,933
+then obviously the code won't get executed,
+然后显然代码不会执行,
+
+146
+00:07:49,002 --> 00:07:51,269
+You can do as many of these as you want in a row, and
+你可以做你想做的尽可能多的这些连续
+
+147
+00:07:51,338 --> 00:07:55,574
+we do this all the time, this optional chaining is going to
+我们这样做,这个可选的链接
+
+148
+00:07:55,642 --> 00:07:58,676
+be all over your code, and it makes perfect sense because
+在你的代码,它意义非凡,因为
+
+149
+00:07:58,745 --> 00:08:01,280
+again, we're using this question mark and exclamation
+再一次,我们使用这个问号和感叹
+
+150
+00:08:01,348 --> 00:08:04,316
+point, Here we happen to use the question mark when we're
+点,在这里,我们使用问号的时候发生
+
+151
+00:08:04,385 --> 00:08:07,952
+accessing it versus when we're declaring it, That's what it
+访问和当我们宣布它,这就是它
+
+152
+00:08:08,021 --> 00:08:09,621
+means to use a question mark when you're accessing it,
+意味着使用一个问号,当你访问它,
+
+153
+00:08:09,690 --> 00:08:12,557
+it means go get it, and if it's not set,
+这意味着去拿,如果不设置,
+
+154
+00:08:12,626 --> 00:08:14,359
+then just return nil from this whole expression,
+然后从整个表达式返回nil,
+
+155
+00:08:14,428 --> 00:08:15,661
+it will just bail out of the whole thing,
+它只会拯救整个事情,
+
+156
+00:08:15,729 --> 00:08:18,196
+It will never even execute hash value because we'll never
+它甚至不会执行散列值,因为我们永远不会
+
+157
+00:08:18,265 --> 00:08:20,366
+get down to that end of it, if any of these things are nil,
+到年底,如果这些东西都是零,
+
+158
+00:08:24,471 --> 00:08:26,971
+Another cool optional things we can do is optional
+另外一个很酷的可选的我们可以做的事情是可选的
+
+159
+00:08:27,040 --> 00:08:31,543
+defaulting, So what if we had wanted to put a string in our
+违约,所以如果我们想把一个字符串中
+
+160
+00:08:31,612 --> 00:08:35,480
+UI label like in our display, but we know that if that
+UI标签显示的一样,但是我们知道
+
+161
+00:08:35,548 --> 00:08:37,749
+string is nil, we don't want to put nil in there because
+字符串是零,我们不想把零因为
+
+162
+00:08:37,818 --> 00:08:40,418
+what'll happen to our label if we put nil in as the text?
+什么会发生在我们的标签如果我们把零作为文本吗?
+
+163
+00:08:40,487 --> 00:08:43,822
+It'll collapse down, right, probably most of you saw that,
+它会崩溃下来,可能大部分人都知道,
+
+164
+00:08:43,891 --> 00:08:44,889
+You have to put something in there,
+你要把东西放在那里,
+
+165
+00:08:44,958 --> 00:08:47,759
+at least a space, So let's say that I want to do that,
+至少一个空间,假设我想这样做,
+
+166
+00:08:47,828 --> 00:08:50,829
+I want to put space in there if it's nil, This is the code
+我想把空间在那里如果是零,这是代码
+
+167
+00:08:50,898 --> 00:08:53,565
+that it would look like here: I'd have my string, I would
+它看起来像:我有我的字符串,我会的
+
+168
+00:08:53,634 --> 00:08:57,135
+say if the string is not nil, then put it in the display,
+说如果字符串不是零,然后把它放在显示器,
+
+169
+00:08:57,204 --> 00:09:02,341
+otherwise, if it is nil, put space in there, This looks
+否则,如果是零,把空间,这看起来
+
+170
+00:09:02,409 --> 00:09:06,845
+a lot cleaner with optional defaulting, which looks like
+很多清洁与可选的违约,这样子
+
+171
+00:09:06,913 --> 00:09:11,616
+this, display,text = s That means if s is nil, use
+显示,文本=这意味着如果年代nil,使用
+
+172
+00:09:11,685 --> 00:09:15,788
+this other thing, It's like the default in case s is nil,
+其他的事情,就像默认s是零,
+
+173
+00:09:17,191 --> 00:09:20,993
+We will use this all the time as well, Everybody got that?
+我们将使用这个,大家都明白了吗?
+
+174
+00:09:21,061 --> 00:09:23,862
+Just optional defaulting, Alright, so I bring those out
+只是可选的违约,好了,所以我把这些
+
+175
+00:09:23,931 --> 00:09:25,463
+of the optional world just to highlight them,
+可选的世界只是强调他们,
+
+176
+00:09:25,532 --> 00:09:27,432
+because there's a lot in the reading that you're doing
+因为有很多的阅读你在做什么
+
+177
+00:09:27,501 --> 00:09:29,934
+about optional, but these are kind of the highlights,
+可选的,但这些都是亮点,
+
+178
+00:09:30,003 --> 00:09:32,437
+There are a couple more things actually I'll show you later,
+有一些事情我将向您展示后,
+
+179
+00:09:32,505 --> 00:09:35,707
+but basically that's it for optionals, Alright, tuples,
+但基本上这是可选的,好了,元组,
+
+180
+00:09:35,775 --> 00:09:38,743
+So I had you skip tuples in reading assignment one, but
+所以我有你跳过元组在阅读作业,但是
+
+181
+00:09:38,812 --> 00:09:41,947
+you'll be reading about them in reading assignment two,
+你会阅读关于他们在阅读作业两个,
+
+182
+00:09:42,015 --> 00:09:42,848
+What is a tuple?
+一个元组是什么?
+
+183
+00:09:42,916 --> 00:09:47,886
+A tuple is super simple, it's just a grouping of values,
+元组是超级简单,它只是一个分组的价值观,
+
+184
+00:09:47,955 --> 00:09:51,189
+and you can use it anywhere you're using a type, What does
+你可以在任何地方使用它你使用一个类型,什么
+
+185
+00:09:51,258 --> 00:09:54,692
+a tuple look like? It looks like this, This var here,
+一个元组的呢?
+
+186
+00:09:54,761 --> 00:09:59,164
+this constant, actually x, I'm setting its type to be a tuple
+这个常数,实际上x,我设置其类型是一个元组
+
+187
+00:09:59,232 --> 00:10:04,002
+with a string and int and a w, that's its type, A tuple
+字符串和整数和w,其类型,一个元组
+
+188
+00:10:04,071 --> 00:10:06,972
+can have any number of things in there, but realistically,
+可以拥有任意数量的事情,但实际上,
+
+189
+00:10:07,041 --> 00:10:09,908
+we probably only have three or four, sometime only two, but
+我们可能只有三四个,只有两个,但是
+
+190
+00:10:09,977 --> 00:10:15,980
+it can have any number, I can set x equal to parentheses,
+它可以包含任意数量,我可以设置x等于括号,
+
+191
+00:10:16,049 --> 00:10:19,451
+those three, any value of those three types, So here,
+这三个,这三个类型的任何值,这里,
+
+192
+00:10:19,519 --> 00:10:22,187
+I've set it to hello, 5, and 0,85,
+我将它设置为你好,5和0,85,
+
+193
+00:10:22,255 --> 00:10:26,591
+Now I can get the values out into individual variables by
+现在我可以到各个变量的值
+
+194
+00:10:26,660 --> 00:10:31,496
+saying let parentheses three different variable names equal
+说让括号三个不同的变量名相同
+
+195
+00:10:31,565 --> 00:10:34,432
+x, And now it will pull out the three different values
+现在x,它将退出这三个不同的值
+
+196
+00:10:34,501 --> 00:10:36,968
+into the three separate variables, word, number, and
+到三个独立变量,单词,数字,
+
+197
+00:10:37,037 --> 00:10:41,039
+value, So it's kind of mirror image there,
+值,所以它的镜像,
+
+198
+00:10:41,108 --> 00:10:43,141
+you can kinda go either, either direction,
+你可以提一下,两个方向,
+
+199
+00:10:43,209 --> 00:10:46,511
+putting things in or out, We actually, believe it or not,
+把东西或,我们实际上,信不信由你,
+
+200
+00:10:46,580 --> 00:10:47,912
+don't do it that way most of the time,
+不这样做大多数时候,
+
+201
+00:10:47,981 --> 00:10:52,751
+because it is also possible to name the elements of a tuple,
+因为还可以命名元素的元组,
+
+202
+00:10:52,819 --> 00:10:55,987
+So here, I define x, same thing, string int double, but
+这里,我定义x,同样的事情,字符串int的两倍,但是
+
+203
+00:10:56,056 --> 00:10:57,456
+look, I've named each of them,
+看,我叫他们每个人,
+
+204
+00:10:57,524 --> 00:11:00,992
+I called the string part w, I called the int part i, and
+我叫字符串部分w,我叫int的部分
+
+205
+00:11:01,061 --> 00:11:04,262
+I called the double part v for some reason, Now, I still set
+我叫双第五部分出于某种原因,现在,我仍然设置
+
+206
+00:11:04,331 --> 00:11:07,833
+it equal in exactly the same way, no difference there, But
+它等于以完全相同的方式,没有区别,但是
+
+207
+00:11:07,901 --> 00:11:10,735
+now I don't need to pull it out into separate variables,
+现在我不需要拉出来到单独的变量,
+
+208
+00:11:10,804 --> 00:11:15,407
+I can just say x,w and get the w, the first component of it,
+我可以说x,w和w,第一个组件,
+
+209
+00:11:15,476 --> 00:11:18,510
+You see that? This is how we do tuples, with names,
+你看到了吗?
+
+210
+00:11:18,579 --> 00:11:21,446
+I strongly recommend you almost always use
+我强烈建议你几乎总是使用
+
+211
+00:11:21,515 --> 00:11:24,183
+names with tuples, It's just a little easier to read,
+名字与元组,它只是一个小更容易阅读,
+
+212
+00:11:24,251 --> 00:11:27,685
+clearer to say what your intent is as a programmer,
+明确说出你的目的是作为一个程序员,
+
+213
+00:11:27,754 --> 00:11:28,654
+Because those names
+因为这些名字
+
+214
+00:11:30,423 --> 00:11:32,590
+of the parts of the tuple can have good variable names,
+元组的部分可以有良好的变量名,
+
+215
+00:11:32,659 --> 00:11:35,927
+You're gonna see in your programming assignment number
+你会看到在你的编程任务数量
+
+216
+00:11:35,996 --> 00:11:39,564
+2, I'm gonna have you write a function that returns a tuple,
+2、我要你写一个函数,返回一个元组,
+
+217
+00:11:39,633 --> 00:11:43,568
+and it's going to specify the names of the parts, Now even
+它将指定部件的名称,甚至现在
+
+218
+00:11:43,637 --> 00:11:46,605
+if you name them, like we have x with the named ones,
+如果你的名字,就像我们有x命名的,
+
+219
+00:11:46,674 --> 00:11:50,075
+you can still do that thing where you just say, let (word,
+你仍然可以做那件事,你只是说,让(词,
+
+220
+00:11:50,143 --> 00:11:53,211
+num, val) equal x, and it'll still pull it out into
+num val)= x,它还是把它拽出来
+
+221
+00:11:53,280 --> 00:11:56,448
+individual ones, so naming them doesn't stop you from
+个人的,所以命名它们不阻止你
+
+222
+00:11:56,517 --> 00:11:59,751
+pulling them out by individual variable, if you want,
+把他们的个体变量,如果你想要的,
+
+223
+00:11:59,820 --> 00:12:03,254
+Also, in tuples, you can always put underbar for
+同时,在元组,你总是可以把下划线
+
+224
+00:12:03,323 --> 00:12:07,125
+any of the names, like here I could say let word_ val or
+任何喜欢的名字,在这里我可以说让word_ val或者
+
+225
+00:12:07,193 --> 00:12:11,096
+let word,_, val equal x, and then I would get word and
+让单词,_,val等于x,然后我会得到消息
+
+226
+00:12:11,165 --> 00:12:15,367
+val into individual variables, and I would just ignore that
+val成单个变量,我只会忽略这一点
+
+227
+00:12:15,435 --> 00:12:19,471
+middle one, Underbar in Swift always kinda means ignore
+中间,下划线在斯威夫特总是有点意味着忽视
+
+228
+00:12:19,539 --> 00:12:22,341
+that, I'm not interested in that particular thing,
+我那个东西不感兴趣,
+
+229
+00:12:22,409 --> 00:12:25,477
+We've already seen this with function parameters when we
+我们已经看到当我们与函数参数
+
+230
+00:12:25,546 --> 00:12:29,048
+want to ignore the external name of a function parameter,
+想要忽略外部函数的参数名称,
+
+231
+00:12:29,116 --> 00:12:30,682
+Alright, so using tuples that return values,
+好的,那么使用返回值的元组,
+
+232
+00:12:30,751 --> 00:12:33,352
+like I said, you're gonna see this in the homework,
+就像我说的,你会看到这个作业,
+
+233
+00:12:33,420 --> 00:12:36,354
+Nothing special here, It's a type like any other type, so
+没什么特别的,这是一个类型和其他类型
+
+234
+00:12:36,423 --> 00:12:39,057
+it can be the return type of a function, So, this is how you
+它可以是一个函数的返回类型,所以,这就是你
+
+235
+00:12:39,126 --> 00:12:41,894
+can have a function that returns multiple values,
+可以有一个函数,它返回多个值,
+
+236
+00:12:41,962 --> 00:12:44,696
+In some languages, it's very difficult to do this,
+在一些语言中,很难做到这一点,
+
+237
+00:12:44,765 --> 00:12:46,998
+You have to create a structure or something to return,
+您必须创建一个结构或返回,
+
+238
+00:12:47,067 --> 00:12:48,366
+However, it's very, very, very easy in Swift,
+然而,这是非常,非常,非常容易迅速、
+
+239
+00:12:48,435 --> 00:12:50,769
+You literally just do this, And
+你真的这样做,
+
+240
+00:12:50,838 --> 00:12:54,273
+when you get the value that comes back from that function,
+当你回来从那个函数的值,
+
+241
+00:12:54,341 --> 00:12:58,343
+you just access the elements by name, Notice that when I
+你只是访问元素的名字,注意到我
+
+242
+00:12:58,411 --> 00:13:01,747
+returned it in my code there in getSize, I didn't have to
+在我的代码在getSize返回它,我不需要
+
+243
+00:13:01,816 --> 00:13:04,115
+give the names; I could if I wanted to,
+给的名字,如果我想要,
+
+244
+00:13:04,184 --> 00:13:07,585
+I could have said return weight:150, height:, but
+我可以返回重量说:150年,高度:,但是
+
+245
+00:13:07,654 --> 00:13:11,390
+I decided, eh, I'm just gonna return the values, Okay,
+我决定,呃,我要返回的值,好,
+
+246
+00:13:11,458 --> 00:13:15,994
+another thing: range, range is an important little
+另一件事:范围,范围是一个重要的小
+
+247
+00:13:16,063 --> 00:13:21,165
+struct in Swift: all that it represents is two end points,
+在斯威夫特结构:它代表的是两个端点,
+
+248
+00:13:21,234 --> 00:13:24,536
+So a range is useful for, for example, a selection of text,
+所以一个范围是有用的,例如,文本的选择,
+
+249
+00:13:24,604 --> 00:13:27,806
+where the selection starts and where the selection ends,
+选择的选择开始和结束的地方,
+
+250
+00:13:27,874 --> 00:13:32,610
+It's also good for a sub-slice of an array, If you've got
+也有利于sub-slice数组,如果你有
+
+251
+00:13:32,679 --> 00:13:35,180
+array of 100 elements, you might want the 15th to
+100个元素的数组,您可能想要15
+
+252
+00:13:35,248 --> 00:13:38,250
+the 40th one, so you could specify that range, 15 to 40,
+40人,所以您可以指定范围内,15 - 40岁
+
+253
+00:13:38,319 --> 00:13:41,086
+So range is this really simple little struct, which kind of
+所以这真的是简单的结构,哪一种
+
+254
+00:13:41,155 --> 00:13:43,655
+looks like this, I say kind of, because it's a little more
+是这样的,我说,因为这是一点
+
+255
+00:13:43,723 --> 00:13:45,991
+complicated than this, but it basically looks like this,
+比这个复杂,但基本上是这样的,
+
+256
+00:13:46,059 --> 00:13:49,061
+It's a generic type like array because of course, you can
+这是一个泛型类型数组因为当然,你可以
+
+257
+00:13:49,129 --> 00:13:52,097
+have a range of ints, You could have a range of floats,
+有一个整数范围,你可以有一个范围的浮动,
+
+258
+00:13:52,166 --> 00:13:55,200
+You could have a range of strings even, Okay, so
+你甚至可以有一个范围的字符串,所以
+
+259
+00:13:55,269 --> 00:13:57,836
+that T right there could be float, float, int,
+这T可以浮动,浮动,int,
+
+260
+00:13:57,905 --> 00:14:01,139
+string, T is restricted a little bit, and I haven't
+字符串,T是限制一点,我没有
+
+261
+00:14:01,208 --> 00:14:03,374
+really talked about how you restrict a generic type,
+真正谈论你如何限制一个泛型类型,
+
+262
+00:14:03,443 --> 00:14:04,610
+But that T is restricted,
+但这T是受限制的,
+
+263
+00:14:04,678 --> 00:14:07,746
+and it has to be what's called comparable, That's because
+这是所谓的可比性,这是因为
+
+264
+00:14:07,815 --> 00:14:10,481
+range needs to make sure that the start index is less than
+需要确保范围开始指数小于
+
+265
+00:14:10,550 --> 00:14:13,619
+the end index, That's part of what a range is defined to be,
+的指数,定义范围的一部分,
+
+266
+00:14:13,687 --> 00:14:16,354
+So that T has to be something that can be compared
+所以T是可以比较的东西
+
+267
+00:14:16,423 --> 00:14:19,258
+to see if the start index is less than the end index,
+是否开始指数小于最后指数,
+
+268
+00:14:19,326 --> 00:14:23,495
+minor thing there, So, for example, a range of int
+小的事情,所以,举个例子,int
+
+269
+00:14:23,563 --> 00:14:25,964
+would be great for specifying a range in an array,
+将数组中指定一个范围大,
+
+270
+00:14:26,032 --> 00:14:28,667
+cuz an array is indexed by integers, right, starting at 0
+因为数组是由整数索引,从0开始
+
+271
+00:14:28,735 --> 00:14:32,170
+and going up to the number of things in the array,
+和数组中的许多事情,
+
+272
+00:14:32,239 --> 00:14:37,643
+Now there are other more powerful, more capable ranges,
+现在还有其他的更强大,更有能力范围,
+
+273
+00:14:37,712 --> 00:14:41,113
+like CountableRange, A CountableRange is
+像CountableRange CountableRange
+
+274
+00:14:41,181 --> 00:14:43,916
+just like a range, except for that you can count through
+就像一个范围,除了可以通过计数
+
+275
+00:14:43,984 --> 00:14:47,485
+intermediate values between the start and the end,
+开始和结束之间的中间值,
+
+276
+00:14:47,554 --> 00:14:50,856
+Okay, it's like a range of ints, A CountableRange means
+好吧,这就像一系列整数,CountableRange的意思
+
+277
+00:14:50,924 --> 00:14:54,092
+the begin point and end point and one point each,
+开始点和结束点,一个点,
+
+278
+00:14:54,160 --> 00:14:57,429
+Now as you stride through that range, it depends on what
+你现在大步穿过范围,这取决于
+
+279
+00:14:57,498 --> 00:15:00,565
+the type is, Striding through a range of ints is different
+通过一系列整数类型,大步是不同的
+
+280
+00:15:00,634 --> 00:15:03,735
+then striding through a range of floats, or striding through
+然后大步通过一系列漂浮,或大步
+
+281
+00:15:03,804 --> 00:15:06,471
+a range of strings, There's a little difference there, and
+一系列字符串,有一点点的差别,
+
+282
+00:15:06,539 --> 00:15:07,539
+we'll talk about that in a minute,
+我们将讨论在一分钟,
+
+283
+00:15:08,809 --> 00:15:10,508
+There's a special syntax for
+有一个特殊的语法
+
+284
+00:15:10,577 --> 00:15:15,581
+doing range, which is "dot dot less-than" or "dot dot dot",
+做的范围,这是“点点小于号”或“点点点”,
+
+285
+00:15:15,649 --> 00:15:20,018
+Dot Dot Less-than means that you put the start index and
+点点小于意味着你把指数和开始
+
+286
+00:15:20,087 --> 00:15:22,988
+the end index on either side of the dot dot less than,
+最后指数点点不到的两侧,
+
+287
+00:15:23,056 --> 00:15:26,457
+And that means go from the start index to the end index,
+这意味着从一开始指数指数,
+
+288
+00:15:26,526 --> 00:15:29,428
+but don't include the end index, not inclusive of it,
+但不包括指数,而不是包容,
+
+289
+00:15:29,497 --> 00:15:32,731
+and the dot dot dot includes both ends, So for
+和点点点包括两端,因此
+
+290
+00:15:32,800 --> 00:15:36,067
+example, in an array, let's have an array of four strings,
+在一个数组,让我们有一个数组的四根弦,
+
+291
+00:15:36,136 --> 00:15:39,370
+a, b, c, d, and let's say that I want to get the c and
+a,b,c,d,假设我想要得到c
+
+292
+00:15:39,439 --> 00:15:43,742
+the d out of there, I can say array sub, ( just
+d,我可以说数组下标,(只是
+
+293
+00:15:43,811 --> 00:15:48,947
+like how I can say array sub 5 or array sub 3 is the fourth
+喜欢我可以说数组下标5或数组下标3是第四
+
+294
+00:15:49,015 --> 00:15:52,350
+index of the array), I can also specify a range and
+数组的索引),我还可以指定一个范围
+
+295
+00:15:52,419 --> 00:15:55,654
+get a sub array, a slice of the array, it's called, So
+得到一个下标数组,数组的一片,这叫做
+
+296
+00:15:55,722 --> 00:15:59,290
+I can say 2,,,3, which means index 2 in the array,
+我能说2、3,这意味着指数2数组中,
+
+297
+00:15:59,359 --> 00:16:03,161
+which is c because a is index 0, b is index 1, c is index 2,
+c,因为索引0,b是指数1 c是指数2
+
+298
+00:16:03,230 --> 00:16:07,032
+dot dot dot index 3, which is the d inclusive, cuz it's dot
+点点点指数3 d的包容,因为点
+
+299
+00:16:07,101 --> 00:16:10,135
+dot dot, And then the less than 1 would be exclusive,
+点点,然后将独家小于1,
+
+300
+00:16:10,203 --> 00:16:13,672
+so that's why the d wouldn't be included in that one, So
+这就是为什么d不会被包括在这个,
+
+301
+00:16:13,740 --> 00:16:16,508
+see how I'm using a range to get a sub slice of an array,
+看看我用一系列子块数组,
+
+302
+00:16:16,577 --> 00:16:18,977
+that's kind of cool, By the way,
+这是很酷的,顺便说一下,
+
+303
+00:16:19,046 --> 00:16:22,314
+if you say give me the array from 6,,,8,
+如果你说给我一个数组从6日、8日
+
+304
+00:16:22,382 --> 00:16:25,016
+that's going to crash at run time with an array index out
+的崩溃在运行时间和数组索引
+
+305
+00:16:25,085 --> 00:16:28,053
+of bounds because this array only has four elements, So
+的界限,因为这个数组只有四个元素,所以
+
+306
+00:16:28,121 --> 00:16:32,824
+just because I'm accessing this subscripting with a range
+只是因为我访问这个加下标范围
+
+307
+00:16:32,892 --> 00:16:35,827
+instead of with a number, it still has to be in bounds,
+而不是一个数字,它仍有界限,
+
+308
+00:16:35,896 --> 00:16:38,797
+And then if I say array[4,,,1],
+然后如果我说数组(4,1),
+
+309
+00:16:38,866 --> 00:16:42,233
+that also will crash at run time, because the range
+在运行时也会崩溃,因为范围
+
+310
+00:16:42,302 --> 00:16:44,970
+is going to look at that and say I can't create a range
+看那,说我不能创建一个范围
+
+311
+00:16:45,039 --> 00:16:47,272
+where the start value is greater than the end value,
+开始值大于结束值,
+
+312
+00:16:47,341 --> 00:16:50,776
+can't be a backwards range, that's why that type like
+不能向后范围,这就是为什么这样呢
+
+313
+00:16:50,844 --> 00:16:53,278
+int has to be comparable, of course you can compare ints,
+int可比,当然你可以比较整数,
+
+314
+00:16:54,781 --> 00:16:59,718
+One thing very important to understand: a string,
+理解一件事情非常重要:一个字符串,
+
+315
+00:16:59,787 --> 00:17:04,089
+a subrange of a string is not a range of ints,
+子界的一个字符串不是一个整数范围,
+
+316
+00:17:05,859 --> 00:17:08,093
+You might think it is, right, I've got this string,
+你可能认为这是对的,我有这个字符串,
+
+317
+00:17:08,162 --> 00:17:10,629
+100 characters, you might think strings sub 15 to 40
+100个字符,你可能认为字符串子15 - 40
+
+318
+00:17:10,697 --> 00:17:12,998
+would be the 15th character to the 40th, And
+将15字符40,
+
+319
+00:17:13,066 --> 00:17:17,068
+it's not: a string subrange is a range of string,index,
+这不是:子范围是一系列字符串,字符串索引,
+
+320
+00:17:17,137 --> 00:17:18,971
+which is a different little data type, and
+这是一个不同的数据类型,和
+
+321
+00:17:19,039 --> 00:17:20,806
+I'm going to talk all about that in a few slides,
+我要谈的关于几张幻灯片,
+
+322
+00:17:20,875 --> 00:17:23,541
+But I just want to make it really clear,
+但我只是想让它非常清楚,
+
+323
+00:17:23,610 --> 00:17:27,846
+that it is possible to say string subrange start,,<end,
+可能就是说字符串子界开始,,<结束,
+
+324
+00:17:27,914 --> 00:17:31,716
+but start and end are not ints, they're string,indexes,
+但是开始和结束不是整数,字符串索引,
+
+325
+00:17:31,785 --> 00:17:35,587
+and we'll see how that works, If the type
+我们将会看到这是如何工作的,如果类型
+
+326
+00:17:35,656 --> 00:17:38,089
+of the range that you create with dot dot less than or
+您创建的范围与点点小于
+
+327
+00:17:38,158 --> 00:17:41,793
+dot dot dot, if that type is an int, (actually,
+点点点,如果这类型是int,(事实上,
+
+328
+00:17:41,861 --> 00:17:44,863
+if it's strideable by int, they can be strided by int so
+如果是strideable int,int可以向他们
+
+329
+00:17:44,932 --> 00:17:48,000
+it's not gonna be float, but I'm not really prepared to
+不会浮动,但我不准备
+
+330
+00:17:48,068 --> 00:17:52,771
+talk to you about strideable), but if the range has
+和你谈谈strideable),但如果有范围
+
+331
+00:17:52,840 --> 00:17:57,008
+ints on either end, so it's a range from 2 to 7, for
+整数在两端,所以这是一个范围从2到7日
+
+332
+00:17:57,077 --> 00:18:00,145
+example, then it automatically creates that countable range,
+例子,那么它会自动创建可数范围,
+
+333
+00:18:00,214 --> 00:18:03,248
+that more capable range,
+更有能力范围,
+
+334
+00:18:03,317 --> 00:18:06,485
+That range then becomes what's called a sequence, And
+这个范围就变成了所谓的序列,和
+
+335
+00:18:06,554 --> 00:18:10,188
+sequences can be iterated through or enumerated, and
+可以遍历序列或枚举
+
+336
+00:18:10,257 --> 00:18:14,726
+the way you do that is with "for in", so Swift's for
+你这样做的方式是用“的”,如此迅速的
+
+337
+00:18:14,795 --> 00:18:19,430
+statement, this is the only one there is, It's called
+声明中,这是唯一的一个,它叫
+
+338
+00:18:19,499 --> 00:18:24,069
+"for in" and all it ever means is, I want to go and enumerate
+“在”,它的意思是,我想去和列举
+
+339
+00:18:24,138 --> 00:18:28,206
+all the values of a sequence, I'm going to talk about what
+所有序列的值,我要讲什么
+
+340
+00:18:28,275 --> 00:18:31,009
+things that can be sequenced, Countable range is 1,
+事情可以测序,可数范围是1,
+
+341
+00:18:31,078 --> 00:18:33,044
+because if an int goes from 0 to 7, and
+因为如果int从0到7日
+
+342
+00:18:33,113 --> 00:18:36,815
+it's a countable range, then it can go 0, 1, 2, 3, 4, 5, 6,
+可数的范围,那么它可以0,1,2,3,4,5,6,
+
+343
+00:18:36,884 --> 00:18:42,353
+7, Arrays are sequences, sequences of their elements,
+7、数组序列,序列的元素,
+
+344
+00:18:42,422 --> 00:18:45,591
+So you can "for in" through an array, Dictionaries are also,
+所以你可以“在”,通过一个数组,字典也,
+
+345
+00:18:45,659 --> 00:18:49,161
+and we'll see that a little later, So here's how you do
+稍后我们将会看到,这是你如何做
+
+346
+00:18:49,230 --> 00:18:54,132
+a normal C-like for loop, for (i = 0; i < 20; i++),
+正常的c for循环,(我= 0;< 20;我+ +),
+
+347
+00:18:54,201 --> 00:18:56,901
+You cannot do that in Swift, that syntax simply doesn't
+你不能在斯威夫特,语法并不简单
+
+348
+00:18:56,970 --> 00:19:01,807
+exist, Instead you would say for i in the range 0,,<20,
+存在,相反你会说因为我在0,,< 20日
+
+349
+00:19:01,875 --> 00:19:04,509
+because notice I said it's less than 20, not less than or
+因为注意我说的是小于20,不小于
+
+350
+00:19:04,578 --> 00:19:10,448
+equal to 20, so 0,,<20 means go through that, And so
+0,等于20日,< 20意味着经历,所以
+
+351
+00:19:10,517 --> 00:19:12,984
+that little block of code is going to be executed once for
+那个小的代码块将会执行一次
+
+352
+00:19:13,053 --> 00:19:17,155
+0, 1, 2, 3, 4, all the way up to number 19, so
+0、1、2、3、4日一直到19日,数量
+
+353
+00:19:17,224 --> 00:19:19,057
+that's same thing as what you see there,
+这是你所看到的一样,
+
+354
+00:19:19,126 --> 00:19:21,860
+Now what about floats? Floats are a little weird,
+浮点数呢?
+
+355
+00:19:21,929 --> 00:19:28,066
+What if I wanted to do for{i = 0,5; i <= 15,25; i += 0,},
+如果我想做{ I = 0、5;我< = 15,25,我+ = 0,},
+
+356
+00:19:28,135 --> 00:19:32,905
+Whoa, how am I gonna do that? I can't, for
+哇,我要怎么做呢?
+
+357
+00:19:32,973 --> 00:19:38,076
+example, say for i in 0,5,,,15,25,
+例子,说因为我在0、5、15、25日,
+
+358
+00:19:38,145 --> 00:19:42,447
+How does it know to go by 0,3? And the answer is, it doesn't,
+它怎么知道去到0,3 ?
+
+359
+00:19:42,516 --> 00:19:47,219
+In fact, a range like that, 0,5,,,15,25 is not a countable
+事实上,这样一个范围,0、5、15、25不是可数
+
+360
+00:19:47,287 --> 00:19:50,923
+range, it's just range, It only knows the start and end,
+范围,只是范围,它只知道开始和结束,
+
+361
+00:19:50,991 --> 00:19:53,725
+it knows nothing about what's in between, so
+它是什么,一无所知
+
+362
+00:19:53,794 --> 00:19:56,995
+it cannot be a sequence, it can't be for in over, But
+它不能一个序列,它不能在,但是
+
+363
+00:19:57,064 --> 00:20:01,567
+luckily, there's this great global function called stride,
+幸运的是,有这个伟大的全局函数叫做步伐,
+
+364
+00:20:01,635 --> 00:20:04,636
+Stride takes a from and a to, or a through,
+大步从和一个,或通过,
+
+365
+00:20:04,704 --> 00:20:06,939
+(depending whether you wanna go through to the end,
+(这取决于你想要走到最后,
+
+366
+00:20:07,008 --> 00:20:09,341
+or just to to and not including it), and
+或者,不包括),和
+
+367
+00:20:09,409 --> 00:20:11,476
+a by, which is, what it's going to step by,
+由,,一步,
+
+368
+00:20:11,545 --> 00:20:15,781
+So here, I say stride from 0,5 through 15,25,
+这里,我说大步从0,5 - 15日,25日
+
+369
+00:20:15,849 --> 00:20:19,351
+because I want less than or equal to, by 0,3, and
+因为我想要小于或等于,0,3,
+
+370
+00:20:19,419 --> 00:20:23,254
+that's gonna create a new object, it's a CountableRange,
+要创建一个新对象,这是一个CountableRange,
+
+371
+00:20:23,323 --> 00:20:26,024
+Now it's a special CountableRange, it knows
+现在是一个特殊的CountableRange,它知道
+
+372
+00:20:26,093 --> 00:20:30,261
+how to count from 0,25 to 15,25 by that 0,3 step, You
+如何计算从0、25 - 15 0,25的3步,你呢
+
+373
+00:20:30,330 --> 00:20:32,797
+don't need to worry about how it implements it, Stride just
+不需要担心如何实现它,一步而已
+
+374
+00:20:32,866 --> 00:20:35,633
+creates you a CountableRange, Actually this will be called
+创建CountableRange,实际上这将被调用
+
+375
+00:20:35,702 --> 00:20:39,204
+a ClosedCountableRange because it counts through to the end,
+ClosedCountableRange因为它计数到最后,
+
+376
+00:20:39,273 --> 00:20:42,374
+so it's a dot dot dot kind of range of a dot dot
+所以它是一种点点点的范围的点点
+
+377
+00:20:42,442 --> 00:20:45,978
+less than kind of range, So I have a CountableRange, and
+不到的范围,所以我有一个CountableRange,
+
+378
+00:20:46,046 --> 00:20:49,648
+it's a sequence, so I can for in it, so I say for i in,
+序列,这样我就可以了,所以我说我的,
+
+379
+00:20:49,717 --> 00:20:53,451
+Stride, I'd probably say for f in, or even better than f or
+脚步,我可能说f,甚至比f或更好
+
+380
+00:20:53,520 --> 00:20:56,688
+i, A lot of times, by the way, on my slides, I'm gonna use
+很多时候,我顺便说一下,在我的幻灯片,我要使用
+
+381
+00:20:56,756 --> 00:20:59,457
+variables like i or x or d because I want it to fit on my
+变量如我或者x或d,因为我希望它适合我
+
+382
+00:20:59,526 --> 00:21:02,594
+slide, I don't want it to be wrapping, It's hard for you to
+幻灯片,我不希望它是包装,对你来说是很困难的
+
+383
+00:21:02,663 --> 00:21:05,264
+read the slide if the code's always wrapping around, so
+读幻灯片如果代码总是包装,
+
+384
+00:21:05,332 --> 00:21:07,799
+just because you see me using i and d and f doesn't mean
+仅仅因为你看到我使用我和d和f并不意味着
+
+385
+00:21:07,868 --> 00:21:10,401
+that's license to have those kind of terrible names for
+这是许可这些可怕的名称
+
+386
+00:21:10,470 --> 00:21:14,773
+your variables, You need to have meaningful names, So
+你的变量,所以,你需要有意义的名称
+
+387
+00:21:14,842 --> 00:21:16,274
+that's how for in works here,
+这就是因为在这里工作,
+
+388
+00:21:16,343 --> 00:21:18,076
+because stride is gonna return a CountableRange,
+因为脚步会返回一个CountableRange,
+
+389
+00:21:18,145 --> 00:21:20,779
+ClosedCountableRange in this case, So
+ClosedCountableRange在这种情况下,
+
+390
+00:21:20,848 --> 00:21:25,450
+that's how you do your standard for loops from C,
+这就是你从C标准循环,
+
+391
+00:21:25,518 --> 00:21:29,587
+Alright, let's talk about the data structures in Swift,
+好吧,让我们来谈谈迅速的数据结构,
+
+392
+00:21:29,656 --> 00:21:31,823
+You've already learned about three of the four of them,
+你已经学习了三四个,
+
+393
+00:21:31,891 --> 00:21:37,296
+which are classes, structures, and enums, In our lecture,
+类、结构、枚举,在我们的讲座,
+
+394
+00:21:37,365 --> 00:21:39,130
+we already did all three of those things,
+我们已经做了所有这些东西,三个
+
+395
+00:21:39,199 --> 00:21:41,233
+We had a class, which is our view controller subclass,
+我们有一个类,它是我们的视图控制器子类,
+
+396
+00:21:41,302 --> 00:21:42,634
+We had a struct, which is our calculator brain,
+我们有一个结构体,这是我们的计算器的大脑,
+
+397
+00:21:42,703 --> 00:21:45,304
+And we had enum, which was our operation,
+我们有枚举,这是我们的操作,
+
+398
+00:21:46,607 --> 00:21:49,407
+The fourth one is protocols, and
+第四个是协议,
+
+399
+00:21:49,476 --> 00:21:51,776
+I'm not gonna talk about that until next week or
+我不会谈论,直到下周或
+
+400
+00:21:51,845 --> 00:21:54,446
+even the week after, Protocols are super, duper important,
+甚至一周后,协议非常重要的支持,
+
+401
+00:21:54,515 --> 00:21:56,314
+I don't want to make it sound like they're not important,
+我不想让它听起来像他们不是重要的,
+
+402
+00:21:56,383 --> 00:21:58,817
+But they're new to a lot of you, and so I'm gonna try and
+但是他们新给你很多,所以我要努力
+
+403
+00:21:58,886 --> 00:22:01,119
+ease you in with these ones that are more familiar,
+缓解你的这些那些更熟悉,
+
+404
+00:22:01,188 --> 00:22:03,855
+although different in Swift probably than what you're used
+虽然在斯威夫特不同可能比你使用
+
+405
+00:22:03,924 --> 00:22:06,258
+to, they're still more familiar to you,
+他们更熟悉的你,
+
+406
+00:22:06,326 --> 00:22:09,594
+Let's just review quickly these three structs and what's
+让我们快速回顾这三种结构是什么
+
+407
+00:22:09,663 --> 00:22:13,665
+the same and different about them, So what's the same?
+相同的和不同的,相同的是什么?
+
+408
+00:22:13,733 --> 00:22:14,599
+They're declared very,
+他们宣布,
+
+409
+00:22:14,668 --> 00:22:16,601
+very similar: they have different key word, but
+非常相似:他们有不同的关键词,但是
+
+410
+00:22:16,670 --> 00:22:17,869
+they're almost exactly the same,
+他们几乎完全一样,
+
+411
+00:22:17,938 --> 00:22:20,405
+The only difference really is a class can specify a super
+唯一的区别是一个类可以指定一个超级
+
+412
+00:22:20,473 --> 00:22:23,675
+class, otherwise they're declared exactly the same,
+类,否则他们宣布完全相同,
+
+413
+00:22:23,744 --> 00:22:26,611
+They can all have properties and functions, So,
+他们都可以具有属性和功能,所以,
+
+414
+00:22:26,680 --> 00:22:30,015
+they're all very similar in that way, The only thing here
+他们都非常相似,唯一
+
+415
+00:22:30,084 --> 00:22:34,452
+is that there cannot be any stored properties in an enum,
+是不能有任何属性存储在一个枚举,
+
+416
+00:22:34,521 --> 00:22:37,956
+Enum keeps any data it has in associated values, so it can't
+枚举使任何数据值有关,所以它不能
+
+417
+00:22:38,025 --> 00:22:41,025
+have any stored properties, but it can have computed
+有任何存储属性,但它可以计算吗
+
+418
+00:22:41,094 --> 00:22:44,930
+properties and they certainly all can have functions,
+属性和他们肯定都有功能,
+
+419
+00:22:44,998 --> 00:22:47,532
+Another thing that's very similar is they can all
+另一件事是非常相似的,他们都可以
+
+420
+00:22:47,601 --> 00:22:50,001
+have initializers except enums, Enums don't need
+初始化枚举除外,枚举不需要吗
+
+421
+00:22:50,070 --> 00:22:52,571
+an initializer cuz you just say the case you want, but
+初始化器因为你只是说你想要的,但是
+
+422
+00:22:52,640 --> 00:22:56,441
+structs and classes have initializers, Okay, so
+结构体和类初始化器,所以
+
+423
+00:22:56,510 --> 00:22:58,543
+that's the same, Now what are the differences?
+这是一样的,现在的区别是什么?
+
+424
+00:22:58,612 --> 00:23:01,880
+Well of course, inheritance is a big difference for classes,
+当然,类的继承是一个很大的区别,
+
+425
+00:23:01,948 --> 00:23:05,784
+Classes have inheritance, Structs and enums do not, But
+类继承,结构和枚举,但是
+
+426
+00:23:05,853 --> 00:23:08,820
+the most important difference, which I mentioned last time,
+最重要的区别,我上次提到的,
+
+427
+00:23:08,889 --> 00:23:12,857
+is that structs and enums are value types, and
+结构体和枚举值类型,
+
+428
+00:23:12,926 --> 00:23:16,194
+classes are reference types, So let's go into that and talk
+类是引用类型,所以让我们进入聊天
+
+429
+00:23:16,262 --> 00:23:18,096
+about it just a little more, It's so important, I'm gonna
+关于这一点,很重要,我要
+
+430
+00:23:18,165 --> 00:23:22,534
+talk about it again, A value type, what does that mean?
+讨论一遍,一个值类型,这意味着什么?
+
+431
+00:23:22,602 --> 00:23:26,404
+It means that it's copied when you pass it as an argument
+这意味着它的复制,当你把它作为参数
+
+432
+00:23:26,473 --> 00:23:27,906
+It's copied, even if you just assign it to another variable,
+这是复制的,即使你只是将其分配给另一个变量,
+
+433
+00:23:27,907 --> 00:23:29,340
+to a function,
+一个函数,
+
+434
+00:23:29,410 --> 00:23:33,445
+it gets copied, If you assign it to a let, it's immutable,
+它被复制,如果你把它赋值给一个让,它是不可变的,
+
+435
+00:23:33,514 --> 00:23:36,314
+that's very important to understand, If you assigned
+理解是非常重要的,如果你分配
+
+436
+00:23:36,383 --> 00:23:40,785
+a value type to a let, using let x equal that thing,
+让一个值类型,使用让x =,
+
+437
+00:23:40,854 --> 00:23:44,155
+you just made it immutable, No matter how complicated it is,
+你做到了不变的,无论多么复杂,
+
+438
+00:23:44,224 --> 00:23:45,890
+If it's an array or dictionary,
+如果它是一个数组或字典,
+
+439
+00:23:45,959 --> 00:23:49,261
+you can't add any elements, If it's a calculatorBrain,
+你不能添加任何元素,如果它是一个计算器大脑
+
+440
+00:23:49,329 --> 00:23:52,130
+it means you can't call any of its mutable functions, So
+这意味着你不能调用任何可变的函数,所以
+
+441
+00:23:52,199 --> 00:23:55,800
+you can't do perform operation on it, Now in assignment two,
+你现在不能做执行运算,在分配两个,
+
+442
+00:23:55,869 --> 00:23:58,704
+I'm gonna have you add a method to the calculator brain
+我要你添加一个方法计算器大脑
+
+443
+00:23:58,772 --> 00:24:01,539
+that is gonna let you use the calculator brain when it's
+会让你使用计算器的大脑的时候
+
+444
+00:24:01,608 --> 00:24:04,843
+immutable, which is kinda cool, You still wouldn't be
+不可变的,有点酷,你仍然不会
+
+445
+00:24:04,912 --> 00:24:07,545
+able to perform operation but you can be able to something
+能够执行的操作但是你可以可以
+
+446
+00:24:07,614 --> 00:24:12,350
+very important, immutably, Now because of this, this kind of
+非常重要,永恒地,现在由于这个原因,这种的
+
+447
+00:24:12,419 --> 00:24:15,487
+copyright-on-write behavior of value types, you must,
+copyright-on-write值类型的行为,你必须,
+
+448
+00:24:15,556 --> 00:24:18,957
+of course, mark all the functions that are going to
+当然,马克会的所有功能
+
+449
+00:24:19,026 --> 00:24:23,094
+modify it as mutating, And that's how the Swift knows,
+修改它为变异,如何迅速的人都知道,
+
+450
+00:24:23,163 --> 00:24:27,299
+"Oops, I've gotta make a copy of this, an actual real copy,
+“哎呀,我要复制,一个实际的真实的拷贝,
+
+451
+00:24:27,368 --> 00:24:31,135
+if someone writes to it", Now a reference class is pretty
+如果有人写道,“,现在一个引用类很漂亮
+
+452
+00:24:31,204 --> 00:24:34,639
+different in that it gets stored in the heap somewhere
+不同,因为它被存储在堆中
+
+453
+00:24:34,708 --> 00:24:37,909
+with a pointer to it, and when you pass it around to
+用一个指针指向它,当你通过它周围
+
+454
+00:24:37,978 --> 00:24:41,713
+a function or to assign it to another variable or something
+一个函数或者将它分配给另一个变量
+
+455
+00:24:41,782 --> 00:24:46,618
+like that, you're just passing a pointer around to it,
+像这样,你只是传递一个指针,
+
+456
+00:24:46,687 --> 00:24:51,089
+Now, by the way, when you say, let x equal a reference type,
+现在,顺便说一下,当你说,让x =一个引用类型,
+
+457
+00:24:51,158 --> 00:24:54,626
+you can still send it messages that will mutate it,
+你仍然可以发送消息,变异,
+
+458
+00:24:55,996 --> 00:24:58,764
+All you're saying is the pointer can't change, but
+所有你说的是指针不能改变,但是
+
+459
+00:24:58,833 --> 00:25:01,533
+what it points to can always be changed,
+点什么总是可以改变,
+
+460
+00:25:01,601 --> 00:25:05,137
+Now reference types are what you're used to,
+现在你使用引用类型,
+
+461
+00:25:05,205 --> 00:25:08,974
+Most languages that have object-oriented reference
+大多数语言面向对象的引用
+
+462
+00:25:09,043 --> 00:25:15,213
+types, Reference types are a little bit Wild West- I
+类型,引用类型是西部——我一点
+
+463
+00:25:15,282 --> 00:25:17,816
+don't have time to teach you this, I hope you'll get to see
+没有时间教你这个,我希望你能看到
+
+464
+00:25:17,885 --> 00:25:19,651
+this sometime in your career at Stanford, but
+这在你的职业生涯在斯坦福大学,但是
+
+465
+00:25:19,720 --> 00:25:21,820
+there is a different way of thinking about programming
+有一种不同的思考方式编程
+
+466
+00:25:21,888 --> 00:25:23,988
+than you're used to: it's called functional programming,
+你习惯:它被称为函数式编程,
+
+467
+00:25:24,057 --> 00:25:25,089
+How many people have heard the phrase,
+有多少人听到这句话,
+
+468
+00:25:25,158 --> 00:25:29,227
+functional programming? So about half of you, The idea
+函数式编程吗?
+
+469
+00:25:29,296 --> 00:25:31,663
+of functional programming is: you don't want this Wild West
+函数式编程是:你不想要这蛮荒的美国西部
+
+470
+00:25:31,732 --> 00:25:34,599
+where you've got these objects with multiple people pointing
+你有和多人指出这些对象吗
+
+471
+00:25:34,668 --> 00:25:37,936
+at them, any of whom could modify it at any time,
+其中,任何可以随时修改它,
+
+472
+00:25:38,004 --> 00:25:41,105
+That leaves you open to a lot of difficulty in verifying
+这让你打开很多难以验证
+
+473
+00:25:41,174 --> 00:25:42,975
+the correctness of your program,
+你的程序的正确性,
+
+474
+00:25:43,043 --> 00:25:46,278
+Whereas if you have a lot of objects that are immutable,
+而如果你有很多的对象是不可变的,
+
+475
+00:25:46,346 --> 00:25:49,715
+you know they can't change, and their APIs are basically
+你知道他们不能改变,基本上都是和他们的api
+
+476
+00:25:49,783 --> 00:25:52,718
+like mathematical functions where data goes in and
+像数学函数数据和
+
+477
+00:25:52,786 --> 00:25:55,520
+predictable data comes out, because there's
+可预测的数据出来,因为有
+
+478
+00:25:55,588 --> 00:25:59,291
+not all this side-effecting, data-effecting other objects
+并不是所有的副作用,data-effecting其他对象
+
+479
+00:25:59,359 --> 00:26:02,194
+that someone else is pointing to in all this,
+别人是指向在这一切的事,
+
+480
+00:26:02,262 --> 00:26:04,595
+It's this really well-contained little thing,
+这真的完全包含的小东西,
+
+481
+00:26:04,664 --> 00:26:08,433
+Now iOS was not developed with functional programming in mind
+现在iOS不是发达与函数式编程
+
+482
+00:26:08,502 --> 00:26:11,603
+at all, But the people who invented Swift,
+,而是发明了迅速的人,
+
+483
+00:26:11,671 --> 00:26:15,074
+they were thinking about functional programming, So
+他们思考函数式编程,所以
+
+484
+00:26:15,142 --> 00:26:17,009
+you can kind of mix a lot of the elements of
+你可以混合大量的元素
+
+485
+00:26:17,077 --> 00:26:19,244
+functional programming into your application,
+函数式编程到您的应用程序,
+
+486
+00:26:19,312 --> 00:26:22,080
+if you're building an iOS application, Now that's a new
+如果你构建一个iOS应用程序,这是一个新的
+
+487
+00:26:22,149 --> 00:26:26,051
+frontier in iOS, because for however long, 20 years,
+在iOS前沿,因为不过久,20年,
+
+488
+00:26:26,119 --> 00:26:28,120
+really, or 30 years, really, if you consider all the way
+真的,或30年,真的,如果你考虑
+
+489
+00:26:28,188 --> 00:26:31,723
+back to the invention of the technology that led to iOS,
+回到技术的发明导致了iOS,
+
+490
+00:26:31,792 --> 00:26:36,028
+people have been programming with basically
+人被编程
+
+491
+00:26:36,096 --> 00:26:39,831
+reference types only, for their object-orienting,
+引用类型,对象,
+
+492
+00:26:39,900 --> 00:26:42,534
+But when you do this programming with structs and
+但是当你这样做的编程结构和
+
+493
+00:26:42,603 --> 00:26:46,104
+enums, and especially when you throw in protocols, (which I
+枚举,特别是当你把协议,(我
+
+494
+00:26:46,173 --> 00:26:47,939
+told you I was gonna tell you that are very important, but
+告诉你我想告诉你,是非常重要的,但是
+
+495
+00:26:48,008 --> 00:26:51,843
+I cannot explain to you yet, and generics),
+我无法向你解释,泛型),
+
+496
+00:26:51,912 --> 00:26:54,579
+when you start throwing those things all in there, you can
+当你开始把这些东西都在那里,你可以
+
+497
+00:26:54,648 --> 00:26:58,216
+really do a good job of doing real functional programming,
+真的很好做真正的函数式编程,
+
+498
+00:26:58,285 --> 00:27:02,153
+All of the Swift foundation is really designed with a lot
+所有的斯威夫特基金会是真的有很多设计的
+Swift 的基础框架中很多是基于
+
+499
+00:27:02,222 --> 00:27:06,057
+of functional programming in mind, If you ever really wanna
+函数式编程的思想,如果你真的想要
+函数式编程思想设计的。如果你想
+
+500
+00:27:06,126 --> 00:27:09,962
+kind of see a good example of how to apply this immutability
+看到一个很好的例子,如何应用这种不变性
+看更多关于如何实现这种不可变性
+
+501
+00:27:10,030 --> 00:27:13,698
+and generics, and protocols and all that stuff to build
+和泛型,协议和所有这些东西
+和在泛型、协议这些基础上搭建
+
+502
+00:27:13,767 --> 00:27:16,968
+an architecture, chase down all the things that
+一个架构,找出所有的事情
+的体系的例子，就去查看
+
+503
+00:27:17,037 --> 00:27:21,006
+are going on in the foundation library: string and range and
+正在进行的基础库:字符串和范围
+基础库中的实现方法，String、Range
+
+504
+00:27:21,075 --> 00:27:24,075
+all these things, Remember, that I said things like
+所有这些事情,记住,我这样说
+等所有内容。记住我说的类似于
+
+505
+00:27:24,144 --> 00:27:26,878
+the range is a sequence, or this thing is comparable,
+范围是一个序列,或相当,
+记得我说过（在 SE-0065 之前）Range 是 Sequence
+
+506
+00:27:26,947 --> 00:27:29,414
+remember how I said things like that? Okay, well,
+还记得我说类似的东西?
+或者这个是 Comparable 的之类的吗？好，接下来
+
+507
+00:27:29,483 --> 00:27:32,483
+how do you express that? You use protocols,
+你怎么表达呢?
+如何表达这些概念？你可以使用 Protocol（协议）
+
+508
+00:27:32,552 --> 00:27:37,822
+with these immutable types, that can be immutable and
+与这些不可变类型,可以不变
+和那些不可变的类型
+
+509
+00:27:37,891 --> 00:27:41,593
+use generics, So I can't explain all that,
+使用泛型,所以我无法解释这一切,
+以及 Generic（泛型）。我并不能在此一一解释
+
+510
+00:27:41,662 --> 00:27:44,362
+I've already spent too much time on it than I have to even
+我已经花了太多的时间甚至比我
+因为已经花了太多时间在这些概念上，超过我
+
+511
+00:27:44,431 --> 00:27:45,964
+talk about it in the lecture today, but just so
+谈论今天的讲座,但仅仅如此
+应该在今天的课程中讲解的内容，但是
+
+512
+00:27:46,033 --> 00:27:49,601
+you know, there is a huge advantage of programming in
+你知道,有一个巨大的优势的编程
+你们知道的，有时换一种编写代码的方式
+
+513
+00:27:49,669 --> 00:27:52,504
+a different way; it requires a real mindset change,
+一种不同的方式,它需要一个真正的心态变化,
+会带来巨大的好处。这需要观念上的改变。
+
+514
+00:27:52,572 --> 00:27:55,440
+So hopefully, you'll take a class where maybe the whole
+希望,你会上课,也许整个
+希望你们有机会写一个类，里面全部内容
+
+515
+00:27:55,509 --> 00:27:56,641
+class is functional programming,
+类是函数式编程,
+都基于函数式编程思想
+
+516
+00:27:56,710 --> 00:27:58,110
+and really you'll get a feel for it,
+真的,你会得到一个感觉,
+这样你们就会对这个概念有一定认识了。
+
+517
+00:27:58,179 --> 00:28:00,245
+Swift does a good job of supporting for
+迅速做一份好工作的支持
+Swift 在基础层面已经对函数式编程
+
+518
+00:28:00,313 --> 00:28:04,849
+the fundamentals you need to do that, That's kind
+基础你需要这样做,这是
+提供了你需要的支持。对于应该怎么选择编程思想
+
+519
+00:28:04,918 --> 00:28:08,086
+of the long-winded answer to which do you choose, If you're
+你选择的冗长的回答,如果你
+我已经给出了长篇大论式的解答。如果你
+
+520
+00:28:08,154 --> 00:28:10,756
+doing more of a functional approach, even if you're doing
+做更多的功能的方法,即使你做的事情
+正在学习更多关于函数式编程的知识，或者只是
+
+521
+00:28:10,824 --> 00:28:13,692
+a reference-based approach like what you're used to, try
+reference-based方法像你,试一试
+了解传统的基于引用的思想，都可以尝试
+
+522
+00:28:13,760 --> 00:28:16,361
+to lean towards immutability, try to ask yourself,
+倾向于不变性,试着问自己,
+向这种不可变的方式上转变。试着问自己
+
+523
+00:28:16,430 --> 00:28:21,299
+can this thing work and be immutable? Is there some
+这个东西能和不变的工作吗?
+这些内容不可变后还能正常运作吗？是否有
+
+524
+00:28:21,368 --> 00:28:24,169
+functionality in my program that I could share by creating
+功能在我的项目,我可以通过创建分享
+一些功能可以通过泛型来共享其实现部分
+
+525
+00:28:24,238 --> 00:28:29,107
+a generic, for example, At least those leanings
+一个通用的,例如,至少那些倾向
+这种思想上的转变至少
+
+526
+00:28:29,176 --> 00:28:31,376
+might help you build the apps that are more testable,
+可能会帮助您构建应用程序更可测试的,
+会帮助你构建更具有可测试性的应用
+
+527
+00:28:31,445 --> 00:28:32,777
+because it's a lot easier to write a test for
+因为它是更容易编写一个测试
+这会让测试变得更容易
+
+528
+00:28:32,846 --> 00:28:34,646
+something that's like a mathematical function where
+就像一个数学函数的东西
+例如一个数学相关的函数
+
+529
+00:28:34,715 --> 00:28:36,515
+you know the data out is supposed to be the same for
+你知道的数据应该是相同的
+如果可以确认数据在经过处理后
+
+530
+00:28:36,584 --> 00:28:38,817
+the data in, than it is for something where there's
+的数据,比那里的
+和传入时保持相同，会比那些
+
+531
+00:28:38,886 --> 00:28:40,919
+a lot of data that you have to set everything up, Set this,
+大量的数据,你必须设置一切,设置这个,
+需要设置很多输入数据的要容易的多。预先设置这个
+
+532
+00:28:40,988 --> 00:28:43,688
+set this and this and this, and now call the method,
+设置这个,这个和这个,现在调用该方法,
+这个以及这个，然后调用方法
+
+533
+00:28:43,757 --> 00:28:47,925
+that's a lot more difficult to write test cases for, etc,
+这是一个更难以编写测试用例,等等,
+为这样的方法编写测试用例会非常困难
+
+534
+00:28:47,994 --> 00:28:50,428
+So that's value and reference, Let's talk a little bit about
+这就是价值和参考,让我们谈谈
+以上说的是值和引用。接下来讲一些
+
+535
+00:28:50,497 --> 00:28:52,664
+the syntax of methods, I'm gonna go fast on this,
+语法的方法,我要快,
+方法的语法。我会加快一些速度
+
+536
+00:28:52,732 --> 00:28:54,366
+Hopefully, you all understand this,
+希望大家理解这一点,
+希望你们可以理解这些内容
+
+537
+00:28:54,435 --> 00:28:57,168
+All parameter names have external names and internal
+所有的参数名称和内部外部的名字
+所有的参数包含外部参数名和内部参数名
+
+538
+00:28:57,237 --> 00:29:01,640
+names, The internal name is used inside the definition, or
+名字,内部使用的内部名称定义,或
+内部参数名用于函数的声明
+
+539
+00:29:01,709 --> 00:29:04,276
+the inside the implementation of the function,
+函数的内部实现,
+或函数内容的实现部分
+
+540
+00:29:04,345 --> 00:29:06,878
+So here I have these two functions, foo and bar, Bar
+这里我有这两个函数,foo和bar,酒吧
+有两个函数，foo 和 bar。bar 调用了 foo
+
+541
+00:29:06,947 --> 00:29:11,416
+calls foo, So you can see that inside foo's implementation,
+调用foo,所以你可以看到,在foo的实现,
+所以在 foo 的内部
+
+542
+00:29:11,484 --> 00:29:14,820
+it is using the first and the second, whereas bar,
+它是使用第一个和第二个,而酒吧,
+它用了 first 和 second 作为参数名，但是
+
+543
+00:29:14,889 --> 00:29:17,923
+when bar calls foo, it uses external first and
+当酒吧调用foo,它使用外部首先
+bar 调用 foo 时， 使用了 externalFirst 和
+
+544
+00:29:17,991 --> 00:29:22,694
+external second, as the names of the items, And you know
+外部第二,物品的名字,你知道的
+externalSecond 作为参数名
+
+545
+00:29:22,763 --> 00:29:25,430
+that you can put an under bar to make it so there's no
+你可以把一个在酒吧所以没有
+你可以在没有外部参数名时
+
+546
+00:29:25,499 --> 00:29:30,068
+external name, We only do that 99,99% of the time with
+外部的名字,我们只做99,99%的时间
+用下划线来代替。这种下划线的方式我们99.99%的时候只对
+
+547
+00:29:30,137 --> 00:29:34,039
+the first item, Why do we do it? Because sometimes the name
+第一项,我们为什么这样做?
+第一个参数使用。为什么要这样做？因为有时通过函数名
+
+548
+00:29:34,107 --> 00:29:38,743
+of the method, and/or the type of that first argument, is
+的方法,和/或第一个参数的类型的
+或者第一个参数的类型
+
+549
+00:29:38,812 --> 00:29:41,780
+enough to make it clear what that thing is supposed to be,
+足以让它清楚的事情应该是,
+已经可以明确的推断出第一个参数应该是什么
+
+550
+00:29:41,849 --> 00:29:43,849
+so we don't need to put an external name,
+所以我们不需要把外部的名字,
+这时我们就没必要写外部参数名了
+
+551
+00:29:43,917 --> 00:29:45,683
+It's kinda clear, All the other parameters,
+它有点清晰,所有其他参数,
+这样显得更清晰。对于其它参数
+
+552
+00:29:45,752 --> 00:29:48,786
+we don't have the advantage of having the name of the method
+我们没有优势的方法的名称
+把参数名省略只留函数名没什么好处
+
+553
+00:29:48,855 --> 00:29:51,823
+there, So that's why we almost never put underbar for
+在那里,这就是为什么我们几乎从不把下划线
+所以几乎不会在除第一个参数名之外的地方
+
+554
+00:29:51,892 --> 00:29:56,294
+the later ones, By the way, if you only put one
+后来的,顺便说一下,如果你只放一个
+使用下划线。顺带，如果只写了一个
+
+555
+00:29:56,363 --> 00:30:00,031
+parameter name, then that's both the external name and
+参数名称,那么外部的名字和
+参数名，那么这个名称既是外部参数名
+
+556
+00:30:00,100 --> 00:30:03,468
+the internal name, and that's not that uncommon,
+内部名称,并不少见,
+也是内部参数名，这种情况并不罕见
+
+557
+00:30:03,537 --> 00:30:07,306
+you'll do that occasionally, All right, so you know all
+偶尔你会这样做,好吧,你知道
+可以偶尔使用。好了，这些就是全部
+
+558
+00:30:07,374 --> 00:30:12,344
+that, When it comes to doing overriding, subclassing, in
+做覆盖时,子类化,
+接下来是重写和子类
+
+559
+00:30:12,413 --> 00:30:15,747
+reference types and classes, when you override, you have to
+引用类型和类,覆盖时,你必须
+对于引用类型和对象，可以重写
+
+560
+00:30:15,816 --> 00:30:19,584
+explicitly let Swift know that you know you're doing that,
+明确让迅速知道你知道你这样做,
+你必须明确地让 Swift 知道你要重写
+
+561
+00:30:19,653 --> 00:30:21,753
+And you do that by putting the override keyword,
+你这样做将覆盖关键字,
+要用 override 关键字
+
+562
+00:30:21,822 --> 00:30:25,823
+So if you override a method from your superclass you have
+如果你从超类覆盖一个方法
+所以，如果你要重写一个父类的方法
+
+563
+00:30:25,892 --> 00:30:29,728
+to say override func whatever, You can mark a method or
+说覆盖函数,您可以标记方法或
+必须使用 override func。可以将一个方法或
+
+564
+00:30:29,797 --> 00:30:33,732
+even a whole class final, and that means that it cannot be
+即使是全班最后,意味着它不能
+整个类标记为 final，这意味着它无法
+
+565
+00:30:33,801 --> 00:30:38,269
+overridden, subclasses will not be allowed to override it,
+覆盖,不允许子类覆盖它,
+被重写，子类不允许重写它
+
+566
+00:30:38,338 --> 00:30:42,841
+Most languages have that, Now on the topic of methods,
+大多数语言都有,现在主题的方法,
+大部分语言拥有这类语法。继续方法这个主题
+
+567
+00:30:44,345 --> 00:30:48,447
+You've seen, actually you've seen both, but mostly seen and
+您所看到的,实际上你已经看过,但大多见过和
+可以看到，实际上两个都在这里，但是通常你们更熟悉
+
+568
+00:30:48,516 --> 00:30:51,984
+understood instance methods, These are methods,
+理解实例方法,这些方法,
+实例方法。实例方法
+
+569
+00:30:52,052 --> 00:30:56,255
+or vars, that are being sent to an instance of the class
+或var,正在送往类的一个实例
+或实例变量，可以通过给一个类
+
+570
+00:30:56,323 --> 00:31:00,058
+struct or enum, In other words, one of them,
+结构体或枚举,换句话说,其中一个,
+结构体或枚举的实例发送消息来访问。也就是给某一个具体对象
+
+571
+00:31:00,127 --> 00:31:04,429
+Like I create one of them: I create a double of 15,5,
+就像我创建其中之一:我创建一个15双,5,
+比如我可以创建它们的一个实例：我创建一个值为 15.5 的 Double
+
+572
+00:31:04,498 --> 00:31:07,466
+I have one, and I can send it messages,
+我有一个,我可以发送消息,
+我有了一个实例，就可以给它发送消息
+
+573
+00:31:07,534 --> 00:31:11,503
+But types, like the type double, the type string,
+但类型,比如双类型,类型字符串,
+但是类型，例如 Double，String
+
+574
+00:31:11,571 --> 00:31:15,808
+the type calculator brain, they can also have methods and
+计算器大脑类型,他们也可以有方法和
+CalculatorBrain，它们也可以拥有方法和
+
+575
+00:31:15,876 --> 00:31:21,279
+vars, Computed vars, no storage, but computed vars,
+var计算var,没有存储,但计算var,
+变量。计算变量，没有存储空间，是计算得出的变量
+
+576
+00:31:21,348 --> 00:31:25,017
+All you do to add a method or a var to a type is
+你添加一个方法或一个var类型
+要给类型添加方法或变量，只要
+
+577
+00:31:25,085 --> 00:31:27,385
+you put static in front of the declaration,
+你把静态的声明,
+将 static 关键字放在声明语句前面即可
+
+578
+00:31:27,454 --> 00:31:30,722
+So "static func whatever" means this is a function on
+所以“静态函数无论”意味着这是一个函数
+static func 意思是这个方法
+
+579
+00:31:30,791 --> 00:31:34,726
+the type, not on instances of the type, on the type itself,
+的类型,而不是实例类型,类型本身,
+属于类型。不属于实例，是类型本身的方法
+
+580
+00:31:34,795 --> 00:31:37,762
+For example, let's think about double here,
+例如,让我们考虑双,
+还是以 Double 举例
+
+581
+00:31:37,831 --> 00:31:43,502
+Double actually has quite a few static or type methods and
+双有不少方法和静态或类型
+Double 拥有不少类型方法和
+
+582
+00:31:43,571 --> 00:31:47,773
+vars, You access them by sending the message to
+var,通过将消息发送到您访问它们
+变量。可以通过发送消息给
+
+583
+00:31:47,841 --> 00:31:51,242
+Double to the actual word, capital D-O-U-B-L-E, You
+双实际的话,资本D-O-U-B-L-E,你
+Double 来访问。一字不差，D-O-U-B-L-E
+
+584
+00:31:51,311 --> 00:31:54,012
+don't send it to an instance, you send it to that word, And
+不要寄给一个实例,你寄给这个词,
+不要发送给一个实例，而是发送给那个类型的名称
+
+585
+00:31:54,080 --> 00:31:57,715
+you've already seen at least one of these, which was pi,
+你已经看到至少其中之一,这是π,
+你已经看到过至少一个例子了，比如 π
+
+586
+00:31:57,784 --> 00:32:00,753
+Remember we said Double,pi and we got the value of pi?
+记得我们说双,π,π的值?
+还记得我们通过 Double.pi 取得到了 π 的值吗？
+
+587
+00:32:00,821 --> 00:32:05,790
+Pi is a var, a computed var, on the class or
+π是一个var计算var,类或
+π 是一个变量，一个计算变量
+
+588
+00:32:05,859 --> 00:32:09,594
+struct actually, double, but it also has other methods,
+结构实际上,双,但它也有其他方法,
+属于 Double 这个结构体。Double 也有一些其它方法
+
+589
+00:32:09,663 --> 00:32:12,564
+like abs, Abs takes a double value and
+如abs,abs双重价值
+例如 abs。abs 接收一个 Double 的值
+
+590
+00:32:12,633 --> 00:32:16,701
+returns the absolute value of it, That is on the type,
+返回它的绝对值,类型,
+返回这个值的绝对值。这是类型的方法
+
+591
+00:32:16,770 --> 00:32:21,039
+You say Double,abs, Double,pi, As opposed to, for example,
+你说双、abs、翻倍,π,而不是,例如,
+可以用 Double.abs，Double.pi。但是
+
+592
+00:32:21,108 --> 00:32:23,375
+if I have a double like x is equal 23,85,
+如果我有双像x = 23日,85年,
+如果我有一个 Double 类型的实例 x，它等于 23.85
+
+593
+00:32:23,444 --> 00:32:27,379
+So x is now a double, I can't say x Double,pi cause
+所以x现在是双,我不能说x双,π的原因
+x 是一个 Double 实例。这时不能通过 x 调用 Double.pi
+
+594
+00:32:29,149 --> 00:32:31,950
+x is an instance of a double, You see the difference?
+x是一个双重的实例,你可以看到区别了吗?
+因为 x 是 Double 的一个实例。你们是否明白了其中的区别？
+
+595
+00:32:32,019 --> 00:32:34,787
+We see saying x,pi, trying to send pi
+我们看到说x,π,试图把π
+如果我们说 x.pi，尝试把 pi 发送给
+
+596
+00:32:34,855 --> 00:32:38,157
+to an instance versus sending pi to a type double,
+一个实例与发送π型双,
+实例，对比发送 pi 给类型 Double 的区别
+
+597
+00:32:39,593 --> 00:32:42,460
+So what do we use these type methods for?
+我们使用这些类型的方法?
+为什么要用类型方法？
+
+598
+00:32:42,529 --> 00:32:45,263
+Well, we can't access any instance variables because
+好吧,我们不能访问任何实例变量,因为
+我们没法访问任何一个实例变量
+
+599
+00:32:45,332 --> 00:32:47,032
+we're not sending them to an instance,
+我们不发送一个实例,
+因为我们没有给实例发送消息
+
+600
+00:32:47,100 --> 00:32:51,035
+We mostly use them for utility methods, things like that,
+我们主要使用的实用方法,类似这样的事情,
+类型方法通常是类中的辅助方法，比如
+
+601
+00:32:51,104 --> 00:32:55,640
+Constants like pi is a good example, Things that
+常数π是一个很好的例子,事情
+常量，π 就是一个很好的例子。还有那些
+
+602
+00:32:55,709 --> 00:32:59,177
+kind of are functions that are associated with this type but
+这种类型的函数
+和这个类型本身关联
+
+603
+00:32:59,246 --> 00:33:00,846
+don't belong to a particular instance or
+不属于一个特定的实例或
+但不属于任何一个特定的实例
+
+604
+00:33:00,914 --> 00:33:03,882
+wouldn't really operate on an instance, Now for example,
+现在真的不会操作实例,比如,
+或者不会真的对一个实例进行操作的方法。例如
+
+605
+00:33:03,951 --> 00:33:06,885
+you might have an instance method or
+你可能有一个方法或实例
+可以有一个实例方法
+
+606
+00:33:06,954 --> 00:33:10,856
+even an instance var called abs, A-B-S, with no arguments,
+甚至一个实例变量称为abs,A-B-S,不带参数,
+或一个实例变量叫做 abs，A-B-S，没有参数
+
+607
+00:33:10,925 --> 00:33:12,624
+That you would send to an instance, and it would take
+你会发送到一个实例,它将采取
+当你调用它时，它会
+
+608
+00:33:12,693 --> 00:33:16,160
+the absolute value of the thing you sent it to, But
+你寄给的绝对值,但是
+取这个实例的绝对值
+
+609
+00:33:16,229 --> 00:33:19,030
+of course the type one has to have an argument because
+当然有一个论点,因为类型
+但是类型方法需要接受一个参数
+
+610
+00:33:19,099 --> 00:33:20,265
+you're sending it to the type double,
+你发送给双类型,
+因为你发送消息给 Double 类型
+
+611
+00:33:20,334 --> 00:33:21,699
+so there's no double involved,
+所以不涉及双,
+所以并没有 Double
+
+612
+00:33:21,768 --> 00:33:25,904
+There's no instance of a double involved, Everybody got
+没有涉及的两个实例,每个人都有
+没有 Double 实例参与计算
+
+613
+00:33:25,972 --> 00:33:30,909
+that? Alright: properties, You know all about properties,
+了吗?
+所有人都明白了吗？属性，你们都知道什么是属性
+
+614
+00:33:30,978 --> 00:33:33,779
+We saw computed properties like display value in
+我们看到像显示值在计算属性
+我们已经看过了计算属性，比如之前计算器中
+
+615
+00:33:33,847 --> 00:33:36,314
+our calculator, There's actually some really cool
+我们的计算器,有一些很酷的
+用来显示的数值。属性有一些非常棒的特性
+
+616
+00:33:36,383 --> 00:33:39,717
+features on properties, One of the most interesting ones is
+功能属性,其中最有趣的是
+其中最有趣的一个是
+
+617
+00:33:39,786 --> 00:33:43,155
+property observers, What is a property observer?
+财产观察员,观察者属性是什么?
+属性观察器。什么是属性观察器？
+
+618
+00:33:43,223 --> 00:33:45,891
+A property observer is a little piece of code that
+一个属性观察者是一小段代码
+属性观察器是一些代码
+
+619
+00:33:45,959 --> 00:33:49,028
+will get executed when your property changes,
+时将会执行你的财产变化,
+可以在属性改变的时候自动执行
+
+620
+00:33:51,065 --> 00:33:53,498
+Anytime your property changes just a little piece of code
+任何时候你的财产变化只是一小段代码
+任何时候属性改变了，这段代码
+
+621
+00:33:53,567 --> 00:33:56,134
+can get executed, Now you can actually find out
+可以执行,现在你可以找到吗
+就会被执行。你能准确地捕捉到
+
+622
+00:33:56,203 --> 00:33:58,403
+just before your property changes, Or
+之前你的财产变化,或
+属性将要改变之前，或者
+
+623
+00:33:58,471 --> 00:34:00,438
+you can find out just after your property changes,
+你可以找到你的财产变化后,
+属性刚刚改变之后
+
+624
+00:34:00,507 --> 00:34:03,208
+Or both, And the way you do this, and this works for
+或者两者都是,你这样做,这工作
+或者上述两种。这只能应用于
+
+625
+00:34:03,276 --> 00:34:06,378
+your stored properties, like userIs InTheMiddleOfTyping:
+你的存储属性,像userIs InTheMiddleOfTyping:
+存储属性，比如 userIsInTheMiddleOfTyping
+
+626
+00:34:06,447 --> 00:34:08,246
+we could put a property observer on there, and
+我们可以把属性观察者在那里,
+我们可以加一个属性观察器
+
+627
+00:34:08,315 --> 00:34:12,183
+execute some code every time we change that, It also works
+执行一些代码每次我们改变,它也有效
+每次它被改变都会执行一段代码。这个功能
+
+628
+00:34:12,252 --> 00:34:15,654
+for inherited properties, so if you inherit something
+为继承的属性,所以如果你继承的东西
+也对继承的属性有效，比如继承了某些
+
+629
+00:34:15,723 --> 00:34:19,691
+from your superclass, you can put these properties in and
+从你的超类,您可以把这些属性
+父类的属性，可以通过属性观察器
+
+630
+00:34:19,760 --> 00:34:24,730
+notice that it changed, By the way, if you have a property
+注意,它改变了,顺便说一下,如果你有一个属性
+观察它们的改变。顺便，如果属性
+
+631
+00:34:24,798 --> 00:34:28,934
+which is a value type, (a struct or
+这是一个值类型(结构或
+是值类型，如结构体
+
+632
+00:34:29,003 --> 00:34:31,769
+something, like an array or an dictionary), this property
+的东西,就像一个数组或一个字典),这个性质
+数组、字典等，这些属性观察器
+
+633
+00:34:31,838 --> 00:34:34,639
+observer stuff will happen if that thing gets changed,
+观察者的东西如果那件事会发生改变,
+会在它们指向的值被改变时
+
+634
+00:34:34,708 --> 00:34:37,709
+if it gets mutated, So if you add something to the array,
+如果它发生突变,所以如果你的东西添加到数组,
+或是包含的内容被改变时触发。比如向数组中添加元素
+
+635
+00:34:37,777 --> 00:34:40,112
+boom, the Property Observer will kick in and say,
+繁荣,房地产将启动观察者说,
+那就炸了，属性观察器会触发并告诉你
+
+636
+00:34:40,181 --> 00:34:43,081
+"that changed", How do these Property Observers
+“改变”,这些财产如何观察员
+“有东西改变了”。属性观察器是
+
+637
+00:34:43,149 --> 00:34:46,318
+work? They look a lot like a computed property, Remember
+工作吗?
+基于什么原理工作的呢？它们很像计算属性那样。还记得
+
+638
+00:34:46,386 --> 00:34:48,286
+that the computed property displayValue had get and
+计算属性displayValue获取和
+displayValue 的 get 方法执行时
+
+639
+00:34:48,355 --> 00:34:50,656
+then we had some code, And then we had set and
+我们有一些代码,然后我们有集和
+我们在 get 中加入了一些别的代码，set 的时候
+
+640
+00:34:50,724 --> 00:34:53,057
+we had some code? This is similar except for
+我们有一些代码?
+也是一样。这基本上是类似的，除了
+
+641
+00:34:53,126 --> 00:34:57,329
+get and set it's will set, or did set,
+获取和设置将,还是集,
+这个是 willSet 和 didSet
+
+642
+00:34:59,566 --> 00:35:01,332
+By the way, you probably would never (I don't even know if
+顺便说一下,你可能永远不会(我甚至不知道
+顺便，你可能永远不会（我也不知道
+
+643
+00:35:01,401 --> 00:35:04,236
+you can) use this in a computed property because
+你可以),因为在计算中使用这个属性
+是不是能这么做）将属性观察器用于计算属性，因为
+
+644
+00:35:04,304 --> 00:35:06,004
+you've got the set clause there so
+所以你有一组条款
+既然已经有了 set 语句
+
+645
+00:35:06,073 --> 00:35:07,339
+you can just put it right in set,
+你可以把它设置,
+完全可以将代码放在 set 里
+
+646
+00:35:07,407 --> 00:35:10,409
+You don't need to find out when it's set because you set
+你不需要找出当它因为你集合
+根本不需要去监视何时它被改变，因为只有你的 set 方法在改变它
+
+647
+00:35:10,477 --> 00:35:13,311
+it, But for stored properties and inherited properties,
+但对于存储属性和继承的属性,
+但是存储属性和继承来的属性不一样
+
+648
+00:35:13,380 --> 00:35:15,880
+that make sense, so you have willSet,
+有意义的,所以你将确定,
+这时属性观察器有存在价值，所以有了 willSet
+
+649
+00:35:15,949 --> 00:35:18,683
+Now, willSet, first of all, you put it all in a curly
+现在,将确定,首先,你把它所有的花
+现在，willSet，首先你要把大括号
+
+650
+00:35:18,752 --> 00:35:21,853
+brace after the property just like if you were doing
+撑属性后就像如果你在干什么
+放在属性的后面，像计算属性一样
+
+651
+00:35:21,922 --> 00:35:23,922
+a computed property but, this is not a computed property,
+一个计算的属性,但这不是一个计算的属性,
+但是这不是计算属性
+
+652
+00:35:23,991 --> 00:35:25,757
+just adding a curly brace doesn't make it a computed
+只是添加一个花括号不计算
+加上大括号不会让它变成计算属性
+
+653
+00:35:25,826 --> 00:35:29,494
+property, you have to put get or set in there, but,
+财产,你必须把获取或设置,但是,
+你要里面加上 get 或 set，但是
+
+654
+00:35:29,563 --> 00:35:33,031
+if I put willSet, then, inside that code,
+那么,如果我把将确定在代码中,
+如果在里面加上了 willSet
+
+655
+00:35:33,100 --> 00:35:35,534
+there's a special variable just like there in the set
+有一个特殊的变量,就像在一组
+会出现一个特殊的变量，和 set 计算属性时
+
+656
+00:35:35,603 --> 00:35:38,270
+case of computer property, called newValue, and
+计算机属性,称为newValue,
+的情况类似，叫做 newValue
+
+657
+00:35:38,338 --> 00:35:42,073
+that is the value that that thing is going to be set to,
+这是那件事的价值将被设置为,
+这个值将会被赋予给这个属性
+
+658
+00:35:42,142 --> 00:35:44,309
+It's not set yet, Some property,
+未设置一些属性,
+但是还没赋予给它。一些属性
+
+659
+00:35:44,378 --> 00:35:46,811
+see some stored property up there? It has not yet
+看到一些存储属性?
+看到上面那些存储属性了吗？它还没
+
+660
+00:35:46,880 --> 00:35:49,914
+been set to newValue but it's going to be, And then didSet,
+被设置为newValue但这将是,然后didSet,
+被设置成 newValue，但马上就要设置了
+
+661
+00:35:49,983 --> 00:35:52,917
+that code occurs after some property has been set and
+这段代码后发生一些属性被设置
+didSet 中的那些代码在属性被设置之后执行
+
+662
+00:35:52,986 --> 00:35:55,720
+the special variable in there is oldValue,
+有oldValue特殊变量,
+在那里特殊变量叫做 oldValue
+
+663
+00:35:55,789 --> 00:35:58,456
+That's the value it used to have before it got set, So
+的价值之前有过去,
+这个值是它被改变前的值
+
+664
+00:35:58,525 --> 00:36:01,159
+you can compare if they've changed, for
+你可以比较他们是否已经改变,
+你可以对比是否发生了变化
+
+665
+00:36:01,228 --> 00:36:05,864
+example, So where do we use these things?
+的例子,所以我们用这些东西在哪里?
+这些特性要用在哪里呢？
+
+666
+00:36:05,932 --> 00:36:08,734
+Probably the number one place that we use them is in our
+可能一个地方,我们是我们的使用它们
+可能最重要的一个用途是在
+
+667
+00:36:08,803 --> 00:36:14,205
+Controller in view, Let's say I'm a button and
+控制器的视图,假设我是一个按钮,
+控制视图中。比如，我是个按钮
+
+668
+00:36:14,274 --> 00:36:16,941
+my background color changes, I inherit my background color
+我的背景颜色变化,我继承我的背景颜色
+我的背景色改变了，我的背景色是继承自
+
+669
+00:36:17,010 --> 00:36:21,413
+from my super class, UI view, Up the chain of super classes,
+从我的超类,用户界面视图,父类的链,
+继承树最上层的父类 UIView 的
+
+670
+00:36:21,482 --> 00:36:22,847
+Every time the background color changes,
+每次背景颜色的变化,
+每次背景色改变时
+
+671
+00:36:22,916 --> 00:36:25,116
+the button wants to redraw itself so
+按钮要重新绘制
+这个按钮都想重绘自己
+
+672
+00:36:25,185 --> 00:36:29,688
+it will have var background color is a UI color,
+它将var背景颜色是UI的颜色,
+所以它有一个背景色属性，类型是 UIColor
+
+673
+00:36:29,757 --> 00:36:32,791
+open curly brace, didSet open curly brace
+花括号,didSet花括号
+添加一个大括号，didSet 再跟一个大括号
+
+674
+00:36:32,860 --> 00:36:38,630
+draw myself closed curly brace, Question? Okay,
+画自己封闭的花括号,问题吗?
+在这里重绘自身。有什么问题？
+
+675
+00:36:38,699 --> 00:36:41,599
+so the question is, if someone changes some stored property
+问题是,如果有人改变一些存储属性
+问题是，如果某人改变了存储属性
+
+676
+00:36:41,668 --> 00:36:44,502
+there, am I responsible for doing something about that
+在那里,我负责做某事
+我是否要负责在
+
+677
+00:36:44,571 --> 00:36:46,572
+in willSet or didSet? Do I have to actually set it? And
+在将确定还是didSet ?
+willSet 或 didSet 中做些什么？我是否真的要去设置它？
+
+678
+00:36:46,640 --> 00:36:48,807
+the answer is no, Okay, that's being set somewhere else,
+答案是否定的,好吧,这是在别的地方,
+答案是否。如果被别的什么地方改变了
+
+679
+00:36:48,875 --> 00:36:50,675
+You're just getting a chance to run some other code that
+你只是得到一个机会来运行一些代码
+你只是获得了一个机会去执行其它代码
+
+680
+00:36:50,744 --> 00:36:53,145
+you wanna run just before and just after it happens,
+你想要它发生,只是之前和之后运行
+你希望执行的是 set 前后的事情
+
+681
+00:36:53,213 --> 00:36:55,547
+But you're not responsible for setting the actual value,
+但是你不是负责设置实际的值,
+你无需负责 set 这件事本身
+
+682
+00:36:55,616 --> 00:36:57,716
+That's done for you, That's why you get to
+这是为你做的,这就是你的原因
+系统已经为你做好了，所以你得到是
+
+683
+00:36:57,784 --> 00:37:02,420
+see the old value and the new value in the two of them,
+看到旧值和新值在他们两个,
+oldValue 和 newValue
+
+684
+00:37:02,489 --> 00:37:05,323
+So we'll see this next week when we start drawing on
+我们将会看到这个在下周当我们开始画
+我们下周讲屏幕绘图之后会涉及这些
+
+685
+00:37:05,392 --> 00:37:08,126
+screen, where we're gonna be watching properties change so
+屏幕,在那里我们将会看属性变化
+那时我们会去观察属性改变
+
+686
+00:37:08,194 --> 00:37:14,166
+we can cause ourselves to redraw, Next, lazy properties,
+我们可以使自己重新画,接下来,懒惰的属性,
+来决定什么时候去调用自身的重绘。接下来，lazy（延时）属性
+
+687
+00:37:14,235 --> 00:37:19,938
+Lazy initialization is a really powerful tool,
+延迟初始化是一个非常强大的工具,
+延时初始化是一个强大的工具
+
+688
+00:37:20,006 --> 00:37:23,975
+It's gonna get you out of a lot of binds in this class,
+它会给你很多的结合在这个类中,
+这可以帮你减少很多的麻烦
+
+689
+00:37:24,044 --> 00:37:27,679
+What does it mean? A lazy var, a var
+这是什么意思?
+具体是什么意思？一个延时变量，是一个变量
+
+690
+00:37:27,748 --> 00:37:32,884
+that you say lazy in front of, whatever it's set equal to,
+你说懒的,无论它集等于,
+在前面加上 lazy 关键字，不管它被赋什么值
+
+691
+00:37:32,953 --> 00:37:36,688
+that equals doesn't actually happen until someone accesses
+实际上等于没有发生直到有人访问
+都不会真的立刻执行，直到某处访问了这个值
+
+692
+00:37:36,757 --> 00:37:41,593
+that var, Until someone asks for the value of that var,
+var,直到有人问对于var的价值,
+直到某处需要这个变量的值之前
+
+693
+00:37:41,662 --> 00:37:45,030
+it doesn't actually do the initialization there,
+它实际上并不做初始化,
+它都不会真的初始化
+
+694
+00:37:45,098 --> 00:37:46,698
+It doesn't do that equal something,
+它没有这样做等于什么,
+这和常规的赋值不一样
+
+695
+00:37:46,767 --> 00:37:48,199
+So it's lazy, It's waiting,
+这是懒惰的,等待,
+所以它是延时的。它会等待
+
+696
+00:37:48,268 --> 00:37:51,136
+Now why do you wanna be lazy? Well, one obvious reason
+为什么你想偷懒吗?
+为什么需要 lazy 呢？一个明显的原因
+
+697
+00:37:51,205 --> 00:37:53,772
+is like here, lazy var brain equals calculator
+就像在这里,大脑懒惰var =计算器
+像这样，lazy var brain = CalculatorBrain()
+
+698
+00:37:53,840 --> 00:37:56,307
+brain, what if calculator brain was really expensive to
+大脑,如果计算器大脑非常昂贵
+如果 CalculatorBrain 的创建非常耗资源
+
+699
+00:37:56,376 --> 00:37:58,843
+create, What if it opened a network connection because
+创建,如果因为它开了一个网络连接
+或者它会打开一个网络连接
+
+700
+00:37:58,912 --> 00:38:01,379
+we're going to share the calculation with the internet
+我们要与互联网分享计算
+我们会把计算结果共享至互联网
+
+701
+00:38:01,448 --> 00:38:02,413
+or something, you know what I mean,
+之类的,你知道我的意思,
+或者一些其它情况，你应该知道我的意思了
+
+702
+00:38:02,482 --> 00:38:04,149
+do something that is expensive,
+做的东西是昂贵的,
+总之就是做一些耗资源的操作
+
+703
+00:38:04,218 --> 00:38:05,083
+Well, you wouldn't want to do it,
+好吧,你不想这样做,
+好吧，你肯定不想这样做
+
+704
+00:38:05,151 --> 00:38:08,253
+unless someone actually tried to access the brain,
+除非有人试图访问的大脑,
+除非某处真的需要访问这个 brain
+
+705
+00:38:08,321 --> 00:38:10,922
+called set up operand on it or something, Then you would
+叫设置操作数之类的,然后你会
+调用设置操作数或者其它什么。这时你才
+
+706
+00:38:10,991 --> 00:38:12,424
+want to actually do the work to create it,
+想做的工作来创建它,
+想要真的创建它
+
+707
+00:38:12,493 --> 00:38:14,493
+Okay so one reason to be lazy,
+好的,一个原因是懒惰,
+这是一个需要 lazy 的理由
+
+708
+00:38:14,562 --> 00:38:17,128
+it's not that important of a reason it turns out, but
+这不是原来的重要原因,但是
+延后高消耗的操作这点
+
+709
+00:38:17,197 --> 00:38:21,500
+one is to delay expensive operations, But
+一个是延迟昂贵的操作,但是
+似乎并没有那么重要
+
+710
+00:38:21,569 --> 00:38:25,236
+what's another reason to do it? Well, in Swift,
+这样做的另一个原因是什么?
+但是另一个原因是，在 Swift 中
+
+711
+00:38:25,305 --> 00:38:30,275
+all vars have to be initialized, Remember that?
+所有增值必须初始化,还记得吗?
+所有的变量都要被初始化，还记得吗？
+
+712
+00:38:30,343 --> 00:38:32,143
+Remember we added userIsInTheMiddleOfTyping,
+记得我们userIsInTheMiddleOfTyping补充说,
+我们曾添加了 userIsInTheMiddleOfTyping
+
+713
+00:38:32,212 --> 00:38:34,579
+And we didn't say, equals false, And we got an error,
+我们没有说,等于虚假,我们得到了一个错误,
+我们没有让它等于 false，这时产生了一个错误
+
+714
+00:38:34,648 --> 00:38:38,116
+It said we had no init, because we hadn't initialized
+它说我们没有初始化,因为我们没有初始化
+说缺少构造器，因为我们没有初始化它
+
+715
+00:38:38,184 --> 00:38:42,921
+that, Not only did they all have to be initialized, but
+,他们不仅必须被初始化,但是
+不仅所有变量都要初始化，而且
+
+716
+00:38:42,989 --> 00:38:45,457
+they all had to be initialized before you could even send
+他们都必须初始化之前,你甚至可以发送
+属性要在可以被发送消息前初始化
+
+717
+00:38:45,525 --> 00:38:50,095
+a message to that class, even internally, So
+类的消息,即使在内部,所以
+即使在类内部也是如此
+
+718
+00:38:50,163 --> 00:38:52,697
+you can't invoke any of your own methods until you fully
+你不能调用任何自己的方法,直到你完全
+也就是你无法调用任何一个实例方法，直到
+
+719
+00:38:52,766 --> 00:38:55,834
+initialize yourself, What if one of the things you want to
+初始化你自己,如果你想要的一件事
+实例完全初始化了。如果你希望某个属性
+
+720
+00:38:55,902 --> 00:39:02,040
+initialize needs to call a method on yourself? It's
+初始化需要调用一个方法吗?
+的初始化过程调用另一个实例方法怎么办？
+
+721
+00:39:02,109 --> 00:39:05,243
+impossible, Because if you need to initialize something
+不可能的,因为如果你需要初始化一些
+这是不可能的。比如你需要初始化某个属性
+
+722
+00:39:05,312 --> 00:39:07,045
+to be allowed to send messages to yourself and you need
+可以发送消息给你自己和你所需要的
+才能来给实例发消息
+
+723
+00:39:07,114 --> 00:39:09,047
+to send a message to yourself to initialize something,
+将消息发送给自己来初始化,
+但这个属性的初始化，又要求实例已经完成了构造
+
+724
+00:39:09,116 --> 00:39:12,751
+it's a deadlock, You can't do it, Okay, well lazy let's you
+这是一个僵局,你不能这样做,好吧,好懒的你
+这就陷入了僵局。原本没法这么做，但是可以通过 lazy 实现
+
+725
+00:39:12,820 --> 00:39:16,221
+do it, Because you can say for example, the last one there;
+这样做,因为你能说例如,最后一个;
+比如用这里最后的 myProperty 举例
+
+726
+00:39:16,290 --> 00:39:20,925
+lazy my property equals some method on myself, This is not
+懒惰的我的财产=一些方法我自己,这不是
+将这个延时属性设置为实例的某个方法的值
+
+727
+00:39:20,994 --> 00:39:24,896
+going to be executed until someone says my property and
+要直到有人说我的财产和执行
+直到某人访问它之前，这段代码都不会运行
+
+728
+00:39:24,965 --> 00:39:27,733
+no one's allowed to access my property until I'm fully
+没有人允许访问我的财产,直到我完全
+记住，直到实例初始化完成之前，谁也不能访问这个属性
+
+729
+00:39:27,801 --> 00:39:32,437
+initialized, So by definition there's no way
+初始化,所以没有办法定义
+所以很明确
+
+730
+00:39:32,506 --> 00:39:35,440
+that that is gonna try to get initialized until I'm already
+这是要把之前我已经初始化
+在实例完全初始化之前，延迟属性一定没有初始化
+
+731
+00:39:35,508 --> 00:39:40,011
+fully initialized, And yet this lazy thing counts as this
+完全初始化,但这懒惰的计数
+但这时延时属性会被视作
+
+732
+00:39:40,080 --> 00:39:46,284
+thing having been initialized, So this is the big loophole,
+已经初始化,这是一个巨大的漏洞,
+已经初始化了。这是一个很大的“漏洞”
+
+733
+00:39:46,353 --> 00:39:49,554
+Lazy var myProperty counts as having been initialized
+懒惰的var myProperty计数是初始化
+延时属性被视为已初始化
+
+734
+00:39:49,623 --> 00:39:51,389
+even though it really hasn't yet, Because it's waiting for
+即使它真的还没有,因为它是等待
+但实际上它没被初始化，因为 myProperty 在等待
+
+735
+00:39:51,458 --> 00:39:55,393
+something to actually access myProperty, But it counts for
+实际上访问myProperty,但计数
+某处实际访问它。所以这个漏洞的存在
+
+736
+00:39:55,462 --> 00:39:58,263
+the purposes of that rule, so now someone comes along later
+该规则的目的,现在再来一个人
+是为了遵守那条规则。现在某处实际访问了它
+
+737
+00:39:58,332 --> 00:40:00,331
+and accesses it, now we can call this method, So
+并访问它,现在我们可以调用这个方法
+我们再调用这个方法
+
+738
+00:40:00,400 --> 00:40:03,101
+do you see how deferring the calling of this method in
+你看看延迟调用该方法的在吗
+你们理解了吗？推迟调用这个方法
+
+739
+00:40:03,169 --> 00:40:05,804
+order to initialize this gets us around that requirement
+为了初始化这个让我们周围的要求
+使得我们可以摆脱
+
+740
+00:40:05,873 --> 00:40:08,173
+that everything be initialized?
+这一切都被初始化吗?
+所有内容都要被初始化的限制
+
+741
+00:40:08,241 --> 00:40:10,309
+It's really tricky, And then the middle one there,
+真的很棘手,然后中间的一个,
+这真的有点复杂。中间这个
+
+742
+00:40:10,377 --> 00:40:13,979
+someProperty, that's super tricky, Because you can
+someProperty,超级棘手,因为你可以
+someProperty，它更复杂。你可以
+
+743
+00:40:14,048 --> 00:40:17,216
+actually have a closure, (remember what a closure is,
+实际上有一个闭包,(记住什么是一个闭包,
+用一个 closure（闭包），（回忆下什么是闭包
+
+744
+00:40:17,284 --> 00:40:19,284
+right from calculator brain, it's just a function,
+从计算器大脑,它只是一个函数,
+在 CalculatorBrain 中用到过，其实闭包就是函数
+
+745
+00:40:19,352 --> 00:40:22,488
+in line function), you can actually have a closure
+功能),你可以关闭
+一个内联函数），你可以用一个闭包
+
+746
+00:40:22,556 --> 00:40:26,090
+to initialize your thing lazily, All you do is you
+延迟初始化您的事,所有你做的是你
+来延时初始化一个变量。你要做的仅仅是
+
+747
+00:40:26,159 --> 00:40:28,493
+put the closure, open curly brace, close curly brace,
+花括号将关闭,关闭花括号,
+把闭包写在这里，开始大括号，结束大括号
+
+748
+00:40:28,562 --> 00:40:31,796
+It obviously has to return something of the type
+它显然已经返回的类型
+显然，还要返回符合这个变量类型的结果
+
+749
+00:40:31,865 --> 00:40:35,233
+of that var, And then just put the little open parenthesis,
+var,然后把小左括号,
+然后还要加上一对小括号
+
+750
+00:40:35,302 --> 00:40:38,237
+close parenthesis at the end, When we open parenthesis and
+关闭括号结束时,当我们打开括号
+在闭包的结尾
+
+751
+00:40:38,305 --> 00:40:39,438
+close parenthesis at the end of the closure,
+关闭括号结束时关闭,
+在闭包的结尾加上小括号
+
+752
+00:40:39,507 --> 00:40:42,674
+that means execute this closure right now, But
+这意味着现在执行这个闭包,但是
+意味着立刻执行这个闭包
+
+753
+00:40:42,742 --> 00:40:45,611
+it's not gonna execute right now, it's gonna act lazy so
+现在它不会执行,它会懒惰所以行动
+但是实际上它并不会立刻执行，因为它是延时执行的
+
+754
+00:40:45,679 --> 00:40:50,381
+it's gonna happen later, And that means that that closure
+它会发生之后,这意味着关闭
+它会稍后才被执行。这意味着
+
+755
+00:40:50,450 --> 00:40:53,919
+inside could reference self, Because self will be fully
+里面可以参考自我,因为自我将完全
+闭包内部可以引用 self。因为当这个闭包执行的时候
+
+756
+00:40:53,988 --> 00:40:56,154
+initialized by the time this closure gets executed,
+初始化的时候这个闭包被执行,
+self 肯定已经被完全初始化了
+
+757
+00:40:56,223 --> 00:41:00,058
+since it's lazily executed, So
+因为它是延迟执行
+前提是确保它是延时执行的
+
+758
+00:41:00,127 --> 00:41:02,694
+lazy will get you out of some of these tricky wickets,
+懒惰会让你有些棘手的wicket,
+lazy 可以使你摆脱这类棘手的处境
+
+759
+00:41:02,762 --> 00:41:04,963
+because when you see me talk about initialization,
+因为当你看到我谈论初始化,
+当你们听我讲到初始化时
+
+760
+00:41:05,032 --> 00:41:08,333
+you're gonna be like, "I don't want to do that, ever",
+你要这样说,“我不想这么做,”,
+你们可能会说“我永远不想那样做”
+
+761
+00:41:08,402 --> 00:41:09,701
+You're going to try and avoid it, and
+你要试着避免它,
+你们会尝试避免它
+
+762
+00:41:09,770 --> 00:41:12,704
+this is a good way to avoid it, So yeah,
+这是一个好办法避免它,所以是的,
+这就是一种很好的避免的方式
+
+763
+00:41:12,773 --> 00:41:18,810
+it still satisfies all those things, Alright, on to Array,
+它仍然满足所有这些东西,好吧,数组,
+它仍然满足所有规则。好了，下面讲 Array（数组）
+
+764
+00:41:18,879 --> 00:41:21,079
+Everybody knows what an array is, Everyone knows what
+每个人都知道什么是数组,每个人都知道
+所有人都知道数组是什么，所有人都知道泛型数组是什么
+
+765
+00:41:21,148 --> 00:41:23,549
+a generic array is, You just, when you declare the array,
+一般的数组,你,当你声明数组,
+你肯定知道，因为当你声明一个数组时
+
+766
+00:41:23,617 --> 00:41:25,517
+you have to say what type of things are gonna
+你说要什么类型的东西
+必须指明它的内容的类型是什么
+
+767
+00:41:25,585 --> 00:41:28,553
+be in the array, There's a different syntax though,
+数组中,有不同的语法,
+也有另一种语法
+
+768
+00:41:28,622 --> 00:41:32,724
+which I didn't introduce when I did dictionary in the demo,
+我没有介绍当我做字典的演示,
+之前的 demo 中，我用了字典，但是没有提到过这个语法
+
+769
+00:41:32,793 --> 00:41:36,428
+But you can declare an array, those two yellow things
+但是你可以声明一个数组,这两个黄色的东西
+你可以声明一个数组，上面黄色标注的两个声明方法
+
+770
+00:41:36,497 --> 00:41:38,696
+up there are exactly the same thing, So,
+有完全相同的事情,所以,
+是一样的
+
+771
+00:41:38,765 --> 00:41:39,464
+open square bracket,
+开放的方括号,
+左半方括号
+
+772
+00:41:39,533 --> 00:41:41,934
+string close square bracket is exactly the same as saying
+字符串结束方括号是完全一样的
+String，右半方括号
+
+773
+00:41:42,002 --> 00:41:45,537
+array angle bracket string, It's just kind of a special
+尖括号的字符串数组,它只是一种特殊
+这与 Array 加上一对尖括号，括起来 String，是等价的
+
+774
+00:41:45,606 --> 00:41:48,873
+way to declare an array and it actually seems to be
+声明一个数组,它实际上似乎
+[String] 这种声明数组的特殊方式更被大众接受
+
+775
+00:41:48,942 --> 00:41:51,443
+the preferred way, I actually prefer the other way because
+的首选方法,实际上我更喜欢另一种方式,因为
+但是我比较喜欢用 Array<String>
+
+776
+00:41:51,512 --> 00:41:54,079
+it's a little clearer to you that are learning that this is
+有点清晰的学习,这是你
+更明确地告诉你们这些学生，这是个数组
+
+777
+00:41:54,148 --> 00:41:57,182
+an array, because it says the word array and string,
+一个数组,因为它表示数组和字符串,这个词
+毕竟包含了 Array 和 String 两个单词
+
+778
+00:41:57,251 --> 00:41:59,918
+But open square bracket, close square bracket,
+但是开方括号,方括号,
+不过中括号的方式
+
+779
+00:41:59,986 --> 00:42:02,187
+we know that's going to be index into an array so
+我们知道的索引数组
+我们知道这是通过索引访问数组元素的方式
+
+780
+00:42:02,256 --> 00:42:03,722
+it looks kind of array-ish but
+它看起来有点array-ish但
+它也看起来更有数组的风格
+
+781
+00:42:03,790 --> 00:42:08,594
+just get used to it, [String] means an array of string,
+只是习惯,[String]意味着一个字符串数组,
+习惯了就好了。[String] 代表一个包含字符串的数组
+
+782
+00:42:08,662 --> 00:42:11,997
+That's the name of that type
+这是该类型的名称
+这是字符串数组这个类型的名称
+
+783
+00:42:12,066 --> 00:42:16,635
+array of string, So if I had a string right here like
+一系列字符串,所以如果我有一个字符串
+如果我有一些字符串
+
+784
+00:42:16,704 --> 00:42:21,106
+this giraffe, cow, doggie, and bird, Four animals in here,
+这只长颈鹿,牛,狗,鸟,四只动物在这里,
+比如 Giraffe，Cow，Doggie，Bird 这四种动物
+
+785
+00:42:21,175 --> 00:42:24,475
+four strings and I said animals dot append ostrich,
+四根弦,我说动物点附加鸵鸟,
+四个字符串，然后我调用 animals.append("Ostrich")
+
+786
+00:42:24,544 --> 00:42:28,147
+well append appends something onto the array, now the thing
+现在添加附加到数组的东西,
+append 这个方法会将一些东西加入到数组中，
+
+787
+00:42:28,215 --> 00:42:30,616
+you are appending has to be the same type obviously
+你是附加显然必须是相同的类型
+你加入的新东西显然也必须
+
+788
+00:42:30,684 --> 00:42:33,218
+as the type of everything in the array, however the type
+所有的类型的数组,但是类型
+和数组中其它元素是同一个类型
+
+789
+00:42:33,286 --> 00:42:36,955
+was declared, Notice that animals is in inferred,
+宣布,注意动物推断,
+因为类型已经被声明了。注意这里 animals 的类型已经
+
+790
+00:42:37,024 --> 00:42:40,225
+By Swift, to be an array of string, Because Swift sees
+迅速,是一个字符串数组,因为迅速看到
+被 Swift 推断为 Array<String>，因为 Swift
+
+791
+00:42:40,294 --> 00:42:42,126
+that you sent it to an array of things and
+你寄给一个东西和数组
+通过检查你在数组中包含的每一个元素
+
+792
+00:42:42,195 --> 00:42:44,096
+it looked at all the things and they were all strings,
+它看着所有的东西,他们都是字符串,
+判断出它们全都是字符串
+
+793
+00:42:44,164 --> 00:42:46,965
+So it said, the animals must be an array of string, Now,
+所以说,动物必须是一个字符串数组,现在,
+所以它断定，animals 必然是一个 Array<String>
+
+794
+00:42:47,033 --> 00:42:50,335
+this line of code animals,append("Ostrich"),
+这行代码的动物,附加(“鸵鸟”),
+这行代码 animals.append("Ostrich")
+
+795
+00:42:50,403 --> 00:42:51,036
+That's very bad,
+这是非常糟糕的,
+存在问题
+
+796
+00:42:51,104 --> 00:42:53,004
+Can anyone tell me why that's not gonna work?
+谁能告诉我为什么这不是要工作吗?
+谁能告诉我它为什么有问题？
+
+797
+00:42:53,073 --> 00:43:02,247
+Yeah? >> That's exactly right,
+是吗?
+>> 答得好，给你颗糖吃
+
+798
+00:43:02,316 --> 00:43:06,485
+We define this animal's variable with let, so
+让我们定义这个动物的变量,所以
+我们声明 animals 时用的是 let
+
+799
+00:43:06,554 --> 00:43:09,888
+it's immutable, So when we say append an ostrich onto
+它是不可变的,所以当我们说附加上鸵鸟
+它是不可变的，所以我们 append("Ostrich")
+
+800
+00:43:09,956 --> 00:43:13,025
+an immutable thing, it's going to crash my program,
+一个不变的东西,它会崩溃我的程序,
+添加进这个不可变的数组，就会导致程序崩溃
+
+801
+00:43:13,093 --> 00:43:15,027
+But actually, it won't even crash my program,
+但实际上,它甚至不会崩溃我的程序,
+其实不会真的导致程序崩溃
+
+802
+00:43:15,095 --> 00:43:15,727
+It won't even compile,
+它甚至不进行编译,
+而是连编译都无法通过
+
+803
+00:43:15,796 --> 00:43:17,796
+Like, Swift compiler's just gonna say, no way,
+快速编译器就会说,没办法,
+Swift 编译器会告诉你，这样做不行
+
+804
+00:43:17,865 --> 00:43:19,865
+you can't do append of something or other,
+你不能添加或其他的东西,
+你没法 append 或者做其他操作
+
+805
+00:43:19,934 --> 00:43:22,467
+So that's a good one over there, you got that,
+这是一个很好的一个,你明白我的意思,
+这就是个很好的例子，你们已经掌握了
+
+806
+00:43:22,536 --> 00:43:24,336
+How about this one? I'll give you a second chance for
+这一个怎么样?
+那么这个呢？再给你们一次机会
+
+807
+00:43:24,405 --> 00:43:27,139
+everyone, Why is this one no good? Okay,
+每一个人,为什么这是一个不好吗?
+下面这个有什么错误？
+
+808
+00:43:27,208 --> 00:43:31,477
+I'm trying to get animals[4] over there, why? Nobody?
+我想让动物[4]在那里,为什么?
+我尝试获取 animals[4]，为什么，谁要回答？
+
+809
+00:43:31,545 --> 00:43:38,717
+This one's easier, Array index, yes! Array index is
+这个更简单,数组索引,是的!
+这个问题比较简单。数组的索引，答得好，再发颗糖
+
+810
+00:43:38,786 --> 00:43:42,553
+out of bounds because arrays are indexed starting at zero,
+界外,因为数组索引从0开始,
+数组的索引值越界了，数组是从 0 开始索引的
+
+811
+00:43:42,622 --> 00:43:45,357
+Okay, so giraffe, cow, doggie, bird that's zero, one, two and
+长颈鹿,牛,狗,鸟,是零,一个,两个,
+所以 Giraffe，Cow，Doggie，Bird 对应 0，1，2，3
+
+812
+00:43:45,425 --> 00:43:48,727
+three, So if I say, give me array number four, bam,
+三,如果我说,给我4号,砰,
+如果我说，把第四个给我
+
+813
+00:43:48,795 --> 00:43:53,165
+crashed my program array index out of bounds,
+我的程序数组下标越界坠毁,
+程序就会因为数组索引越界而崩溃
+
+814
+00:43:53,234 --> 00:43:57,669
+Let's talk about the fact that array is a sequence,
+让我们来谈谈数组是一个序列,
+下面讲讲数组作为一个 Sequence（序列）的特性
+
+815
+00:43:57,738 --> 00:44:00,872
+Array is actually a collection and collections are sequences,
+数组实际上是一个集合和集合序列,
+数组实际上是一个 Collection（集合），而集合又是序列
+
+816
+00:44:00,941 --> 00:44:05,577
+And a sequence means I can do for in on it, So if I say for
+和一个序列意味着我可以做的,如果我说
+一个序列意味着我可以对它进行 for...in 循环
+
+817
+00:44:05,646 --> 00:44:09,348
+animal in animals, my little for loop will get executed
+动物在动物身上,我的小for循环将得到执行
+如果我说 for animal in animals，这个 for 循环就会执行四次
+
+818
+00:44:09,416 --> 00:44:12,651
+four times, once with animal being giraffe, next one with
+四倍,一旦动物是长颈鹿,下一个
+第一次 animal 取值为 Giraffe，第二次
+
+819
+00:44:12,720 --> 00:44:14,586
+animal being cow, next one with animal being doggie,
+动物是牛,下一个动物是小狗,
+animal 是 Cow，接下来是 Doggie
+
+820
+00:44:14,655 --> 00:44:19,791
+next one animal being bird, Okay, so that's a really cool
+下一个动物被鸟,好吧,这是一个很酷的
+最后一个是 Bird。这真是一个很棒的功能
+
+821
+00:44:19,860 --> 00:44:23,562
+feature, Remember this is the only for there is in swift,
+特性,记住这是唯一在迅速、
+记住这是 Swift 中唯一的 for 循环形式
+
+822
+00:44:23,631 --> 00:44:31,069
+For in, that's the only for there is, nothing else,
+中,这是唯一的,没有别的,
+for...in 这就是唯一的，没有其他了
+
+823
+00:44:31,138 --> 00:44:36,107
+So array in a lot of classes and structs
+所以在很多类和结构体数组
+在数组，以及 iOS 众多类和结构体中
+
+824
+00:44:36,176 --> 00:44:38,376
+in iOS have some interesting methods
+iOS中有一些有趣的方法
+有一些有趣的方法
+
+825
+00:44:38,445 --> 00:44:43,648
+that have arguments that are closures, So I teach closures
+闭包有争论,所以我教闭包
+它们有闭包类型的参数
+
+826
+00:44:43,717 --> 00:44:45,851
+to you right at the beginning of the of the quarter,
+你在本季度的开始,
+所以我在这期课程的开头就先讲了闭包
+
+827
+00:44:45,919 --> 00:44:48,520
+And why do I do that? Because closures are an important
+为什么我这样做?
+为什么我要先讲它，因为如果你想把 iOS API 用好
+
+828
+00:44:48,589 --> 00:44:51,456
+thing to understand if you want to really use iOS API
+要理解如果你想真正使用iOS API
+就应该先理解闭包这个重要的概念
+
+829
+00:44:51,525 --> 00:44:55,794
+well, So let's take at this (just so we can learn a little
+好吧,让我们在这个(这样我们可以学习一点
+我们看看这个（我们从中还可以学到
+
+830
+00:44:55,863 --> 00:44:58,497
+bit about how closures can make our API great,
+闭包可以让我们的API是如何伟大,
+如何把我们自己的 API 设计的更好
+
+831
+00:44:58,565 --> 00:45:02,166
+especially again if you're doing functional programming,
+尤其是如果你做函数式编程,
+尤其是你要用函数式编程的话
+
+832
+00:45:02,235 --> 00:45:05,904
+closures can be really good), but why are closures so great?
+闭包可以很好),但为什么关闭如此之大?
+闭包可以从中起到很大作用），闭包为什么这么有用？
+
+833
+00:45:05,972 --> 00:45:08,907
+So let's look at this so, this first function right here
+让我们看看这,这里的第一个函数
+我们看看这些，第一个方法
+
+834
+00:45:08,976 --> 00:45:11,776
+called filter is an array method,
+称为滤波器是一个数组的方法,
+叫做 filter，是数组的方法
+
+835
+00:45:11,845 --> 00:45:16,515
+Nothing special about it, it's just func in array,
+没有什么特别之处,只是在数组函数,
+它没什么特别的，只是一个数组的方法
+
+836
+00:45:16,584 --> 00:45:20,853
+It has one argument, which is called includeElement,
+它有一个参数,称为includeElement,
+它有一个参数，叫做 includeElement
+
+837
+00:45:22,590 --> 00:45:26,824
+And that argument is a function, It's a function that
+参数是一个函数,这个函数
+这个参数是一个函数
+
+838
+00:45:26,893 --> 00:45:29,827
+takes one argument which is of the same type of the things in
+需要一个参数是相同类型的东西
+这个函数有一个类型与数组元素类型一致的参数
+
+839
+00:45:29,896 --> 00:45:33,999
+the arrays, cuz it's a t, So I have an array angle bracket t,
+数组,因为这是一个t,所以我有一个数组尖括号t,
+因为这个类型是 T，所以我有一个 Array<T>
+
+840
+00:45:34,067 --> 00:45:37,535
+It's a generic type so this function is declared in that
+这是一个泛型类型声明这个函数
+这是一个泛型，这个函数是
+
+841
+00:45:37,604 --> 00:45:40,205
+generic type so the t means the same t, the same type, So
+泛型类型t意味着相同的,相同的类型
+基于这个泛型声明的。所以这个 T 是同一个 T，同一个类型
+
+842
+00:45:40,274 --> 00:45:43,141
+if I have an array of strings this filter expects this
+如果我有一个字符串数组这个过滤器预计
+如果我有一个字符串数组，那么 filter 方法的参数
+
+843
+00:45:43,210 --> 00:45:46,044
+to be a function that takes a string, As its only argument,
+是一个函数,它接受一个字符串作为其唯一的参数,
+就是一个接收字符串作为唯一参数的函数
+
+844
+00:45:46,113 --> 00:45:48,280
+And it returns a Bool, so that's the argument,
+它返回一个布尔值,这就是论点,
+并且这个函数返回一个布尔值
+
+845
+00:45:48,348 --> 00:45:50,549
+The argument is a function that takes a string and
+参数是一个函数,它接受一个字符串
+所以 filter 的参数是一个函数，接收字符串
+
+846
+00:45:50,617 --> 00:45:53,184
+returns a Bool or takes a T, whatever that is, and
+返回一个布尔值或T,不管那是什么,和
+也就是对应的 T 类型，并返回布尔值
+
+847
+00:45:53,253 --> 00:45:56,388
+returns a Bool, And then what's the return
+返回一个布尔值,然后返回
+那么 filter 方法本身
+
+848
+00:45:56,457 --> 00:46:00,425
+value of this filter thing? It's an array of T, so another
+这个过滤器的价值呢?
+返回什么东西？返回的是 T 类型元素的数组
+
+849
+00:46:00,494 --> 00:46:03,629
+array with the same kind of elements, So what does filter
+数组具有相同的元素,那么过滤器
+是一个与原数组包含同类型元素的新数组
+
+850
+00:46:03,697 --> 00:46:07,499
+do? Filter takes every single element In the array that
+做什么?
+filter 有什么用？filter 对数组中的每个元素
+
+851
+00:46:07,568 --> 00:46:10,435
+you're sending it to and it runs that little function, And
+你发送它和它运行这个小函数,和
+执行一次传入的函数
+
+852
+00:46:10,504 --> 00:46:13,238
+if that function returns true, it includes it in the array it
+如果这个函数返回true,它包括数组中
+如果函数返回 true，就把那个元素包含在返回的数组中
+
+853
+00:46:13,307 --> 00:46:15,940
+returns, If it returns false it doesn't,
+回报,如果它返回false,不,
+如果函数返回 false
+
+854
+00:46:16,009 --> 00:46:17,408
+It throws it out, So
+它扔出来,所以
+就把那个元素过滤掉（不放入返回数组）
+
+855
+00:46:17,477 --> 00:46:21,346
+it's a filter: it's filtering your array and creating a new
+一个过滤器:它的过滤你的数组和创建一个新的
+filter 就是过滤器：它创建一个新数组来过滤原数组
+
+856
+00:46:21,415 --> 00:46:24,916
+array with all the things you don't want as defined by this
+数组定义了所有你不想要的东西
+根据作为参数传入的函数来判断
+
+857
+00:46:24,985 --> 00:46:26,885
+function that you're providing as an argument,
+函数,你提供作为参数,
+哪些是你不想要的元素
+
+858
+00:46:26,954 --> 00:46:29,020
+With all the things you don't want thrown out, So for
+所有的事情你不要扔掉,所以
+把你不想要的元素都过滤掉
+
+859
+00:46:29,089 --> 00:46:33,559
+example here, I have this var that I'm creating,
+例子,我有一个var我创建,
+例如：我有一个变量
+
+860
+00:46:33,627 --> 00:46:37,028
+bigNumbers, and I'm creating an array on the fly 2,
+bigNumbers,我创建一个动态数组2,
+叫做 bigNumbers，我紧接着创建了一个数组 [2,47,118,5,9]
+
+861
+00:46:37,097 --> 00:46:39,798
+47,118,5,9, (see? I created an array), and look,
+47118、5、9日(见?
+（看，我创建了一个数组）
+
+862
+00:46:39,867 --> 00:46:44,469
+I'm sending it a message right away, Yeah, I didn't have to
+我马上发送一条消息,是的,我不需要
+我紧接着给数组发送了一个消息
+
+863
+00:46:44,538 --> 00:46:47,939
+put it into another var, by the way, I could have but,
+把它放到另一个var,顺便说一下,我也可以,但
+我没必要声明另一个变量，尽管我可以那样做
+
+864
+00:46:48,008 --> 00:46:51,509
+I just want all be on one line here, I created this array and
+我想都有一条线,我创建了这个数组
+但是在这里我更希望只用一行代码。我创建了这个数组
+
+865
+00:46:51,578 --> 00:46:53,445
+I'm sending it the message filter and
+我发送消息过滤和
+然后给它发送消息 filter
+
+866
+00:46:53,514 --> 00:46:55,714
+look what I'm providing for the argument there,
+我提供的观点看,
+仔细看参数这里我写的是什么
+
+867
+00:46:57,284 --> 00:46:59,618
+That include element it has an underbar, so, you don't have
+它有一个下划线,包括元素,所以,你没有
+因为 includeElement 的外部参数名有下划线，所以没必要
+
+868
+00:46:59,686 --> 00:47:03,488
+to actually put the include element column in there, So,
+把包括元素列在这里,所以,
+真的写上 includeElement 这个参数名
+
+869
+00:47:03,557 --> 00:47:07,525
+what am I putting in there? That's a closure, So
+我将在那里?
+所以我在这里填入的是什么？是一个闭包
+
+870
+00:47:07,594 --> 00:47:11,496
+that means, it's a function, Now, Swift knows that this is
+这意味着,这是一个函数,现在,迅速知道这是
+这意味着，它是个函数。Swift 知道它
+
+871
+00:47:11,564 --> 00:47:13,031
+a function that returns a bool, So
+一个函数,返回一个布尔值
+是个函数，而且会返回布尔值
+
+872
+00:47:13,100 --> 00:47:16,868
+I don't have to put the word return in there, I can use
+我没有把这个词返回,我可以使用
+所以我没必要在闭包里加上 return
+
+873
+00:47:16,937 --> 00:47:20,639
+dollar zero to be the one and only argument to the function,
+美元零是唯一的参数函数,
+我可以用 $0 代表闭包的第一个也是唯一的一个参数
+
+874
+00:47:20,708 --> 00:47:22,207
+And I'm just going to check and
+和我要检查
+我接下来要检查
+
+875
+00:47:22,276 --> 00:47:23,875
+see if dollar zero is greater than 20, in other words,
+看看美元零大于20,换句话说,
+$0 是否比 20 大，也就是说
+
+876
+00:47:23,944 --> 00:47:28,947
+is this a big number, So I get back an array which has only
+这是一个巨大的数字,所以我回去只有一个数组
+检查它是不是个“大数字”。然后我取得了一个新数组
+
+877
+00:47:29,016 --> 00:47:32,951
+47 and 118 in it, because I've filtered out all the things
+47 - 118,因为我已经过滤掉所有的东西
+里面只有 47 和 118，因为我已经把所有
+
+878
+00:47:33,020 --> 00:47:38,156
+where the value's not greater than 20, Imagine writing
+值不大于20,想象写作吗
+不满足大于 20 这个条件的数都过滤掉了。想象一下
+
+879
+00:47:38,225 --> 00:47:43,194
+this line of code without filter, You're gonna have
+这行代码没有过滤,你会拥有的
+如果不依靠 filter 来实现这行代码
+
+880
+00:47:43,263 --> 00:47:45,630
+to a for loop, You're gonna have to create another array,
+for循环,你需要创建另一个数组,
+你可能要写个 for 循环，然后创建一个新数组
+
+881
+00:47:45,699 --> 00:47:48,133
+You're gonna have to run this little function,
+你需要运行这个函数,
+然后执行这个小函数
+
+882
+00:47:48,202 --> 00:47:50,169
+call this function, create a new array and
+调用这个函数,创建一个新数组
+调用这个函数，创建新数组
+
+883
+00:47:50,237 --> 00:47:52,170
+add, append thing to do it, It's at least four or
+添加,添加的事情,它至少四、
+然后把符合条件的加进去
+
+884
+00:47:52,239 --> 00:47:55,807
+five lines of code, And here you get it in one line of
+五行代码,你得到它在一行
+至少也要四五行代码。用了 filter，只用一行代码就实现了
+
+885
+00:47:55,876 --> 00:47:59,311
+code, okay? So you see how closure there has helped us,
+代码,好吗?
+闭包是如何帮我们实现这个功能的？你们理解了吗
+
+886
+00:47:59,380 --> 00:48:02,481
+This is also much more readable cuz you can read this
+这也是更可读的因为你可以阅读
+这也让代码更具可读性
+
+887
+00:48:02,550 --> 00:48:05,718
+like this: Let the big numbers equal this array, but
+是这样的:让大数字等于这个数组,但是
+可以这样读：让 bigNumbers 等于这个数组
+
+888
+00:48:05,786 --> 00:48:08,053
+filter for things there are greater than 20,
+过滤的东西有大于20,
+但是只要其中比 20 大的
+
+889
+00:48:09,223 --> 00:48:11,356
+That reads nicely, so I'm just clear,
+所以我只是清楚,读好
+这样读起来太顺了，表达清晰
+
+890
+00:48:11,424 --> 00:48:14,426
+It's very easy to understand what's going on here,
+很容易理解这是怎么回事,
+非常容易让人理解这行代码在做什么
+
+891
+00:48:14,495 --> 00:48:19,030
+So here's another one, It's called map, What does map do?
+这是另一个,它叫地图,地图做什么?
+另一个方法，叫做 map，它是做什么的？
+
+892
+00:48:19,099 --> 00:48:21,967
+It takes a closure, or a function, And
+这需要一个闭包,或一个函数
+它也接收一个闭包，或者说一个函数
+
+893
+00:48:22,036 --> 00:48:26,371
+it executes that function in order to transform each
+它执行,每个函数为了变换
+它会执行那个函数
+
+894
+00:48:26,439 --> 00:48:29,107
+of the elements in the array you're sending map to,
+数组中元素的你发送地图,
+将你传入数组的每个元素进行转化
+
+895
+00:48:29,175 --> 00:48:30,342
+to a new array,
+到一个新数组,
+然后输出到一个新数组
+
+896
+00:48:30,411 --> 00:48:32,878
+Now that transformation could be anything that a function
+现在转换可以是任何一个函数
+这种转化可以是任何形式的，只要通过函数能做到
+
+897
+00:48:32,946 --> 00:48:36,048
+can do, And you can convert it to any new type you want,
+可以做,你可以将它转换成任何你想要的新类型,
+甚至可以转化为任何你想要的新类型
+
+898
+00:48:36,116 --> 00:48:39,083
+Although it's one function, so it
+尽管它是一个函数,所以它
+但是它是一个函数
+
+899
+00:48:39,152 --> 00:48:42,253
+coverts everything to the same type, So you could use it for
+将相同类型的一切,所以你可以用它来
+它只能把所有东西转化为同一个类型
+
+900
+00:48:42,322 --> 00:48:44,790
+type conversions like I have here, I've taken 1,
+类型转换喜欢这里,我已经1
+你可以用它来实现类型转化。例如这里
+
+901
+00:48:44,858 --> 00:48:48,059
+2, 3 and mapped it to the string versions of 1, 2, 3, so
+2、3和映射的字符串版本1,2,3,所以
+我把数字 1，2，3 映射成字符串形式的 "1"，"2"，"3"
+
+902
+00:48:48,128 --> 00:48:51,429
+now I have the new array with strings in it, String of 1,
+现在我有新的数组与字符串,字符串的
+现在我得到了一个新数组，包含字符串的数组 ["1"，"2"，"3"]
+
+903
+00:48:51,498 --> 00:48:54,466
+string of 2, string of 3, That's a trivial mapping,
+字符串的字符串,这是一个简单的映射,
+这只是个意义不大的映射
+
+904
+00:48:54,535 --> 00:48:56,801
+But you can imagine much more powerful mappings where you
+但是你可以想象,你更强大的映射
+但你可以想象下功能更加强大的映射
+
+905
+00:48:56,870 --> 00:48:58,036
+take each element of the array, and
+把数组的每个元素,
+对数组的每个元素
+
+906
+00:48:58,105 --> 00:49:01,372
+call some complicated function on it, and get the result into
+调用一些复杂函数,并得到结果
+调用非常复杂的函数，取得结果
+
+907
+00:49:01,441 --> 00:49:06,044
+a new array, So by creating a really powerful argument there
+一个新数组,通过创建一个非常强大的论点
+放入新数组。这需要创建一个非常强大的函数作为参数
+
+908
+00:49:06,112 --> 00:49:09,014
+instead of String($0), something more powerful, you
+而不是字符串(0美元),更强大,你
+替代 String($0)
+
+909
+00:49:09,083 --> 00:49:11,950
+can really have one line of code that's really expressive,
+真的可以有非常富有表现力的一行代码,
+你可以创造出意义丰富的单行代码
+
+910
+00:49:12,019 --> 00:49:15,587
+It can do a lot of things, One thing about this one: notice
+它可以做很多事情,关于这个:注意到一件事
+可以做很多事情。注意这个地方
+
+911
+00:49:15,656 --> 00:49:19,224
+that after the word map, there's no parentheses,
+之后,地图,这个词没有括号,
+map 的后面没有小括号
+
+912
+00:49:19,293 --> 00:49:21,259
+no open parentheses, Did you notice that?
+没有开括号,你注意了吗?
+没有左半小括号，注意到了吗？
+
+913
+00:49:21,328 --> 00:49:23,795
+You see the difference between filter and map, okay?
+你看到过滤和地图之间的区别,好吗?
+你们是否注意到了 filter 和 map 的区别
+
+914
+00:49:23,864 --> 00:49:25,931
+When I called filter, I said open parentheses,
+我叫过滤器时,我说的开括号,
+当我调用 filter 时，我在后面写了个小括号
+
+915
+00:49:25,999 --> 00:49:28,634
+open curly brace, the function, curly brace, close
+花括号,函数、花括号结束
+然后是大括号，函数，大括号结束，小括号结束
+
+916
+00:49:28,703 --> 00:49:34,506
+parentheses, Here I just say, { String$0}, no parentheses,
+括号,在这里,我只是说,{字符串$ 0 },没有括号,
+但是 map 这里，我只是用了 { String($0) }，没有小括号
+
+917
+00:49:34,575 --> 00:49:38,910
+And this is what's called the trailing closure syntax, You
+这就是所谓的后关闭语法,你
+这种语法叫做尾随闭包
+
+918
+00:49:38,979 --> 00:49:42,981
+are allowed to have closures that are the last argument to
+允许有关闭最后一个参数
+当闭包作为最后一个参数时
+
+919
+00:49:43,050 --> 00:49:46,384
+a function, The outside of the parentheses of that function,
+一个函数,这个函数的括号外的,
+你可以把闭包放到函数的参数部分的括号的外边
+
+920
+00:49:46,453 --> 00:49:49,621
+if they're trailing, see they're trailing the call, And
+如果他们落后,看到他们落后于电话,
+如果是尾随闭包，它们跟在函数调用的尾部
+
+921
+00:49:49,690 --> 00:49:51,723
+in fact, if there's only one argument and
+事实上,如果只有一个参数,
+实际上，如果只有一个参数
+
+922
+00:49:51,792 --> 00:49:53,759
+it's closure, you don't need the parentheses at all,
+它关闭,您不需要括号,
+并且这个参数是闭包，连小括号都不需要了
+
+923
+00:49:53,828 --> 00:49:55,560
+And that's what happened there with map,
+这是发生了什么有地图,
+这种情形就是 map 这行代码这样
+
+924
+00:49:55,629 --> 00:49:59,130
+I'm just saying map, parentheses get rid of them,
+我只是说地图,括号去掉,
+只是说 map，省略了小括号
+
+925
+00:49:59,199 --> 00:50:02,368
+Just put the closure there, trailing, And
+把闭包,拖着,
+把闭包跟在后面
+
+926
+00:50:02,436 --> 00:50:04,436
+that also results in some pretty cool looking
+这也导致一些很酷
+产生了像这行代码一样的很酷的效果
+
+927
+00:50:06,473 --> 00:50:09,641
+code right here, you see that? So you can use that anywhere
+代码在这里,你看到了吗?
+你们理解了吗？你们可以在任何地方
+
+928
+00:50:09,710 --> 00:50:12,944
+that a closure is the last argument of function,
+闭包是最后一个参数的函数,
+用这个语法，只要最后一个参数是函数
+
+929
+00:50:13,013 --> 00:50:15,713
+You can take it outside, just put the curly braces, Cuz you already
+你可以把它外面,只是把花括号,因为你已经
+你可以把闭包从小括号中提出来，只留下大括号这部分
+
+930
+00:50:15,782 --> 00:50:17,449
+got the curly braces, and that's why they do it,
+花括号,这就是为什么他们这样做,
+因为已经有大括号扩起来了，所以语法允许
+
+931
+00:50:17,517 --> 00:50:19,951
+You don't really need the parentheses around it as well,
+你真的不需要括号围绕它,
+周围的小括号也不需要了
+
+932
+00:50:20,020 --> 00:50:20,786
+So put that at the end,
+所以最后,
+把闭包直接放在尾部
+
+933
+00:50:20,854 --> 00:50:22,554
+And put all the rest of the arguments, if you had them,
+并把所有剩下的参数,如果你有他们,
+如果有其他参数的话
+
+934
+00:50:22,623 --> 00:50:27,158
+inside the parentheses right before, This last one, I won't
+在括号之前,最后一个,我不会
+仍然把它们放在小括号内。最后一个
+
+935
+00:50:27,227 --> 00:50:29,061
+go into the details, but it's a similar kind of thing,
+进入细节,但它是一个类似的事情,
+我不会深入讲解，不过这个和前面的 map 是类似的
+
+936
+00:50:29,129 --> 00:50:32,097
+Reduce: what reduce does is it takes an entire array and
+减少:降低是整个数组
+reduce，它的功能是将整个数组
+
+937
+00:50:32,165 --> 00:50:36,200
+reduces it to a single value, So here I'm reducing it by
+减少到一个单一值,所以这里我减少了
+变成一个值，这里我把
+
+938
+00:50:36,269 --> 00:50:39,737
+adding all the numbers in the array up, So my closure is $0
+数组中所有的数字加到一起,所以我关闭0美元
+整个数组的数字都加起来，闭包写作 $0 + $1
+
+939
+00:50:39,806 --> 00:50:43,408
++ $1, because the argument it takes is a function that takes
++ 1美元,因为所需的参数是一个函数
+因为这个参数是有两个参数的函数
+
+940
+00:50:43,477 --> 00:50:46,245
+two elements, One of them is an element from the array and
+两个元素,其中一个是一个元素的数组
+其中一个是数组中的一个元素
+
+941
+00:50:46,313 --> 00:50:49,247
+the other is the answer so far, and
+另一个答案是到目前为止,
+另一个是目前为止累计的结果
+
+942
+00:50:49,316 --> 00:50:52,317
+then it returns the new answer so far, So it just executes
+然后它返回新的答案为止,所以它只是执行
+然后它返回新的结果
+
+943
+00:50:52,385 --> 00:50:55,453
+that function over and over and over on the arrays,
+这个函数数组一遍又一遍又一遍,
+所以 reduce 对数组不断地执行这个函数
+
+944
+00:50:55,522 --> 00:50:58,957
+By the way, notice that I can say this as sum = [1,
+顺便说一下,请注意,我可以说这是金额=[1,
+注意到了吗，我也可以写成 let sum = [1,2,3].reduce(0, +)
+
+945
+00:50:59,026 --> 00:51:03,228
+2, 3],reduce(0, +) which is my starting so far value,
+2、3),减少(0,+)这是我开始到目前为止,
+0 代表初始的迭代值
+
+946
+00:51:03,297 --> 00:51:06,064
+Which I haven't added a name on, so it starts at 0 and
+我没有添加一个名称,它从0开始,
+它没有参数名，所以会从零开始
+
+947
+00:51:06,133 --> 00:51:09,200
+then I can say plus, The reason I can say plus right
+然后我可以加上说,我可以说+正确的原因
+然后我可以只写个加号，最下面这行代码
+
+948
+00:51:09,269 --> 00:51:11,803
+there at the bottom line, is because plus
+在底线,是因为+
+可以直接写个加号的原因是
+
+949
+00:51:11,872 --> 00:51:14,406
+in Swift is not some kinda weird built-in thing,
+在斯威夫特不是内置一些有点奇怪的事情,
+加号在 Swift 中不是什么特殊的内置的符号
+
+950
+00:51:14,474 --> 00:51:18,076
+it's just a function, It's a function that happens to be
+它只是一个函数,这个函数会发生
+它仅仅是个函数。是这样一个函数
+
+951
+00:51:18,145 --> 00:51:20,745
+declared in a way that says, this is a function, but
+宣布在某种程度上说,这是一个函数,但是
+它是这样声明的，这是个函数
+
+952
+00:51:20,814 --> 00:51:23,348
+it's two arguments it's going either side of it,
+这是两个参数的任何一方,
+它的两个参数就是加号两侧的值
+
+953
+00:51:23,417 --> 00:51:28,453
+It's called an infix operator on a function, So
+它叫做中缀操作符在一个函数,所以
+这叫做 infix（中缀）操作符函数
+
+954
+00:51:28,521 --> 00:51:30,255
+since plus is just a function, and
+因为加是一个函数,和
+因为 + 是个函数
+
+955
+00:51:30,324 --> 00:51:31,556
+I'm taking a function as an argument,
+我把一个函数作为参数,
+我把一个函数作为这里的参数
+
+956
+00:51:31,625 --> 00:51:34,826
+as long as it's a function that takes two arguments and
+只要一个函数有两个参数
+因为它是一个接收两个参数
+
+957
+00:51:34,895 --> 00:51:37,962
+returns one, which is exactly what plus does, it works
+返回一个,这正是+,它的工作原理
+返回一个值的函数，就和加法运算是一致的
+
+958
+00:51:38,031 --> 00:51:40,265
+there, We could have done that in our calculator brain, too,
+在那里,我们可以做我们的计算器的大脑,也
+所以它可以用在这里，也可以用在 CalculatorBrain 中
+
+959
+00:51:40,334 --> 00:51:45,003
+Remember all that closures we were doing ($0* $1),
+记得关闭所有我们所做的(0 * 1美元),
+还记得那些形如 $0 * $1 的闭包吗
+
+960
+00:51:45,072 --> 00:51:50,909
+that could've just been *), ($0+$1), that could've just
+刚才*),(0 + 1美元),刚刚
+它可以被简化为 *，$0 + $1 可以被简化为 +
+
+961
+00:51:50,978 --> 00:51:54,813
+been +, Cuz + is a function that takes two doubles and
++,因为+是一个函数,它接受两个双打
+因为 + 是一个函数，接收两个 Double 作为参数
+
+962
+00:51:54,882 --> 00:51:58,416
+returns a double, Plus also know how to plus other types,
+返回一个双,加上也知道如何加上其他类型,
+返回一个 Double，+ 也懂得怎么操作其他类型
+
+963
+00:51:58,485 --> 00:52:01,619
+ints, And it even knows how to plus and into a float,
+整数,甚至知道如何加到一个浮点数,
+比如 Int，Float 也可以
+
+964
+00:52:01,688 --> 00:52:05,356
+for example, etc, You can plus strings together,
+例如,等等,你可以加上字符串连接起来,
+你还可以对两个 String 相加
+
+965
+00:52:05,425 --> 00:52:07,525
+So that was just a little aside just to give you
+这只是一个小一边给你
+再说就有点远了，这里只做简单的介绍
+
+966
+00:52:07,594 --> 00:52:11,162
+an introduction there, You're gonna start seeing a lot of
+介绍,你会开始看到很多
+你还会看到很多方法
+
+967
+00:52:11,231 --> 00:52:12,631
+methods that take functions as arguments,
+将函数作为参数的方法,
+它们的参数是有两个参数的函数
+
+968
+00:52:12,700 --> 00:52:15,667
+So I want you to start to get comfortable with that,
+所以我希望你开始熟悉,
+我希望你们逐渐适应这种方式
+
+969
+00:52:15,736 --> 00:52:19,204
+Okay, dictionary, So we learned a lot about dictionary
+好的,字典,我们学到了很多关于词典
+好了，下面讲 Dictionary（字典）。在第一讲中
+
+970
+00:52:19,273 --> 00:52:22,140
+in our first lecture, Dictionary also has this
+在我们的第一节课,字典也有这个
+我们已经学了不少有关字典的知识了
+
+971
+00:52:22,208 --> 00:52:25,977
+special declaration syntax, which is open square bracket
+特别声明的语法,这是开放的方括号
+字典也有这种特殊的声明语法
+
+972
+00:52:26,046 --> 00:52:30,882
+key type colon value type closed square bracket, So
+密钥类型结肠值类型闭方括号,
+左半方括号，键类型，冒号，值类型，右半方括号
+
+973
+00:52:30,951 --> 00:52:34,386
+those two things in yellow are equivalent,
+这两件事在黄色是等价的,
+所以两个标注为黄色的部分是等价的
+
+974
+00:52:34,455 --> 00:52:36,755
+And the one on the bottom seems to be the preferred
+和一个在底部似乎是首选
+目前第二个好像更受欢迎一些
+
+975
+00:52:36,823 --> 00:52:41,960
+one these days, So you know you can create a dictionary,
+这些天,所以你知道你可以创建一个字典,
+你们已经知道了能创建一个字典
+
+976
+00:52:42,029 --> 00:52:44,796
+By the way, I show you creating dictionaries from
+顺便说一下,我给你创建字典
+我这里展示的是如何通过常量
+
+977
+00:52:44,865 --> 00:52:46,198
+kind of constant values here,
+类型的常量值,
+来创建一个字典
+
+978
+00:52:46,267 --> 00:52:48,667
+But you can create a dictionary just by saying,
+但是你可以创建一个字典就说,
+但是你也可以先创建空字典
+
+979
+00:52:48,736 --> 00:52:50,802
+let d equal dictionary, Open parenthesis,
+让d等于字典,左括号,
+比如 let d = [String:Int]()
+
+980
+00:52:50,871 --> 00:52:53,405
+close parenthesis, And if you say var d
+关闭括号,如果你说var d
+或者是创建可变的字典的变量
+
+981
+00:52:53,474 --> 00:52:55,941
+equals dictionary, then now you can start appending items
+等于字典,那么现在你就可以开始添加项目
+比如 var d = [String:Int]()
+
+982
+00:52:56,009 --> 00:52:58,176
+onto it because you get an empty dictionary to start, But
+到它,因为你会得到一个空的字典开始,但是
+可以之后再往里面加东西
+
+983
+00:52:58,245 --> 00:53:01,012
+here I'm starting my dictionary with stuff in it,
+在这里我对东西,开始我的字典
+这里我初始化字典时就包含了一些内容
+
+984
+00:53:01,081 --> 00:53:06,051
+That probably should say var pac12teamRankings
+应该说var pac12teamRankings
+这里应该用 var pac12teamRankings 而不是 let
+
+985
+00:53:06,119 --> 00:53:10,154
+because two lines later I say pac12teamRankings sub Cal
+因为两条线后,我说pac12teamRankings子卡尔
+因为隔了两行代码之后
+
+986
+00:53:10,223 --> 00:53:15,159
+equals 12, Note also that
+等于12,也要注意
+我用了 pac12teamRankings["Cal"] = 12
+
+987
+00:53:15,228 --> 00:53:18,964
+when I try to get the ranking of Ohio State, it returns nil,
+当我试图让俄亥俄州立大学的排名,它返回nil,
+另外注意我尝试获取键为 "Ohio State" 的值，返回的是 nil
+
+988
+00:53:19,032 --> 00:53:21,032
+And we know that when we use square brackets to get
+我们知道,当我们使用方括号
+我们知道当用方括号
+
+989
+00:53:21,101 --> 00:53:22,367
+something out of the dictionary, it returns
+的字典,它返回
+在字典中查询某个键时
+
+990
+00:53:22,436 --> 00:53:26,838
+an optional of our value type, Our value type here is ints,
+一个可选值类型,我们的价值类型是整数,
+返回的是值类型的可选类型，这里我们的值类型是 Int
+
+991
+00:53:26,907 --> 00:53:32,544
+so it's gonna return an optional int,
+所以它会返回一个可选的整型,
+所以返回的是 Int?
+
+992
+00:53:32,613 --> 00:53:37,683
+Alright, enumeration, A dictionary is also
+好的,枚举,字典也
+下面是字典的枚举。字典也是一个 Collection
+
+993
+00:53:37,751 --> 00:53:40,852
+a collection and thus can be sequenced, So you can do for
+一个集合,因此可以排序,所以你可以做
+因此也是 Sequence，所以可以用 for...in 循环
+
+994
+00:53:40,921 --> 00:53:43,388
+in on it, Of course, a dictionary has keys and
+在,当然,钥匙和一本字典
+字典包含键和值
+
+995
+00:53:43,457 --> 00:53:48,326
+values, So we need a tuple to do our enumeration for
+值,所以我们需要一个元组的枚举
+所以我们要用一个元组来枚举
+
+996
+00:53:48,395 --> 00:53:52,964
+the tuple key common value in the dictionary, And
+元组密钥共同价值在字典里,
+写作 for (key, value) in dictionary
+
+997
+00:53:53,033 --> 00:53:56,468
+then it'll go through and key in value will be set,
+然后它会通过键的值将被设置,
+然后这个循环就开始了，会遍历所有的键值对
+
+998
+00:53:57,605 --> 00:53:59,104
+It's a perfectly straightforward way
+这是一个非常简单的方法
+用这种方式对字典进行枚举或迭代
+
+999
+00:53:59,173 --> 00:54:04,643
+to enumerate or iterate over a dictionary, Okay,
+列举或遍历一个字典,
+很完美，而且容易书写
+
+1000
+00:54:04,711 --> 00:54:08,547
+String, So string, you would think, is the simplest class
+字符串,字符串,你可能会认为,是最简单的类
+String，你可能会认为
+
+1001
+00:54:08,615 --> 00:54:11,182
+in all of any language, It's just a string, right?
+在所有的任何语言,它只是一个字符串,对吧?
+String 是所有编程语言中最简单的类，它仅仅是个字符串
+
+1002
+00:54:11,251 --> 00:54:14,752
+Well, that turns out not to be so true, When you think of
+嗯,这结果不是那么真实的,当你想到
+但是这种想法可能不那么正确
+
+1003
+00:54:14,821 --> 00:54:17,756
+a string that represents every language in the entire world,
+一个字符串,该字符串代表整个世界上每一种语言,
+想象一下当一个字符串可以表达世界上所有语言的时候
+
+1004
+00:54:17,824 --> 00:54:21,760
+all of a sudden it got real complicated real fast,
+突然它有真实的复杂真实的快,
+它突然间就变得复杂了
+
+1005
+00:54:21,828 --> 00:54:26,397
+Because some languages are ideographic, Some languages go
+因为有些语言表意的,一些语言
+因为一些语言是表意的
+
+1006
+00:54:26,466 --> 00:54:29,735
+right to left instead of left to right, Some languages have
+右到左左到右,而是一些语言
+还有一些语言是从右往左书写的
+
+1007
+00:54:29,803 --> 00:54:34,639
+a lot of diacritic marks and accents in them, Some don't,
+大量的可区别的标志和口音,有些不
+一些语言有很多变音符或重音符，而另外一些没有
+
+1008
+00:54:34,708 --> 00:54:37,976
+Most languages don't use the same alphabet as we use,
+大多数语言不使用我们使用相同的字母,
+绝大多数语言和我们用的字母表不一样
+
+1009
+00:54:38,045 --> 00:54:40,412
+So string is super complicated,
+字符串是超级复杂,
+所以字符串其实非常复杂
+
+1010
+00:54:40,480 --> 00:54:43,982
+this is a very complicated class, Now string tries
+这是一个非常复杂的类,现在尝试字符串
+这是一个非常复杂的类
+
+1011
+00:54:44,050 --> 00:54:46,485
+its best and does a pretty good job of simplifying it for
+最好的,也很好地简化它
+String 尽其所能让我们操作字符串变得容易
+
+1012
+00:54:46,553 --> 00:54:51,423
+your use, But the complexity is still there, Now the most
+使用,但仍然存在的复杂性,现在最多
+但是复杂性还是存在的
+
+1013
+00:54:51,491 --> 00:54:54,393
+important complexity about a string is that representing
+重要的复杂性是一个字符串表示
+String 最复杂的是
+
+1014
+00:54:54,462 --> 00:54:59,631
+a string is not always one character equals one
+一个字符串并不总是一个字符等于1
+显示的每一个字符
+
+1015
+00:54:59,699 --> 00:55:04,269
+internal representation unit, Now the units, the kind of
+内部表示单位,现在的单位,这样的
+并不是都能用一个字节表示的
+
+1016
+00:55:04,338 --> 00:55:06,804
+thing that's used to represent strings on the inside,
+用于表示的字符串,
+String 内部用来表达一个字符串的编码
+
+1017
+00:55:06,873 --> 00:55:10,642
+are Unicodes, I had you skip that reading in assignment
+unicode,我如果你跳过阅读作业
+叫做 Unicode。在作业一中，我让你们跳过阅读这部分
+
+1018
+00:55:10,711 --> 00:55:13,344
+one, I'm putting it in for assignment two,
+一个,我把它转让两个,
+现在我把这部分放在了作业二中
+
+1019
+00:55:13,413 --> 00:55:14,980
+It's really not that critical that you understand it,
+这真的不是,关键你理解它,
+理解这部分内容并没有那么重要
+
+1020
+00:55:15,049 --> 00:55:16,248
+I think it's very interesting, though, so
+不过,我认为这是非常有趣的
+但是我觉得这是个很有趣的东西
+
+1021
+00:55:16,317 --> 00:55:19,918
+you probably want to read it, But the thing about Unicodes
+你可能想要读它,但关于unicode
+所以你可能愿意去阅读这些
+
+1022
+00:55:19,987 --> 00:55:22,420
+is it's not one Unicode equals one character,
+它不是一个Unicode等于一个字符,
+Unicode 的一个特点是，一个 Unicode 不等价于一个字符
+
+1023
+00:55:22,489 --> 00:55:27,392
+In fact, if you have like a little emoji of a dog barking,
+事实上,如果你像一个小emoji狗狂吠,
+比如有一个类似狗叫的表情
+
+1024
+00:55:27,461 --> 00:55:30,562
+that might be three Unicode characters, It's only one with
+这可能是三个Unicode字符,它只有一个
+它很可能是由三个 Unicode 字符表达的
+
+1025
+00:55:30,630 --> 00:55:32,631
+regards to what you perceive to be a character, Or
+问候你的感知是一个字符,或者
+但看起来，它就是一个字符
+
+1026
+00:55:32,700 --> 00:55:36,902
+even more simply, the example I have here, the word cafe,
+更简单,我这里的例子中,这个词的咖啡馆,
+来看个更简单的例子，café 这个单词
+
+1027
+00:55:36,970 --> 00:55:40,371
+It's got e accent aigu on the end, right, it's a French
+它有e口音aigu结束,对的,这是一个法国人
+它的结尾有个闭音符，它是一个法语词
+
+1028
+00:55:40,440 --> 00:55:43,242
+word, e accent aigu, That could be four Unicodes,
+e口音aigu词,可以四个unicode,
+以 é 结尾。这个词可能是由 4 个 Unicode 构成的
+
+1029
+00:55:43,310 --> 00:55:45,710
+because there is a Unicode for e accent aigu,
+因为有一个Unicode e口音aigu,
+有一个单独的 Unicode 代表 é
+
+1030
+00:55:45,779 --> 00:55:49,548
+Or it could be five, It could be the e with another Unicode
+也可以是五个,可以是与另一个Unicode e
+也有可能是由 5 个 Unicode 构成的。可能是 e 加上另一个
+
+1031
+00:55:49,616 --> 00:55:52,617
+character that says put an accent on that previous
+性格说给之前的口音
+表达“给前面那个字符加上闭音符”这样含义的 Unicode
+
+1032
+00:55:52,686 --> 00:55:57,489
+character, So, when you have this kind of unknown how many
+性格,所以,当你有这种未知的多少
+当你不知道到底有多少字符来表达它的时候
+
+1033
+00:55:57,558 --> 00:56:00,325
+characters it represents, you need a new abstraction
+它所代表人物,你需要一个新的抽象
+你需要一个新的抽象概念
+
+1034
+00:56:00,394 --> 00:56:04,495
+to represent what we perceive as humans to be a character,
+来表示我们认为人类是一个字符,
+来表达我们人类认知上的字符
+
+1035
+00:56:04,564 --> 00:56:07,833
+Even that is difficult to truly define, when you think
+即使是很难真正定义,当你的想法
+要针对世界上所有语言，定义出这种抽象概念非常困难
+
+1036
+00:56:07,901 --> 00:56:09,734
+of all the languages in the world, It's easy in English,
+世界上所有的语言,英语很容易,
+只是针对英语的话很简单
+
+1037
+00:56:09,803 --> 00:56:15,274
+though, So that's really how we're gonna interact with
+不过,这就是我们如何相互作用
+这就是我们使用 String 的方法
+
+1038
+00:56:15,342 --> 00:56:17,976
+strings: to try to think of them in terms of characters,
+字符串:试图把他们的角色,
+把它视作一串人类认知上的字符
+
+1039
+00:56:18,045 --> 00:56:19,711
+But a string itself is not actually
+但一个字符串本身不是
+但是 String 本身并不是
+
+1040
+00:56:19,780 --> 00:56:20,712
+a collection of characters,
+字符的集合,
+单纯的字符的集合
+
+1041
+00:56:20,781 --> 00:56:23,181
+A string is a more powerful internal structure,
+一个字符串是一个更强大的内部结构,
+String 是一个内部非常强大的结构体
+
+1042
+00:56:23,250 --> 00:56:25,783
+it's got all the Unicodes in there and all that stuff,
+它有所有的unicode和所有的东西,
+它包含了一串字符中所有的 Unicode 和其他东西
+
+1043
+00:56:25,852 --> 00:56:29,087
+it's not quite that, And that makes for a little bit of
+不是,这让一点
+和你想象的不太一样
+
+1044
+00:56:29,156 --> 00:56:34,225
+complication as you're gonna see, Now, you can't; String is
+并发症你会看到,现在,你不能,字符串
+因此在使用 String 的时候还有其它不便之处
+
+1045
+00:56:34,294 --> 00:56:37,229
+indexable which means you can use the open square brackets
+可转位,这意味着您可以使用方括号
+虽然 String 可以用类似索引数组的形式
+
+1046
+00:56:37,297 --> 00:56:40,665
+just like you can in array to get one of the characters,
+就像你可以在数组的一个字符,
+通过方括号取得字符串中的某个字符
+
+1047
+00:56:40,734 --> 00:56:43,736
+The only rub is what I said on the other slide that index
+唯一的摩擦是我说什么其他指数的下滑
+我之前提到过会带来的麻烦是
+
+1048
+00:56:43,804 --> 00:56:46,505
+is not an int, So if you have the word hello,
+不是一个整数,所以如果你有你好,这个词
+String 的索引不是一个 Int 类型。你有一个单词 hello
+
+1049
+00:56:46,573 --> 00:56:53,378
+it's not like you can say, hello[1] equals e,
+它不像你可以说,你好[1]= e,
+你没法通过类似 hello[1] 的方式来取得字符 e
+
+1050
+00:56:53,447 --> 00:56:56,481
+You can't do it that way because it might,
+你不能这么做,因为这可能会,
+你没法那样做，因为可能有这种情况
+
+1051
+00:56:56,550 --> 00:56:59,050
+if it was cafe then cafe sub 3,
+如果是咖啡馆,咖啡馆下标3,
+如果这个单词是 café，然后取 café[3]
+
+1052
+00:56:59,119 --> 00:57:03,088
+It's not clear, You want a character at that point
+不清楚,你想要一个字符
+String 并不清楚你想要的是第四个字节还是整个字符
+
+1053
+00:57:03,157 --> 00:57:06,258
+so you've got to make sure you get the right index in there
+所以你要确保你得到正确的索引
+同时你还要确保自己提供的了正确的索引
+
+1054
+00:57:06,326 --> 00:57:08,961
+because that index behind the scenes can be quite
+因为这幕后指数可以相当
+因为这个索引位置的背后，实际上非常复杂
+
+1055
+00:57:09,029 --> 00:57:11,997
+complicated, There's this other struct for it, which is
+复杂,这里有其他结构,这是
+因此产生了另外一个结构体，叫做 String.Index
+
+1056
+00:57:12,065 --> 00:57:15,267
+called a String,Index, So let's say I had a string,
+叫一个字符串,指数,假设我有一个字符串,
+我有一个字符串
+
+1057
+00:57:15,336 --> 00:57:18,870
+which I'm gonna call s and I'm gonna put hello into there,
+我将称之为年代和我要把你好,
+命名为 s，然后我把 "hello" 赋值给它
+
+1058
+00:57:18,939 --> 00:57:23,842
+Now, what if I wanted s[0] now, I can't do s[0],
+现在,如果我想要s[0]现在,我不能做[0],
+现在，我要取得 s[0]，当然没法写作 s[0]
+
+1059
+00:57:23,911 --> 00:57:25,678
+because we don't index strings by integers but
+因为我们不指数字符串,整数
+因为没法通过整数来索引字符串
+
+1060
+00:57:25,746 --> 00:57:28,046
+let's say I want that, How do I get it? Well,
+假设我希望这样,我怎么得到它?
+我要那个字符，到底怎么拿到它？
+
+1061
+00:57:28,115 --> 00:57:31,450
+I start by calling this var, again using this var and
+我又开始通过调用这个变量,使用这个变量
+首先我操作 s，调用 s.startIndex
+
+1062
+00:57:31,518 --> 00:57:34,386
+string called startIndex, okay? It gives us
+为被称作startIndex的字符串?
+它返回给我一个 String.Index 类型的值
+
+1063
+00:57:34,455 --> 00:57:37,322
+a string,index, It's very important, we need to get
+一个字符串,索引,这是非常重要的,我们需要得到的
+下面很关键，我们需要一个变量保存这个 String.Index
+
+1064
+00:57:37,391 --> 00:57:39,958
+a hold of a string,index because the way we're gonna
+的一个字符串,指数,因为我们要的方式
+因为我们接下来要在字符串中
+
+1065
+00:57:40,027 --> 00:57:42,427
+move around in string is by taking index we know and
+在字符串是我们知道,通过索引
+以这个已知的索引为基准
+
+1066
+00:57:42,496 --> 00:57:44,963
+moving forward or backward by character, by human
+向前或向后通过角色,人类
+以人类认知的字符为单位向前或者向后移动
+
+1067
+00:57:45,032 --> 00:57:47,666
+understandable character, Not by Unicodes, because we
+可以理解的字符,而不是unicode,因为我们
+不是以 Unicode 为单位
+
+1068
+00:57:47,734 --> 00:57:50,068
+don't know how many Unicodes there are per character but
+不知道有多少unicode每个字符
+因为我们不知道每个字符到底用了几个 Unicode 来表达
+
+1069
+00:57:50,137 --> 00:57:52,637
+by character, we're gonna be moving back and forth,
+的性格,我们会来回移动,
+我们只根据字符来前后移动
+
+1070
+00:57:52,706 --> 00:57:54,506
+So we start with this first one,
+因此,我们从第一个开始,
+所以我们从第一个开始
+
+1071
+00:57:54,574 --> 00:57:56,941
+And so now I can create a variable firstChar which is of
+所以现在我可以创建一个变量firstChar的
+现在我创建一个变量叫做 firstChar
+
+1072
+00:57:57,010 --> 00:57:57,976
+this type Character,
+这种性格,
+它是 Character 类型的
+
+1073
+00:57:58,045 --> 00:58:00,746
+that human understandable character,
+人类可以理解的性格,
+是人类认知上的字符
+
+1074
+00:58:00,814 --> 00:58:03,715
+That's gonna be equal s[firstIndex], So see look,
+会平等年代firstIndex,看看看,
+它将被赋值成 s[firstIndex]
+
+1075
+00:58:03,784 --> 00:58:06,552
+I've used square brackets to index into a string, but
+我使用了方括号索引到一个字符串,但是
+看，这里我用了方括号来索引字符串
+
+1076
+00:58:06,620 --> 00:58:10,722
+I had to use a String,Index not an Int, This first index
+我必须使用一个字符串,指数不是一个Int,第一个索引
+我必须用 String.Index 而不是 Int 类型
+
+1077
+00:58:10,791 --> 00:58:13,091
+I got by asking the string "what's your first index"?
+我问了字符串“第一指数”是什么?
+我得到字符串的第一个索引，还要先问它才行
+
+1078
+00:58:13,160 --> 00:58:15,160
+Well this is kinda useless because I have to ask
+这是无用的,因为我要问
+这个步骤感觉挺多余的
+
+1079
+00:58:15,228 --> 00:58:17,161
+the string, what's the index of your first character and
+字符串的第一个字符的索引
+我先向字符串索要它的第一个字符的索引之后
+
+1080
+00:58:17,230 --> 00:58:19,731
+then turn around say okay give me S of your first character,
+然后转身说好的给我的你的第一个字符,
+然后又说“好吧，我实际上要的是你的第一个字符”
+
+1081
+00:58:19,800 --> 00:58:20,899
+So that's not the interesting thing,
+这不是有趣的,
+这种方式一点也不有趣
+
+1082
+00:58:20,968 --> 00:58:23,835
+what if I want the next character, If I
+如果我想要下一个字符,如果我
+如果我要下一个字符呢?
+
+1083
+00:58:23,904 --> 00:58:27,006
+want the next character, I ask the string what's the index of
+希望下一个字符,我问字符串的索引
+如果我要下一个字符，我要对字符串说
+
+1084
+00:58:27,074 --> 00:58:30,975
+the character after your first character, And
+后你的第一个字符,
+“你的第一个字符之后的字符的索引是什么”
+
+1085
+00:58:31,044 --> 00:58:33,178
+it'll give me a new index, of its second character and
+它会给我一个新的索引,第二个字符和
+它会给我一个新的索引，即它第二个字符的索引
+
+1086
+00:58:33,247 --> 00:58:37,215
+now I can get that one, Even that is a little bit like,
+现在我可以得到一个,甚至有点像,
+这样我才能拿到第二个字符。这种感觉就像是
+
+1087
+00:58:37,284 --> 00:58:38,049
+my God, you're kidding me,
+我的上帝,你在跟我开玩笑,
+大地母亲在忽悠着我
+
+1088
+00:58:38,118 --> 00:58:41,219
+this is really how I have to do this? What if I wanted
+这真的是我必须这样做吗?
+我真的只能这么做吗?
+
+1089
+00:58:41,288 --> 00:58:44,056
+to go jump ahead though, and get the fourth, the fifth
+去跳过,第四,第五
+我想跳过前面的字符，直接取得第四个，第五个怎么办？
+
+1090
+00:58:44,124 --> 00:58:47,959
+character, let's say? Well I can jump ahead by saying s,
+的性格,让我们说什么?
+我们要这样做：对字符串 s 说
+
+1091
+00:58:48,028 --> 00:58:52,197
+give me the index of, starting at your first index,
+给我的指数,开始你的第一个索引,
+“从你的第一个索引开始”
+
+1092
+00:58:52,266 --> 00:58:53,832
+that's four ahead so jump four ahead,
+提前4所以跳四之前,
+因为要跳到第四个，所以“往前跳四下”
+
+1093
+00:58:53,901 --> 00:58:58,770
+four characters ahead, This is all a little
+四个字符,这是一点
+这样它就前进了四个字符
+
+1094
+00:58:58,839 --> 00:59:01,706
+tedious and of course this is not the actual way that we're
+乏味的,当然这不是我们实际的方式
+这实在够无聊的，当然这不是我们和 String 打交道的常见方式
+
+1095
+00:59:01,775 --> 00:59:03,775
+interacting with strings, We're usually looking for
+与字符串交互,我们通常寻找
+我们常用的是寻找子串
+
+1096
+00:59:03,844 --> 00:59:07,346
+substrings, okay, or subranges of characters or
+子字符串,或字符或附属的区域
+或者子串所处的位置
+
+1097
+00:59:07,414 --> 00:59:09,281
+we're trying to find a character in a string,
+我们试图找到一个字符在字符串中,
+或者寻找一个字符串中是否存在某个字符
+
+1098
+00:59:10,684 --> 00:59:13,485
+By the way, you can use ranges, so I could say
+顺便说一下,您可以使用范围,所以我可以说
+顺便，在这里你可以用 Range，所以可以说
+
+1099
+00:59:13,554 --> 00:59:17,021
+give me the substring which is firstIndex,,,secondIndex and
+给我substring firstIndex,,,secondIndex和
+给我 firstIndex...secondIndex 区间的子串
+
+1100
+00:59:17,090 --> 00:59:21,460
+it would give me he, A new string which is he, so
+他会给我,他是一个新字符串,因此
+这样它会返回我 "he"。一个新字符串 "he"
+
+1101
+00:59:21,528 --> 00:59:25,330
+you can use ranges there but they have to be string,index
+您可以使用范围,但它们必须是字符串,指数
+所以这里你可以用 Range，但必须是 String.Index 类型的
+
+1102
+00:59:25,398 --> 00:59:29,968
+not ints, So we want basically something that
+不是整数,所以基本上我们想要的东西
+而不是 Int 类型的。所以我们更希望的是
+
+1103
+00:59:30,037 --> 00:59:34,673
+is a collection of characters, A string is not a collection
+是一个字符的集合,一个字符串不是一个收集
+操作一串字符的集合。String 不是字符的集合
+
+1104
+00:59:34,742 --> 00:59:37,709
+of characters so you can't do for in, for example, on it,
+的人物所以你不能做的,例如,,
+所以你没法对它用 for...in 遍历
+
+1105
+00:59:37,778 --> 00:59:39,178
+You can't even say index(of:),
+你甚至不能说指数(的),
+你也没法对它用 index(of:) 方法
+
+1106
+00:59:39,246 --> 00:59:42,714
+index(of:) is this great thing where you can,
+:指数(),这是好事,你可以
+index(of:) 对于一个集合而言非常好用
+
+1107
+00:59:42,783 --> 00:59:44,215
+if you have a collection of things, you can say give
+如果你有收藏的东西,你可以说
+你可以说
+
+1108
+00:59:44,284 --> 00:59:47,452
+me this index of this thing in there, You can't even do that
+我这个指数的这个东西,你甚至不能这样做
+把这个元素的索引找出来
+
+1109
+00:59:47,521 --> 00:59:50,656
+with a string because it's not a collection, Luckily,
+一个字符串,因为它不是一个收集,幸运的是,
+但是你没法对 String 这样做，因为它不是 Collection
+
+1110
+00:59:50,724 --> 00:59:53,858
+string has a var which will give you a collection of its
+字符串有一个var,会给你一个收集的
+幸运的是，String 有一个变量
+
+1111
+00:59:53,927 --> 00:59:56,228
+characters, And not only is it gonna give
+字符,它不仅是要给
+不仅返回给你一个它包含的字符的集合
+
+1112
+00:59:56,297 --> 00:59:58,964
+you a collection of its characters that you can for
+你的角色,你可以集合
+你还可以对这个字符集合用
+
+1113
+00:59:59,032 --> 01:00:02,768
+in over and do index(of:), but the string indexes you get
+:在做指数(),但是字符串的索引
+for...in 循环，或者调用 index(of:)，而且你通过这个集合
+
+1114
+01:00:02,836 --> 01:00:07,472
+from that collection will match what's in the string, So
+从这个集合将匹配的字符串,所以
+索引到的字符和字符串中实际包含的字符是匹配的
+
+1115
+01:00:07,541 --> 01:00:10,008
+you can use this collection of characters to find things in
+您可以使用此字符找到事物的集合
+所以你可以用这个字符集合来查找字符
+
+1116
+01:00:10,077 --> 01:00:13,378
+there, get the index of a character, things like
+在那里,得到字符的索引,之类的东西
+或者取得某个字符的索引，等等
+
+1117
+01:00:13,447 --> 01:00:15,947
+that, And then use the indexes you find there to go back to
+你,然后使用索引找到回到
+然后拿着你找到的索引，对原字符串说
+
+1118
+01:00:16,016 --> 01:00:20,752
+your string and say, okay now give me a substring, So
+你的字符串说,现在给我一个字符串,所以
+现在给我一个指定的子串
+
+1119
+01:00:20,821 --> 01:00:24,890
+characters is the name of this var on string, So for example,
+人物的名字是var在字符串,例如,
+String 下的这个变量名字叫做 characters
+
+1120
+01:00:24,958 --> 01:00:27,993
+if I want to iterate over all the characters one by one,
+如果我想要遍历所有的人物一个接一个地
+举例来说，如果我要所有的字符，一个挨一个
+
+1121
+01:00:28,062 --> 01:00:29,828
+do a for loop over them I can say, for c:,
+做一个for循环在我可以说,c:,
+用 for 循环遍历它们，我可以这样说
+
+1122
+01:00:29,897 --> 01:00:31,730
+which will be of type character,
+将字符类型,
+for c: Character in s.characters
+
+1123
+01:00:31,798 --> 01:00:36,334
+by the way, in s,characters, I can't say for c: in s, for
+顺便说一下,在年代,字符,我不能说对c:在年代
+我不能说 for c in s
+
+1124
+01:00:36,403 --> 01:00:40,372
+c: in s,characters, And that's just gonna call my for
+c:在年代,字符,就打电话给我
+必须说 for c in s.characters
+
+1125
+01:00:40,441 --> 01:00:43,308
+loop once with each character, Question? Yeah,
+与每个字符循环一次,问题吗?
+这样就能通过 for 循环变量遍历每一个字符了。有什么问题？
+
+1126
+01:00:43,377 --> 01:00:46,211
+great question, So if I do this over cafe,
+很好的问题,如果我在咖啡屋,
+问得好！如果我对 café 做 for 循环
+
+1127
+01:00:46,279 --> 01:00:49,580
+what am I gonna get? I'm gonna get four characters, okay,
+我会得到什么?
+我会得到什么？我会得到四个字符
+
+1128
+01:00:49,649 --> 01:00:52,150
+because that E-accent-agu that they use is considered in our
+因为这E-accent-agu他们使用被认为是在我们的
+因为 é 被视作
+
+1129
+01:00:52,219 --> 01:00:54,520
+human perception one character,
+人类感知一个字符,
+一个人类认知中的字符
+
+1130
+01:00:54,588 --> 01:00:56,454
+I'll get four characters, So there is a character,
+我将得到四个字符,所以有一个角色,
+我会得到四个字符，有一个 Character
+
+1131
+01:00:56,523 --> 01:00:58,423
+Characters are struct, right? And in the character
+字符结构,对吧?
+Character 是结构体，Character 中刚好
+
+1132
+01:00:58,491 --> 01:01:01,093
+there is a character that represents e-accent-agu,
+有一个字符代表e-accent-agu,
+有一个能代表 é
+
+1133
+01:01:01,161 --> 01:01:02,360
+No matter how it's represented in the string,
+无论如何用字符串表示,
+不论它在 String 内部是怎么表达的
+
+1134
+01:01:02,429 --> 01:01:03,895
+in the string it might be two characters, it might be one,
+这可能是两个字符的字符串,它可能是一个,
+也许是两个字符，也许是一个
+
+1135
+01:01:03,964 --> 01:01:06,565
+it doesn't matter, You're gonna get the one character
+没关系,你会得到一个字符
+都没有关系。因为你得到的是一个能代表它的 Character
+
+1136
+01:01:06,634 --> 01:01:09,567
+for it, so that's a really good question, How would I
+,这是一个很好的问题,我怎么
+这个问题问得好
+
+1137
+01:01:09,636 --> 01:01:12,537
+know how many characters there are in a string? Again,
+知道有多少字符在字符串吗?
+我怎么才能知道到底一个字符串中有多少字符？
+
+1138
+01:01:12,606 --> 01:01:14,973
+from the user perspective, s,characters,count,
+从用户的角度来看,年代,字符,统计,
+人类认知的字符。s.characters.count
+
+1139
+01:01:15,042 --> 01:01:18,243
+not s,length or something, s,characters,count,
+年代,长度,年代,字符,统计,
+不是 s.length 或者其他什么，就是 s.characters.count
+
+1140
+01:01:18,312 --> 01:01:21,679
+the count of the characters in the collection of characters
+数的字符集合的字符
+意思是在这个字符串的字符集合中，元素的数量
+
+1141
+01:01:21,748 --> 01:01:26,250
+for this string, Also, what if I want to find the first space
+对于这个字符串,另外,如果我想找到第一个空间
+那么如果我要找字符串中的第一个空格怎么做？
+
+1142
+01:01:26,319 --> 01:01:29,121
+in a string? Got a string with a bunch of words, I wanna find
+在一个字符串?
+有个字符串，它包含很多单词
+
+1143
+01:01:29,189 --> 01:01:34,559
+the first space, I would say s,characters,index(of: " "),
+第一个空间,我想说的年代,字符,指数(:" "),
+我要找第一个空格。我应该用 s.characters.index(of: " ")
+
+1144
+01:01:34,628 --> 01:01:38,030
+And that's giving me a string,index(of: " ") that
+这是给我一个字符串,指数:" ")
+这会返回给我空格在字符集合中的索引
+
+1145
+01:01:38,098 --> 01:01:41,032
+collection of characters, I can then use that string in
+的字符集合,然后我可以使用字符串
+然后我可以利用这个索引
+
+1146
+01:01:41,101 --> 01:01:43,702
+that index though to go back to my string and do something,
+指数虽然回到我的字符串和做一些事情,
+回到原字符串中做些什么事情
+
+1147
+01:01:43,771 --> 01:01:45,470
+Maybe insert something there or
+也许插入或东西
+比如插入一些新字符
+
+1148
+01:01:45,539 --> 01:01:48,473
+delete the word that's right after the space or insert
+后删除这个词对空间或插入
+删除空格之后的那个单词
+
+1149
+01:01:48,542 --> 01:01:54,279
+another space, I'll have the index into the string now,
+另一个空间,现在我要索引的字符串,
+或者插入另外一个空格。总之，我将会得到字符串的索引
+
+1150
+01:01:54,348 --> 01:01:58,850
+String is a value type, so when you do let versus var,
+字符串是值类型,所以当你让与var,
+String 是一个值类型，来对比下用 let 或 var 声明时的不同
+
+1151
+01:01:58,919 --> 01:02:02,420
+if you do let you cannot do things like append on to
+如果你让你不能添加
+如果你用 let 声明，就没法做类似于 append 之类的操作
+
+1152
+01:02:02,489 --> 01:02:06,525
+the string cuz it's immutable, Most strings in Swift
+字符串因为它是不可变的,最迅速的字符串
+因为它是不可变的，Swift 中绝大多数字符串都是不可变的
+
+1153
+01:02:06,594 --> 01:02:09,027
+are immutable, that makes it super high performance,
+是不可变的,这使得它超高性能,
+这使得它效率非常高
+
+1154
+01:02:09,096 --> 01:02:12,964
+But if you have a var you can do greeting plus equals there
+但是如果你有一个var你可以问候+ =
+但是如果你用 var 声明 greeting，可以 greeting += " there"
+
+1155
+01:02:13,033 --> 01:02:16,235
+and so I can have hello there, It doesn't have any effect on
+所以我可以有你好,它没有任何影响
+然后得到字符串 "hello there"。这种操作不会改变 hello
+
+1156
+01:02:16,303 --> 01:02:19,304
+hello, the let one because that's immutable, right? Okay,
+你好,让一个因为那是不可变的,对吧?
+因为 hello 是 let 声明的，不可变，明白了吗？
+
+1157
+01:02:19,373 --> 01:02:22,007
+so I can't do that, And I can use the characters to
+所以我不能这样做,我可以使用字符
+所以我没法对 hello 做类似的操作。我还可以通过 characters
+
+1158
+01:02:22,076 --> 01:02:24,876
+manipulate strings in really powerful ways, I can, I don't
+操纵字符串以真正强大的方式,我可以,我不喜欢
+对字符串做出一些更强大的操作
+
+1159
+01:02:24,945 --> 01:02:27,279
+have time to talk about all of it, this is where you really
+有时间去谈论它,这是真的吗
+我没时间讲解所有字符串操作相关的内容
+
+1160
+01:02:27,348 --> 01:02:29,915
+do need to read your reading assignment carefully, But for
+需要仔细阅读你的阅读作业,但对吗
+剩下的部分需要你们课后认真阅读
+
+1161
+01:02:29,984 --> 01:02:33,285
+example if I want to insert the word you into hello there,
+如果我想插入这个词你你好,
+我就讲一个例子，如果我要在 hello 和 there 中间
+
+1162
+01:02:33,353 --> 01:02:36,621
+so it says hello you there, okay, I would just get the,
+所以说你好你在那里,好吧,我就会,
+插入一个单词 you 变成 hello you there
+
+1163
+01:02:36,690 --> 01:02:40,425
+find the first space by doing characters,index(of: " "),
+找到第一个空间通过字符,指数:" "),
+我要先通过 characters.index(of: " ") 找到第一个空格
+
+1164
+01:02:40,494 --> 01:02:43,762
+which I showed you on the previous slide, Then there's
+我给你上一张幻灯片,还有吗
+这个用法上一页我已经展示了
+
+1165
+01:02:43,831 --> 01:02:47,199
+a method in string called, insert the constant,
+方法在弦,插入常数,
+然后 String 有个方法叫做 insert(contentsOf:at:)
+
+1166
+01:02:47,267 --> 01:02:50,569
+the content of this collection of characters
+这个集合的字符的内容
+这个方法可以在指定的位置插入复数字符构成的集合
+
+1167
+01:02:50,638 --> 01:02:55,040
+at this location, this string,index, So, when I want
+在这个位置,这个字符串索引,所以,当我想要的
+指定的位置是 String.Index 类型
+
+1168
+01:02:55,108 --> 01:02:58,443
+a collection of characters that represents " you", I say,
+字符的集合,表示“你”,我说,
+我要插入代表 " you" 的字符集合
+
+1169
+01:02:58,512 --> 01:03:02,080
+" you",characters, because it's the ,characters, and
+“你”,字符,因为它是,人物,和
+所以这个应该写作 " you".characters
+
+1170
+01:03:02,149 --> 01:03:05,883
+it gives me a collection of characters for that string, So
+它给了我一个字符串的字符集合,
+因为 .characters 是 " you" 对应的字符集合
+
+1171
+01:03:05,952 --> 01:03:09,021
+it seems a little weird but It actually turns out to work out
+似乎有点奇怪,但实际上
+这用法好像有点奇怪，但它确实能达到我要的结果
+
+1172
+01:03:09,089 --> 01:03:11,456
+pretty well, And there's a billion other functions,
+很好,十亿其他功能,
+Swift 中还有非常多的函数
+
+1173
+01:03:11,525 --> 01:03:12,924
+in Swift, many, many, many,
+在迅速,许多,许多,许多,
+非常，非常，非常多
+
+1174
+01:03:12,993 --> 01:03:15,027
+I can't talk about them all,
+我不能谈论他们所有人,
+我没法每个都讲
+
+1175
+01:03:15,095 --> 01:03:18,396
+Notice I say if let firstSpace, because that might
+注意我说如果让firstSpace,因为这可能
+注意到这里我用了 if let firstSpace，因为有可能
+
+1176
+01:03:18,465 --> 01:03:21,166
+return nil if it couldn't find it, So I wouldn't do it there,
+返回nil如果找不到它,所以我不会这样做,
+没找到指定的内容，返回 nil 就不执行大括号内的代码
+
+1177
+01:03:21,234 --> 01:03:25,904
+I wouldn't insert it there, Yeah a bunch of other things
+我不会插入它,对很多其他的事情
+也就不会对原字符串进行插入操作。这里还有一大堆其他方法
+
+1178
+01:03:25,972 --> 01:03:28,807
+checking where strings have prefixes or not,
+检查字符串是否前缀,
+这个方法可以检查字符串是否包含某个前缀
+
+1179
+01:03:28,876 --> 01:03:31,109
+You can replace subrange, of course you have to find
+你可以替换子范围,当然你必须找到
+你可以替换子串，当然替换之前
+
+1180
+01:03:31,177 --> 01:03:33,044
+the range which usually you're gonna have to look at that
+范围通常你需要看一下
+你通常要通过访问字符串的字符集合
+
+1181
+01:03:33,113 --> 01:03:35,480
+collection of characters to find the ranges you wanna
+的字符来找到你想要的范围
+来确定要替换的范围
+
+1182
+01:03:35,549 --> 01:03:38,783
+replace things etc, Even cool methods like components
+取代旧事物等,甚至冷却方法等组件
+更有趣的一个方法，你可以通过 components(separatedBy:)
+
+1183
+01:03:38,852 --> 01:03:42,020
+separated by string will take a string that has like comma or
+隔开的字符串将会像逗号或一个字符串
+对包含逗号或者其他分隔字符的字符串
+
+1184
+01:03:42,089 --> 01:03:45,824
+separated values and grab all of the values and
+价值观和抓住所有的价值观和分离
+拆分得到所有子串
+
+1185
+01:03:45,893 --> 01:03:48,727
+put them in an array which is kinda fun, Okay so
+把它们放在一个数组是有点好玩,所以
+然后返回一个包含这些子串的数组
+
+1186
+01:03:48,796 --> 01:03:52,864
+a lot: string has dozens and dozens of methods, you really
+有数十种方法很多:字符串,你真的
+讲了这么多，String 还有很多很多方法
+
+1187
+01:03:52,933 --> 01:03:55,100
+need to familiarize yourself, If you don't take the time to
+需要熟悉,如果你不花时间去
+你需要去熟悉它们
+
+1188
+01:03:55,168 --> 01:03:57,235
+familiarize yourself with those thing in strings,
+熟悉这些的字符串,
+如果你不在这上面花时间的话
+
+1189
+01:03:57,304 --> 01:03:58,971
+Then I guarantee you're going to be writing a program and
+我保证你会写一个程序,
+我保证有一天你会遇到这种情况，你在写一个程序的时候
+
+1190
+01:03:59,039 --> 01:04:01,006
+you're going to want to do some string parsing or
+你会想要做一些解析或字符串
+需要对字符串进行解析或其他某种操作
+
+1191
+01:04:01,075 --> 01:04:02,641
+something and you're going to write a whole bunch of
+,你要写一大堆
+你写了一大段代码来完成这个功能
+
+1192
+01:04:02,710 --> 01:04:04,276
+code to do it and then find out there was one method that
+代码,然后发现有一个方法
+然后发现其实只要一个原生的方法
+
+1193
+01:04:04,345 --> 01:04:05,878
+did exactly what you want in the string,
+做什么你想要的字符串,
+就能实现你想要的功能
+
+1194
+01:04:07,514 --> 01:04:09,281
+There are things in there take closures and
+有些事情把闭包
+有些方法会接收闭包
+
+1195
+01:04:09,350 --> 01:04:10,516
+do all kinds of fun stuff so
+这样做各种各样有趣的东西吗
+然后做各种有趣的操作
+
+1196
+01:04:10,584 --> 01:04:12,984
+make sure you pay attention to both to string and
+一定要注意字符串和
+所以你要同时留意 String
+
+1197
+01:04:13,053 --> 01:04:16,754
+to the character view which is a collection of characters,
+的角色视图是一个字符的集合,
+和 String.CharacterView，也就是字符的集合
+
+1198
+01:04:16,823 --> 01:04:21,894
+All right, other classes, This is kind of quick summary here
+好了,其他的类,这是一种快速总结
+
+1199
+01:04:21,962 --> 01:04:25,130
+of other important classes, One is NSObject, NSObject is
+其他重要的类,一个是NSObject,NSObject
+
+1200
+01:04:25,199 --> 01:04:30,902
+a class, It is the root of all Objective-C classes, An iOS
+一个类,它是所有objective - c类的根源,一个iOS
+
+1201
+01:04:30,971 --> 01:04:34,305
+app written before a couple years ago when Swift came out,
+应用程序编写前几年前迅速出来时,
+
+1202
+01:04:34,374 --> 01:04:36,975
+all the classes in there would inherit eventually from
+最终所有的类继承
+
+1203
+01:04:37,044 --> 01:04:40,011
+NSObject, So NSObject has a base functionality, You do not
+NSObject,所以NSObject基地功能,你不
+
+1204
+01:04:40,080 --> 01:04:43,214
+need to subclass from NSObject to make a swift class,
+需要从NSObject子类迅速类,
+
+1205
+01:04:43,283 --> 01:04:45,850
+However there are some really obscure features still left in
+然而有一些真的仍在模糊特性
+
+1206
+01:04:45,919 --> 01:04:50,622
+IOS where to expecting a class that inherit from NSObject,
+IOS在期待一个继承NSObject类,
+
+1207
+01:04:52,025 --> 01:04:54,759
+If we even get to them, I'll show them to you, They're
+如果我们甚至他们,我会告诉他们,他们
+
+1208
+01:04:54,828 --> 01:04:57,095
+pretty rare, But that's just so you know what NSObject is,
+非常罕见,但这只是你知道NSObject是什么,
+
+1209
+01:04:57,164 --> 01:04:58,364
+Doesn't really have meaning to you,
+并没有真正对你有意义,
+
+1210
+01:04:58,432 --> 01:05:00,965
+cuz you guys are gonna be Swift programmers,
+因为你们会迅速程序员,
+
+1211
+01:05:01,034 --> 01:05:04,235
+NSNumber is another class, it's a generic number
+NSNumber是另一个类,它是一个通用的数字
+
+1212
+01:05:04,304 --> 01:05:08,072
+holder, This is also inherited from Objective-C, you can tell
+从objective - c持有者,这也是继承了,你可以告诉
+
+1213
+01:05:08,141 --> 01:05:12,077
+by the NS there, Until we can hold any kind of number,
+通过NS,直到我们可以保存任何类型的号码,
+
+1214
+01:05:12,145 --> 01:05:14,479
+floating point, decimal, you can even hold a bool,
+浮点小数,你甚至可以举办一个bool,
+
+1215
+01:05:14,547 --> 01:05:16,982
+since it considers that a number where zero is false and
+因为它认为一个零是错误的和的数量
+
+1216
+01:05:17,050 --> 01:05:20,685
+one is true, Any nonzero is true, And you can also
+一个是真的,任何非零是真的,你也可以
+
+1217
+01:05:20,754 --> 01:05:25,390
+do type conversions, Again, in swift, we're gonna be using
+做类型转换,迅速,我们将会使用吗
+
+1218
+01:05:25,458 --> 01:05:28,627
+the actual concrete number classes like double an int and
+实际的混凝土类双int和数量
+
+1219
+01:05:28,696 --> 01:05:32,698
+we'll use their constructors, To do type conversion,
+我们将使用构造函数,类型转换,
+
+1220
+01:05:32,766 --> 01:05:35,767
+But just so that you know that NSNumber is around, Okay,
+但是这样你知道NSNumber了,好吧,
+
+1221
+01:05:35,835 --> 01:05:38,670
+date, Super important class, Anytime you are representing
+日期,超级重要的类,只要你代表
+
+1222
+01:05:38,738 --> 01:05:42,674
+a date or time, you're gonna wanna use this date struct,
+一个日期或时间,你要想用这个日期结构,
+
+1223
+01:05:42,743 --> 01:05:46,144
+And it has a lot of ancillary classes that go with it,
+和它有很多辅助类,
+
+1224
+01:05:46,212 --> 01:05:49,914
+like calendar, date formatter, date components like date
+就像日历,日期格式化程序,组件(比如日期
+
+1225
+01:05:49,983 --> 01:05:52,551
+components will tell you the month of a date, And
+组件将告诉你日期,和
+
+1226
+01:05:52,620 --> 01:05:54,686
+of course, what the month of is of a date depends on
+当然,月是什么日期取决于
+
+1227
+01:05:54,755 --> 01:05:58,123
+the calendar it's in, cuz not everyone uses a calendar like
+日历的,因为不是每个人都使用一个日历
+
+1228
+01:05:58,191 --> 01:06:00,258
+we do, All right, there's a lot of calendars
+我们所做的,有很多的日历
+
+1229
+01:06:00,327 --> 01:06:02,528
+all over the Earth that are different than ours,
+所有在地球和我们的不同,
+
+1230
+01:06:02,596 --> 01:06:05,697
+So anytime you're even contemplating putting a date
+所以任何时候你甚至考虑把一个日期
+
+1231
+01:06:05,766 --> 01:06:09,568
+anywhere in your UI you need to be using this class,
+在UI需要使用这个类,
+
+1232
+01:06:09,636 --> 01:06:12,270
+Because if you wanna have your app work in anything but
+因为如果你想要你的应用在除了工作
+
+1233
+01:06:12,339 --> 01:06:14,639
+English, you're gonna have to format your date, using
+英语,你要格式化日期,使用
+
+1234
+01:06:14,708 --> 01:06:19,744
+the DateFormatter, in whatever locale your app is running in,
+dateformat,无论地区应用程序在运行,
+
+1235
+01:06:19,813 --> 01:06:22,514
+So date is super important, You would think date is really
+所以日期是非常重要的,你可能会认为是真的
+
+1236
+01:06:22,583 --> 01:06:25,149
+easy, but no, Date actually has a lot of complexity to it,
+容易,但没有,日期实际上有很大的复杂性,
+
+1237
+01:06:25,218 --> 01:06:27,352
+because of all the different ways we represent dates in
+因为我们代表日期的不同方式
+
+1238
+01:06:27,420 --> 01:06:30,989
+the world, Same, similar to strings complexity, And
+世界,相同,类似于字符串复杂性和
+
+1239
+01:06:31,058 --> 01:06:35,060
+then there's data, D-A-T-A, that represents a bag o' bits,
+D-A-T-A还有数据,代表一个袋的位,
+
+1240
+01:06:35,129 --> 01:06:38,963
+Just a bits, bunch of bits in there, Usually this might be
+只是一个碎片,堆位,通常这种可能
+
+1241
+01:06:39,032 --> 01:06:42,066
+something like an image, the bits of an image, or
+像一个图像,图像的位,或
+
+1242
+01:06:42,135 --> 01:06:45,671
+something like that, Something you get over the the network,
+这样,在网络,
+
+1243
+01:06:45,739 --> 01:06:47,806
+So data is how we represent those,
+所以数据是如何表示这些,
+
+1244
+01:06:47,875 --> 01:06:49,875
+Notice that there is a struct, it's a value type,
+请注意,有一个结构体,这是一个值类型,
+
+1245
+01:06:49,944 --> 01:06:54,045
+It gets passed around copy on right, And
+它被传递正确的复制,和
+
+1246
+01:06:54,114 --> 01:06:56,882
+you'll start seeing data in UI maybe week five or
+你会开始看到数据的UI可能星期5到
+
+1247
+01:06:56,950 --> 01:07:00,686
+six of this class, All right, initialization,
+6这个类的,初始化,
+
+1248
+01:07:00,754 --> 01:07:04,122
+So initialization is very complicated, You're
+所以初始化是非常复杂的,你
+
+1249
+01:07:04,191 --> 01:07:07,092
+gonna have to read the reading assignment on it eventually,
+要读它最终的阅读作业,
+
+1250
+01:07:07,161 --> 01:07:11,996
+I'm gonna give you the really fast highlights of it, init
+我要给你一个非常快的,init
+
+1251
+01:07:12,065 --> 01:07:15,500
+method, again, we can have them on classes or structs,
+方法,再一次,我们可以在类或结构,
+
+1252
+01:07:15,569 --> 01:07:18,670
+They are used to initialize any of the properties that we
+他们是用来初始化我们的任何属性
+
+1253
+01:07:18,738 --> 01:07:22,674
+didn't initialize with equals or using lazy or they were
+没有初始化与等于或使用懒惰或他们
+
+1254
+01:07:22,742 --> 01:07:25,811
+optionals, All those are taken care of and if there's one
+可选,所有这些照顾,如果有一个
+
+1255
+01:07:25,879 --> 01:07:30,649
+left, or more than one left, then we need an initializer,
+离开,或一个以上的离开,然后我们需要一个初始化,
+
+1256
+01:07:30,718 --> 01:07:33,618
+To initialize it, And they're kind of a pain in the neck,
+对它进行初始化,他们讨厌的家伙,
+
+1257
+01:07:33,687 --> 01:07:36,655
+Because, especially for classes, For structs,
+因为,特别是对于类,结构体,
+
+1258
+01:07:36,723 --> 01:07:39,023
+they're not a pain in the neck, They are perfectly fine,
+他们不是一个脖子疼痛,非常好,
+
+1259
+01:07:39,092 --> 01:07:41,727
+Struct, you just have an init with whatever argue you want,
+结构,你就有一个init任何认为你想要的,
+
+1260
+01:07:41,795 --> 01:07:43,328
+arguments you want, And initialize your variables,
+你想要的参数,并初始化变量,
+
+1261
+01:07:43,397 --> 01:07:46,564
+It's all very simple, But for classes, it's a little more
+这都是非常简单的,但是对于类,多一点
+
+1262
+01:07:46,633 --> 01:07:49,201
+complicated, Now, whether you're a struct or a class,
+复杂,现在,不管你是一个结构或一个类,
+
+1263
+01:07:49,269 --> 01:07:51,603
+you can have multiple init, And they can have different
+可以有多个init,他们可以有不同的
+
+1264
+01:07:51,672 --> 01:07:55,106
+arguments, As long as you give them enough arguments to be
+参数,只要给他们足够的论据
+
+1265
+01:07:55,175 --> 01:07:58,710
+able to initialize all their variables, you're good to go,
+能初始化所有的变量,你很棒,
+
+1266
+01:07:58,779 --> 01:08:00,278
+So you can have as many inits as you want,
+所以你可以有你想要尽可能多的init,
+
+1267
+01:08:00,347 --> 01:08:02,914
+And a lot of classes have multiple inits, Meaning on
+和很多类有多个init,意义
+
+1268
+01:08:02,983 --> 01:08:04,649
+kinda how they are being used, how they are being created,
+它们是如何被使用的,他们是如何被创造出来,
+
+1269
+01:08:04,718 --> 01:08:06,217
+Think of something like string,
+想到类似的字符串,
+
+1270
+01:08:06,286 --> 01:08:07,852
+String has an init that takes a double,
+字符串有一个init,双,
+
+1271
+01:08:07,921 --> 01:08:09,888
+It has a string that takes another sting if you want to
+它有一个字符串,另一个刺痛,如果你想
+
+1272
+01:08:09,956 --> 01:08:12,190
+make a copy of the string it turns out, It takes an init,
+原来的字符串的副本,需要一个初始化,
+
+1273
+01:08:12,259 --> 01:08:14,727
+It has all these things that you can compare to string,
+所有这些事情,你可以比较字符串,
+
+1274
+01:08:14,795 --> 01:08:16,929
+Or not all the things you compare string but
+或者不是所有的事情但是你比较字符串
+
+1275
+01:08:16,997 --> 01:08:18,496
+a lot of things you can compare to a string,
+很多东西你可以比较一个字符串,
+
+1276
+01:08:18,565 --> 01:08:20,766
+It has an initialized that it will take that as an argument
+它有一个初始化,它将作为参数
+
+1277
+01:08:20,834 --> 01:08:26,538
+for example, Callers execute your init by creating
+例如,调用者从创造执行init
+
+1278
+01:08:26,606 --> 01:08:29,841
+one of the thing, They just put the name of the type and
+的一个东西,他们只是把类型和名称
+
+1279
+01:08:29,909 --> 01:08:33,211
+parentheses and the arguments you want for that init, So
+括号和你想要的参数初始化,所以
+
+1280
+01:08:33,280 --> 01:08:35,514
+they pick which of your init that they want and
+他们选择你的init,他们想要
+
+1281
+01:08:35,583 --> 01:08:37,416
+they call that one with those arguments,
+他们称之为一个与这些参数,
+
+1282
+01:08:37,484 --> 01:08:40,519
+We've seen many examples of this in our lecture, so far,
+我们看到许多这样的例子在我们的讲座,到目前为止,
+
+1283
+01:08:43,490 --> 01:08:48,192
+You get some inits for free, If you're a base class, okay,
+你得到一些init免费,如果你是一个基类,好吧,
+
+1284
+01:08:48,261 --> 01:08:50,395
+you don't inherit from anything else,
+你不继承什么,
+
+1285
+01:08:50,463 --> 01:08:53,832
+You get a free init with no arguments, Congratulations,
+你得到一个免费的init没有参数,祝贺你,
+
+1286
+01:08:53,901 --> 01:08:56,401
+So that means, at least, people can create you,
+这意味着,至少人们可以创造你,
+
+1287
+01:08:56,470 --> 01:08:58,169
+But, again, if you have any vars that aren't initialized,
+但是,如果你有任何增值供应商没有初始化,
+
+1288
+01:08:58,238 --> 01:09:00,405
+you're gonna have to create your inits that initialize
+你必须创建你的init初始化
+
+1289
+01:09:00,474 --> 01:09:05,143
+them, Structs are even better, They get an init that has all
+,结构更好,他们得到一个初始化所有
+
+1290
+01:09:05,212 --> 01:09:10,181
+of their vars, Now if a struct implements even one of its own
+var,现在即使结构实现一个自己的
+
+1291
+01:09:10,250 --> 01:09:13,452
+initializers, it stops getting this one, this free one,
+初始化,它停止这个,这个免费,
+
+1292
+01:09:13,520 --> 01:09:15,920
+You only get the free one if you don't do any other ones,
+只有免费的如果你不做任何其他的,
+
+1293
+01:09:15,989 --> 01:09:17,022
+So it's like the default one,
+就像默认,
+
+1294
+01:09:17,091 --> 01:09:19,124
+And we saw this in the lecture also,
+我们看到了这个讲座,
+
+1295
+01:09:19,192 --> 01:09:23,428
+We got the free one in the init function, first operand,
+我们得到了免费的init函数,第一个操作数,
+
+1296
+01:09:23,497 --> 01:09:26,231
+We never wrote that init function, we got it for free,
+我们从不写道,init函数,我们免费得到它,
+
+1297
+01:09:26,299 --> 01:09:30,068
+It just appeared and we were able to call it, , so
+它就出现了,我们可以叫它,,所以
+
+1298
+01:09:30,137 --> 01:09:32,504
+structure nice you get the basic free init for
+结构很好的得到基本免费init
+
+1299
+01:09:32,573 --> 01:09:37,275
+all your vars, What can you do inside of a nit? I'm
+你所有的var,你能做什么在一个没用的人吗?
+
+1300
+01:09:37,344 --> 01:09:40,445
+gonna start going fast here, okay, So here we go, One,
+要开始快,好,我们走,,
+
+1301
+01:09:40,514 --> 01:09:43,382
+you can set any properties value even if that property
+即使这属性可以设置任何属性值
+
+1302
+01:09:43,450 --> 01:09:46,185
+already had its value set, you can reset something else,
+已经有了它的价值,你可以重置,
+
+1303
+01:09:46,253 --> 01:09:50,589
+You can set lets, So you're gonna have a let that's
+你可以设置允许,所以你会有一个让
+
+1304
+01:09:50,657 --> 01:09:54,826
+got less x equal 5, You can still reset it in your init,
+少x = 5,您仍然可以重置你的初始化,
+
+1305
+01:09:54,895 --> 01:09:59,330
+Your init is allowed to set lets, You can call other init
+允许你的初始化设置允许,你可以调用其他初始化
+
+1306
+01:09:59,399 --> 01:10:04,135
+methods okay in your own class or your own struct, And you do
+方法在类或自己的结构,和你
+
+1307
+01:10:04,204 --> 01:10:06,972
+that by saying self,init with whatever the arguments to that
+说自我,初始化的参数
+
+1308
+01:10:07,041 --> 01:10:10,175
+init method are so init methods can call each other,
+init方法可以相互调用init方法,
+
+1309
+01:10:10,244 --> 01:10:13,278
+In a class, you can call super,init,
+在一个类中,您可以调用super,初始化,
+
+1310
+01:10:13,347 --> 01:10:14,680
+An initializer from your super class,
+从超类初始化器,
+
+1311
+01:10:14,748 --> 01:10:17,516
+Of course you need to get your super class initialized,
+当然你需要超类初始化时,
+
+1312
+01:10:17,585 --> 01:10:19,517
+Now, when we start talking about class though,
+现在,当我们开始讨论类,
+
+1313
+01:10:19,586 --> 01:10:22,988
+and we start talking about calling inits in our super,
+我们开始讨论在我们的超级调用init,
+
+1314
+01:10:23,057 --> 01:10:24,823
+and we start thinking about inheritance,
+我们开始考虑继承,
+
+1315
+01:10:24,892 --> 01:10:27,859
+it gets really complicated, So
+它变得非常复杂,所以
+
+1316
+01:10:27,928 --> 01:10:31,195
+let's start thinking about class and break this down,
+让我们开始思考类和分解,
+
+1317
+01:10:31,264 --> 01:10:34,699
+Let's start with what are you required to do in an init for
+让我们从你开始需要做在一个init
+
+1318
+01:10:34,768 --> 01:10:37,969
+a class? in a struct it's easy you're just required to
+一个类?
+
+1319
+01:10:38,038 --> 01:10:40,238
+initialize all your vars that aren't initialized, But
+初始化所有的var没有初始化,但是
+
+1320
+01:10:40,307 --> 01:10:43,809
+in a class what are you required to do? By the time
+在课堂上你必须做什么?
+
+1321
+01:10:43,878 --> 01:10:46,345
+it's done you have to have initialized all your vars,
+做你需要初始化所有的增值,
+
+1322
+01:10:46,413 --> 01:10:50,048
+We know that, There are two types of initializers,
+我们知道,有两种类型的初始化,
+
+1323
+01:10:50,117 --> 01:10:51,583
+A convenience initializer,
+一个方便的初始化,
+
+1324
+01:10:51,651 --> 01:10:54,753
+This is only for classes, A convenience initializer and
+这只是为类,方便初始值设定项
+
+1325
+01:10:54,822 --> 01:10:57,055
+what's called a designated initializer,
+所谓的指定初始化,
+
+1326
+01:10:57,124 --> 01:11:00,024
+Designated is the default, There's no keyword it's just
+指定的是默认的,没有字的
+
+1327
+01:11:00,093 --> 01:11:02,127
+if it's not marked convenience then it's a designated,
+如果不方便那就指定,
+
+1328
+01:11:02,195 --> 01:11:04,462
+Now here's where the rules come in,
+现在这里的规则,
+
+1329
+01:11:04,531 --> 01:11:08,133
+A designated initializer non convenience must and
+指定的初始化必须和不方便
+
+1330
+01:11:08,201 --> 01:11:12,870
+can only, call the designated initializer that it is in,
+只能,调用指定初始化,
+
+1331
+01:11:12,939 --> 01:11:15,974
+that is in it's immediate superclass,
+在直接超类,
+
+1332
+01:11:16,043 --> 01:11:19,478
+it's very important, It has to call a superclass init
+这是非常重要的,它必须调用超类的init
+
+1333
+01:11:19,546 --> 01:11:22,013
+and it has to get designated initializer, It cannot call
+它指定初始化,不能打电话
+
+1334
+01:11:22,082 --> 01:11:25,083
+it's convenience initializer in a superclass, Nor
+它是方便在超类初始化器,也没有
+
+1335
+01:11:25,152 --> 01:11:30,222
+can it call two classes up the inherent chain unless the one
+可以打电话给两个类的连锁,除非一个
+
+1336
+01:11:30,290 --> 01:11:32,691
+right above inherited the init from the one up above, and
+正上方继承了init从上面的一个
+
+1337
+01:11:32,759 --> 01:11:36,094
+we'll talk about that in a second, You have to initialize
+我们会讲到,你必须初始化
+
+1338
+01:11:36,162 --> 01:11:39,898
+all of your properties before you call that super init,
+你所有的属性称之为超级初始化之前,
+
+1339
+01:11:42,336 --> 01:11:43,435
+You must have completely
+你必须完全
+
+1340
+01:11:43,504 --> 01:11:46,037
+done all the ones that you introduced in your class,
+完成了所有那些你在类,介绍
+
+1341
+01:11:46,106 --> 01:11:48,740
+Get them initialized before you call super init, And,
+让他们在你调用super init初始化,而且,
+
+1342
+01:11:48,809 --> 01:11:51,809
+you have to call the super one before you can reinitialize or
+你必须叫超级才能重新启动或
+
+1343
+01:11:51,878 --> 01:11:54,846
+change the value of any of it's Properties, obviously,
+改变它的任何属性的值,显然,
+
+1344
+01:11:54,915 --> 01:11:57,816
+you gotta let your super class have a chance to initialize
+你必须让你的超类有一个初始化的机会
+
+1345
+01:11:57,885 --> 01:12:00,685
+itself before you start mucking with its properties,
+与它的属性本身在你开始清理,
+
+1346
+01:12:00,754 --> 01:12:03,322
+Otherwise, when units call super, it's probably gonna
+否则,当调用super单位,它可能会
+
+1347
+01:12:03,391 --> 01:12:05,557
+blast whatever you did to its properties,
+不管你对它的属性,
+
+1348
+01:12:05,626 --> 01:12:10,862
+A convenience init can only, must and can only,
+方便init只能,必须只能,
+
+1349
+01:12:10,931 --> 01:12:16,268
+call an initializer in its own class, no super,
+调用一个初始化的类,不超,
+
+1350
+01:12:17,571 --> 01:12:18,603
+Only in your own class,
+只有在你自己的类,
+
+1351
+01:12:18,672 --> 01:12:22,040
+convenience initializer only in your own class, You can
+方便只在自己的类初始化器,你可以
+
+1352
+01:12:22,109 --> 01:12:24,109
+call it another convenience or you can call it designator,
+叫它另一个便利或者你可以称之为指示器,
+
+1353
+01:12:24,177 --> 01:12:25,477
+but it has to be in your own class,
+但它必须是在你自己的类,
+
+1354
+01:12:25,546 --> 01:12:27,712
+not in your super class, And
+不是在你的超类,
+
+1355
+01:12:27,781 --> 01:12:30,682
+a convenience init has to call whatever init it's gonna call
+一个方便init调用init它会叫
+
+1356
+01:12:30,751 --> 01:12:33,318
+in itself before it can set any of the property
+本身才能设置的任何属性
+
+1357
+01:12:33,387 --> 01:12:37,189
+values, It's kind of different from an init that calls into
+值,这是一种不同于一个调用init
+
+1358
+01:12:37,258 --> 01:12:39,491
+super because that one has to do its initialization,
+超,因为它是一个初始化,
+
+1359
+01:12:39,560 --> 01:12:41,426
+the designated one, before it calls super,
+指定一个,超级之前调用,
+
+1360
+01:12:41,495 --> 01:12:43,595
+This, in this case, you have to do convenience,
+这一点,在这种情况下,你要做的方便,
+
+1361
+01:12:43,664 --> 01:12:46,164
+you have to call your other one first,
+你必须打电话给你其他的一分之一,
+
+1362
+01:12:46,232 --> 01:12:50,969
+And the calling of all other inits, whatever you do, any
+和其他所有的调用init,无论你做什么,
+
+1363
+01:12:51,037 --> 01:12:54,539
+inits that you have to call has to be done in all cases,
+init,你必须调用必须在所有情况下,
+
+1364
+01:12:54,608 --> 01:12:57,342
+before you start calling methods on yourself or
+在你开始在自己或调用方法
+
+1365
+01:12:57,410 --> 01:12:58,309
+accessing properties,
+访问属性,
+
+1366
+01:12:58,378 --> 01:12:59,844
+Not setting the properties, but accessing them,
+不设置属性,但访问他们,
+
+1367
+01:12:59,913 --> 01:13:02,580
+In other words, you have to be fully initialized before your
+换句话说,你必须完全初始化之前
+
+1368
+01:13:02,649 --> 01:13:07,318
+init can start using your class, All right,
+初始化可以开始使用您的类,
+
+1369
+01:13:07,387 --> 01:13:11,523
+whew is right: a lot of rules there, and a lot of them
+呼是对的:很多规则,很多
+
+1370
+01:13:11,592 --> 01:13:15,260
+are conflicting and all that stuff, Let's make it even more
+是相互矛盾的,所有的东西,让它更
+
+1371
+01:13:15,329 --> 01:13:18,296
+complicated when we talk about inheriting inits, So,
+当我们讨论继承init复杂,所以,
+
+1372
+01:13:18,365 --> 01:13:20,832
+you wanna get some inits from your super class,
+你想要得到一些从你的超类初始化,
+
+1373
+01:13:20,901 --> 01:13:24,402
+whoa, not so fast, If you don't implement
+哇,没那么快,如果你不实现
+
+1374
+01:13:24,471 --> 01:13:27,439
+any designated inits, you only implement convenience inits,
+指定init,您只有实现方便init,
+
+1375
+01:13:27,507 --> 01:13:30,943
+then you'll inherit all of your super classes designated,
+然后你将继承所有指定父类,
+
+1376
+01:13:31,011 --> 01:13:32,744
+but only if you don't implement any of them,
+但只有如果你不实现任何,
+
+1377
+01:13:32,813 --> 01:13:35,146
+And if you implement even one designated init,
+甚至如果你实现一个指定的初始化,
+
+1378
+01:13:35,215 --> 01:13:38,984
+now you're not gonna inherit all your super classes, If you
+现在你不是要继承超类,如果你
+
+1379
+01:13:39,053 --> 01:13:43,154
+override all of your super classes designated inits,
+覆盖你所有的超类指定init,
+
+1380
+01:13:43,223 --> 01:13:47,926
+then you'll inherit all of its con, convenience inits,
+然后你将继承所有的案子,方便init,
+
+1381
+01:13:47,995 --> 01:13:49,861
+Now why is that? That's because your superclass,
+现在,这是为什么呢?
+
+1382
+01:13:49,930 --> 01:13:52,297
+when it implements these convenience inits,
+当它实现了这些便利init,
+
+1383
+01:13:52,366 --> 01:13:55,534
+it depends on the designated inits being implemented,
+这取决于指定init实施,
+
+1384
+01:13:55,602 --> 01:13:57,469
+so you have to implement them all,
+所以你必须实现它们,
+
+1385
+01:13:57,538 --> 01:13:59,337
+Of course, you could inherit them all by implementing
+当然,你可以通过实现继承它们
+
+1386
+01:13:59,406 --> 01:14:04,008
+none of them as well, So, any init that you inherit by these
+他们都没有,所以,任何init承受这些
+
+1387
+01:14:04,077 --> 01:14:06,611
+rules can be used to satisfy any of these other,
+规则可以用来满足这些,
+
+1388
+01:14:06,680 --> 01:14:09,982
+other requirements that we're talking about on the previous
+其他需求,我们先前的讨论
+
+1389
+01:14:10,050 --> 01:14:13,151
+stage, You can make an init required, You just say
+阶段,你可以使一个init必需的,你只是说
+
+1390
+01:14:13,220 --> 01:14:16,187
+required init, Required is a key word, and that will
+需要初始化,需要的是一个关键词,会的
+
+1391
+01:14:16,256 --> 01:14:19,424
+make it so the subclass has to implement that init, okay,
+使它的子类必须实现init,好吧,
+
+1392
+01:14:19,492 --> 01:14:23,628
+it's required, Failable inits, we talked about these with
+这是必需的,Failable init,我们谈论这些
+
+1393
+01:14:23,697 --> 01:14:26,664
+double, If you put a question mark after your init,
+翻倍,如果你把一个问号你初始化后,
+
+1394
+01:14:26,733 --> 01:14:29,534
+init question mark, that means that this init can fail,
+init问号,这意味着这个初始化失败,
+
+1395
+01:14:29,603 --> 01:14:32,871
+And that means that this init, or when you create this thing,
+这意味着这个init,或者当您创建这个东西,
+
+1396
+01:14:32,940 --> 01:14:35,740
+will return optional version of this class, So
+将返回这类的可选版本,所以呢
+
+1397
+01:14:35,809 --> 01:14:37,108
+we thought it was double,
+我们认为这是翻倍,
+
+1398
+01:14:37,177 --> 01:14:39,878
+If we said double parentheses string, it would return
+如果我们说双括号字符串,它将返回
+
+1399
+01:14:39,947 --> 01:14:42,214
+an optional double, It was a failable init, and
+一个可选的两倍,这是一个failable init,和
+
+1400
+01:14:42,282 --> 01:14:44,316
+that's because you could have said double of hello, and
+那是因为你有双说你好,和
+
+1401
+01:14:44,384 --> 01:14:46,451
+you would be like " I can't turn it into double: fail",
+你就像“我不能把它变成双:失败”,
+
+1402
+01:14:46,519 --> 01:14:49,421
+And the way you fail out of a failable init is you just
+你失败了你只是failable init
+
+1403
+01:14:49,489 --> 01:14:51,255
+return nil, Otherwise,
+返回nil,否则,
+
+1404
+01:14:51,324 --> 01:14:53,758
+you don't return anything out of init, it just initializes,
+你不返回任何初始化,初始化,
+
+1405
+01:14:53,827 --> 01:14:55,827
+but the one time you return anything is out
+但一次你返回任何值
+
+1406
+01:14:55,896 --> 01:14:58,730
+a failed init, you can return nil, So, an example here is
+初始化失败,你可以返回nil,所以,这是一个例子
+
+1407
+01:14:58,799 --> 01:15:02,968
+UIImage, UIImaged named looks up that image in
+用户界面图像,名为查找的用户界面图像,图像
+
+1408
+01:15:03,036 --> 01:15:05,904
+the xe assets, Remember that xe assets thing that I moved
+xe资产,记住xe资产我感动
+
+1409
+01:15:05,973 --> 01:15:08,806
+off to supporting files at the beginning of the first demo?
+去支持文件的开头第一个演示?
+
+1410
+01:15:08,875 --> 01:15:12,044
+This looks it up in there, of course, it might not find it,
+这看起来在那里,当然,它可能不会找到它,
+
+1411
+01:15:12,113 --> 01:15:15,614
+So we do if let image = UIImage(named: "foo"),
+所以我们如果让图像=用户界面图像(命名为:“foo”),
+
+1412
+01:15:15,683 --> 01:15:17,516
+then we do something, otherwise we fail,
+然后我们做点什么,否则我们失败了,
+
+1413
+01:15:17,584 --> 01:15:22,754
+that UI image initializer failed, Alright, Any and
+UI图像初始化失败,任何
+
+1414
+01:15:22,822 --> 01:15:27,259
+AnyObject, There is no more init, we're done with init,
+AnyObject,没有更多的init,我们完成了初始化,
+
+1415
+01:15:27,327 --> 01:15:31,262
+Any and AnyObject: these are types, special types,
+任何AnyObject:这些类型,特殊类型,
+
+1416
+01:15:31,331 --> 01:15:35,133
+These types really are almost exclusively used for backwards
+这些类型是几乎完全用于向后
+
+1417
+01:15:35,202 --> 01:15:39,004
+compatibility with Objective C because Objective C had a type
+兼容Objective - C因为Objective - C类型
+
+1418
+01:15:39,072 --> 01:15:41,740
+in it called id, which was kind of like Any,
+它被称为id,有点像任何,
+
+1419
+01:15:41,809 --> 01:15:46,444
+AnyObject actually, So Swift needed some compatibility, but
+AnyObject实际上,所以迅速需要一些兼容性,但是
+
+1420
+01:15:46,513 --> 01:15:48,980
+Swift doesn't really use Any very much, so
+斯威夫特没有使用任何,所以
+
+1421
+01:15:49,049 --> 01:15:52,884
+we wouldn't, Swift is strongly typed, So you wouldn't wanna
+我们不会,斯威夫特是强类型的,所以你不会想
+
+1422
+01:15:52,953 --> 01:15:55,553
+have a type which is like, it can be anything, Okay, because
+有一个类型,它可以是任何东西,好吧,因为
+
+1423
+01:15:55,622 --> 01:15:58,022
+that's what Any and AnyObject are, it's like anything,
+这是任何和AnyObject,就像任何东西,
+
+1424
+01:15:58,091 --> 01:16:02,928
+any type, It's this weird kind of typeless type kinda thing,
+任何类型,它的这种奇怪的无类型类型有点事情,
+
+1425
+01:16:02,997 --> 01:16:04,062
+The only difference between Any and
+任何的唯一区别
+
+1426
+01:16:04,131 --> 01:16:06,197
+AnyObject is AnyObject can only be a class,
+AnyObject AnyObject只能是一个类,
+
+1427
+01:16:06,266 --> 01:16:08,900
+it has be a reference type, Any can be anything,
+它是一个引用类型,可以是任何东西,
+
+1428
+01:16:08,969 --> 01:16:12,070
+reference or a value type, that's the only difference,
+引用或值类型,这是唯一的区别,
+
+1429
+01:16:12,139 --> 01:16:14,406
+So why do we have these AnyObject things?
+为什么我们有这些AnyObject东西?
+
+1430
+01:16:14,475 --> 01:16:15,841
+Where are they gonna show up? Well,
+它们会出现在哪里?
+
+1431
+01:16:15,909 --> 01:16:18,710
+there are some methods in iOS where one of the arguments
+有些方法在iOS的一个参数
+
+1432
+01:16:18,779 --> 01:16:22,847
+truly could be anything, One example here is when you have
+真正的可以是任何东西,这是当你有一个很好的例子
+
+1433
+01:16:22,916 --> 01:16:25,316
+multiple MVCs, which we're gonna learn about next week,
+多个mvc,下周我们要了解,
+
+1434
+01:16:25,385 --> 01:16:28,687
+The way you go from one to the next, next is called segueing,
+你从一个到另一个,下一个叫做segue,
+
+1435
+01:16:28,755 --> 01:16:30,622
+you segue from one MVC to the next,
+你从一个MVC segue,
+
+1436
+01:16:30,690 --> 01:16:33,926
+And the thing that causes a segue to happen, okay,
+导致一个segue发生的事情,好的,
+
+1437
+01:16:33,994 --> 01:16:37,095
+is the argument in this method called prepare for
+是这个方法的参数叫准备
+
+1438
+01:16:37,164 --> 01:16:39,031
+segue called sender, okay,
+segue称为发送者,
+
+1439
+01:16:39,099 --> 01:16:42,067
+just like we had sender in the IB action, So
+就像发送方的IB行动,
+
+1440
+01:16:42,136 --> 01:16:44,636
+the sender is the one who's causing this segue to happen,
+发件人是谁造成这个segue发生,
+
+1441
+01:16:44,704 --> 01:16:46,871
+well, a button could be causing a segue to happen,
+嗯,一个按钮可以导致一个segue发生,
+
+1442
+01:16:46,940 --> 01:16:49,507
+a line in a table view could be causing it, Some custom
+一条线在一个表格视图可以使其,一些自定义
+
+1443
+01:16:49,576 --> 01:16:53,211
+piece of code of yours could be causing this MVC to segue,
+你的代码会造成上述MVC segue,
+
+1444
+01:16:53,280 --> 01:16:55,914
+So when you're preparing for it, you've gotta be
+所以当你准备,你要
+
+1445
+01:16:55,983 --> 01:16:59,918
+able to say which one it was, and that's just Any, So
+能说哪一个,这是任何,所以
+
+1446
+01:16:59,987 --> 01:17:02,621
+if this were a Swift API, they wouldn't have done Any,
+如果这是一个迅速API,他们不会做这些事了,
+
+1447
+01:17:02,690 --> 01:17:05,958
+They'd have had a protocol where you could be a segue
+他们会有一个协议,你可以继续
+
+1448
+01:17:06,026 --> 01:17:09,260
+sender, And you'd have to implement probably some
+发送者,你可能会实现一些
+
+1449
+01:17:09,329 --> 01:17:14,099
+functionality that would make sense here, But in this case,
+功能,有意义,但是在这种情况下,
+
+1450
+01:17:14,167 --> 01:17:17,302
+it's Any, It knows optional Any too because you can have
+任何,它知道可选任何因为你可以
+
+1451
+01:17:17,371 --> 01:17:20,339
+nil, the center could be nil, Where else will you see it?
+nil,中心可能是零,其他的你看到了吗?
+
+1452
+01:17:20,407 --> 01:17:25,110
+You could have an array of AnyObject or an array of Any,
+你可以有一个AnyObject或数组的数组,
+
+1453
+01:17:25,178 --> 01:17:28,113
+That could be an array that has doubles and strings and
+这可能是双打和字符串和数组
+
+1454
+01:17:28,182 --> 01:17:31,283
+things mixed in there, Now you might be tempted to use this
+事情复杂,现在你可能会想用这个
+
+1455
+01:17:31,352 --> 01:17:34,786
+in your assignment number two when you see the assignment,
+在作业2号当你看到作业,
+
+1456
+01:17:34,855 --> 01:17:35,721
+But you're not allowed to
+但你不可以
+
+1457
+01:17:35,789 --> 01:17:37,789
+because one of the required tasks says you can't use Any
+因为说你不能使用任何所需的任务
+
+1458
+01:17:37,858 --> 01:17:41,493
+or AnyObject, Also you wouldn't be very Swifty,
+或AnyObject,你也不会很中高阶层,
+
+1459
+01:17:41,562 --> 01:17:43,461
+In Swift, if we wanted to put doubles and
+在迅速,如果我们想把双打
+
+1460
+01:17:43,530 --> 01:17:46,265
+strings in the same array, we use an enum,
+字符串在同一个数组,我们使用enum,
+
+1461
+01:17:46,333 --> 01:17:48,200
+That's what we did with our operations array, and that's
+这是我们所做的与我们的操作数组,这就是
+
+1462
+01:17:48,268 --> 01:17:51,236
+what we would do in Swift, so we wouldn't use AnyObject,
+在斯威夫特我们要做的,所以我们不会使用AnyObject,
+
+1463
+01:17:51,305 --> 01:17:53,171
+Another thing you could possibly use Any for is for
+你可以使用任何的另一件事是
+
+1464
+01:17:53,240 --> 01:17:55,374
+a cookie, right, some piece of data that you're giving
+一块饼干,你给的数据
+
+1465
+01:17:55,442 --> 01:17:57,576
+out that you don't want people to know what class it is,
+你不希望人们知道它是什么类,
+
+1466
+01:17:57,645 --> 01:17:59,411
+And they're just gonna give it back to you at some point,
+他们会还给你,
+
+1467
+01:17:59,480 --> 01:18:00,578
+and you'll do something with it and
+与,,你会做些什么
+
+1468
+01:18:00,647 --> 01:18:01,379
+only you know what it is,
+只有你知道它是什么,
+
+1469
+01:18:01,448 --> 01:18:03,514
+So you know, an opaque type, you could use it for
+所以你知道,一个不透明的类型,你可以用它来
+
+1470
+01:18:03,583 --> 01:18:07,986
+that, How do we use something of type Any, because we can't
+,我们如何使用任何类型的东西,因为我们不能
+
+1471
+01:18:08,055 --> 01:18:10,822
+send any messages to it cuz it's not of AnyType, so
+发送任何消息,因为这不是AnyType的
+
+1472
+01:18:10,891 --> 01:18:14,426
+we don't know any methods that it does or whatever, Instead,
+我们不知道它或者其他任何方法,相反,
+
+1473
+01:18:14,494 --> 01:18:18,062
+we have convert it, and we convert type Any or, or
+我们已经把它,我们将任何或类型,或
+
+1474
+01:18:18,131 --> 01:18:23,001
+AnyObject into some class that we know about using as,
+AnyObject一些类,我们知道使用,
+
+1475
+01:18:23,070 --> 01:18:26,205
+As is a key word, and we do as question mark because we don't
+是一个关键词,我们因为我们不做问号
+
+1476
+01:18:26,273 --> 01:18:28,073
+know for sure that we can convert something,
+我们可以把一些肯定,
+
+1477
+01:18:28,142 --> 01:18:31,844
+so it's an optional, And we use it with if let,
+这是一个可选的,我们如果我们使用它,
+
+1478
+01:18:31,912 --> 01:18:33,412
+So if I had some variable unknown,
+如果我有一些未知变量,
+
+1479
+01:18:33,480 --> 01:18:36,214
+which is of type Any, so I don't really know what it is,
+这是任何类型的,所以我真的不知道那是什么,
+
+1480
+01:18:36,283 --> 01:18:39,284
+But I think it might be MyType, I'm not sure,
+但我认为这可能是MyType,我不确定,
+
+1481
+01:18:39,353 --> 01:18:42,487
+But I think that might be MyType in there, So I say,
+但我认为可能MyType,所以我说,
+
+1482
+01:18:42,556 --> 01:18:46,825
+if let foo = unknown as MyType,
+如果让foo = MyType未知,
+
+1483
+01:18:46,894 --> 01:18:52,197
+if let, Then inside there, foo is now going to be unknown,
+如果让,那里面,foo现在是未知的,
+
+1484
+01:18:52,265 --> 01:18:56,668
+but as MyType, So I will be able to
+但随着MyType,所以我可以
+
+1485
+01:18:56,737 --> 01:18:59,738
+send foo message whatever my tape, I'll be able to send foo
+发送foo消息不管我的磁带,我可以发送foo
+
+1486
+01:18:59,807 --> 01:19:02,341
+whatever MyType understands, methods and vars,
+无论MyType理解、方法和增值
+
+1487
+01:19:04,311 --> 01:19:06,478
+So that's how we use it, We use this "as?", it's called
+这是我们如何使用它,我们使用这种“一样?
+
+1488
+01:19:06,547 --> 01:19:09,614
+casting, This casting, by the way, not just for AnyObject,
+铸造,铸造,顺便说一下,不仅对AnyObject,
+
+1489
+01:19:09,683 --> 01:19:12,951
+we can cast other things, For example, if I had a variable
+我们可以把其他事情,例如,如果我有一个变量
+
+1490
+01:19:13,020 --> 01:19:15,987
+which is, vc which is a type UIViewController,
+风险投资是一种界面控制器,
+
+1491
+01:19:16,056 --> 01:19:19,324
+I could assign it to UI, to CalculatorViewController,
+我可以将它分配给UI,CalculatorViewController,
+
+1492
+01:19:19,393 --> 01:19:20,325
+Because CalculatorViewController is
+因为CalculatorViewController
+
+1493
+01:19:20,393 --> 01:19:21,927
+a subclass of UIViewController, So
+ui的一个子类
+
+1494
+01:19:21,995 --> 01:19:26,031
+it is a UIViewController, so I could assign it to vc, But
+这是一个ui,所以我可以将它分配给风投,但是
+
+1495
+01:19:26,099 --> 01:19:28,933
+if I assign it like this, with this typing,
+如果我这样分配,用这个打字,
+
+1496
+01:19:29,002 --> 01:19:32,604
+I cannot say vc,displayValue cuz vc,displayValue,
+我不能说vc,displayValue因为vc,displayValue,
+
+1497
+01:19:32,672 --> 01:19:36,208
+displayValue is a var in CalculatorViewController,
+displayValue是var CalculatorViewController,
+
+1498
+01:19:36,277 --> 01:19:38,643
+and vc is of type UIViewController,
+和vc界面控制器类型,
+
+1499
+01:19:38,712 --> 01:19:41,246
+Even though it points to a CalculatorViewController,
+即使它指向CalculatorViewController,
+
+1500
+01:19:41,315 --> 01:19:43,681
+from Swift's perspective, it's typed as vc, and
+从斯威夫特的角度看,它的类型的vc,
+
+1501
+01:19:43,750 --> 01:19:47,753
+Swift is strongly typed, So if I wanted to send displayValue,
+斯威夫特是强类型的,如果我想发送displayValue,
+
+1502
+01:19:47,821 --> 01:19:50,655
+I would have to say, if I can let calcVC = vc
+我不得不说,如果我能让calcVC = vc
+
+1503
+01:19:50,724 --> 01:19:55,127
+as a CalculatorViewController Now I can send displayValue to
+我可以发送displayValue CalculatorViewController现在
+
+1504
+01:19:55,195 --> 01:19:59,598
+calcVC, Cuz it's the type that you actually
+calcVC,因为这是你真正的类型
+
+1505
+01:19:59,667 --> 01:20:02,234
+type it as that matters, not what it's pointing to, So you
+类型是重要的,而不是指向,所以你
+
+1506
+01:20:02,302 --> 01:20:04,870
+have to use as to get it to be something that you really
+需要使用它,你真的吗
+
+1507
+01:20:04,939 --> 01:20:08,606
+wanna use, Okay, I'm gonna go a little bit over here,
+想用,好吧,我要在这里,一点
+
+1508
+01:20:08,675 --> 01:20:11,376
+If you have to go, it's, it's fine, just keep it quiet,
+如果你要去,,它很好,只是保持安静,
+
+1509
+01:20:11,445 --> 01:20:13,778
+The last thing I'm gonna talk about is user defaults,
+我要讲的最后一件事就是用户违约,
+
+1510
+01:20:13,847 --> 01:20:15,647
+User defaults is a very lightweight,
+用户默认设置是一个非常轻量级的,
+
+1511
+01:20:15,716 --> 01:20:19,618
+limited database, It's a tiny little database that persists
+有限的数据库,它是一个小的数据库仍然存在
+
+1512
+01:20:19,687 --> 01:20:21,687
+between launchings of your app, It's great for
+发射之间的应用程序,它是伟大的
+
+1513
+01:20:21,756 --> 01:20:23,255
+things like settings and stuff like that,
+比如设置之类的,
+
+1514
+01:20:23,323 --> 01:20:26,424
+Don't put anything big in there, The only thing you can
+不要把任何东西大,唯一你可以
+
+1515
+01:20:26,493 --> 01:20:29,227
+put in this database is what's called a property list,
+在这个数据库是所谓的属性列表,
+
+1516
+01:20:29,296 --> 01:20:32,331
+A property list just means any combination of array,
+一个属性列表就意味着数组的任意组合,
+
+1517
+01:20:32,399 --> 01:20:34,133
+dictionary, string, date, data, or
+字典,字符串,日期,数据,或者
+
+1518
+01:20:34,201 --> 01:20:37,702
+a number, like int, float, double, whatever,
+一个数字,如int、浮点数、翻倍,无论如何,
+
+1519
+01:20:37,771 --> 01:20:40,038
+That's what a property list is, It's just conceptual,
+这就是一个属性列表,只是概念上的,
+
+1520
+01:20:40,107 --> 01:20:42,707
+There's no actual type property list, unfortunately,
+没有实际的类型属性列表,不幸的是,
+
+1521
+01:20:42,776 --> 01:20:45,910
+If this were a Swift API, it probably would be such a type,
+如果这是一个迅速API,它可能会是这样一个类型,
+
+1522
+01:20:45,979 --> 01:20:48,180
+It could be a protocol, But anyway, there's not,
+它可能是一个协议,但无论如何,没有,
+
+1523
+01:20:48,248 --> 01:20:51,883
+This is from Objective-C, So since there's no type
+这是来自objective - c,既然没有类型
+
+1524
+01:20:51,952 --> 01:20:55,287
+that represents that codgepodge of classes,
+代表codgepodge类,
+
+1525
+01:20:55,355 --> 01:20:58,823
+this API that I'm gonna show user defaults uses Any, And
+这个API,我要显示用户使用任何违约,和
+
+1526
+01:20:58,892 --> 01:21:01,593
+this is what it looks like, It has this core, set, and
+这就是它的样子,它有这样一个核心,集,和
+
+1527
+01:21:01,662 --> 01:21:05,931
+get, Set Any? Now that Any can't really be Any,
+获取、设置吗?
+
+1528
+01:21:06,000 --> 01:21:07,933
+it has to be one of those types, string, dictionary,
+它必须是其中的一个类型,字符串,字典,
+
+1529
+01:21:08,001 --> 01:21:09,601
+array, whatever, it has to be be a Property List,
+数组,不管怎样,它必须是一个属性列表,
+
+1530
+01:21:09,670 --> 01:21:13,004
+forKey string, So you just put it, anything you want
+forKey字符串,所以你把它,任何你想要的
+
+1531
+01:21:13,073 --> 01:21:14,506
+in this database under a certain key,
+在这个数据库某个键,
+
+1532
+01:21:14,575 --> 01:21:16,641
+And then you get it back out by saying, object for key, and
+然后你把它弄回来说,为主要对象,
+
+1533
+01:21:16,710 --> 01:21:19,210
+it returns you an Any, And it's an optional Any because
+它返回你的任何,这是一个可选的任何原因
+
+1534
+01:21:19,279 --> 01:21:20,445
+it might not be in the database,
+它可能不是在数据库中,
+
+1535
+01:21:20,514 --> 01:21:23,247
+in which it is returned nil, So it says any but
+它返回nil,所以说任何但
+
+1536
+01:21:23,316 --> 01:21:27,286
+it's not really Any, it's Any as long as the property lists,
+它不是任何,只要属性列表,
+
+1537
+01:21:27,354 --> 01:21:29,521
+which means it's one of these ten classes or
+这意味着它的其中一个十类或吗
+
+1538
+01:21:29,590 --> 01:21:32,123
+whatever, The way you read and
+无论如何,你的阅读和方式
+
+1539
+01:21:32,192 --> 01:21:35,427
+write it, you don't create a user default by saying let
+写,你不创建一个用户说我们违约
+
+1540
+01:21:35,496 --> 01:21:37,595
+x equal user defaults with parentheses,
+x =用户违约与括号,
+
+1541
+01:21:37,664 --> 01:21:41,533
+You say let defaults = UserDefaults,standard, so
+你说我们违约= UserDefaults标准,所以
+
+1542
+01:21:41,601 --> 01:21:45,270
+that's a type var on the user default struct,
+这是一个var用户默认的结构类型,
+
+1543
+01:21:45,339 --> 01:21:47,572
+And you get this standard UserDefaults and
+你得到这个标准UserDefaults和
+
+1544
+01:21:47,641 --> 01:21:49,541
+then you can send it things like set,
+然后你可以把它设置,
+
+1545
+01:21:49,610 --> 01:21:52,410
+that thing I was telling you, set Any, And here,
+那件事我告诉你,任何,在这里,
+
+1546
+01:21:52,479 --> 01:21:55,446
+I've got three different sets, one of them setting of double,
+我有三个不同的集合,其中的一个设置双,
+
+1547
+01:21:55,515 --> 01:21:58,016
+one setting an array of ints, An array of ints is okay
+一个设置一个整数数组,数组的整数没问题
+
+1548
+01:21:58,085 --> 01:22:01,086
+because array is part of property list, And so is int,
+因为数组属性列表的一部分,因此是int,
+
+1549
+01:22:01,155 --> 01:22:04,355
+so that's okay, That's a property list, An array
+这是好的,这是一个属性列表,一个数组
+
+1550
+01:22:04,424 --> 01:22:06,424
+of ints is a property list, a property list, So is a double,
+int属性列表,一个属性列表,所以是一个双,
+
+1551
+01:22:06,493 --> 01:22:09,061
+cuz it's one of those types, And I just set them in there,
+因为它是其中的一个类型,我只是让他们,
+
+1552
+01:22:09,129 --> 01:22:12,497
+And then when I get them out, I use that object for key,
+当我把它们弄出来,我使用该对象的键,
+
+1553
+01:22:12,565 --> 01:22:14,432
+And actually for some common types,
+实际上,对于一些常见的类型,
+
+1554
+01:22:14,501 --> 01:22:17,202
+like doubles, arrays and dictionaries, there's actually
+像双打,数组和字典,实际上
+
+1555
+01:22:17,271 --> 01:22:19,905
+a nice little method in there to give you that type back,
+一个方法给你回信息,
+
+1556
+01:22:19,973 --> 01:22:23,441
+That's so you that don't get an Any back and
+所以你不得到一个回去
+
+1557
+01:22:23,510 --> 01:22:26,778
+then have to do as, Because you know that objects for
+然后要做,因为你知道对象
+
+1558
+01:22:26,847 --> 01:22:29,547
+key returns an Any until you give this Any and
+键返回一个任何直到你给这个
+
+1559
+01:22:29,616 --> 01:22:32,217
+you have to go if this thing has a double,
+你如果这个东西有双,
+
+1560
+01:22:32,286 --> 01:22:34,286
+then I've got it, That would be annoying, So instead,
+我懂了,烦人,所以,
+
+1561
+01:22:34,354 --> 01:22:36,789
+it just has a method called double that does that as for
+它有一个方法叫做这两倍
+
+1562
+01:22:36,857 --> 01:22:40,825
+you, And if the as fails then you, I think either,
+你,如果是失败那么你,我认为,
+
+1563
+01:22:40,894 --> 01:22:43,094
+I don't know if it returns a double or an optional double,
+我不知道如果它返回一个双重或一个可选的两倍,
+
+1564
+01:22:43,163 --> 01:22:45,930
+but you might get zero back, you might get a nil,
+但是你可能会拿回零,你可能会得到一个零,
+
+1565
+01:22:45,999 --> 01:22:49,201
+I don't remember exactly, But for array in dictionary,
+我完全不记得了,但是在字典数组,
+
+1566
+01:22:49,269 --> 01:22:52,804
+a couple of interesting things to note, Obviously,
+有趣的东西要注意,显然,
+
+1567
+01:22:52,873 --> 01:22:56,074
+the Anys that are inside the array in dictionary,
+在数组的任何字典,
+
+1568
+01:22:56,143 --> 01:22:59,077
+those will have to be property lists as well, the things that
+这些必须属性列表,的事情
+
+1569
+01:22:59,145 --> 01:23:01,446
+are returned to you, And also know that dictionary,
+返回给你,也知道,字典,
+
+1570
+01:23:01,514 --> 01:23:03,915
+this convenience method dictionary,
+这个便利方法字典,
+
+1571
+01:23:03,984 --> 01:23:07,552
+it's the string is always the key in the dictionary,
+它的字符串总是在字典里的关键
+
+1572
+01:23:07,621 --> 01:23:12,157
+If you had a dictionary where the keys were say, ints,
+如果你有一本字典的钥匙在哪里说,整数,
+
+1573
+01:23:12,226 --> 01:23:14,926
+I think that's a valid key, yeah, in the dictionary, yeah,
+我认为这是一个有效的关键,是的,在字典里,是的,
+
+1574
+01:23:14,995 --> 01:23:18,029
+it is, Then you would not use this convenience method,
+是,那么你不会使用这个方便的方法,
+
+1575
+01:23:18,098 --> 01:23:21,867
+You'd have to use object for key and then use as to turn it
+你必须使用对象为关键,然后使用,把它
+
+1576
+01:23:21,936 --> 01:23:26,971
+back into a dictionary with int keys,
+回一个字典,int钥匙,
+
+1577
+01:23:27,040 --> 01:23:29,307
+Saving the database is autosave, so you actually
+保存数据库自动保存,所以你真的
+
+1578
+01:23:29,376 --> 01:23:31,276
+don't have to save it, If you wanna force it to save because
+不需要保存它,如果你想拯救因为力量
+
+1579
+01:23:31,344 --> 01:23:33,144
+you're worried that the autosave might not happen,
+你担心autosave可能不会发生,
+
+1580
+01:23:33,213 --> 01:23:35,413
+You're gonna exit your program or something, you can use this
+你要退出程序,您可以使用这个
+
+1581
+01:23:35,482 --> 01:23:37,382
+method synchronize, It's called synchronize defaults,
+方法同步,它叫做同步违约,
+
+1582
+01:23:37,451 --> 01:23:40,586
+It will synchronize it, That's almost it, assertions,
+它将同步,这几乎是它,断言,
+
+1583
+01:23:40,654 --> 01:23:44,222
+Sorry, one last quick thing, Assertions are just a little
+对不起,最后一个快速,断言只是一点点
+
+1584
+01:23:44,291 --> 01:23:48,360
+Swift function that takes a closure as the first argument
+斯威夫特函数接受一个闭包作为第一个参数
+
+1585
+01:23:48,429 --> 01:23:51,596
+and a message as the second argument,
+和消息作为第二个参数,
+
+1586
+01:23:51,665 --> 01:23:55,400
+All it does is it executes the closure, If that returns true,
+所有它执行关闭,如果返回true,
+
+1587
+01:23:55,469 --> 01:23:58,437
+it does not crash your program, If it returns false,
+它不会崩溃你的程序,如果它返回false,
+
+1588
+01:23:58,505 --> 01:24:02,006
+it crashes your program and prints that message out, So
+程序崩溃并打印信息,
+
+1589
+01:24:02,075 --> 01:24:06,778
+you could put, you know, some validation call, This line of
+你知道,你可以把一些验证电话,这行
+
+1590
+01:24:06,847 --> 01:24:10,215
+code will not even execute in the version of your app that
+代码将不执行的应用程序版本
+
+1591
+01:24:10,284 --> 01:24:12,618
+you ship on the app store, When you build the app for
+你船在app store,构建应用程序
+
+1592
+01:24:12,686 --> 01:24:15,086
+release, the asserts are completely ignored,
+释放,断言是完全忽视,
+
+1593
+01:24:15,155 --> 01:24:17,890
+It doesn't even actually give the closure, let alone crash,
+实际上它甚至不给关闭,更不用说崩溃,
+
+1594
+01:24:17,958 --> 01:24:20,592
+It just ignores them, so this is a debugging thing only,
+只是忽略了他们,所以这是一个调试的事情,
+
+1595
+01:24:20,661 --> 01:24:24,863
+okay? That's it! For Friday,
+好吧?
+
+1596
+01:24:24,932 --> 01:24:27,899
+we do have Friday session, it's at the normal time, And
+我们周五的会议,它是在正常的时间,
+
+1597
+01:24:27,968 --> 01:24:29,568
+it's gonna be on source code management,
+它会在源代码管理,
+
+1598
+01:24:29,637 --> 01:24:33,471
+A really cool way to manage your code even if you're just
+一个很酷的方式来管理您的代码,即使你只是
+
+1599
+01:24:33,540 --> 01:24:36,074
+one programmer working on a project by yourself, And then
+一个程序员在一个项目,然后
+
+1600
+01:24:36,143 --> 01:24:39,010
+next week I'm going to talk about doing custom drawing
+下周我要讲做自定义绘图
+
+1601
+01:24:39,079 --> 01:24:42,447
+in your own view, Multi-touch, like pinches and swipes, and
+在自己看来,多点触控,喜欢捏和啤酒,
+
+1602
+01:24:42,516 --> 01:24:45,450
+things like that, And finally, multiple MVCs so
+类似这样的事情,最后,多个mvc
+
+1603
+01:24:45,519 --> 01:24:48,119
+we can build a more powerful calculator,
+我们可以建立一个更强大的计算器,
+
+1604
+01:24:48,188 --> 01:24:51,123
+Your assignment two has gone out, It's already posted,
+作业两个出去,它已经发布,
+
+1605
+01:24:51,191 --> 01:24:54,259
+It's essentially enhancing your calculator with a lot of
+它本质上是加强计算器的
+
+1606
+01:24:54,328 --> 01:24:57,129
+the things that I talked about today like tuples and
+我今天像元组和谈论
+
+1607
+01:24:57,198 --> 01:24:59,831
+defaulting values and even value types,
+默认值甚至是值类型,
+
+1608
+01:24:59,899 --> 01:25:01,934
+All kinds of stuff, So we'll have a lot of fun with that,
+各种各样的东西,所以我们会有很多的乐趣,
+
+1609
+01:25:03,237 --> 01:25:03,935
+>> For more,
+更多> >,
+
+1610
+01:25:04,004 --> 01:25:12,510
+please visit us at standford,edu
+请访问我们在斯坦福,埃杜
